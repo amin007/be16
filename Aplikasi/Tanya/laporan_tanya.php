@@ -143,6 +143,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 	private function medanRespon()
 	{
+		$senaraiMedan = array();
 		$senaraiMedan['medanR'] = 'kod';
 		$senaraiMedan['jadualR'] = 'f2';
 		$senaraiMedan['r'] = 'respon';
@@ -150,32 +151,41 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("-",`KOD PENYIASATAN`,`KOD INDUSTRI`,`JENIS TANAMAN/TERNAKAN/PERIKANAN`) as kp,'
 			. '`Status` as bbu, concat_ws("-",`ID`,`NO KAD PENGENALAN`) as newss'; # papar semua medan
 		return $senaraiMedan;
+		/*
+		list($medanR, $jadualR, $r, $medan) = $senaraiMedan;
+		echo "\$medanR = $medanR,<br> \$jadualR = $jadualR,<br> "
+			. "\$r = $r,<br> \$medan = $medan,<br>";
+		
+		$info = array('coffee', 'brown', 'caffeine');
+		// Listing all the variables
+		list($drink, $color, $power) = $info;
+		echo "$drink is $color and $power makes it special.\n<br>";
+		//*/
 	}
 
-	private function bentukSqlRespon($medanR, $jadualR)
+	private function bentukSqlRespon($medanR, $jadualR, $item, $ms)
 	{
 		//$sql = 'SELECT ' . $medan . ' FROM ' . $jadual
 		//	 . ' WHERE kod not in ("X","5P") GROUP BY 1 ORDER BY no';
-		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medan,'apa'=>'("X","5P")');
+		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
 		$jum2 = pencamSqlLimit(300, $item, $ms); #
 		$susun[] = array_merge($jum2, array('kumpul'=>1,'susun'=>'no') );
-		$sql = $this->tanya->//tatasusunanUbah2A //cariSemuaData 
-			cariSql
-			($jadual, $cari, $susun = null);
+		$hasil = $this->//tatasusunanUbah2A 
+			cariSemuaData //cariSql
+			($jadualR, $medanR, $cari, $susun);
 		//echo '<pre>$sql->' . $sql . '</pre><br>';
-		$hasil = $this->db->selectAll($sql);
 		return $hasil;
 	}
 	
-	public function kumpulRespon($myTable, $carian, $susun)
+	public function kumpulRespon($item, $ms, $myTable, $carian, $susun)
 	{
 		# set pembolehubah untuk sql pertama
-		echo '<pre>$papar->'; print_r($this->medanRespon()) . '</pre><br>';
-		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
-		echo "\$medanR = $medanR,<br> \$jadualR = $jadualR,<br> "
-			. "\$r = $r,<br> \$medan = $medan,<br>";
-		/*# panggil sql pertama
-		$hasil = $this->bentukSqlRespon($medanR, $jadualR);
+		$p = $this->medanRespon();
+		//echo '<pre>$papar->'; print_r($this->medanRespon()) . '</pre><br>';
+		# panggil sql pertama
+		$hasil = $this->bentukSqlRespon($p['medanR'], $p['jadualR'], $item, $ms);
+		$r = $p['r'];
+		$medan = $p['medan'];
 		# loop over the object directly 
 		$kumpul = null;
 		foreach($hasil as $key=>$val)
@@ -186,19 +196,17 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				$kumpul .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
 				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
 			}
-		} echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		} //echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
 		
-		/*# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
-		$sql2 = "SELECT $medan$kumpul\r FROM $myTable\r"
-			  . $this->dimana($carian)
-			  . $this->dibawah($susun);
+		# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
+		$hasil2 = $this->//tatasusunanUbah2A 
+			cariSemuaData //cariSql
+			($myTable, $medan, $carian, $susun);
 		
 		//echo '<pre>$sql2->' . $sql2 . '</pre><br>';
 		//echo '<pre>$sql2->' . htmlentities($sql2) . '</pre><br>';
-		$result['kiraData'] = $this->db->selectAll($sql2);
-		//echo json_encode($result);
 		
-		//return $result;
+		return $hasil2;
 		//*/
 	
 	}
