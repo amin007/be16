@@ -1,0 +1,72 @@
+<div class="panel panel-default bootcards-summary">
+	
+				<div class="panel-heading">
+					<h3 class="panel-title">Dashboard</h3>
+				</div>
+	
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="./contacts.php" data-pjax="#main"
+							data-title="Contacts" style="padding-top:35px;">
+								<i class="fa fa-3x fa-users"></i>
+								<h4>
+									Contacts
+									<span class="label label-info">40</span>
+								</h4>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="./company.php" data-pjax="#main"
+							data-title="Companies" style="padding-top:35px;">
+								<i class="fa fa-3x fa-building-o"></i>
+								<h4>
+									Companies
+									<span class="label label-info">40</span> 
+								</h4>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="./notes.php" data-pjax="#main"
+							data-title="Notes" style="padding-top:35px;">
+								<i class="fa fa-3x fa-clipboard"></i>
+								<h4>
+									Notes
+									<span class="label label-info">4905</span>
+								</h4>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="./charts.php" data-pjax="#main"
+							data-title="Charts" style="padding-top:35px;">
+								<i class="fa fa-3x fa-bar-chart-o"></i>
+								<h4>
+									Charts
+									<span class="label label-info">4</span>
+								</h4>
+							</a>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<a class="bootcards-summary-item" href="#" style="padding-top:35px;">
+								<i class="fa fa-3x fa-files-o"></i>
+								<h4>
+									Files
+									<span class="label label-info">36</span>
+								</h4>
+							</a>
+						</div>
+					</div>
+				</div>
+	
+				<div class="panel-footer">
+				<!--
+					<small class="pull-left">Built with Bootcards - Summary Card</small>
+					<a class="btn btn-link btn-xs pull-right"
+							href="/snippets/summary"
+							data-toggle="modal"
+							data-target="#docsModal">
+							View Source</a>
+				-->
+				</div>	
+	
+			</div>
