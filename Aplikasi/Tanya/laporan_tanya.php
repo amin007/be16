@@ -140,7 +140,9 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}	
-
+#- mula  - untuk tatasusunan Respon ---------------------------------------------------------------------------------
+#- tamat - untuk tatasusunan Respon ---------------------------------------------------------------------------------
+#- mula  - untuk Sql Respon -----------------------------------------------------------------------------------------
 	private function medanRespon()
 	{
 		$senaraiMedan[] = 'kod'; // 'newss'; 
@@ -193,5 +195,6 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $hasil2; # pulangkan nilai
 	}
+#- tamat  untuk Sql Respon -----------------------------------------------------------------------------------------
 #==========================================================================================
 }
