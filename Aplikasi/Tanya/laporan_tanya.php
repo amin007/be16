@@ -163,12 +163,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 	private function bentukSqlRespon($medanR, $jadualR, $item, $ms)
 	{
-		//$sql = 'SELECT ' . $medan . ' FROM ' . $jadual
-		//	 . ' WHERE kod not in ("X","5P") GROUP BY 1 ORDER BY no';
 		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
 		$jum2 = array(); // pencamSqlLimit(300, $item, $ms); #
 		$susun[] = array_merge($jum2, array('kumpul'=>1,'susun'=>'no') );
-		$hasilRespon = $this->//tatasusunanUbah2A 
+		$hasilRespon = $this->//tatasusunan
 			cariSemuaData //cariSql
 			($jadualR, $medanR, $cari, $susun);
 		return $hasilRespon;
