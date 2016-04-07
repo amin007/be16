@@ -168,11 +168,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
 		$jum2 = array(); // pencamSqlLimit(300, $item, $ms); #
 		$susun[] = array_merge($jum2, array('kumpul'=>1,'susun'=>'no') );
-		$hasil = $this->//tatasusunanUbah2A 
-			//cariSemuaData //
-			cariSql
+		$hasilRespon = $this->//tatasusunanUbah2A 
+			cariSemuaData //cariSql
 			($jadualR, $medanR, $cari, $susun);
-		return $hasil;
+		return $hasilRespon;
 	}
 	
 	public function kumpulRespon($item, $ms, $myTable, $carian, $susun)
@@ -180,7 +179,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
 		# panggil sql pertama
-		$hasil = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
+		$hasilRespon = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
 		# loop over the object directly 
 		$kumpul = null;
 		foreach($hasil as $key=>$val)
