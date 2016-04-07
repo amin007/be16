@@ -195,10 +195,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			cariSemuaData //cariSql
 			($myTable, "$medan$kumpul\r", $carian, $susun);
 
-		//$result['kiraData'] = $this->db->selectAll($sql2);
-		
-		return $hasil2;
-		//*/
+		return $hasil2; //*/
 	}
 #==========================================================================================
 }
