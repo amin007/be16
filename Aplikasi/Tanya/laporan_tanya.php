@@ -182,8 +182,8 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$hasilRespon = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
 		# loop over the object directly 
 		$kumpul = null;
-		foreach($hasil as $key=>$val)
-		{
+		foreach($hasilRespon as $key=>$val)
+		{	
 			foreach($val as $key2=>$p)
 			{
 				//$kumpul .= ",\r '' as '" . $p . "'";
