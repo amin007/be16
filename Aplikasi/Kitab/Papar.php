@@ -103,6 +103,7 @@ class Papar
 		{
 			require PAPAR . '/template/' . $jenis . '/diatas.php';
 			//require PAPAR . '/template/' . $jenis . '/menu_atas.php';
+			require PAPAR . '/template/' . $jenis . '/menubar.php';
 			require PAPAR . '/' . $nama . '.php';
 			require PAPAR . '/template/' . $jenis . '/dibawah.php';			
 		}		
