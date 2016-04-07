@@ -141,6 +141,17 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiMedan;
 	}	
 #- mula  - untuk tatasusunan Respon ---------------------------------------------------------------------------------
+	private function medanResponT()
+	{
+		$senaraiMedan[] = 'nama';
+		$senaraiMedan[] = 'kp';
+		$senaraiMedan[] = 'utama';
+		$senaraiMedan[] = 'newss';
+		$senaraiMedan[] = 'nota';
+			
+		return $senaraiMedan; # pulangkan nilai
+	}
+
 	private function bentukSqlResponT()
 	{
 		# ada nilai
@@ -156,7 +167,31 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	
 	public function tatasusunanRespon($item, $ms, $myTable, $carian, $susun)
 	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
+		# panggil sql pertama
+		$hasilRespon = $this->bentukSqlResponT($medanR, $jadualR, $item, $ms);
+		//echo '<pre>$hasilRespon:'; print_r($hasilRespon) . '</pre>';
 		
+		
+		/*# loop over the object directly 
+		$kumpul = null;
+		foreach($hasilRespon as $key=>$val)
+		{	
+			foreach($val as $key2=>$p)
+			{
+				//$kumpul .= ",\r '' as '" . $p . "'";
+				//$kumpul .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
+			}
+		} //echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		
+		# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
+		$hasil2 = $this->//tatasusunan
+			cariSemuaData //cariSql
+			($myTable, "$medan$kumpul\r", $carian, $susun);
+
+		return $hasil2; # pulangkan nilai
+		//*/
 	}
 #- tamat - untuk tatasusunan Respon ---------------------------------------------------------------------------------
 #- mula  - untuk Sql Respon -----------------------------------------------------------------------------------------
