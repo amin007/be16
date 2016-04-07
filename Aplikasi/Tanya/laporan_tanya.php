@@ -149,7 +149,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$senaraiMedan['r'] = 'respon';
 		$senaraiMedan['medan'] = '`NAMA PEMILIK` as nama, '
 			. 'concat_ws("-",`KOD PENYIASATAN`,`KOD INDUSTRI`,`JENIS TANAMAN/TERNAKAN/PERIKANAN`) as kp,'
-			. '`Status` as bbu, concat_ws("-",`ID`,`NO KAD PENGENALAN`) as newss'; # papar semua medan
+			. '`Status` as utama, concat_ws("-",`ID`,`NO KAD PENGENALAN`) as newss,'
+			//. 'concat_ws("-",`TINDAKAN`) as nota'
+			. '"" as nota'
+			. '';
 		return $senaraiMedan;
 		/*
 		list($medanR, $jadualR, $r, $medan) = $senaraiMedan;
@@ -168,12 +171,12 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		//$sql = 'SELECT ' . $medan . ' FROM ' . $jadual
 		//	 . ' WHERE kod not in ("X","5P") GROUP BY 1 ORDER BY no';
 		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
-		$jum2 = pencamSqlLimit(300, $item, $ms); #
+		$jum2 = array(); // pencamSqlLimit(300, $item, $ms); #
 		$susun[] = array_merge($jum2, array('kumpul'=>1,'susun'=>'no') );
 		$hasil = $this->//tatasusunanUbah2A 
-			cariSemuaData //cariSql
+			//cariSemuaData //
+			cariSql
 			($jadualR, $medanR, $cari, $susun);
-		//echo '<pre>$sql->' . $sql . '</pre><br>';
 		return $hasil;
 	}
 	
@@ -184,7 +187,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		//echo '<pre>$papar->'; print_r($this->medanRespon()) . '</pre><br>';
 		# panggil sql pertama
 		$hasil = $this->bentukSqlRespon($p['medanR'], $p['jadualR'], $item, $ms);
-		$r = $p['r'];
+		/*$r = $p['r'];
 		$medan = $p['medan'];
 		# loop over the object directly 
 		$kumpul = null;
@@ -201,15 +204,12 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
 		$hasil2 = $this->//tatasusunanUbah2A 
 			cariSemuaData //cariSql
-			($myTable, $medan, $carian, $susun);
-		
-		//echo '<pre>$sql2->' . $sql2 . '</pre><br>';
-		//echo '<pre>$sql2->' . htmlentities($sql2) . '</pre><br>';
+			($myTable, "$medan$kumpul\r", $carian, $susun);
+
+		//$result['kiraData'] = $this->db->selectAll($sql2);
 		
 		return $hasil2;
 		//*/
-	
 	}
-	
 #==========================================================================================
 }
