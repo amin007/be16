@@ -19,14 +19,13 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/index');
 	}
 #==========================================================================================
-	public function fe($jadual, $cariID, $cariApa)
+	public function fe($jadual, $cariID, $cariApa, $item = 1000)
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat = 'Enjin Laporan FE';
 		$this->papar->kp = 'BUTAM';
 		$this->papar->fe = $cariApa;
-		//$this->papar->kiraSemuaBaris = 
-		$this->papar->item = $item = 1000; 
+		$this->papar->item = $item; 
 		$this->papar->ms = $ms = 1;
 		# kod asas panggil sql
 			//$medan = '*'; # papar semua medan
