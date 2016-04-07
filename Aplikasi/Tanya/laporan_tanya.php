@@ -152,12 +152,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("-",`TINDAKAN`) as nota'
 			. '"" as nota'
 			. '';
-		
-		/*# semak pembolehubah
-		list($medanR, $jadualR, $r, $medan) = $senaraiMedan;
-		echo "\$medanR = $medanR,<br> \$jadualR = $jadualR,<br> "
-			. "\$r = $r,<br> \$medan = $medan,<br>"; //*/
-		
+			
 		return $senaraiMedan; # pulangkan nilai
 	}
 
