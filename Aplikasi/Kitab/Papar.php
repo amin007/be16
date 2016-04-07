@@ -78,6 +78,22 @@ class Papar
 //*/		
 	}
 #==========================================================================================
+#------------------------------------------------------------------------------------------
+	public function paparTemplate($nama, $jenis, $noInclude = false)
+	{
+		echo '<br>require ' . PAPAR . '/template/' . $jenis . '/diatas.php'
+			. '<br>require ' . PAPAR . '/template/' .$jenis . '/menu_atas.php'
+			. '<br>require ' . PAPAR . '/' . $nama . '.php'
+			. '<br>require ' . PAPAR . '/template/' . $jenis . '/dibawah.php'
+			. '<hr>';
+		echo '<br>require PAPAR . \'/template/\' . $jenis . \'/diatas.php\';'
+			. '<br>require PAPAR . \'/template/\' . $jenis . \'/menu_atas.php\';'
+			. '<br>require PAPAR . \'/\' . $nama . \'.php\';'
+			. '<br>require PAPAR . \'/template/\' . $jenis . \'/dibawah.php\';'
+			. '';
+	}
+
+#------------------------------------------------------------------------------------------
 	public function bacaTemplate($nama, $jenis, $noInclude = false)
 	{
 		if ($noInclude == true) 
@@ -87,11 +103,11 @@ class Papar
 		else 
 		{
 			require PAPAR . '/template/' . $jenis . '/diatas.php';
-			//require PAPAR . '/template/' . $jenis . '/'menu_atas.php';
-			require PAPAR . $nama . '.php';
-			require PAPAR . '/template/' . $jenis . '/dibawah.php';	
-		}
-		
+			//require PAPAR . '/template/' . $jenis . '/menu_atas.php';
+			require PAPAR . '/' . $nama . '.php';
+			require PAPAR . '/template/' . $jenis . '/dibawah.php';			
+		}		
 	}
+#-----------------------------------------------------------------------------------------
 #==========================================================================================
 }
