@@ -30,16 +30,12 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->ms = $ms = 1;
 		# kod asas panggil sql
 			//$medan = '*'; # papar semua medan
-			$medan = '`NAMA PEMILIK` as nama, '
-				   . 'concat_ws("-",`KOD PENYIASATAN`,`KOD INDUSTRI`,`JENIS TANAMAN/TERNAKAN/PERIKANAN`) as kp,'
-				   . '`Status` as bbu, concat_ws("-",`ID`,`NO KAD PENGENALAN`) as newss'; # papar semua medan
 			$cari[] = array('fix'=>'like%','atau'=>'WHERE','medan'=>$cariID,'apa'=>$cariApa);
 			$jum2 = pencamSqlLimit(300, $item, $ms); #
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>null) );
 			# tanya Sql
-			$this->papar->hasil = $this->tanya->//tatasusunanUbah2A
-				cariSemuaData //cariSql
-				($jadual, $medan, $cari, $susun = null);
+			$this->papar->hasil = $this->tanya->//tatasusunanUbah2A //cariSemuaData //cariSql
+				kumpulRespon($item, $ms, $jadual, $cari, $susun = null);
 
 		/*# semak data
 		echo '<pre>';
