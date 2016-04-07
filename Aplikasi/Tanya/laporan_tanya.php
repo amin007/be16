@@ -153,10 +153,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. '"" as nota'
 			. '';
 		
-		# semak pembolehubah
+		/*# semak pembolehubah
 		list($medanR, $jadualR, $r, $medan) = $senaraiMedan;
 		echo "\$medanR = $medanR,<br> \$jadualR = $jadualR,<br> "
-			. "\$r = $r,<br> \$medan = $medan,<br>";
+			. "\$r = $r,<br> \$medan = $medan,<br>"; //*/
 		
 		return $senaraiMedan; # pulangkan nilai
 	}
