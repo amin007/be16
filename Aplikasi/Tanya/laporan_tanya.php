@@ -143,27 +143,22 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 	private function medanRespon()
 	{
-		$senaraiMedan = array();
-		$senaraiMedan['medanR'] = 'kod';
-		$senaraiMedan['jadualR'] = 'f2';
-		$senaraiMedan['r'] = 'respon';
-		$senaraiMedan['medan'] = '`NAMA PEMILIK` as nama, '
+		$senaraiMedan[] = 'kod';
+		$senaraiMedan[] = 'f2';
+		$senaraiMedan[] = 'respon';
+		$senaraiMedan[] = '`NAMA PEMILIK` as nama, '
 			. 'concat_ws("-",`KOD PENYIASATAN`,`KOD INDUSTRI`,`JENIS TANAMAN/TERNAKAN/PERIKANAN`) as kp,'
 			. '`Status` as utama, concat_ws("-",`ID`,`NO KAD PENGENALAN`) as newss,'
 			//. 'concat_ws("-",`TINDAKAN`) as nota'
 			. '"" as nota'
 			. '';
-		return $senaraiMedan;
-		/*
+		
+		# semak pembolehubah
 		list($medanR, $jadualR, $r, $medan) = $senaraiMedan;
 		echo "\$medanR = $medanR,<br> \$jadualR = $jadualR,<br> "
 			. "\$r = $r,<br> \$medan = $medan,<br>";
 		
-		$info = array('coffee', 'brown', 'caffeine');
-		// Listing all the variables
-		list($drink, $color, $power) = $info;
-		echo "$drink is $color and $power makes it special.\n<br>";
-		//*/
+		return $senaraiMedan; # pulangkan nilai
 	}
 
 	private function bentukSqlRespon($medanR, $jadualR, $item, $ms)
