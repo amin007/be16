@@ -141,6 +141,23 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiMedan;
 	}	
 #- mula  - untuk tatasusunan Respon ---------------------------------------------------------------------------------
+	private function bentukSqlResponT()
+	{
+		# ada nilai
+		$hasil = array ('A1','A2','A3','A4','A5','A6',
+			'A7','A8','A9','A10','A11','A12','A13',
+			'B1','B2','B3','B4','B5','B6','B7');
+
+		# tiada nilai
+		$hasil2 = array();
+		
+		return $hasil; # pulangkan nilai 
+	}
+	
+	public function tatasusunanRespon($item, $ms, $myTable, $carian, $susun)
+	{
+		
+	}
 #- tamat - untuk tatasusunan Respon ---------------------------------------------------------------------------------
 #- mula  - untuk Sql Respon -----------------------------------------------------------------------------------------
 	private function medanRespon()
