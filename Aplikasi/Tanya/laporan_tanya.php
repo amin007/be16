@@ -171,27 +171,31 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
 		# panggil sql pertama
 		$hasilRespon = $this->bentukSqlResponT($medanR, $jadualR, $item, $ms);
-		//echo '<pre>$hasilRespon:'; print_r($hasilRespon) . '</pre>';
-		
-		
-		/*# loop over the object directly 
-		$kumpul = null;
-		foreach($hasilRespon as $key=>$val)
+				
+		# loop over the object directly 
+		$hasil2 = array();
+		foreach($this->tatasusunanResponData() as $kunci=>$nilai)
 		{	
-			foreach($val as $key2=>$p)
+			$hasil2[$kunci] = $nilai; 
+			foreach($hasilRespon as $key=>$p)
 			{
-				//$kumpul .= ",\r '' as '" . $p . "'";
-				//$kumpul .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
-			}
-		} //echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
-		
-		# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
-		$hasil2 = $this->//tatasusunan
-			cariSemuaData //cariSql
-			($myTable, "$medan$kumpul\r", $carian, $susun);
+				$hasil2[$kunci][$p] = ($p=='A1') ? 'X':''; 
+			} 
+		}	//echo '<pre>$hasil2:'; print_r($hasil2) . '</pre>';
 
 		return $hasil2; # pulangkan nilai
 		//*/
+	}
+	
+	private function tatasusunanResponData()
+	{
+		$hasil[] = array('nama'=>'A', 'kp'=>'101', 'utama'=>'KERJA LUAR', 'newss'=>'1', 'nota'=>'');
+		$hasil[] = array('nama'=>'B', 'kp'=>'101', 'utama'=>'KERJA LUAR', 'newss'=>'2', 'nota'=>'');
+		$hasil[] = array('nama'=>'C', 'kp'=>'101', 'utama'=>'KERJA LUAR', 'newss'=>'3', 'nota'=>'');
+		$hasil[] = array('nama'=>'D', 'kp'=>'102', 'utama'=>'POS', 'newss'=>'4', 'nota'=>'');
+		$hasil[] = array('nama'=>'E', 'kp'=>'103', 'utama'=>'POS', 'newss'=>'5', 'nota'=>'');
+		
+		return $hasil; # pulangkan nilai
 	}
 #- tamat - untuk tatasusunan Respon ---------------------------------------------------------------------------------
 #- mula  - untuk Sql Respon -----------------------------------------------------------------------------------------
