@@ -33,7 +33,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$jum2 = pencamSqlLimit(300, $item, $ms); #
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>null) );
 			# tanya Sql
-			$this->papar->hasil = $this->tanya->//tatasusunanRespon //cariSemuaData //cariSql
+			$this->papar->hasil = $this->tanya->//tatasusunanRespon
 				kumpulRespon($item, $ms, $jadual, $cari, $susun = null);
 
 		/*# semak data
