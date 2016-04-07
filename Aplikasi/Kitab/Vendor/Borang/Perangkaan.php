@@ -86,7 +86,7 @@ class Perangkaan
 		echo '<th>SBU</th>' . "\n";
 		foreach ($hasil[0] as $kunci => $dataan)
 		{
-			echo (in_array($kunci,array('nama','sv','utama','newss','nota')))?  
+			echo (in_array($kunci,array('nama','kp','utama','newss','nota')))?  
 			'':'<th>'.$kunci.'</th>' . "\n";	
 		}
 		echo '</tr>';
