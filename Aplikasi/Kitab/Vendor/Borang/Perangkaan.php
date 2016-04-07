@@ -183,7 +183,7 @@ class Perangkaan
 				foreach ($hasil[0] as $key => $kunci)
 				{
 					//echo '<th>&nbsp;</th>' . "\n";	
-					echo (in_array($key,array('nama','sv','utama','newss','nota')))?  
+					echo (in_array($key,array('nama','kp','utama','newss','nota')))?  
 					'':'<th>' . $kunci . '</th>' . "\n";	
 				}
 				echo "</tr>\n";
