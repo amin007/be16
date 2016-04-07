@@ -178,10 +178,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function kumpulRespon($item, $ms, $myTable, $carian, $susun)
 	{
 		# set pembolehubah untuk sql pertama
-		$p = $this->medanRespon();
+		list($medanR, $jadualR, $r, $medan) = $this->medanRespon()
 		//echo '<pre>$papar->'; print_r($this->medanRespon()) . '</pre><br>';
 		# panggil sql pertama
-		$hasil = $this->bentukSqlRespon($p['medanR'], $p['jadualR'], $item, $ms);
+		$hasil = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
 		/*$r = $p['r'];
 		$medan = $p['medan'];
 		# loop over the object directly 
