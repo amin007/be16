@@ -169,7 +169,8 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$hasilRespon = $this->//tatasusunan
 			cariSemuaData //cariSql
 			($jadualR, $medanR, $cari, $susun);
-		return $hasilRespon;
+		
+		return $hasilRespon; # pulangkan nilai
 	}
 	
 	public function kumpulRespon($item, $ms, $myTable, $carian, $susun)
@@ -195,7 +196,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			cariSemuaData //cariSql
 			($myTable, "$medan$kumpul\r", $carian, $susun);
 
-		return $hasil2; //*/
+		return $hasil2; # pulangkan nilai
 	}
 #==========================================================================================
 }
