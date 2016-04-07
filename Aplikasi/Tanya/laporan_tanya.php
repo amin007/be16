@@ -181,8 +181,6 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
 		# panggil sql pertama
 		$hasil = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
-		/*$r = $p['r'];
-		$medan = $p['medan'];
 		# loop over the object directly 
 		$kumpul = null;
 		foreach($hasil as $key=>$val)
@@ -193,9 +191,9 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				$kumpul .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
 				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
 			}
-		} //echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		} echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
 		
-		# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
+		/*# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
 		$hasil2 = $this->//tatasusunanUbah2A 
 			cariSemuaData //cariSql
 			($myTable, "$medan$kumpul\r", $carian, $susun);
