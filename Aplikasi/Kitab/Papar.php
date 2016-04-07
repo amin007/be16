@@ -92,7 +92,6 @@ class Papar
 			. '<br>require PAPAR . \'/template/\' . $jenis . \'/dibawah.php\';'
 			. '';
 	}
-
 #------------------------------------------------------------------------------------------
 	public function bacaTemplate($nama, $jenis, $noInclude = false)
 	{
