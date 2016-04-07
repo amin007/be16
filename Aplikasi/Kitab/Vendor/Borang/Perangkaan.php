@@ -127,7 +127,7 @@ class Perangkaan
 		# nak cari $allRows
 		if ($allRows=='0'): echo "\n";
 		else: # mula kalau jumpa
-			# PEMBOLEH UBAH
+			# set pembolehubah untuk highlight
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
 		
@@ -191,12 +191,12 @@ class Perangkaan
 			//echo "</tbody>\n";
 		endif;
 	}
-	// papar data biasa
+	# papar data biasa
 	function paparJadual_Data($allRows,$rows,$fields,$item,$ms,$hasil)
 	{	
-		// nak cari $rows
+		# nak cari $rows
 		if ($rows=='0'): echo "\n";
-		else: // mula kalau jumpa
+		else: # mula kalau jumpa
 			## tajuk atas
 				echo "<tr>\n";// dptkan nama medan
 				echo '<th colspan=5>RANGKA</th>' . "\n";
@@ -214,7 +214,8 @@ class Perangkaan
 				{
 					echo '<th align="center">' . $key . '</th>';
 				}echo "</tr>\n";
-			# PEMBOLEH UBAH
+		
+			# set pembolehubah untuk highlight
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
 		
