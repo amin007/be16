@@ -143,7 +143,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 	private function medanRespon()
 	{
-		$senaraiMedan[] = 'kod';
+		$senaraiMedan[] = 'kod'; // 'newss'; 
 		$senaraiMedan[] = 'f2';
 		$senaraiMedan[] = 'respon';
 		$senaraiMedan[] = '`NAMA PEMILIK` as nama, '
