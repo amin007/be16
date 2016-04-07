@@ -1,7 +1,7 @@
 # 4 folder utama
-##define('KAWAL', 'Aplikasi/Kawal');
-##define('PAPAR', 'Aplikasi/Papar');
-##define('TANYA', 'Aplikasi/Tanya');
-##define('KITAB', 'Aplikasi/Kitab');
+##('KAWAL', 'Aplikasi/Kawal')
+##('PAPAR', 'Aplikasi/Papar')
+##('TANYA', 'Aplikasi/Tanya')
+##('KITAB', 'Aplikasi/Kitab')
 
 fail utama dalam apps ini
