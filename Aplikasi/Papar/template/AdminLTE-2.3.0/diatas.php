@@ -44,7 +44,7 @@ $pSkin = $skin[rand(0, count($skin)-1)];
 
 $layout[] = 'fixed';
 $layout[] = 'layout-boxed';
-$layout[] = 'layout-top-nav';
+//$layout[] = 'layout-top-nav';
 $layout[] = 'sidebar-collapse';
 $layout[] = 'sidebar-mini';
 //$layout[] = '';
@@ -69,6 +69,5 @@ $pLayout = $layout[rand(0, count($layout)-1)];
 <![endif]-->
 </head>
 <body class="hold-transition <?php echo $pSkin ?> <?php echo $pLayout ?>">
-<div class="wrapper">
-<?php echo "\r"; ?>
+<div class="wrapper"><?php //echo "\r"; ?>
   
