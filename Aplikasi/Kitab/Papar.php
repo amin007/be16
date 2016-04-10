@@ -97,10 +97,10 @@ class Papar
 			. '<br>require ' . $paparFail
 			. '<br>require ' . PAPAR . $jenis . '/dibawah.php'
 			. '<hr>';
-		/*echo '<br>require PAPAR . \'/template/\' . $jenis . \'/diatas.php\';'
-			. '<br>require PAPAR . \'/template/\' . $jenis . \'/menu_atas.php\';'
-			. '<br>require PAPAR . \'/\' . $nama . \'.php\';'
-			. '<br>require PAPAR . \'/template/\' . $jenis . \'/dibawah.php\';'
+		echo '<br>require PAPAR . $jenis . \'/diatas.php\';'
+			. '<br>require PAPAR . $jenis . \'/menu_atas.php\';'
+			. '<br>require PAPAR . $paparFail;'
+			. '<br>require PAPAR . $jenis . \'/dibawah.php\';'
 			. '';//*/
 	}
 #------------------------------------------------------------------------------------------
@@ -124,8 +124,8 @@ class Papar
 		else 
 		{
 			require PAPAR . $template . '/diatas.php';
-			//require PAPAR . $template . '/menu_atas.php';
-			require PAPAR . $template . '/menubar.php';
+			require PAPAR . $template . '/menu_atas.php';
+			//require PAPAR . $template . '/menubar.php';
 			require PAPAR . $paparFail;
 			require PAPAR . $template . '/dibawah.php';			
 		}		
