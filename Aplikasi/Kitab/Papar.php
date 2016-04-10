@@ -81,9 +81,20 @@ class Papar
 #------------------------------------------------------------------------------------------
 	public function paparTemplate($nama, $jenis, $noInclude = false)
 	{
+		$namafail = explode('/', $nama);
+        $failPapar = GetMatchingFiles(
+			GetContents(PAPAR . '/' . $namafail[0]),
+			$namafail[1] . '.php');
+		$paparFail = $failPapar[0];
+		
+		echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
+		echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
+		echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
+		echo '$paparFail->' . $paparFail . '<br>'; //*/
+		
 		echo '<br>require ' . PAPAR . $jenis . '/diatas.php'
 			. '<br>require ' . PAPAR . $jenis . '/menu_atas.php'
-			. '<br>require ' . PAPAR . '/' . $nama . '.php'
+			. '<br>require ' . $paparFail
 			. '<br>require ' . PAPAR . $jenis . '/dibawah.php'
 			. '<hr>';
 		/*echo '<br>require PAPAR . \'/template/\' . $jenis . \'/diatas.php\';'
