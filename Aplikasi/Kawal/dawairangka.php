@@ -15,7 +15,7 @@ class Dawairangka extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat = 'Enjin Template';
-		$jenis = $this->pilihTemplate($template);
+		$jenis = $this->papar->pilihTemplate($template);
 		# pergi papar kandungan
 		//$this->papar->bacaTemplate($this->_folder . '/index',
 		$this->papar->paparTemplate($this->_folder . '/index',
