@@ -86,16 +86,17 @@ class Papar
 			GetContents(PAPAR . '/' . $namafail[0]),
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
+		$lokasiTemplate = '/template/' . $template;
 		
 		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
 		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>'; //*/
 		
-		echo '<hr>require ' . PAPAR . $template . '/diatas.php'
-			. '<br>require ' . PAPAR . $template . '/menu_atas.php'
+		echo '<hr>require ' . PAPAR . $lokasiTemplate . '/diatas.php'
+			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu_atas.php'
 			. '<br>require ' . $paparFail
-			. '<br>require ' . PAPAR . $template . '/dibawah.php'
+			. '<br>require ' . PAPAR . $lokasiTemplate . '/dibawah.php'
 			. '';//*/
 	}
 #------------------------------------------------------------------------------------------
@@ -106,12 +107,14 @@ class Papar
 			GetContents(PAPAR . '/' . $namafail[0]),
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
+		$lokasiTemplate = '/template/' . $template;
 		
 		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
 		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>'
 			. '$template->' . $template . '<br>' 
+			. '$lokasiTemplate->' . $lokasiTemplate . '<br>'
 			. '$noInclude->' . $noInclude . '<br>'
 			. '';//*/
 		
@@ -121,10 +124,10 @@ class Papar
 		}
 		else 
 		{
-			require PAPAR . $template . '/diatas.php';
-			require PAPAR . $template . '/menu_atas.php';
+			require PAPAR . $lokasiTemplate . '/diatas.php';
+			require PAPAR . $lokasiTemplate . '/menu_atas.php';
 			require $paparFail;
-			require PAPAR . $template . '/dibawah.php';			
+			require PAPAR . $lokasiTemplate . '/dibawah.php';			
 		}//*/
 	}
 #-----------------------------------------------------------------------------------------
@@ -141,7 +144,7 @@ class Papar
 			break;
 		}
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#	
-		return '/template/' . $jenis;
+		return $jenis;
 	}
 
 #-----------------------------------------------------------------------------------------
