@@ -87,17 +87,17 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		
-		echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
-		echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
-		echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
+		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
+		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
+		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>'; //*/
 		
-		echo '<br>require ' . PAPAR . $jenis . '/diatas.php'
+		echo '<hr>require ' . PAPAR . $jenis . '/diatas.php'
 			. '<br>require ' . PAPAR . $jenis . '/menu_atas.php'
 			. '<br>require ' . $paparFail
 			. '<br>require ' . PAPAR . $jenis . '/dibawah.php'
-			. '<hr>';
-		echo '<br>require PAPAR . $jenis . \'/diatas.php\';'
+			. '';
+		echo '<hr>require PAPAR . $jenis . \'/diatas.php\';'
 			. '<br>require PAPAR . $jenis . \'/menu_atas.php\';'
 			. '<br>require PAPAR . $paparFail;'
 			. '<br>require PAPAR . $jenis . \'/dibawah.php\';'
