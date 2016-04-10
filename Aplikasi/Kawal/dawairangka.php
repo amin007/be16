@@ -17,7 +17,8 @@ class Dawairangka extends \Aplikasi\Kitab\Kawal
 		$this->papar->Tajuk_Muka_Surat = 'Enjin Template';
 		$jenis = $this->pilihTemplate($template);
 		# pergi papar kandungan
-		$this->papar->bacaTemplate($this->_folder . '/index',
+		//$this->papar->bacaTemplate($this->_folder . '/index',
+		$this->papar->paparTemplate($this->_folder . '/index',
 			$jenis,0); # $noInclude=0
 	}
 #==========================================================================================		
@@ -34,7 +35,7 @@ class Dawairangka extends \Aplikasi\Kitab\Kawal
 			break;
 		}
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#	
-		return $jenis;
+		return '/template/' . $jenis;
 	}
 #==========================================================================================
 #==========================================================================================
