@@ -28,7 +28,7 @@
 				<i class="fa fa-star-half-o"></i> 4</a>
 				<ul class="dropdown-menu danger  animated fadeInDown">
 				<li class="title">
-				Notification <span class="badge pull-right">4</span>
+					Notification <span class="badge pull-right">4</span>
 				</li>
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 				<li><ul class="list-group notifications">
@@ -39,45 +39,47 @@
 					new registration
 				</li></a>
 				<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-				<a href="#">
-				<li class="list-group-item">
-				<span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-				</li>
-				</a>
+				<a href="#"><li class="list-group-item">
+					<span class="badge success">1</span> 
+					<i class="fa fa-check icon"></i> 
+					new orders
+				</li></a>
 				<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-				<a href="#">
-				<li class="list-group-item">
-				<span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
-				</li>
-				</a>
+				<a href="#"><li class="list-group-item">
+					<span class="badge danger">2</span>
+					<i class="fa fa-comments icon"></i> 
+					customers messages
+				</li></a>
 				<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-				<a href="#">
-				<li class="list-group-item message">
-				view all
-				</li>
-				</a>
+				<a href="#"><li class="list-group-item message">
+					view all
+				</li></a>
+				<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 				</ul></li>
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</ul>
 		</li>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		<li class="dropdown profile">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
-		<ul class="dropdown-menu animated fadeInDown">
-		<li class="profile-img">
-		<img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+			role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+			<ul class="dropdown-menu animated fadeInDown">
+			<li class="profile-img">
+				<img src="<?=$url?>img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
+			</li>
+			<li>
+				<div class="profile-info">
+					<h4 class="username">Emily Hart</h4>
+					<p>emily_hart@email.com</p>
+						<div class="btn-group margin-bottom-2x" role="group">
+						<button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
+						<button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+					</div>
+				</div>
+			</li>
+			</ul>
 		</li>
-		<li>
-		<div class="profile-info">
-		<h4 class="username">Emily Hart</h4>
-		<p>emily_hart@email.com</p>
-		<div class="btn-group margin-bottom-2x" role="group">
-		<button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-		<button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
-		</div>
-		</div>
-		</li>
-		</ul>
-		</li>
+		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</ul>
 		</div>
 		</nav>
