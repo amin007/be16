@@ -5,9 +5,9 @@
 	<!-- Logo -->
 	<a href="index2.html" class="logo">
 	<!-- mini logo for sidebar mini 50x50 pixels -->
-	<span class="logo-mini"><b>A</b>LT</span>
+	<span class="logo-mini"><b>BE</b>16</span>
 	<!-- logo for regular state and mobile devices -->
-	<span class="logo-lg"><b>Admin</b>LTE</span>
+	<span class="logo-lg"><b>BE</b>2016</span>
 	</a>
 
 	<!-- Header Navbar -->
@@ -20,37 +20,39 @@
 	<div class="navbar-custom-menu">
 	<ul class="nav navbar-nav">
 	<!-- Messages: style can be found in dropdown.less-->
-	<li class="dropdown messages-menu">
-	<!-- Menu toggle button -->
-	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	<i class="fa fa-envelope-o"></i>
-	<span class="label label-success">4</span>
-	</a>
-	<ul class="dropdown-menu">
-	<li class="header">You have 4 messages</li>
-	<li>
-	<!-- inner menu: contains the messages -->
-	<ul class="menu">
-	<li><!-- start message -->
-	<a href="#">
-	<div class="pull-left">
-	<!-- User Image -->
-	<img src="<?=$url?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-	</div>
-	<!-- Message title and timestamp -->
-	<h4>
-		                    Support Team
-	<small><i class="fa fa-clock-o"></i> 5 mins</small>
-	</h4>
-	<!-- The message -->
-	<p>Why not buy a new awesome theme?</p>
-	</a>
-	</li><!-- end message -->
-	</ul><!-- /.menu -->
-	</li>
-	<li class="footer"><a href="#">See All Messages</a></li>
-	</ul>
-	</li><!-- /.messages-menu -->
+		<li class="dropdown messages-menu">
+		<!-- Menu toggle button --><?php
+		$bilMesej = 5; // nanti dapatkan count() dari array
+		
+		echo "\t\t";
+		?><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		<i class="fa fa-envelope-o"></i>
+		<span class="label label-success"><?=$bilMesej?></span>
+		</a>
+		<ul class="dropdown-menu">
+		<li class="header">Anda ada <?=$bilMesej?> mesej</li>
+		<li>
+		<!-- inner menu: contains the messages -->
+		<ul class="menu">
+			<li><!-- start message -->
+			<a href="#">
+			<div class="pull-left">
+			<!-- User Image -->
+			<img src="<?=$url?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+			</div>
+			<!-- Message title and timestamp -->
+			<h4>Support Team
+				<small><i class="fa fa-clock-o"></i> 5 mins</small>
+			</h4>
+			<!-- The message -->
+			<p>Why not buy a new awesome theme?</p>
+			</a>
+			</li><!-- end message -->
+		</ul><!-- /.menu -->
+		</li>
+		<li class="footer"><a href="#">See All Messages</a></li>
+		</ul>
+		</li><!-- /.messages-menu -->
 
 	<!-- Notifications Menu -->
 	<li class="dropdown notifications-menu">
@@ -158,5 +160,5 @@
 	</nav>
 	</header>
 	
-<?php include 'menukiri.php'; ?>	
+<?php //include 'menukiri.php'; ?>	
 <!--  # tamat - menubar ############################################################################################################# -->
