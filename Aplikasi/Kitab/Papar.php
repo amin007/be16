@@ -130,7 +130,9 @@ class Papar
 		{
 			require PAPAR . $lokasiTemplate . '/diatas.php';
 			require PAPAR . $lokasiTemplate . '/menu_atas.php';
+			require PAPAR . $lokasiTemplate . '/menu-tengah-atas.php';
 			require $paparFail;
+			require PAPAR . $lokasiTemplate . '/menu-tengah-bawah.php';
 			require PAPAR . $lokasiTemplate . '/dibawah.php';			
 		}//*/
 	}
