@@ -91,7 +91,11 @@ class Papar
 		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
 		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
-		echo '$paparFail->' . $paparFail . '<br>'; //*/
+		echo '$paparFail->' . $paparFail . '<br>'
+			. '$template->' . $template . '<br>' 
+			. '$lokasiTemplate->' . $lokasiTemplate . '<br>'
+			. '$noInclude->' . $noInclude . '<br>'
+			. '';//*/
 		
 		echo '<hr>require ' . PAPAR . $lokasiTemplate . '/diatas.php'
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu_atas.php'
