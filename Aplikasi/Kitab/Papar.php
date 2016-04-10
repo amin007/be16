@@ -142,6 +142,9 @@ class Papar
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
 		switch ($template)
 		{
+			case 2: $jenis = 'startbootstrap-sb-admin-2-1.0.8';
+			break;
+
 			case 1: $jenis = 'FlatAdmin-V.2';
 			break;
 
