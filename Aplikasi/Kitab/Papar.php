@@ -142,8 +142,9 @@ class Papar
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
 		switch ($template)
 		{
-			//case 2:
-			//break;
+			case 1:
+			$jenis = 'FlatAdmin-V.2';
+			break;
 
 			default:
 			$jenis = 'AdminLTE-2.3.0';
