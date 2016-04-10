@@ -106,6 +106,17 @@ class Papar
 #------------------------------------------------------------------------------------------
 	public function bacaTemplate($nama, $template, $noInclude = false)
 	{
+		$namafail = explode('/', $nama);
+        $failPapar = GetMatchingFiles(
+			GetContents(PAPAR . '/' . $namafail[0]),
+			$namafail[1] . '.php');
+		$paparFail = $failPapar[0];
+		
+		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
+		echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
+		echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
+		echo '$paparFail->' . $paparFail . '<br>'; //*/
+		
 		if ($noInclude == true) 
 		{
 			require PAPAR . $nama . '.php';	
@@ -115,7 +126,7 @@ class Papar
 			require PAPAR . $template . '/diatas.php';
 			//require PAPAR . $template . '/menu_atas.php';
 			require PAPAR . $template . '/menubar.php';
-			require PAPAR . $template2 . $nama . '.php';
+			require PAPAR . $paparFail;
 			require PAPAR . $template . '/dibawah.php';			
 		}		
 	}
