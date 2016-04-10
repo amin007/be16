@@ -2,7 +2,7 @@
 
 	<div class="side-menu sidebar-inverse">
 	<nav class="navbar navbar-default" role="navigation">
-	<?php include 'menuatas2.php'; ?>
+	<?php include 'menukiri.php'; ?>
 	<!-- /.navbar-collapse -->
 	</nav>
 	</div>
