@@ -61,10 +61,6 @@ $pLayout = $layout[rand(0, count($layout)-1)];
 <!-- Theme style -->
 <link rel="stylesheet" href="<?=$url?>dist/css/AdminLTE.min.css">
 <link rel="stylesheet" href="<?=$url?>dist/css/skins/<?php echo $pSkin ?>.min.css">
-<!--
-  -->
-
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
