@@ -6,4 +6,3 @@
 	<!-- /.navbar-collapse -->
 	</nav>
 	</div>
-
