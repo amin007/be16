@@ -79,7 +79,7 @@ class Papar
 	}
 #==========================================================================================
 #------------------------------------------------------------------------------------------
-	public function paparTemplate($nama, $jenis, $noInclude = false)
+	public function paparTemplate($nama, $template, $noInclude = false)
 	{
 		$namafail = explode('/', $nama);
         $failPapar = GetMatchingFiles(
@@ -92,15 +92,10 @@ class Papar
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>'; //*/
 		
-		echo '<hr>require ' . PAPAR . $jenis . '/diatas.php'
-			. '<br>require ' . PAPAR . $jenis . '/menu_atas.php'
+		echo '<hr>require ' . PAPAR . $template . '/diatas.php'
+			. '<br>require ' . PAPAR . $template . '/menu_atas.php'
 			. '<br>require ' . $paparFail
-			. '<br>require ' . PAPAR . $jenis . '/dibawah.php'
-			. '';
-		echo '<hr>require PAPAR . $jenis . \'/diatas.php\';'
-			. '<br>require PAPAR . $jenis . \'/menu_atas.php\';'
-			. '<br>require PAPAR . $paparFail;'
-			. '<br>require PAPAR . $jenis . \'/dibawah.php\';'
+			. '<br>require ' . PAPAR . $template . '/dibawah.php'
 			. '';//*/
 	}
 #------------------------------------------------------------------------------------------
@@ -112,19 +107,15 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		
-		echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
+		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
 		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
-		echo '$paparFail->' . $paparFail . '<br>'; 
-		echo '$template->' . $template . '<br>'; 
-		echo '$noInclude->' . $noInclude . '<br>'; //*/
-		echo '<hr>require ' . PAPAR . $template . '/diatas.php'
-			. '<br>require ' . PAPAR . $template . '/menu_atas.php'
-			. '<br>require ' . $paparFail
-			. '<br>require ' . PAPAR . $template . '/dibawah.php'
-			. '';
+		echo '$paparFail->' . $paparFail . '<br>'
+			. '$template->' . $template . '<br>' 
+			. '$noInclude->' . $noInclude . '<br>'
+			. '';//*/
 		
-		/*if ($noInclude == true) 
+		if ($noInclude == true) 
 		{
 			require PAPAR . $nama . '.php';	
 		}
@@ -132,7 +123,7 @@ class Papar
 		{
 			require PAPAR . $template . '/diatas.php';
 			require PAPAR . $template . '/menu_atas.php';
-			require PAPAR . $paparFail;
+			require $paparFail;
 			require PAPAR . $template . '/dibawah.php';			
 		}//*/
 	}
