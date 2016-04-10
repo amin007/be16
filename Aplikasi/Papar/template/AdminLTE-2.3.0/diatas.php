@@ -11,7 +11,7 @@ echo Tajuk_Muka_Surat;
 $dpt_url = dpt_url();
 echo (empty($dpt_url[2])) ? null : '[' . $_GET['url'] . ']';
 
-$url = URL . 'sumber/rangka-dawai/' . $jenis . '/';
+$url = URL . 'sumber/rangka-dawai/' . $template . '/';
 
 /*
   BODY TAG OPTIONS:
