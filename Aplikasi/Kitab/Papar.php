@@ -112,12 +112,19 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		
-		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
-		echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
-		echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
-		echo '$paparFail->' . $paparFail . '<br>'; //*/
+		echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
+		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
+		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
+		echo '$paparFail->' . $paparFail . '<br>'; 
+		echo '$template->' . $template . '<br>'; 
+		echo '$noInclude->' . $noInclude . '<br>'; //*/
+		echo '<hr>require ' . PAPAR . $template . '/diatas.php'
+			. '<br>require ' . PAPAR . $template . '/menu_atas.php'
+			. '<br>require ' . $paparFail
+			. '<br>require ' . PAPAR . $template . '/dibawah.php'
+			. '';
 		
-		if ($noInclude == true) 
+		/*if ($noInclude == true) 
 		{
 			require PAPAR . $nama . '.php';	
 		}
@@ -125,10 +132,9 @@ class Papar
 		{
 			require PAPAR . $template . '/diatas.php';
 			require PAPAR . $template . '/menu_atas.php';
-			//require PAPAR . $template . '/menubar.php';
 			require PAPAR . $paparFail;
 			require PAPAR . $template . '/dibawah.php';			
-		}		
+		}//*/
 	}
 #-----------------------------------------------------------------------------------------
 	function pilihTemplate($template = 0)
@@ -136,9 +142,9 @@ class Papar
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
 		switch ($template)
 		{
-/*			case 2:
-			break;
-//*/ 
+			//case 2:
+			//break;
+
 			default:
 			$jenis = 'AdminLTE-2.3.0';
 			break;
