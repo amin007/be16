@@ -10,15 +10,20 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		$this->_folder = 'crud';
 	}
-	
+
 	function index() 
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/index');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca($this->_folder . '/index');
+		//$this->papar->bacaTemplate($this->_folder . '/index',
+		$this->papar->paparTemplate($this->_folder . '/index',
+			$jenis,0); # $noInclude=0
+		
 	}
-	
+#==========================================================================================	
 	function tambah() 
 	{
 		# Set pemboleubah utama
@@ -62,7 +67,12 @@ class Crud extends \Aplikasi\Kitab\Kawal
  		echo '</pre>'; //*/
 		
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/papar');
+		$jenis = $this->pilihTemplate($template);
+		//$this->papar->baca($this->_folder . '/papar');
+		//$this->papar->bacaTemplate($this->_folder . '/index',
+		$this->papar->paparTemplate($this->_folder . '/index',
+			$jenis,0); # $noInclude=0
+
 	}
 
 	public function paparlimit($cariID = null, $cariApa = null) 
