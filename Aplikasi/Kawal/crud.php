@@ -17,10 +17,10 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
-		//$this->papar->baca($this->_folder . '/index');
-		//$this->papar->bacaTemplate($this->_folder . '/index',
-		$this->papar->paparTemplate($this->_folder . '/index',
-			$jenis,0); # $noInclude=0
+		//$this->papar->baca(
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index',$jenis,0); # $noInclude=0
 		
 	}
 #==========================================================================================	
