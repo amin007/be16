@@ -9,7 +9,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
     <!-- CSS Libs -->
     <link rel="stylesheet" type="text/css" href="../../dist/lib/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../dist/lib/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <!-- link rel="stylesheet" type="text/css" href="../../dist/lib/css/font-awesome.min.css" -->
     <link rel="stylesheet" type="text/css" href="../../dist/lib/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="../../dist/lib/css/bootstrap3/bootstrap-switch.min.css">
     <link rel="stylesheet" type="text/css" href="../../dist/lib/css/checkbox3.min.css">
@@ -21,13 +22,19 @@
     <link rel="stylesheet" type="text/css" href="../../css/themes/flat-blue.css">
 </head>
 
-<body class="flat-blue login-page" style="background: url('../../dist/img/app-header-bg.jpg') no-repeat center center fixed; ">
+<!-- body class="flat-blue login-page" -->
+<body class="flat-blue login-page" style="background: url(../../dist/img/app-header-bg.jpg) no-repeat center center fixed;">
     <div class="container">
         <div class="login-box">
             <div>
                 <div class="login-form row">
                     <div class="col-sm-12 text-center login-header">
-                        <i class="login-logo fa fa-connectdevelop fa-5x"></i>
+						<span class="fa-stack fa-lg">
+						<!-- i class="login-logo fa fa-connectdevelop fa-5x"></i -->
+						<!-- i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i -->
+						<i class="fa fa-circle fa-stack-2x"></i>
+						<i class="fa fa-behance fa-stack-1x" aria-hidden="true"></i>
+						</span>
                         <h4 class="login-title">Flat Admin V2</h4>
                     </div>
                     <div class="col-sm-12">
@@ -38,6 +45,15 @@
                                 </div>
                             </div>
                             <form>
+								<div class="input-group margin-bottom-sm">
+								  <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+								  <input class="form-control" type="text" placeholder="Email address">
+								</div>
+								<div class="input-group">
+								  <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+								  <input class="form-control" type="password" placeholder="Password">
+								</div>
+
                                 <div class="control">Email:
                                     <input type="text" class="form-control" value="admin@gmail.com" />
                                 </div>
