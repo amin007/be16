@@ -32,7 +32,7 @@ echo "<br>Alamat IP : <font color='red'>" . $ip . "</font> |
 \r<br>Server : <font color='red'>" . $server . "</font>\r";
 //*/
 
-if ($server == 'bssu.amin007.org')
+if ($server == 'laman.web.anda')
 {	# isytihar tatarajah mysql
 	define('DB_TYPE', 'mysql');
 	define('DB_HOST', 'localhost');
@@ -58,4 +58,3 @@ else
 }
 //echo DB_HOST . "," . DB_USER . "," . DB_PASS . ",," . DB_NAME . "<br>";
 ############################################################################################
-
