@@ -14,7 +14,7 @@ define('Tajuk_Muka_Surat', '***');
 
 # setkan jquery sama ada local atau cdn
 $jquery_cdn = 'http://code.jquery.com/jquery-1.8.3.min.js';
-$jquery_local = 'http://' . $_SERVER['SERVER_NAME'] . '/private_html/js/jquery/jquery-1.8.3.min.js';
+$jquery_local = URL . 'sumber/js/jquery/jquery-1.8.3.min.js';
 # setkan bootstrap dan font awosome sama ada local atau cdn
 $fontawesome_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
 $bootstrap_cdn = 'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css';
