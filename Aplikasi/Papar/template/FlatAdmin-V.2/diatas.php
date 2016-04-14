@@ -11,6 +11,10 @@ echo (empty($dpt_url[2])) ? null : '[' . $_GET['url'] . ']';
 
 $url = URL . 'sumber/rangka-dawai/' . $template . '/';
 //Flat Admin V.2 - Free Bootstrap Admin Templates
+$flat[] = 'flat-blue';
+//$flat[] = 'flat-green';
+
+$themeFlat = $flat[rand(0, count($flat)-1)];
 ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fonts -->
@@ -29,7 +33,7 @@ $url = URL . 'sumber/rangka-dawai/' . $template . '/';
     <link rel="stylesheet" type="text/css" href="<?=$url?>dist/lib/css/select2.min.css">	
     <!-- CSS App -->
     <link rel="stylesheet" type="text/css" href="<?=$url?>css/style.css">
-    <link rel="stylesheet" type="text/css" href="<?=$url?>css/themes/flat-blue.css">
+    <link rel="stylesheet" type="text/css" href="<?=$url?>css/themes/<?=$themeFlat?>.css">
 </head>
 <body class="flat-blue">
 <div class="app-container">
