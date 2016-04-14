@@ -142,6 +142,9 @@ class Papar
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
 		switch ($template)
 		{
+			case 4: $jenis = 'miminium';
+			break;
+
 			case 3: $jenis = 'modern_admin_panel';
 			break;
 
