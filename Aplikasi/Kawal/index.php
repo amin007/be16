@@ -2,7 +2,7 @@
 namespace Aplikasi\Kawal; //echo __NAMESPACE__; 
 class Index extends \Aplikasi\Kitab\Kawal
 {
-	
+#==========================================================================================	
 	function __construct() 
 	{
 		echo '<br>class Index extends Kawal';
@@ -18,7 +18,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/index');
 	}
-	
+#==========================================================================================	
 	function muar() 
 	{
 		# Set pemboleubah utama
@@ -61,5 +61,5 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/login_automatik');
 	}
-	
+#==========================================================================================	
 }
