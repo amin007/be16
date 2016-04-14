@@ -1,21 +1,20 @@
 <?php
-/*
- * Ini fail index.php
+/* Ini fail index.php
  * Dalam ini kita isytiharkan
  * 1. laporan tahap kesilapan kod PHP
  * 2. zon masa kita pada Asia/Kuala Lumpur
  * 3. setkan tatarajah sistem
  * 4. masukkan semua fail class dari folder PUSTAKA
- * 5. istihar class Mulakan
+ * 5. istihar class \Aplikasi\Kitab\Route()
  */
  
-// 1. laporan tahap kesilapan kod PHP
+# 1. laporan tahap kesilapan kod PHP
 error_reporting(E_ALL);
  
-// 2. isytiharkan zon masa => Asia/Kuala Lumpur
+# 2. isytiharkan zon masa => Asia/Kuala Lumpur
 date_default_timezone_set('Asia/Kuala_Lumpur');
  
-// 3. setkan tatarajah sistem
+# 3. setkan tatarajah sistem
 require 'tatarajah.php';
 
 /** 4. masukkan semua fail class dari folder PUSTAKA
