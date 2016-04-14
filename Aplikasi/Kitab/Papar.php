@@ -142,6 +142,9 @@ class Papar
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
 		switch ($template)
 		{
+			case 3: $jenis = 'modern_admin_panel';
+			break;
+
 			case 2: $jenis = 'startbootstrap-sb-admin-2-1.0.8';
 			break;
 

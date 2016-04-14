@@ -16,7 +16,7 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		# pergi papar kandungan
-		$jenis = $this->papar->pilihTemplate($template=1);
+		$jenis = $this->papar->pilihTemplate($template=3);
 		//$this->papar->baca(
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
