@@ -2,7 +2,7 @@
 include 'menu-tengah-01.php'; 
 //include 'menu-tengah-02.php'; 
 ?>
-	<div><!-- id="content" -->
+	</div><!-- id="content" -->
 	<!--   end: content -->
 				
 				
