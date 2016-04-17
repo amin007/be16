@@ -14,20 +14,23 @@ $dpt_url = dpt_url();
 echo (empty($dpt_url[2])) ? null : '[' . $_GET['url'] . ']';
 ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <?php
+/*
 $bootstrap = 'bootstrap3.1.1/';
 $css_url = JS . $bootstrap . 'css/';
 $js_url  = JS . $bootstrap . 'js/';
 $ico_url = JS . $bootstrap . 'img/';
 
 require 'diatas-bootstrap.php';
-
+*/
 if (isset($this->css)) 
 {
 	foreach ($this->css as $css)
 	{
 		echo "\n"; // '<link rel="stylesheet" type="text/css" href="' . . $css . '">';
-?><link rel="stylesheet" href="<?php echo $css_url . $css ?>"><?php
+?><link rel="stylesheet" type="text/css" href="<?php echo $css_url . $css ?>"><?php
 	}
 }
 echo "\n";
@@ -56,6 +59,5 @@ table.excel tbody td
 	background:#ffffff;
 }
 </style>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>  
 <body>

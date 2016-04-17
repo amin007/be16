@@ -1,6 +1,6 @@
 <!-- khas untuk jquery dan js2 lain -->
-<script type="text/javascript" src="<?php echo JQUERY ?>"></script>
-<script type="text/javascript" src="<?php echo $js_url . 'bootstrap.min.js' ?>"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <?php
 if (isset($this->js)) 
 {
