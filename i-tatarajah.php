@@ -12,14 +12,18 @@ require KITAB . '/Fungsi.php';
 define('URL', dirname('http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF']) . '/');
 define('Tajuk_Muka_Surat', '***');
 
-# setkan jquery sama ada local atau cdn
-$jquery_cdn = 'http://code.jquery.com/jquery-1.8.3.min.js';
-$jquery_local = URL . 'sumber/js/jquery/jquery-1.8.3.min.js';
-# setkan bootstrap dan font awosome sama ada local atau cdn
-$fontawesome_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
-$bootstrap_cdn = 'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css';
-$fontawesome_local = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css';
-$bootstrap_local = 'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css';
+# setkan jquery, bootstrap dan font awosome sama ada local atau cdn
+## cdn
+      $jquery_cdn = 'https://code.jquery.com/jquery-2.2.3.min.js';
+ $bootstrapJS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
+ $fontawesome_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
+$bootstrapCSS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
+## local
+            $sumber = 'sumber/rangka-dawai/';
+      $jquery_local = $sumber . 'js/jquery/2.2.3/jquery.min.js';
+ $bootstrapJS_local = $sumber . 'js/bootstrap/3.3.6/js/bootstrap.min.js';
+ $fontawesome_local = $sumber . 'css/font-awesome/4.4.0/css/font-awesome.min.css';
+$bootstrapCSS_local = $sumber . 'css/bootstrap/3.3.6/css/bootstrap.min.css';
 ############################################################################################
 ## isytihar konsan MYSQL dan GAMBAR ikut lokasi $server
 $ip = $_SERVER['REMOTE_ADDR'];
