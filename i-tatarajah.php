@@ -20,10 +20,10 @@ define('Tajuk_Muka_Surat', '***');
 $bootstrapCSS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
 ## local
             $sumber = 'sumber/rangka-dawai/';
-      $jquery_local = $sumber . 'js/jquery/jquery-2.2.3.min.js';
- $bootstrapJS_local = $sumber . 'js/bootstrap/3.3.6/js/bootstrap.min.js';
- $fontawesome_local = $sumber . 'css/font-awesome/4.4.0/css/font-awesome.min.css';
-$bootstrapCSS_local = $sumber . 'css/bootstrap/3.3.6/css/bootstrap.min.css';
+      $jquery_local = $sumber . 'jquery/jquery-2.2.3.min.js';
+ $bootstrapJS_local = $sumber . 'bootstrap/3.3.6/js/bootstrap.min.js';
+$bootstrapCSS_local = $sumber . 'bootstrap/3.3.6/css/bootstrap.min.css'; 
+ $fontawesome_local = $sumber . 'font-awesome/4.4.0/css/font-awesome.min.css';
 ############################################################################################
 ## isytihar konsan MYSQL dan GAMBAR ikut lokasi $server
 $ip = $_SERVER['REMOTE_ADDR'];
