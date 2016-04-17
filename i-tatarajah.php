@@ -20,7 +20,7 @@ define('Tajuk_Muka_Surat', '***');
 $bootstrapCSS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
 ## local
             $sumber = 'sumber/rangka-dawai/';
-      $jquery_local = $sumber . 'js/jquery/2.2.3/jquery.min.js';
+      $jquery_local = $sumber . 'js/jquery/jquery-2.2.3.min.js';
  $bootstrapJS_local = $sumber . 'js/bootstrap/3.3.6/js/bootstrap.min.js';
  $fontawesome_local = $sumber . 'css/font-awesome/4.4.0/css/font-awesome.min.css';
 $bootstrapCSS_local = $sumber . 'css/bootstrap/3.3.6/css/bootstrap.min.css';
