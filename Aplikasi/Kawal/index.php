@@ -15,8 +15,16 @@ class Index extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin';
+		//$theme = array(0,1,2,3,4);
+		//$template = $theme[rand(0, count($theme)-1)];
+
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/index');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/login',$jenis,0); # $noInclude=0
+		
 	}
 #==========================================================================================	
 	function muar() 
