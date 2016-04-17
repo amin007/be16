@@ -22,9 +22,9 @@ require 'tatarajah.php';
 
 /** 4. masukkan semua fail class dari folder PUSTAKA
  * URL : http://www.php-fig.org/psr/psr-4/examples/
- * An example of a project-specific implementation.
+ * Contoh pelaksanaan projek khusus.
  *      
- * @param string $class The fully-qualified class name.
+ * @param string $class Nama class yang sebenar tanpa namespace.
  * @return void
  */
 spl_autoload_register(function ($namaClass)
@@ -36,16 +36,15 @@ spl_autoload_register(function ($namaClass)
 	$cariFail = GetMatchingFiles(GetContents('Aplikasi'),$class[count($class)-1] . '.php');
 	# jika fail wujud, masukkan 
 	foreach($cariFail as $kitabApa)
-	{	
-		//echo '$kitabApa->' . $kitabApa . '<br>';
+	{	//echo '$kitabApa->' . $kitabApa . '<br>';
 		if (file_exists($kitabApa)) require $kitabApa;
 		//else echo 'tidak jumpa daa<br>';
 	}
 });
 /* 5. istihar class 
- * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \Foo\Bar\Baz\Qux class
- * from /path/to/project/src/Baz/Qux.php:
+ * Selepas mendaftar fungsi autoload ini dengan SPL, baris berikut
+ * akan menyebabkan fungsi untuk cuba untuk memuatkan kelas \Foo\Bar\Baz\Qux 
+ * dari /path/to/project/src/Baz/Qux.php:
  * 
  *      new \Foo\Bar\Baz\Qux;
  */
