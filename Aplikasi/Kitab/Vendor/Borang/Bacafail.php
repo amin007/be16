@@ -23,8 +23,8 @@ class Bacafail
 		while (!feof($bacaMenuAtas)) {  $menuAtas .= fread($bacaMenuAtas, $fsize);}
 		
 		return array($bacaMenuAtas,$menuAtas);
-	}	
-
+	}
+	
 	public function loginTemplate()
 	{
 		$url[] = URL . 'sumber/rangka-dawai/AdminLTE-2.3.0/pages/examples/login2.html';
