@@ -63,6 +63,7 @@ class Kebenaran
 		{
 			Sesi::destroy();
 			header('location:' . URL . 'index/keluar');
+			//header('location:' . URL . '');
 			exit;
 		}
 	
