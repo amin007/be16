@@ -45,6 +45,16 @@ function semakDataSesi($IP = null)
 			echo '$kunci tidak wujud<br>';
 		
 		//echo '<br>$IP=>'; print_r(dpt_ip());
+		$ip  =$_SERVER['REMOTE_ADDR'];
+		$ip2 = substr($ip,0,10);
+		$hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+		$server = $_SERVER['SERVER_NAME'];
+
+		echo "<br>Alamat IP : <font color='red'>" . $ip . "</font> |" .
+		//"<br>Alamat IP2 : <font color='red'>" . substr($ip,0,10) . "</font> |" .
+		"\r<br>Nama PC : <font color='red'>" . $hostname . "</font> |" .
+		//"\r<br>Server : <font color='red'>" . $server . "</font>" .
+		"<br>\r";
 	?></pre>
 	</div><!-- / class="hero-unit" -->
 	</div><!-- / class="container" -->
