@@ -3,6 +3,60 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Bacafail
 {
 #==========================================================================================
+	public function bukafailutama($url)
+	{
+		$membukaFail = fopen($url, "rb");
+		$saizFail = 8192; //$saizFail = filesize($url); 
+		if (FALSE === $membukaFail) { exit("Gagal membuka aliran ke $url");}
+		$dataFail = '';
+		while (!feof($membukaFail)) {$dataFail .= fread($membukaFail, $saizFail);}
+		
+		return array($membukaFail,$dataFail);
+	}
+	
+	public function bukafailmenu($url)
+	{
+		$bacaMenuAtas = fopen($url, "rb");
+		$saizFail = 8192; //$saizFail = filesize($url); 
+		if (FALSE === $bacaMenuAtas) { exit("Gagal membuka aliran ke $url"); }
+		$menuAtas = '';
+		while (!feof($bacaMenuAtas)) {  $menuAtas .= fread($bacaMenuAtas, $fsize);}
+		
+		return array($bacaMenuAtas,$menuAtas);
+	}	
+
+	public function loginTemplate()
+	{
+		$url[] = URL . 'sumber/rangka-dawai/AdminLTE-2.3.0/pages/examples/login.html';
+		$url[] = URL . 'sumber/rangka-dawai/FlatAdmin-V.2/html/pages/login.html';
+		$url[] = URL . 'sumber/rangka-dawai/miminium/login.html';
+		$url[] = URL . 'sumber/rangka-dawai/modern_admin_panel/login.html';
+		$url[] = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/login.html';
+		
+		$theme = array(0,1,2,3,4);
+		$pilih = $theme[rand(0, count($theme)-1)];
+
+		return $url[$pilih];
+	}
+	
+	public function login()
+	{
+		$url = $this->loginTemplate(); //echo "\$url = $url <br>";
+		list($membukaFail,$dataFail) = $this->bukafailutama($url);
+		
+		/*# ubahsuai data
+		$kandungan =  str_replace('{{ s1-menu-atas.php }}', $menuatas, $contents);
+		$tengah = '<hr><h1>CRUD - Kita Tanya Apa Khabar</h1><hr>';
+		$kandungan2 =  str_replace('{{ tengah.php }}', $tengah, $kandungan); //*/
+
+		# pergi papar kandungan
+		echo $dataFail;
+
+		# tutup fail
+		//fclose($dataFail);
+		
+	}
+	
 	public function namafail()
 	{
 		# baca fail kandungan utama
@@ -26,29 +80,6 @@ class Bacafail
 		fclose($dataFail);
 		fclose($bacaMenuAtas);		
 	}
-	
-	public function bukafailutama($url)
-	{
-		$membukaFail = fopen($url, "rb");
-		$saizFail = 8192; //$saizFail = filesize($url); 
-		if (FALSE === $membukaFail) { exit("Failed to open stream to URL");}
-		$dataFail = '';
-		while (!feof($membukaFail)) {$dataFail .= fread($membukaFail, $saizFail);}
-		
-		return array($membukaFail,$dataFail);
-	}
-	
-	public function bukafailmenu($url)
-	{
-		$bacaMenuAtas = fopen($url, "rb");
-		$saizFail = 8192; //$saizFail = filesize($url); 
-		if (FALSE === $bacaMenuAtas) { exit("Failed to open stream to URL"); }
-		$menuAtas = '';
-		while (!feof($bacaMenuAtas)) {  $menuAtas .= fread($bacaMenuAtas, $fsize);}
-		
-		return array($bacaMenuAtas,$menuAtas);
-	}
-	
 #==========================================================================================
 #==========================================================================================
 }
