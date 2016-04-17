@@ -21,7 +21,7 @@ function dpt_url_xfilter()
 	
 }
 
-function semakDataSesi()
+function semakDataSesi($IP = null)
 {
 	echo "\r";?>
 	<div class="container">
@@ -40,16 +40,11 @@ function semakDataSesi()
 		$senaraiLevel=array('kawal', 'fe', 'kup', 'pegawai');
 		 
 		if ($kunci == true && in_array($level,$senaraiLevel))
-		{
-			echo '<br>$kunci wujud';
-		}
-	
+			echo '$kunci wujud<br>';
 		if ($kunci == false || !in_array($level,$senaraiLevel))
-		{
-			//Sesi::destroy();
-			echo '<br>$kunci tidak wujud';
-		}
-	
+			echo '$kunci tidak wujud<br>';
+		
+		//echo '<br>$IP=>'; print_r(dpt_ip());
 	?></pre>
 	</div><!-- / class="hero-unit" -->
 	</div><!-- / class="container" -->
