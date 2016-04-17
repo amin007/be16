@@ -17,7 +17,6 @@ date_default_timezone_set('Asia/Kuala_Lumpur');
 # 3. setkan tatarajah sistem
 # rujuk fail i-tatarajah.php untuk 
 # define nilai konstan yang perlu dalam framework ini
-# nama fail boleh tukar ikut suka hati
 # i-tatarajah.php boleh ditukar kepada tatarajah.php
 require 'tatarajah.php'; 
 
