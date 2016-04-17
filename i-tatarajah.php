@@ -12,7 +12,7 @@ require KITAB . '/Fungsi.php';
 define('URL', dirname('http://' . $_SERVER['SERVER_NAME'] . $_SERVER['PHP_SELF']) . '/');
 define('Tajuk_Muka_Surat', '***');
 
-# setkan jquery, bootstrap dan font awosome sama ada local atau cdn
+# setkan jquery, bootstrap dan font awesome sama ada local atau cdn
 ## cdn
       $jquery_cdn = 'https://code.jquery.com/jquery-2.2.3.min.js';
  $bootstrapJS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
