@@ -21,6 +21,41 @@ function dpt_url_xfilter()
 	
 }
 
+function semakDataSesi()
+{
+	echo "\r";?>
+	<div class="container">
+	<div class="hero-unit">
+	<h1>Data Session</h1>
+	<pre><?php 
+		@session_start();
+			
+		$kunci = \Aplikasi\Kitab\Sesi::get('loggedIn');
+		$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
+
+		//echo '$_SESSION->', print_r($_SESSION, 1);
+		//echo '<br>$kunci = ' . $kunci . ' | $level = ' . $level . ' |';
+
+		# semak data $_SESSION
+		$senaraiLevel=array('kawal', 'fe', 'kup', 'pegawai');
+		 
+		if ($kunci == true && in_array($level,$senaraiLevel))
+		{
+			echo '<br>$kunci wujud';
+		}
+	
+		if ($kunci == false || !in_array($level,$senaraiLevel))
+		{
+			//Sesi::destroy();
+			echo '<br>$kunci tidak wujud';
+		}
+	
+	?></pre>
+	</div><!-- / class="hero-unit" -->
+	</div><!-- / class="container" -->
+<?php echo "\r";
+}
+
 function pecah_url($ulang)
 {
 	$pecah  = explode("/", $_SERVER['REQUEST_URI']);
