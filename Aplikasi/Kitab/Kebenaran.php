@@ -29,8 +29,8 @@ class Kebenaran
 	{
 		@session_start();
 	
-		$kunci = Sesi::get('loggedIn');
-		$level = Sesi::get('levelPegawai');
+		$kunci = \Aplikasi\Kitab\Sesi::get('loggedIn');
+		$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 	
 		//echo '<pre>$_SESSION->', print_r($_SESSION, 1);
 		//echo '<br>$kunci = ' . $kunci . ' | $level = ' . $level . ' |</pre>';
@@ -50,8 +50,8 @@ class Kebenaran
 	{
 		@session_start();
 			
-		$kunci = Sesi::get('loggedIn');
-		$level = Sesi::get('levelPegawai');
+		$kunci = \Aplikasi\Kitab\Sesi::get('loggedIn');
+		$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 			
 		//echo '<pre>$_SESSION->', print_r($_SESSION, 1);
 		//echo '<br>$kunci = ' . $kunci . ' | $level = ' . $level . ' |</pre>';
