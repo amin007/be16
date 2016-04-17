@@ -27,13 +27,14 @@ class Bacafail
 
 	public function loginTemplate()
 	{
-		$url[] = URL . 'sumber/rangka-dawai/AdminLTE-2.3.0/pages/examples/login.html';
-		$url[] = URL . 'sumber/rangka-dawai/FlatAdmin-V.2/html/pages/login.html';
+		$url[] = URL . 'sumber/rangka-dawai/AdminLTE-2.3.0/pages/examples/login2.html';
+		$url[] = URL . 'sumber/rangka-dawai/FlatAdmin-V.2/html/pages/login2.html';
 		$url[] = URL . 'sumber/rangka-dawai/miminium/login.html';
-		$url[] = URL . 'sumber/rangka-dawai/modern_admin_panel/login.html';
+		/*$url[] = URL . 'sumber/rangka-dawai/modern_admin_panel/login.html';
 		$url[] = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/login.html';
+		//*/
 		
-		$theme = array(0,1,2,3,4);
+		$theme = array(0,1); //array(0,1,2,3,4);
 		$pilih = $theme[rand(0, count($theme)-1)];
 
 		return $url[$pilih];
@@ -42,19 +43,22 @@ class Bacafail
 	public function login()
 	{
 		$url = $this->loginTemplate(); //echo "\$url = $url <br>";
+		# pecah data
+		$pecahUrl = explode('/', $url);
+		$template = $pecahUrl[8];
+		//echo '<pre>$pecahUrl->'; print_r($pecahUrl) . '</pre>';
+		//echo "\$template = " . $template;
 		list($membukaFail,$dataFail) = $this->bukafailutama($url);
-		
-		/*# ubahsuai data
-		$kandungan =  str_replace('{{ s1-menu-atas.php }}', $menuatas, $contents);
-		$tengah = '<hr><h1>CRUD - Kita Tanya Apa Khabar</h1><hr>';
-		$kandungan2 =  str_replace('{{ tengah.php }}', $tengah, $kandungan); //*/
+		# ubahsuai data
+		$lokasi = 'http://sidapmuar/private_html/tahun/be16/sumber/rangka-dawai/' . $template . '/';
+		$kandungan = str_replace('{{url}}', $lokasi, $dataFail);
 
 		# pergi papar kandungan
-		echo $dataFail;
+		//echo $dataFail;
+		echo $kandungan;
 
 		# tutup fail
-		//fclose($dataFail);
-		
+		fclose($membukaFail);
 	}
 	
 	public function namafail()
