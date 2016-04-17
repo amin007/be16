@@ -4,7 +4,7 @@
 	<div class="container">
 		<span class="label label-info">
 		&copy; Hak Cipta Terperihara 2016. Theme <?php 
-$theme = ($pilih==null) ? 'Asal Bootstrap Twitter' : $pilih;
+$theme = ( !isset($pilih) ) ? 'Asal Bootstrap Twitter' : $pilih;
 echo $theme = (isset($theme)) ? $theme : null;
 ?>	
 		</span>
