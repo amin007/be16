@@ -64,11 +64,11 @@ class Bacafail
 	public function namafail()
 	{
 		# baca fail kandungan utama
-		$url = 'http://localhost/sumber/startbootstrap-sb-admin-2-1.0.8/pages/s1.html';
+		$url = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/s1.html';
 		list($membukaFail,$dataFail) = $this->bukafailutama($url);
 		
 		# baca fail menu atas
-		$url2 = 'http://http://localhost/sumber/startbootstrap-sb-admin-2-1.0.8/pages/s1-menu_atas.html';
+		$url2 = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/s1-menu_atas.html';
 		list($bacaMenuAtas,$menuAtas) = $this->bukafailmenu($url2);
 
 		# ubahsuai data
