@@ -10,13 +10,12 @@ if (isset($this->js))
 ?><script type="text/javascript" src="<?php echo $js_url . $js ?>"></script><?php
     }
 }
-echo "\n\n";
 ?><?php 
 $dataURL = dpt_url();
 //echo '<pre>'; echo '<br>$dataURL:<br>'; print_r($dataURL); echo '</pre>';
 $classKhas = array('ubah','hadirbulan','awal');
 if ( isset($dataURL[1]) && ( in_array($dataURL[1],$classKhas) )) :
-?>
+echo "\n\n"; ?>
 <script type="text/javascript">
 	function lookup(inputString) 
 	{
@@ -151,10 +150,8 @@ if ( isset($dataURL[1]) && ( in_array($dataURL[1],$classKhas) )) :
     var myPie = new Chart(document.getElementById("pie-chart").getContext("2d")).Pie(pieData);
 	
 </script>
-
 <?php /*else :?>
 <link rel="stylesheet" type="text/css" href="<?php echo JS ?>filter/susun.style.css" />
 <script type="text/javascript" src="<?php echo JS ?>filter/susun.application.js"></script>
 <?php */
 endif;
-
