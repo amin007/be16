@@ -5,7 +5,7 @@ class Index extends \Aplikasi\Kitab\Kawal
 #==========================================================================================	
 	function __construct() 
 	{
-		echo '<br>class Index extends Kawal';
+		//echo '<br>class Index extends Kawal';
 		parent::__construct();
         \Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		$this->_folder = 'index';
@@ -33,7 +33,6 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->_folder = 'mobile'; # untuk apps mobile
 		$this->papar->baca($this->_folder . '/muar');
-		
 	}
 
 	function putrajaya() 
@@ -61,5 +60,14 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/login_automatik');
 	}
+
+	function keluar() 
+	{
+		# Set pemboleubah utama
+		$this->papar->IP=dpt_ip(); # dapatkan senarai IP yang dibenarkan
+		# pergi papar kandungan
+		$this->papar->baca($this->_folder . '/keluar');
+	}
+	
 #==========================================================================================	
 }
