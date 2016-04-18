@@ -47,9 +47,8 @@ class Bacafail
 	
 	public function login()
 	{
-		$url = $this->loginTemplate(); //echo "\$template = $template <br>";
-		# pecah data
-		$pecahUrl = explode('/', $url);
+		$url = $this->loginTemplate(); //echo "\$url = $url <br>";
+		$pecahUrl = explode('/', $url); # pecah data
 		$template = $pecahUrl[0];
 		$sumber = 'http://sidapmuar/private_html/tahun/be16/sumber/rangka-dawai/';
 		$lokasi = $sumber . $template . '/';
@@ -59,29 +58,27 @@ class Bacafail
 		list($membukaFail,$dataFail) = $this->bukafailutama($sumber . $url);
 		$kandungan = str_replace('{{url}}', $lokasi, $dataFail);
 		
-		if ($template=='miminium') 
+		/*if ($template=='miminium') 
 		{
 			$lokasi2 = $sumber . $template . '/asset/css/plugins/simple-line-icons2.css';
 			list($membukaFail2,$dataFail2) = $this->bukafailutama($lokasi2);
 			$kandungan2 = str_replace('{{url}}', $lokasi2, $dataFail2);
-		}
-				
+		}//*/
+	
 		# pergi papar kandungan
-		//echo $dataFail;
-		echo $kandungan;
+		echo $kandungan; //echo $dataFail;
 
-		# tutup fail
-		fclose($membukaFail);//*/
+		fclose($membukaFail); # tutup fail //*/
 	}
 	
 	public function namafail()
 	{
 		# baca fail kandungan utama
-		$url = 'http://localhost/sumber/startbootstrap-sb-admin-2-1.0.8/pages/s1.html';
+		$url = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/s1.html';
 		list($membukaFail,$dataFail) = $this->bukafailutama($url);
 		
 		# baca fail menu atas
-		$url2 = 'http://http://localhost/sumber/startbootstrap-sb-admin-2-1.0.8/pages/s1-menu_atas.html';
+		$url2 = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/s1-menu_atas.html';
 		list($bacaMenuAtas,$menuAtas) = $this->bukafailmenu($url2);
 
 		# ubahsuai data
