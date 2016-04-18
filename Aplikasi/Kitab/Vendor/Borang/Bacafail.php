@@ -7,9 +7,9 @@ class Bacafail
 	{
 		$membukaFail = fopen($url, "rb");
 		$saizFail = 8192; //$saizFail = filesize($url); 
-		if (FALSE === $membukaFail) { exit("Gagal membuka aliran ke $url");}
+		if (FALSE === $membukaFail) { exit("Gagal membuka aliran ke $url"); }
 		$dataFail = '';
-		while (!feof($membukaFail)) {$dataFail .= fread($membukaFail, $saizFail);}
+		while (!feof($membukaFail)) { $dataFail .= fread($membukaFail, $saizFail); }
 		
 		return array($membukaFail,$dataFail);
 	}
@@ -20,7 +20,7 @@ class Bacafail
 		$saizFail = 8192; //$saizFail = filesize($url); 
 		if (FALSE === $bacaMenuAtas) { exit("Gagal membuka aliran ke $url"); }
 		$menuAtas = '';
-		while (!feof($bacaMenuAtas)) {  $menuAtas .= fread($bacaMenuAtas, $fsize);}
+		while (!feof($bacaMenuAtas)) { $menuAtas .= fread($bacaMenuAtas, $fsize); }
 		
 		return array($bacaMenuAtas,$menuAtas);
 	}
