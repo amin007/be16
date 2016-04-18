@@ -25,16 +25,21 @@ class Bacafail
 		return array($bacaMenuAtas,$menuAtas);
 	}	
 
+	public function loginCSS()
+	{
+			// miminium/asset/css/plugins/simple-line-icons.css
+	}
+	
 	public function loginTemplate()
 	{
-		$url[] = URL . 'sumber/rangka-dawai/AdminLTE-2.3.0/pages/examples/login2.html';
-		$url[] = URL . 'sumber/rangka-dawai/FlatAdmin-V.2/html/pages/login2.html';
-		$url[] = URL . 'sumber/rangka-dawai/miminium/login.html';
-		/*$url[] = URL . 'sumber/rangka-dawai/modern_admin_panel/login.html';
-		$url[] = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/login.html';
+		$url[] = 'AdminLTE-2.3.0/pages/examples/login2.html';
+		$url[] = 'FlatAdmin-V.2/html/pages/login2.html';
+		$url[] = 'miminium/login2.html';
+		/*$url[] = 'modern_admin_panel/login.html';
+		$url[] = 'startbootstrap-sb-admin-2-1.0.8/pages/login.html';
 		//*/
 		
-		$theme = array(0,1); //array(0,1,2,3,4);
+		$theme = array(0,1,2); //array(0,1,2,3,4);
 		$pilih = $theme[rand(0, count($theme)-1)];
 
 		return $url[$pilih];
@@ -42,23 +47,31 @@ class Bacafail
 	
 	public function login()
 	{
-		$url = $this->loginTemplate(); //echo "\$url = $url <br>";
+		$url = $this->loginTemplate(); //echo "\$template = $template <br>";
 		# pecah data
 		$pecahUrl = explode('/', $url);
-		$template = $pecahUrl[8];
+		$template = $pecahUrl[0];
+		$sumber = 'http://sidapmuar/private_html/tahun/be16/sumber/rangka-dawai/';
+		$lokasi = $sumber . $template . '/';
 		//echo '<pre>$pecahUrl->'; print_r($pecahUrl) . '</pre>';
-		//echo "\$template = " . $template;
-		list($membukaFail,$dataFail) = $this->bukafailutama($url);
-		# ubahsuai data
-		$lokasi = 'http://sidapmuar/private_html/tahun/be16/sumber/rangka-dawai/' . $template . '/';
+		//echo "\$template = $template | \$lokasi = $lokasi ";
+		
+		list($membukaFail,$dataFail) = $this->bukafailutama($sumber . $url);
 		$kandungan = str_replace('{{url}}', $lokasi, $dataFail);
-
+		
+		if ($template=='miminium') 
+		{
+			$lokasi2 = $sumber . $template . '/asset/css/plugins/simple-line-icons2.css';
+			list($membukaFail2,$dataFail2) = $this->bukafailutama($lokasi2);
+			$kandungan2 = str_replace('{{url}}', $lokasi2, $dataFail2);
+		}
+				
 		# pergi papar kandungan
 		//echo $dataFail;
 		echo $kandungan;
 
 		# tutup fail
-		fclose($membukaFail);
+		fclose($membukaFail);//*/
 	}
 	
 	public function namafail()
