@@ -16,8 +16,8 @@ define('Tajuk_Muka_Surat', '***');
 ## cdn
       $jquery_cdn = 'https://code.jquery.com/jquery-2.2.3.min.js';
  $bootstrapJS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
- $fontawesome_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
 $bootstrapCSS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
+ $fontawesome_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
 ## local
             $sumber = 'sumber/rangka-dawai/';
       $jquery_local = $sumber . 'jquery/jquery-2.2.3.min.js';
@@ -46,7 +46,8 @@ if ($server == 'laman.web.anda')
 	# isytihar lokasi folder js
 	define('JQUERY', $jquery_cdn);
 	define('FONTAWESOME', $fontawesome_cdn);
-	define('BOOTSTRAP', $bootstrap_cdn);
+	define('BOOTSTRAP-JS', $bootstrapJS_cdn);
+	define('BOOTSTRAP-CSS', $bootstrapCSS_cdn);
 }
 else 
 {	# isytihar tatarajah mysql
@@ -58,7 +59,8 @@ else
 	# isytihar lokasi folder js
 	define('JQUERY', $jquery_local);
 	define('FONTAWESOME', $fontawesome_local);
-	define('BOOTSTRAP', $bootstrap_local);
+	define('BOOTSTRAP-JS', $bootstrapJS_local);
+	define('BOOTSTRAP-CSS', $bootstrapCSS_local);
 }
 //echo DB_HOST . "," . DB_USER . "," . DB_PASS . ",," . DB_NAME . "<br>";
 ############################################################################################
