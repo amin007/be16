@@ -58,20 +58,11 @@ class Bacafail
 		
 		list($membukaFail,$dataFail) = $this->bukafailutama($sumber . $url);
 		$kandungan = str_replace('{{url}}', $lokasi, $dataFail);
-		
-		if ($template=='miminium') 
-		{
-			$lokasi2 = $sumber . $template . '/asset/css/plugins/simple-line-icons2.css';
-			list($membukaFail2,$dataFail2) = $this->bukafailutama($lokasi2);
-			$kandungan2 = str_replace('{{url}}', $lokasi2, $dataFail2);
-		}
-				
+					
 		# pergi papar kandungan
-		//echo $dataFail;
-		echo $kandungan;
+		echo $kandungan; //echo $dataFail;
 
-		# tutup fail
-		fclose($membukaFail);//*/
+		fclose($membukaFail); # tutup fail //*/
 	}
 	
 	public function namafail()
