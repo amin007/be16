@@ -27,7 +27,7 @@ class Bacafail
 
 	public function loginCSS()
 	{
-			// miminium/asset/css/plugins/simple-line-icons.css
+		// miminium/asset/css/plugins/simple-line-icons.css
 	}
 	
 	public function loginTemplate()
@@ -35,11 +35,11 @@ class Bacafail
 		$url[] = 'AdminLTE-2.3.0/pages/examples/login2.html';
 		$url[] = 'FlatAdmin-V.2/html/pages/login2.html';
 		$url[] = 'miminium/login2.html';
-		/*$url[] = 'modern_admin_panel/login.html';
-		$url[] = 'startbootstrap-sb-admin-2-1.0.8/pages/login.html';
+		$url[] = 'modern_admin_panel/login2.html';
+		$url[] = 'startbootstrap-sb-admin-2-1.0.8/pages/login2.html';
 		//*/
 		
-		$theme = array(0,1,2); //array(0,1,2,3,4);
+		$theme = array(0,1,2,3,4);
 		$pilih = $theme[rand(0, count($theme)-1)];
 
 		return $url[$pilih];
