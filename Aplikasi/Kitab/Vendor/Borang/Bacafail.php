@@ -23,8 +23,8 @@ class Bacafail
 		while (!feof($bacaMenuAtas)) {  $menuAtas .= fread($bacaMenuAtas, $fsize);}
 		
 		return array($bacaMenuAtas,$menuAtas);
-	}	
-
+	}
+	
 	public function loginCSS()
 	{
 		// miminium/asset/css/plugins/simple-line-icons.css
@@ -47,8 +47,9 @@ class Bacafail
 	
 	public function login()
 	{
-		$url = $this->loginTemplate(); //echo "\$url = $url <br>";
-		$pecahUrl = explode('/', $url); # pecah data
+		$url = $this->loginTemplate(); //echo "\$template = $template <br>";
+		# pecah data
+		$pecahUrl = explode('/', $url);
 		$template = $pecahUrl[0];
 		$sumber = 'http://sidapmuar/private_html/tahun/be16/sumber/rangka-dawai/';
 		$lokasi = $sumber . $template . '/';
@@ -58,17 +59,19 @@ class Bacafail
 		list($membukaFail,$dataFail) = $this->bukafailutama($sumber . $url);
 		$kandungan = str_replace('{{url}}', $lokasi, $dataFail);
 		
-		/*if ($template=='miminium') 
+		if ($template=='miminium') 
 		{
 			$lokasi2 = $sumber . $template . '/asset/css/plugins/simple-line-icons2.css';
 			list($membukaFail2,$dataFail2) = $this->bukafailutama($lokasi2);
 			$kandungan2 = str_replace('{{url}}', $lokasi2, $dataFail2);
-		}//*/
-	
+		}
+				
 		# pergi papar kandungan
-		echo $kandungan; //echo $dataFail;
+		//echo $dataFail;
+		echo $kandungan;
 
-		fclose($membukaFail); # tutup fail //*/
+		# tutup fail
+		fclose($membukaFail);//*/
 	}
 	
 	public function namafail()
