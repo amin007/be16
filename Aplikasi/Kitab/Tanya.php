@@ -216,17 +216,17 @@ class Tanya
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
-				$cariID = $medan;
+				$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
 			elseif ($medan != $medanID)
-				$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
+				$senarai[] = ($nilai==null) ? 
+				" `$medan`=null" : " `$medan`='$nilai'"; 
 		}
 		
 		$senaraiData = implode(",\r",$senarai);
-		$where = "`$cariID` = '{$data[$cariID]}' ";
 		
 		# set sql
-		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';//*/
 	}
 	
 	/*public function buangTerus($data, $myTable)
