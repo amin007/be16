@@ -8,8 +8,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		//echo '<br>class Crud extends Kawal';
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
-		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
-		$this->_folder = 'crud';
+		//\Aplikasi\Kitab\Kebenaran::kawalKeluar();
+		$this->_folder = 'prosesan';
 	}
 
 	function index() 
