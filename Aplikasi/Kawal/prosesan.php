@@ -53,25 +53,31 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 
 	public function ubahBatchProses($tukarBatch)
 	{
-		echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+        # 1. dapatkan fungsi dpt_url() dari fail fungsi.php
+        # dan masukkan dalam $url
+        $url = dpt_url(); //echo '<br>$url->'; print_r($url) . '';
+		# cari $namaPegawai dan $noBatch
+        $namaPegawai = (empty($url[2])) ? null : $url[2];
+        $noBatch = (empty($url[3])) ? null : $url[3];
 		$dataID = bersihGET('cari'); # bersihkan data $_POST
 		
 		# masuk dalam database
 			# ubahsuai $posmen
 			$jadual = 'be16_kawal'; 
 			$medanID = 'nossm';
-			$posmen[$jadual]['fe'] = $cariBatch;
-			$posmen[$jadual]['respon'] = 'B7';
+			$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
+			$posmen[$jadual]['nobatch'] = $noBatch;
 			$posmen[$jadual][$medanID] = $dataID;
-			echo '<br>$dataID=' . $dataID . '<br>';
-			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			//$this->tanya->ubahSimpan($posmen, $jadual, $medanID = 'newss');
+			//$this->tanya->ubahSimpan($posmen, $jadual, $medanID);
+			$this->tanya->ubahSqlSimpan($posmen[$jadual], $jadual, $medanID);
 
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $dataID; 
-		//*/
+		
 		# pergi papar kandungan
 		echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch/$dataID" . '';
 		//header('location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch/$dataID");
