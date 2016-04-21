@@ -36,8 +36,38 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		//$this->papar->baca(
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
-			$this->_folder . '/batch',$jenis,0); # $noInclude=0
-			
+			$this->_folder . '/batch',$jenis,0); # $noInclude=0		
+	}
+	
+	public function ubahBatchAwal($tukarBatch = null)
+	{
+		echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		$dataID = bersihGET('cari'); # bersihkan data $_POST		
+	}
+
+	public function ubahBatchProses($tukarBatch)
+	{
+		echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		$dataID = bersihGET('cari'); # bersihkan data $_POST
+		/*
+		# masuk dalam database
+			# ubahsuai $posmen
+			$jadual = 'sse15_kawal'; //$jadual = 'cdt_pom_baki';
+			$posmen[$jadual]['fe'] = $cariBatch;
+			$posmen[$jadual]['respon'] = 'B7';
+			$posmen[$jadual][$medanID] = $dataID;
+			//echo '<br>$dataID=' . $dataID . '<br>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+        
+			$this->tanya->ubahSimpan($posmen, $jadual, $medanID = 'newss');
+
+		# Set pemboleubah utama
+		$this->papar->pegawai = senarai_kakitangan();
+		$this->papar->lokasi = 'SSE 2015 - Ubah';
+		*/
+		# pergi papar kandungan
+		//echo '<br>location: ' . URL . "batch/awal/$cariBatch/$dataID" . '';
+		//header('location: ' . URL . "batch/awal/$cariBatch/$dataID");
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
