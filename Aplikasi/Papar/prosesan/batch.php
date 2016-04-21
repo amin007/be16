@@ -15,8 +15,9 @@ $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
 	. $urlStaf 
 	. '';
 ?>
-<div class="container">
+
 <?php if (($this->namaPegawai == null)) : ?>
+<div class="container">
 nama pegawai tidak wujud.
 klik salah satu pautan staf di bawah ini <?=$urlStaf?>
 
@@ -41,9 +42,12 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 	<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
 </div>
 </form></div><br>
+
+</div><!-- / class="container" -->
 <?php elseif (($this->namaPegawai != null) 
 	&& ($this->noBatch != null)
 	&& ($this->error == 'Kosong') ) : ?>	
+<div class="container">
 <?php # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
@@ -66,7 +70,7 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 </div>
 </form></div><br>
 
-	
+</div><!-- / class="container" -->
 <?php else : ?>
 
 <?php # set pembolehubah
@@ -77,6 +81,7 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
 ?>
+<div class="container">
 <h3><a target="_blank" href="<?=$cetakF10?>"> Cetak F10</a>|
 <a target="_blank" href="<?=$cetakF10?>">Cetak A1</a></h3>
 <h1>Ubah | Nama Pegawai : <?=$namaPegawai?> | BatchProsesan : <?=$cariBatch?><br>
@@ -95,6 +100,7 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 </div>
 </form></div><br>
 
+</div><!-- / class="container" -->
+<?php include 'papar_jadual_berulang.php'; ?>
 <?php endif; ?>
 
-</div><!-- / class="container" -->
