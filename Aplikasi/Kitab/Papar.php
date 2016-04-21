@@ -157,7 +157,7 @@ class Papar
 			case 1: $jenis = 'AdminLTE-2.3.0';
 			break;
 			
-			default: $jenis = 'asas';
+			default: $jenis = 'A0';
 			break;
 		}
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#	
