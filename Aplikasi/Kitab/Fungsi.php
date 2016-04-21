@@ -225,6 +225,20 @@ function bersih($papar)
 	return $papar;
 }
 
+function bersihGET($papar) 
+{
+	# bersih untuk $_GET sahaja
+	$paparHTML = filter_input(INPUT_GET, $papar, FILTER_SANITIZE_SPECIAL_CHARS);
+	$paparURL = filter_input(INPUT_GET, $papar, FILTER_SANITIZE_ENCODED);
+	//$papar = filter_var($_GET[$papar], FILTER_SANITIZE_URL);
+	
+	//echo "You have searched for $paparHTML.\n";
+	//echo "<a href='?search=$paparURL'>Search again.</a>";
+    
+    //return $papar;
+    return $paparHTML;
+}
+
 function gambar_latarbelakang($lokasi)
 {
 	// '$lokasi=' . $lokasi;
