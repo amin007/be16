@@ -86,10 +86,11 @@ function dpt_ip()
 	return $IP;
 }
 
-function senarai_kakitangan()
+function senarai_kakitangan($pilih = 0)
 {
 	# define('PEGAWAI', serialize (array()) );
-	$pegawai = unserialize(PEGAWAI);
+	$pegawai = ($pilih==2) ? 
+		unserialize(PROSESAN) : unserialize(PEGAWAI);
     
     return $pegawai;
 }
