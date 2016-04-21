@@ -49,7 +49,7 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$paparError = (!isset($this->error)) ? null : $this->error;
-	$mencari = URL . 'prosesan/ubahBatchProses/' . $cariBatch;
+	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
 	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
 ?>
