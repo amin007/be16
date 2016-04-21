@@ -10,6 +10,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		//\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'prosesan';
+		$this->medanData = '*';
 	}
 
 	function index() 
@@ -38,7 +39,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$susun = null;
-				$dataKes = $this->tanya->tatasusunanCariID(//cariSql(
+				$dataKes = $this->tanya->tatasusunanCariID(//cariSql( cariSemuaData(
 					$senaraiJadual[0], $medan, $carian, $susun);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
 				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
@@ -66,10 +67,13 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			//$this->papar->error = 'No ID = ' . $noID;
 			# mula carian dalam jadual $myTable
-			//$this->cariAwal($senaraiJadual, $cariBatch, $cariID, $this->medanData);
+			$this->cariAwal($senaraiJadual, $cariBatch, $cariID, $this->medanData);
 			//$this->cariGroup($senaraiJadual, $cariBatch, $cariID, $this->medanData);
 		endif;
-		
+
+		# semak pembolehubah $this->papar->cariApa
+		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca(
@@ -77,6 +81,30 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		//$this->papar->paparTemplate(
 			$this->_folder . '/batch',$jenis,0); # $noInclude=0		
 		//*/
+	}
+
+	private function cariAwal($senaraiJadual, $cariBatch, $cariID, $medan)
+	{
+		$item = 1000; $ms = 1; ## set pembolehubah utama
+		## tentukan bilangan mukasurat. bilangan jumlah rekod
+		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+		$jum2 = pencamSqlLimit(300, $item, $ms);
+		$jadual = $senaraiJadual[0];
+			# sql 1			
+			# sql 2 - cari kes MFG
+			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
+			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
+					$susunMfg[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'respon,nama') );
+			$this->papar->cariApa['mfg'] = $this->tanya->
+				tatasusunanCariMFG(//cariSql( cariSemuaData(
+				$jadual, $medan, $cariMFG, $susunMfg);
+			# sql 3 - cari kes PPT
+			$cariPPT[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
+			$cariPPT[] = array('fix'=>'x!=','atau'=>'and','medan'=>'kp','apa'=>'205');
+			$susunPpt[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'batchProses DESC,mko DESC,kp,nama') );
+			$this->papar->cariApa['ppt'] = $this->tanya->
+				tatasusunanCariPPT(//cariSql( cariSemuaData()
+				$jadual, $medan, $cariPPT, $susunPpt);
 	}
 	
 	public function tambahBatchBaru($namaPegawai = null)
