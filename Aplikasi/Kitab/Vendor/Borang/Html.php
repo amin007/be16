@@ -191,14 +191,7 @@ class Html
 			<?php
 				foreach ( $row[$kira] AS $key=>$data ) 
 				{
-					if ($key=='sidap') :
-						$sidap= $data;
-						$ssm = substr($data,0,12); 
-					elseif ($key=='nama') :
-						$syarikat = $data;
-					endif;
-					?><td><?php echo $data ?></td>
-			<?php
+					?><td><?php echo $data ?></td><?php
 				} 
 				?></tr></tbody>
 			<?php
@@ -293,5 +286,51 @@ class Html
 		} # tamat if ($jadual == 5
 	}
 	# tamat untuk kod php+html 
+#==========================================================================================
+	function paparURL($key, $data, $cariBatch)
+	{
+		if ($key=='newss')
+		{
+			$id = $data; 
+			$k1 = URL . "kawalan/ubah/$id";
+			$cb = URL . "batch/buangBatchJohor/$cariBatch/$id";
+
+			?><td><?php
+			?><a target="_blank" href="<?php echo $k1 ?>" class="btn btn-primary btn-mini">Ubah</a><?php
+			/*?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php*/
+			?></td><td><?php echo $data ?></td><?php
+		}
+		elseif ($key=='hantar_prosesan')
+		{
+			$k1 = URL . "batch/proses/$data";
+			$k2 = URL . "laporan/cetakNonA1/$data/1000";
+			$k3 = URL . "laporan/cetakA1/$data/1000";
+			if ($data == null):
+				?><td>&nbsp;</td><?php
+			else:?><td><?php
+				?><a href="<?php echo $k1 ?>" class="btn btn-primary btn-mini"><?php echo $data ?></a><?php
+				?><a target="_blank" href="<?php echo $k2 ?>" class="btn btn-danger btn-mini">Batch Non A1</a><?php
+				?><a target="_blank" href="<?php echo $k3 ?>" class="btn btn-success btn-mini">Batch A1</a><?php
+				?></td><?php
+			endif;
+		}
+		elseif ($key=='terimaProsesan')
+		{
+			$k1 = URL . "batch/terima/$data";
+			$k2 = URL . "laporan/cetakTerimaProses/$data";
+			if ($data == null):
+				?><td>&nbsp;</td><?php
+			else:?><td><?php
+				?><a href="<?php echo $k1 ?>" class="btn btn-primary btn-mini"><?php echo $data ?></a><?php
+				?><a target="_blank" href="<?php echo $k2 ?>" class="btn btn-danger btn-mini">cetak</a><?php
+				?></td><?php
+			endif;
+		}
+		else
+		{
+			?><td><?php echo $data ?></td><?php
+		}	
+		
+	}
 #==========================================================================================
 }
