@@ -228,7 +228,51 @@ class Tanya
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';//*/
 	}
+
+	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
+	{
+		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		//echo '<pre>$dimana->', print_r($dimana, 1) . '</pre>';
+		$senarai = null;
+		
+		foreach ($data as $medan => $nilai)
+		{
+			if ($medan == $medanID)
+				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
+			$senarai[] = ($nilai==null) ? 
+				" `$medan`=null" : " `$medan`='$nilai'"; 
+		}
+		
+		$senaraiData = implode(",\r",$senarai);
+		
+		# set sql
+		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		//$this->db->update($sql);
+		//*/
+	}
 	
+	public function ubahSqlSimpanSemua($data, $myTable, $medanID, $dimana)
+	{
+		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		//echo '<pre>$dimana->', print_r($dimana, 1) . '</pre>';
+		$senarai = null;
+		
+		foreach ($data as $medan => $nilai)
+		{
+			if ($medan == $medanID)
+				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
+			$senarai[] = ($nilai==null) ? 
+				" `$medan`=null" : " `$medan`='$nilai'"; 
+		}
+		
+		$senaraiData = implode(",\r",$senarai);
+		
+		# set sql
+		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+	}
+
 	/*public function buangTerus($data, $myTable)
 	{
 		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
