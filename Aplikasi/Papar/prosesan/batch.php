@@ -20,20 +20,19 @@ $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
 nama pegawai tidak wujud.
 klik salah satu pautan staf di bawah ini <?=$urlStaf?>
 
-<?php elseif (($this->namaPegawai != null) && ($this->noBatch == null)) : 
-echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf; ?>	
+<?php elseif (($this->namaPegawai != null) && ($this->noBatch == null)) : ?>	
 <?php # set pembolehubah
-	$carian = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
-	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
-	$paparError = (!isset($this->error)) ? null : $this->error;
-	$mencari = URL . 'prosesan/ubahBatchAwal/' . $cariBatch;
-?>
-<h1>Ubah BatchProsesan : <?=$cariBatch?><br>
-<small>Nota: <?=$paparError?></small></h1>
+	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
+	$mencari = URL . 'prosesan/tambahBatchBaru/' . $namaPegawai;
+
+?><h1><?php
+echo '<small>' . $mencari . '</small><br>';
+echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
+?></h1>
 
 <div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
 <div class="form-group"><div class="input-group">
-	<input type="text" name="cari" class="form-control" autofocus
+	<input type="text" name="tambah" class="form-control" autofocus
 	id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
 	<span class="input-group-addon">
 	<input type="submit" value="Letak No Batch">
