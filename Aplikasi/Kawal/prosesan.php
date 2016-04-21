@@ -34,9 +34,10 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			$urlStaf .= '<a target="_blank" href="' . URL .'prosesan/batch/' . $namaStaf . '">'
 					 .  $namaStaf . '</a>' . "<br>\r";
 		endforeach;
-		$paparStaf = "staf bernama $namaPegawai ada dalam senarai staf";
-		$paparXStaf = "staf bernama $namaPegawai tiada dalam senarai staf.<br>"
-			. ' klik slah satu pautan staf di bawah ini <br>'
+		$paparPegawai = ($namaPegawai == null) ? 'tiada nama staf ':'nama staf ' . $namaStaf;
+		$paparStaf = "$paparPegawai dalam senarai staf";
+		$paparXStaf = "$paparPegawai dalam senarai staf.<br>"
+			. ' klik salah satu pautan staf di bawah ini <br>'
 			. $urlStaf 
 			. '';
 		echo (in_array($namaPegawai,$senaraiStaf)) ? 
