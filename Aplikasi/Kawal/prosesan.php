@@ -39,10 +39,16 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			$this->_folder . '/batch',$jenis,0); # $noInclude=0		
 	}
 	
-	public function ubahBatchAwal($tukarBatch = null)
+	public function tambahBatchBaru($namaPegawai = null)
 	{
-		echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
-		$dataID = bersihGET('cari'); # bersihkan data $_POST		
+		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>'; # debug $_GET
+		# Set pemboleubah utama
+		$this->papar->namaPegawai = $namaPegawai;
+		$this->papar->noBatch = $noBatch = bersihGET('tambah'); # bersihkan data $_GET
+		
+		# pergi papar kandungan
+		//echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch" . '';
+		header('location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch");
 	}
 
 	public function ubahBatchProses($tukarBatch)
