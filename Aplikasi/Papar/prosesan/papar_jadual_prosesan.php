@@ -1,17 +1,15 @@
 	<table border="1" class="excel" id="example">
 	<?php
-	// mula bina jadual
-	$printed_headers = false; 
+	$printed_headers = false; # mula bina jadual
 	#-----------------------------------------------------------------
 	for ($kira=0; $kira < count($row); $kira++)
-	{	//print the headers once: 	
-		if ( !$printed_headers ) 
+	{	
+		if ( !$printed_headers ) # papar tajuk medan sekali sahaja: 	
 		{
 			?><thead><tr><th><?php echo $myTable ?></th><?php
 			foreach ( array_keys($row[$kira]) as $tajuk ) 
-			{	// anda mempunyai kunci integer serta kunci rentetan
-				// kerana cara PHP mengendalikan tatasusunan.
-
+			{	# anda mempunyai kunci integer serta kunci rentetan
+				# kerana cara PHP mengendalikan tatasusunan.
 				if ($tajuk=='newss')  
 				{	?><th>Tindakan</th><th><?php echo $tajuk ?></th><?php }
 				else
@@ -21,9 +19,8 @@
 	<?php
 			$printed_headers = true; 
 		} 
-	#-----------------------------------------------------------------		 
-		//print the data row 
-		?><tbody><tr><td><?php echo $kira+1 ?></td><?php
+	# papar data $row ------------------------------------------------
+	?><tbody><tr><td><?php echo $kira+1 ?></td><?php
 		$html = new \Aplikasi\Kitab\Html;
 		foreach ( $row[$kira] as $key=>$data ) 
 		{	
