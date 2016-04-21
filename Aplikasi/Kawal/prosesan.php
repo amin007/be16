@@ -28,10 +28,19 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 	public function batch($namaPegawai = null, $noBatch = null) 
 	{
 		$senaraiStaf = senarai_kakitangan(2);
-		echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
+		$urlStaf  = null;
+		//echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
+		foreach ($senaraiStaf as $namaStaf):
+			$urlStaf .= '<a target="_blank" href="' . URL .'prosesan/batch/' . $namaStaf . '">'
+					 .  $namaStaf . '</a>' . "<br>\r";
+		endforeach;
+		$paparStaf = "staf bernama $namaPegawai ada dalam senarai staf";
+		$paparXStaf = "staf bernama $namaPegawai tiada dalam senarai staf.<br>"
+			. ' klik slah satu pautan staf di bawah ini <br>'
+			. $urlStaf 
+			. '';
 		echo (in_array($namaPegawai,$senaraiStaf)) ? 
-			"staf bernama $namaPegawai ada dalam senarai staf"
-			: "staf bernama $namaPegawai tiada dalam senarai staf";
+			$paparStaf : $paparXStaf;
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
