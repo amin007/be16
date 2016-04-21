@@ -44,9 +44,9 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 </form></div><br>
 
 <?php else : ?>
-Sudah ada nama pegawai = <?=$this->namaPegawai?> 
+
 <?php # set pembolehubah
-	$carian = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
+	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$paparError = (!isset($this->error)) ? null : $this->error;
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $cariBatch;
@@ -55,7 +55,7 @@ Sudah ada nama pegawai = <?=$this->namaPegawai?>
 ?>
 <h3><a target="_blank" href="<?=$cetakF10?>"> Cetak F10</a>|
 <a target="_blank" href="<?=$cetakF10?>">Cetak A1</a></h3>
-<h1>Ubah BatchProsesan : <?=$cariBatch?><br>
+<h1>Ubah | Nama Pegawai : <?=$namaPegawai?> | BatchProsesan : <?=$cariBatch?><br>
 <small>Nota: <?=$paparError?></small></h1>
 
 <div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
