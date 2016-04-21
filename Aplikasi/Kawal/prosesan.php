@@ -27,21 +27,17 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 #==========================================================================================	
 	public function batch($namaPegawai = null, $noBatch = null) 
 	{
-		$senaraiStaf = senarai_kakitangan(2);
-		$urlStaf  = null;
-		//echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
-		foreach ($senaraiStaf as $namaStaf):
-			$urlStaf .= '<a target="_blank" href="' . URL .'prosesan/batch/' . $namaStaf . '">'
-					 .  $namaStaf . '</a>' . "<br>\r";
-		endforeach;
-		$paparPegawai = ($namaPegawai == null) ? 'tiada nama staf ':'nama staf ' . $namaStaf;
-		$paparStaf = "$paparPegawai dalam senarai staf";
-		$paparXStaf = "$paparPegawai dalam senarai staf.<br>"
-			. ' klik salah satu pautan staf di bawah ini <br>'
-			. $urlStaf 
-			. '';
-		echo (in_array($namaPegawai,$senaraiStaf)) ? 
-			$paparStaf : $paparXStaf;
+		# Set pemboleubah utama
+		$this->papar->namaPegawai = $namaPegawai;
+		$this->papar->noBatch = $noBatch;
+		
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca(
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/batch',$jenis,0); # $noInclude=0
+			
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
