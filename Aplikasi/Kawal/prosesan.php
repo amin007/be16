@@ -25,11 +25,50 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		
 	}
 #==========================================================================================	
-	public function batch($namaPegawai = null, $noBatch = null) 
+	private function wujudBatchAwal($senaraiJadual, $cariBatch = null, $cariID = null) 
+	{
+		if (!isset($cariBatch) || empty($cariBatch) ):
+			$paparError = 'Tiada batch<br>';
+		else:
+			if((!isset($cariID) || empty($cariID) ))
+				$paparError = 'Tiada id<br>';
+			else
+			{
+				$medan = 'newss,ssm,nama,operator,'
+					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
+				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
+				$susun = null;
+				$dataKes = $this->tanya->tatasusunanCariID(//cariSql(
+					$senaraiJadual[0], $medan, $carian, $susun);
+				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
+				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
+					. '| ssm:' . $dataKes[0]['ssm']
+					. '<br> nama:' . $dataKes[0]['nama'] 
+					. '| operator:' . $dataKes[0]['operator']
+					. '<br> alamat:' . $dataKes[0]['alamat'];  //*/
+			}			
+		endif;
+	
+		return $paparError;
+	}
+
+	public function batch($namaPegawai = null, $cariBatch = null, $cariID = null) 
 	{
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $noBatch;
+		$this->papar->noBatch = $cariBatch;
+		# mencari dalam database
+		if ($cariID == null):
+			$this->papar->error = 'Kosong';
+		else:
+			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
+			# cari $cariBatch atau cariID wujud tak
+			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
+			//$this->papar->error = 'No ID = ' . $noID;
+			# mula carian dalam jadual $myTable
+			//$this->cariAwal($senaraiJadual, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $cariBatch, $cariID, $this->medanData);
+		endif;
 		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
@@ -37,6 +76,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/batch',$jenis,0); # $noInclude=0		
+		//*/
 	}
 	
 	public function tambahBatchBaru($namaPegawai = null)
@@ -51,15 +91,40 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch");
 	}
 
-	public function ubahBatchProses($tukarBatch)
+	public function tukarBatchProses($namaPegawai,$asalBatch)
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
-        # 1. dapatkan fungsi dpt_url() dari fail fungsi.php
-        # dan masukkan dalam $url
-        $url = dpt_url(); //echo '<br>$url->'; print_r($url) . '';
-		# cari $namaPegawai dan $noBatch
-        $namaPegawai = (empty($url[2])) ? null : $url[2];
-        $noBatch = (empty($url[3])) ? null : $url[3];
+		echo "\$namaPegawai = $namaPegawai<br>";
+		echo "\$asalBatch = $asalBatch<br>";
+		$tukarBatch = bersihGET('cari'); # bersihkan data $_POST
+		
+		# masuk dalam database
+			# ubahsuai $posmen
+			$jadual = 'be16_kawal'; 
+			$medanID = 'nobatch';
+			//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
+			$posmen[$jadual][$medanID] = $tukarBatch;
+			$dimana[$jadual][$medanID] = $asalBatch;
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+        
+			//$this->tanya->ubahSimpanSemua(
+			$this->tanya->ubahSqlSimpanSemua(
+				$posmen[$jadual], $jadual, $medanID, $dimana[$jadual]);
+
+		# Set pemboleubah utama
+		$this->papar->namaPegawai = $namaPegawai;
+		$this->papar->noBatch = $tukarBatch; 
+		
+		# pergi papar kandungan
+		echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$tukarBatch" . '';
+		//header('location: ' . URL . "prosesan/batch/$namaPegawai/$tukarBatch");
+	}
+
+	public function ubahBatchProses($namaPegawai,$asalBatch)
+	{
+		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		//echo "\$namaPegawai = $namaPegawai<br>";
+		//echo "\$asalBatch = $asalBatch<br>";
 		$dataID = bersihGET('cari'); # bersihkan data $_POST
 		
 		# masuk dalam database
@@ -67,20 +132,23 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			$jadual = 'be16_kawal'; 
 			$medanID = 'nossm';
 			$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
-			$posmen[$jadual]['nobatch'] = $noBatch;
+			$posmen[$jadual]['nobatch'] = $asalBatch;
 			$posmen[$jadual][$medanID] = $dataID;
+			//$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			//$this->tanya->ubahSimpan($posmen, $jadual, $medanID);
-			$this->tanya->ubahSqlSimpan($posmen[$jadual], $jadual, $medanID);
+			//$this->tanya->ubahSimpan(
+			$this->tanya->ubahSqlSimpan(
+				$posmen[$jadual], $jadual, $medanID);
 
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $dataID; 
+		$this->papar->noBatch = $asalBatch; 
+		$this->papar->noID = $dataID; 
 		
 		# pergi papar kandungan
-		echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch/$dataID" . '';
-		//header('location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch/$dataID");
+		//echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$asalBatch/$dataID" . '';
+		header('location: ' . URL . "prosesan/batch/$namaPegawai/$asalBatch/$dataID");
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
