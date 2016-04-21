@@ -24,7 +24,6 @@ klik salah satu pautan staf di bawah ini <?=$urlStaf?>
 <?php # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$mencari = URL . 'prosesan/tambahBatchBaru/' . $namaPegawai;
-
 ?><h1><?php
 echo '<small>' . $mencari . '</small><br>';
 echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
@@ -42,7 +41,32 @@ echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 	<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
 </div>
 </form></div><br>
+<?php elseif (($this->namaPegawai != null) 
+	&& ($this->noBatch != null)
+	&& ($this->error == 'Kosong') ) : ?>	
+<?php # set pembolehubah
+	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
+	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
+	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
+?><h1><?php
+echo '<small>' . $mencari . '</small><br>';
+echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
+?></h1>
 
+<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
+<div class="form-group"><div class="input-group">
+	<input type="text" name="cari" class="form-control" autofocus
+	id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
+	<span class="input-group-addon">
+	<input type="submit" value="Letak No ID">
+	</span>
+</div></div>
+<div class="suggestionsBox" id="suggestions" style="display: none; " >
+	<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+</div>
+</form></div><br>
+
+	
 <?php else : ?>
 
 <?php # set pembolehubah
