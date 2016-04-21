@@ -55,25 +55,26 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 	{
 		echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		$dataID = bersihGET('cari'); # bersihkan data $_POST
-		/*
+		
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'sse15_kawal'; //$jadual = 'cdt_pom_baki';
+			$jadual = 'be16_kawal'; 
+			$medanID = 'nossm';
 			$posmen[$jadual]['fe'] = $cariBatch;
 			$posmen[$jadual]['respon'] = 'B7';
 			$posmen[$jadual][$medanID] = $dataID;
-			//echo '<br>$dataID=' . $dataID . '<br>';
-			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			echo '<br>$dataID=' . $dataID . '<br>';
+			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			$this->tanya->ubahSimpan($posmen, $jadual, $medanID = 'newss');
+			//$this->tanya->ubahSimpan($posmen, $jadual, $medanID = 'newss');
 
 		# Set pemboleubah utama
-		$this->papar->pegawai = senarai_kakitangan();
-		$this->papar->lokasi = 'SSE 2015 - Ubah';
-		*/
+		$this->papar->namaPegawai = $namaPegawai;
+		$this->papar->noBatch = $dataID; 
+		//*/
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . "batch/awal/$cariBatch/$dataID" . '';
-		//header('location: ' . URL . "batch/awal/$cariBatch/$dataID");
+		echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch/$dataID" . '';
+		//header('location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch/$dataID");
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
