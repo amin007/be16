@@ -142,19 +142,22 @@ class Papar
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
 		switch ($template)
 		{
-			case 4: $jenis = 'miminium';
+			case 5: $jenis = 'miminium';
 			break;
 
-			case 3: $jenis = 'modern_admin_panel';
+			case 4: $jenis = 'modern_admin_panel';
 			break;
 
-			case 2: $jenis = 'startbootstrap-sb-admin-2-1.0.8';
+			case 3: $jenis = 'startbootstrap-sb-admin-2-1.0.8';
 			break;
 
-			case 1: $jenis = 'FlatAdmin-V.2';
+			case 2: $jenis = 'FlatAdmin-V.2';
 			break;
 
-			default: $jenis = 'AdminLTE-2.3.0';
+			case 1: $jenis = 'AdminLTE-2.3.0';
+			break;
+			
+			default: $jenis = 'asas';
 			break;
 		}
 	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#	
