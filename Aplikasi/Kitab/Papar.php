@@ -99,7 +99,9 @@ class Papar
 		
 		echo '<hr>require ' . PAPAR . $lokasiTemplate . '/diatas.php'
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu_atas.php'
-			. '<br>require ' . $paparFail
+			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu-tengah-atas.php'
+			. '<br>require ' . $paparFail			
+			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu-tengah-bawah.php'
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/dibawah.php'
 			. '';//*/
 	}
@@ -112,16 +114,7 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		$lokasiTemplate = '/template/' . $template;
-		
-		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
-		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
-		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
-		echo '$paparFail->' . $paparFail . '<br>'
-			. '$template->' . $template . '<br>' 
-			. '$lokasiTemplate->' . $lokasiTemplate . '<br>'
-			. '$noInclude->' . $noInclude . '<br>'
-			. '';//*/
-		
+				
 		if ($noInclude == true) 
 		{
 			require PAPAR . $nama . '.php';	
