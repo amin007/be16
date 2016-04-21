@@ -64,3 +64,7 @@ else
 }
 //echo DB_HOST . "," . DB_USER . "," . DB_PASS . ",," . DB_NAME . "<br>";
 ############################################################################################
+# buat tatasusunan ikut serialize
+define('PROSESAN', serialize( 
+	array ('abu','bakar','umar','osman','ali','hasan')
+	));
