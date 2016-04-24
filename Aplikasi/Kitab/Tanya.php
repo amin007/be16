@@ -59,6 +59,7 @@ class Tanya
 			$where .= " $atau$medan not in $cariApa $akhir\r";	
 		# pulangkan nilai $where
 		//' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
+		//echo $where;
 		return $where;
 	}
 	
@@ -76,7 +77,7 @@ class Tanya
 				$cariApa = isset($carian[$key]['apa'])   ? $carian[$key]['apa']        : null;
 				  $akhir = isset($carian[$key]['akhir']) ? $carian[$key]['akhir']      : null;
 				//echo "\r$key => ($fix) $atau $medan -> '$cariApa' |";
-				$where = $this->cariApa($fix,$atau,$medan,$cariApa,$akhir);
+				$where .= $this->cariApa($fix,$atau,$medan,$cariApa,$akhir);
 			}
 		endif;
 	
