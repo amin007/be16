@@ -1,6 +1,4 @@
 <?php 
-/*
-\Aplikasi\Kitab\Sesi::init(); // mulakan sesi
 //echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
 $pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
@@ -9,17 +7,18 @@ $pegawai = null; //$this->pegawai;
 
 $senaraiPengguna = array('fe','pegawai');
 $senaraiPentadbir = array('kawal','admin');
-if (in_array(Sesi::get('levelPegawai'), $senaraiPentadbir)) 
-	$paras = '' . Sesi::get('levelPegawai');
+if (in_array($level, $senaraiPentadbir)) 
+	$paras = '' . $level;
 elseif (in_array($level, $senaraiPengguna)) 
-	$paras = '' . Sesi::get('levelPegawai');
+	$paras = '' . $level;
 else 
 	$paras = null;
+
 $url = './';
 if ($paras == null):
-else: //*/
-?>
-<div class="navbar navbar-inverse" role="navigation">
+else: ?>
+<!-- div class="navbar navbar-inverse" role="navigation" -->
+<div class="navbar navbar-custom" role="navigation">
 	<div class="container-fluid">
 		<!-- menu kiri mula -->
 		<div class="navbar-header">
@@ -37,7 +36,7 @@ else: //*/
 		<!-- menu kiri tamat -->
 		<!-- menu kanan mula -->
 		<div class="navbar-collapse collapse">
-<?php require 'menubar_atas.php'; ?>
+<?php require 'menubar_atas.php'; /* color="#f8f8f8" */ ?>
 			<!-- borang cari kp-->
 			<form class="navbar-form navbar-right" action="<?php echo URL ?>cari/idnama" method="POST">
 				<div class="input-group">
@@ -56,4 +55,5 @@ else: //*/
 <img src="<?php echo URL ?>../gambar2/banner.png" alt="banner">
 </div>-->
 <?php
-//endif;
+//*/
+endif;
