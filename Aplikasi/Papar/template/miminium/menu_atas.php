@@ -8,9 +8,13 @@
 					<span class="middle"></span>
 					<span class="bottom"></span>
 				</div>
-				<a href="index.html" class="navbar-brand"> 
-				<b><?php echo Tajuk_Muka_Surat; ?></b>
-				</a>
+				<a href="index.html" class="navbar-brand"><b> 
+				<?php //echo Tajuk_Muka_Surat; 
+				echo '<img src="'.URL.'sumber/gambar/logo3.png" height="40" width="40">';
+				echo '<small>BE16</small>';
+				$namaPegawai = \Aplikasi\Kitab\Sesi::get('namaPegawai');
+				$namaPenuh = \Aplikasi\Kitab\Sesi::get('namaPenuh');
+				?></b></a>
 				<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 				<ul class="nav navbar-nav search-nav">
 				<li>
@@ -26,7 +30,7 @@
 				</ul>
 				<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 				<ul class="nav navbar-nav navbar-right user-nav">
-				<li class="user-name"><span>Akihiko Avaron</span></li>
+				<li class="user-name"><span><?php echo $namaPegawai ?></span></li>
 				<li class="dropdown avatar-dropdown">
 					<img src="<?=$url?>asset/img/avatar.jpg" class="img-circle avatar" alt="user name" 
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
