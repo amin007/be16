@@ -34,7 +34,7 @@ if ($paras == null): else: ?>
 		<!-- menu kiri tamat -->
 		<!-- menu kanan mula -->
 		<div class="navbar-collapse collapse">
-<?php require 'menubar_atas.php'; /* color="#f8f8f8" */ ?>
+<?php require 'menubar_atas.php'; ?>
 			<!-- borang cari kp-->
 			<form class="navbar-form navbar-right" action="<?php echo URL ?>cari/idnama" method="POST">
 				<div class="input-group">
