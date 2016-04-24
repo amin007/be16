@@ -24,7 +24,6 @@ class Index extends \Aplikasi\Kitab\Kawal
 		//$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/login',$jenis,0); # $noInclude=0
-		
 	}
 #==========================================================================================	
 	function muar() 
