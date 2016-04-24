@@ -53,7 +53,8 @@ klik salah satu pautan staf di bawah ini <?=$urlStaf?>
 <div class="container">
 	<h1><?php
 	echo '<small>' . $mencari . '</small><br>';
-	echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
+	echo 'Daftar kes masing-masing<br>';
+	//echo (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf;
 	?></h1>
 
 	<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
