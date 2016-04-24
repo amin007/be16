@@ -22,16 +22,16 @@ else: ?>
 	<div class="container-fluid">
 		<!-- menu kiri mula -->
 		<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-		<?php for ($iconbar=1; $iconbar < 3; $iconbar++):
-		?><span class="icon-bar"></span><?php endfor; ?>
-		</button>
-		<a class="navbar-brand" href="<?php echo URL ?>"><?php echo Tajuk_Muka_Surat . ':' . $paras ?></a>
-		<a class="navbar-brand" href="<?php echo URL ?>ruangtamu/logout">
-			<span class="glyphicon glyphicon-off"></span>Keluar</a>
-		<a class="navbar-brand" href="<?php echo 'http://' . $_SERVER['SERVER_NAME'] ?>/private_html">
-			<span class="glyphicon glyphicon-stats"></span>E-Survey POM</a>	
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<?php for ($iconbar=1; $iconbar < 3; $iconbar++):
+			?><span class="icon-bar"></span><?php endfor; ?>
+			</button>
+			<a class="navbar-brand" href="<?php echo URL ?>"><?php echo Tajuk_Muka_Surat . ':' . $paras ?></a>
+			<a class="navbar-brand" href="<?php echo URL ?>ruangtamu/logout">
+				<span class="glyphicon glyphicon-off"></span>Keluar</a>
+			<a class="navbar-brand" href="<?php echo 'http://' . $_SERVER['SERVER_NAME'] ?>/private_html">
+				<span class="glyphicon glyphicon-stats"></span>E-Survey POM</a>	
 		</div>
 		<!-- menu kiri tamat -->
 		<!-- menu kanan mula -->
