@@ -82,13 +82,13 @@ table.excel tbody td
 }
 .navbar-custom .navbar-nav > li > a:hover,
 .navbar-custom .navbar-nav > li > a:focus {
-  color: #c0c0c0;
+  color: #000000;
   background-color: transparent;
 }
 .navbar-custom .navbar-nav > .active > a,
 .navbar-custom .navbar-nav > .active > a:hover,
 .navbar-custom .navbar-nav > .active > a:focus {
-  color: #c0c0c0;
+  color: #000000;
   background-color: #0c86e6;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#0c86e6), to(#329ef4));
   background-image: -webkit-linear-gradient(top, #0c86e6, 0%, #329ef4, 100%);
@@ -119,20 +119,20 @@ table.excel tbody td
 }
 .navbar-custom .navbar-nav > .dropdown > a:hover .caret,
 .navbar-custom .navbar-nav > .dropdown > a:focus .caret {
-  border-top-color: #c0c0c0;
-  border-bottom-color: #c0c0c0;
+  border-top-color: #000000;
+  border-bottom-color: #000000;
 }
 .navbar-custom .navbar-nav > .open > a,
 .navbar-custom .navbar-nav > .open > a:hover,
 .navbar-custom .navbar-nav > .open > a:focus {
   background-color: #0c86e6;
-  color: #c0c0c0;
+  color: #000000;
 }
 .navbar-custom .navbar-nav > .open > a .caret,
 .navbar-custom .navbar-nav > .open > a:hover .caret,
 .navbar-custom .navbar-nav > .open > a:focus .caret {
-  border-top-color: #c0c0c0;
-  border-bottom-color: #c0c0c0;
+  border-top-color: #000000;
+  border-bottom-color: #000000;
 }
 .navbar-custom .navbar-nav > .dropdown > a .caret {
   border-top-color: #ffffff;
@@ -144,13 +144,13 @@ table.excel tbody td
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #c0c0c0;
+    color: #000000;
     background-color: transparent;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #c0c0c0;
+    color: #000000;
     background-color: #0c86e6;
   }
   .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
@@ -164,7 +164,8 @@ table.excel tbody td
   color: #ffffff;
 }
 .navbar-custom .navbar-link:hover {
-  color: #c0c0c0;
-}</style>
+  color: #000000;
+}
+</style>
 </head>  
 <body>
