@@ -115,8 +115,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$this->papar->noBatch = $noBatch = bersihGET('tambah'); # bersihkan data $_GET
 		
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch" . '';
-		header('location: ' . URL . "prosesan/batch/$namaPegawai/$noBatch");
+		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$noBatch" . '';
+		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$noBatch");
 	}
 
 	public function tukarBatchProses($namaPegawai,$asalBatch)
@@ -144,8 +144,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$this->papar->noBatch = $tukarBatch; 
 		
 		# pergi papar kandungan
-		echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$tukarBatch" . '';
-		//header('location: ' . URL . "prosesan/batch/$namaPegawai/$tukarBatch");
+		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$tukarBatch" . '';
+		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$tukarBatch");
 	}
 
 	public function ubahBatchProses($namaPegawai,$asalBatch)
@@ -175,8 +175,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$this->papar->noID = $dataID; 
 		
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . "prosesan/batch/$namaPegawai/$asalBatch/$dataID" . '';
-		header('location: ' . URL . "prosesan/batch/$namaPegawai/$asalBatch/$dataID");
+		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
+		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
