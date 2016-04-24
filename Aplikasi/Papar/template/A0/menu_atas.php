@@ -1,9 +1,10 @@
 <?php 
-/*Sesi::init(); // mulakan sesi
+/*
+\Aplikasi\Kitab\Sesi::init(); // mulakan sesi
 //echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
-$pengguna = Sesi::get('namaPegawai');
-$level = Sesi::get('levelPegawai');
+$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
+$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 $pegawai = null; //$this->pegawai;
 
 $senaraiPengguna = array('fe','pegawai');
@@ -12,11 +13,11 @@ if (in_array(Sesi::get('levelPegawai'), $senaraiPentadbir))
 	$paras = '' . Sesi::get('levelPegawai');
 elseif (in_array($level, $senaraiPengguna)) 
 	$paras = '' . Sesi::get('levelPegawai');
-else //*/
+else 
 	$paras = null;
 $url = './';
 if ($paras == null):
-else:
+else: //*/
 ?>
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
@@ -55,4 +56,4 @@ else:
 <img src="<?php echo URL ?>../gambar2/banner.png" alt="banner">
 </div>-->
 <?php
-endif;
+//endif;
