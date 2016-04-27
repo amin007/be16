@@ -130,8 +130,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1
-			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
-			$cari[] = array('fix'=>'x=','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
+			$cari[] = array('fix'=>'x=','atau'=>'AND','medan'=>'fe','apa'=>$namaPegawai);
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->
 				//tatasusunanCariMFG(//	cariSql( 
