@@ -239,6 +239,18 @@ function bersihGET($papar)
     return $paparHTML;
 }
 
+function bersihGET_nama($papar) 
+{
+	# bersih untuk $_GET sahaja
+	$paparHTML = filter_input(INPUT_GET, $papar, FILTER_SANITIZE_SPECIAL_CHARS);
+	$paparURL = filter_input(INPUT_GET, $papar, FILTER_SANITIZE_ENCODED);
+	$paparHTML = str_replace(' ', '-', $paparHTML);
+	    
+    //return $papar;
+    return $paparHTML;
+}
+
+
 function gambar_latarbelakang($lokasi)
 {
 	// '$lokasi=' . $lokasi;
