@@ -23,7 +23,7 @@ class Tanya
 				$cariApa = isset($carian[$key]['apa'])   ? $carian[$key]['apa']        : null;
 				  $akhir = isset($carian[$key]['akhir']) ? $carian[$key]['akhir']      : null;
 				//echo "\r$key => ($fix) $atau $medan -> '$cariApa' |";
-				$where .= $this->cariApa($fix,$atau,$medan,$cariApa,$akhir);
+				$where .= $this->jika($fix,$atau,$medan,$cariApa,$akhir);
 			}
 		endif;
 	
