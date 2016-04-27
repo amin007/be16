@@ -137,7 +137,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				//tatasusunanCariMFG(//	cariSql( 
 				cariSemuaData(
 				$jadual, $medan, $cari, $susun);
-			/*# sql 2 - cari kes MFG
+			/*# sql 2 
 			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
 					$susunMfg[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'respon,nama') );
@@ -165,7 +165,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				//tatasusunanCariMFG(//	cariSql( 
 				cariSemuaData(
 				$jadual, $medan = 'borang,count(*) as kira', $cari3, $susun3);
-			# sql 3 - cari kes PPT
+			# sql 3 - 
 			$susun1[] = array_merge($jum2, array('kumpul'=>'borang,fe','susun'=>'nama') );
 			$this->papar->cariApa['groupBorangFe'] = $this->tanya->
 				//tatasusunanCariMFG(//	cariSql( 
