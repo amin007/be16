@@ -35,17 +35,16 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				$paparError = 'Tiada id<br>';
 			else
 			{
-				$medan = 'newss,ssm,nama,operator,'
+				$medan = 'newss,nossm,nama,operator,'
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$susun = null;
-				$dataKes = $this->tanya->//tatasusunanCariID(//
-				cariSql( 
-					//cariSemuaData(
+				$dataKes = $this->tanya->//tatasusunanCariID(//cariSql( 
+					cariSemuaData(
 					$senaraiJadual[0], $medan, $carian, $susun);
-				echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
+				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
 				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
-					. '| ssm:' . $dataKes[0]['ssm']
+					. '| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. '| operator:' . $dataKes[0]['operator']
 					. '<br> alamat:' . $dataKes[0]['alamat'];  //*/
@@ -74,8 +73,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
-		echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
-/*	
+		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca(
@@ -92,21 +91,28 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
-			# sql 1			
-			# sql 2 - cari kes MFG
+			# sql 1
+			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
+			//$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
+			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
+			$this->papar->cariApa['senarai'] = $this->tanya->
+				//tatasusunanCariMFG(//	cariSql( 
+				cariSemuaData(
+				$jadual, $medan, $cari, $susun);//*/		
+			/*# sql 2 - cari kes MFG
 			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
 					$susunMfg[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'respon,nama') );
 			$this->papar->cariApa['mfg'] = $this->tanya->
 				tatasusunanCariMFG(//cariSql( cariSemuaData(
-				$jadual, $medan, $cariMFG, $susunMfg);
-			# sql 3 - cari kes PPT
+				$jadual, $medan, $cariMFG, $susunMfg);//*/
+			/*# sql 3 - cari kes PPT
 			$cariPPT[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			$cariPPT[] = array('fix'=>'x!=','atau'=>'and','medan'=>'kp','apa'=>'205');
 			$susunPpt[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'batchOperasi DESC,mko DESC,kp,nama') );
 			$this->papar->cariApa['ppt'] = $this->tanya->
 				tatasusunanCariPPT(//cariSql( cariSemuaData()
-				$jadual, $medan, $cariPPT, $susunPpt);
+				$jadual, $medan, $cariPPT, $susunPpt);//*/
 	}
 	
 	public function tambahNamaStaf()
