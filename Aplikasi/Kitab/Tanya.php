@@ -12,7 +12,9 @@ class Tanya
 	private function cariApa($fix,$atau,$medan,$cariApa,$akhir)
 	{
 		$where = null; 
-		if($cariApa==null )
+		if($fix == null)
+			$where .= null;
+		elseif($cariApa==null )
 			$where .= ($fix=='x!=') ? " $atau`$medan` !='' $akhir\r"
 				: " $atau`$medan` is null $akhir\r";
 		elseif($fix=='xnull')
