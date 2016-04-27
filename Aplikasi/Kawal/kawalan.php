@@ -71,7 +71,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
     {//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
                 
         // senaraikan tatasusunan jadual dan setkan pembolehubah
-        $jadualKawalan = 'sse15_kawal';
+        $jadualKawalan = 'be16_kawal';
         $medanKawalan = $this->medanKawalan($cariID);
 	
         if (!empty($cariID)) 
@@ -82,7 +82,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
             // 1. mula semak dalam rangka 
             $this->papar->kawalan['kes'] = $this->tanya->
-				cariSemuaData($jadualKawalan, $medanKawalan, $cari);
+				cariSemuaData($jadualKawalan, $medanKawalan, $cari, $susun = null);
 				//cariSql($jadualKawalan, $medanKawalan, $cari);
 
 			if(isset($this->papar->kawalan['kes'][0]['newss'])):
