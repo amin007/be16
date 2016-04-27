@@ -33,8 +33,7 @@ elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch; 
-	$notaTambahan = '<small>' . $mencari . '</small><br>' . "\r" .
-	'Daftar kes masing-masing<br>';
+	$notaTambahan = 'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
 else : # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
