@@ -1,9 +1,9 @@
-<?php 
+<!-- menu_atas.php A0 --><?php 
+$sesi = \Aplikasi\Kitab\Sesi::init();
 //echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
 $pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
 $level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
-$pegawai = null; //$this->pegawai;
 
 $senaraiPengguna = array('fe','pegawai');
 $senaraiPentadbir = array('kawal','admin');
