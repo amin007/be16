@@ -39,14 +39,13 @@ else : ?><?php # set pembolehubah
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
 	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
+	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>|
+	<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
 	$notaTambahan = '';
 	$butangHantar = 'Kemaskini';
 endif; ?>
-<div class="container">
-	<h3><a target="_blank" href="<?=$cetakF10?>"> Cetak F10</a>|
-	<a target="_blank" href="<?=$cetakF10?>">Cetak A1</a></h3>
-	<h1>Ubah | Nama Pegawai : <?=$namaPegawai?> | BatchProsesan : <?=$cariBatch?><br>
-	<small>Nota: <?=$paparError?></small></h1>
+<div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
+	<h1><?=$notaTambahan?></h1>
 
 	<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
 	<div class="form-group"><div class="input-group">
