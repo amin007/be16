@@ -107,12 +107,23 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				$jadual, $medan, $cariPPT, $susunPpt);
 	}
 	
-	public function tambahBatchBaru($namaPegawai = null)
+	public function tambahNamaStaf()
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>'; # debug $_GET
 		# Set pemboleubah utama
+		$this->papar->namaPegawai = $namaPegawai = bersihGET_nama('cari'); # bersihkan data $_GET
+		
+		# pergi papar kandungan
+		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai" . '';
+		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai");
+	}
+
+	public function tambahBatchBaru($namaPegawai = null)
+	{
+		echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>'; # debug $_GET
+		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $noBatch = bersihGET('tambah'); # bersihkan data $_GET
+		$this->papar->noBatch = $noBatch = bersihGET('cari'); # bersihkan data $_GET
 		
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$noBatch" . '';
