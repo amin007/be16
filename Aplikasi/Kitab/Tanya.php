@@ -8,7 +8,65 @@ class Tanya
 		$this->db = new \Aplikasi\Kitab\DB_Pdo(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 	}
-		
+
+	private function jika($atau,$medan,$fix,$cariApa,$akhir)
+	{
+		$dimana = null;
+		if($atau==null) $dimana .= null;
+		elseif($cariApa==null)
+			$dimana .= ($fix=='x!=') ? " $atau`$medan` != '' $akhir\r"
+					: " $atau`$medan` is null $akhir\r";
+		elseif($fix=='xnull')
+			$dimana .= " $atau`$medan` is not null  $akhir\r";
+		elseif($fix=='x=')
+			$dimana .= " $atau`$medan` = '$cariApa' $akhir\r";
+		elseif($fix=='x<=')
+			$dimana .= " $atau`$medan` <= '$cariApa' $akhir\r";
+		elseif($fix=='x>=')
+			$dimana .= " $atau`$medan` >= '$cariApa' $akhir\r";
+		elseif($fix=='like')
+			$dimana .= " $atau`$medan` like '$cariApa' $akhir\r";
+		elseif($fix=='xlike')
+			$dimana .= " $atau`$medan` not like '$cariApa' $akhir\r";	
+		elseif($fix=='%like%')
+			$dimana .= " $atau`$medan` like '%$cariApa%' $akhir\r";	
+		elseif($fix=='x%like%')
+			$dimana .= " $atau`$medan` not like '%$cariApa%' $akhir\r";	
+		elseif($fix=='like%')
+			$dimana .= " $atau`$medan` like '$cariApa%' $akhir\r";	
+		elseif($fix=='xlike%')
+			$dimana .= " $atau`$medan` not like '$cariApa%' $akhir\r";	
+		elseif($fix=='%like')
+			$dimana .= " $atau`$medan` like '%$cariApa' $akhir\r";	
+		elseif($fix=='x%like')
+			$dimana .= " $atau`$medan` not like '%$cariApa' $akhir\r";	
+		elseif($fix=='in')
+			$dimana .= " $atau`$medan` in $cariApa $akhir\r";				
+		elseif($fix=='xin')
+			$dimana .= " $atau`$medan` not in $cariApa $akhir\r";				
+		elseif($fix=='khas2')
+			$dimana .= " $atau`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";	
+		elseif($fix=='xkhas2')
+			$dimana .= " $atau`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";	
+		elseif($fix=='khas3')
+			$dimana .= " $atau`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";	
+		elseif($fix=='xkhas4')
+			$dimana .= " $atau`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";	
+		elseif($fix=='z1')
+			$dimana .= " $atau$medan = $cariApa $akhir\r";
+		elseif($fix=='z2')
+			$dimana .= " $atau$medan like '$cariApa' $akhir\r";
+		elseif($fix=='z2x')
+			$dimana .= " $atau$medan not like '$cariApa' $akhir\r";
+		elseif($fix=='z3x')
+			$dimana .= " $atau$medan IS NOT NULL $akhir\r";
+		elseif($fix=='zin')
+			$dimana .= " $atau$medan in $cariApa $akhir\r";
+		elseif($fix=='zxin')
+			$dimana .= " $atau$medan not in $cariApa $akhir\r";	
+		return $dimana;
+	}
+	
 	private function dimana($carian)
 	{
 		$where = null;
