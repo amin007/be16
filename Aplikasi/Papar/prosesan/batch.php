@@ -30,7 +30,7 @@ elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch; 
-	$notaTambahan = '<small>' . $mencari . '</small><br>' . "\r"
+	$notaTambahan = '<small>' . $mencari . '</small><br>' . "\r" .
 	'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
 else : ?><?php # set pembolehubah
@@ -40,9 +40,9 @@ else : ?><?php # set pembolehubah
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
 	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r"
+	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r" .
 	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
-	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>
+	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br> . "\r" .
 	<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Kemaskini';
 endif; ?>
@@ -64,7 +64,10 @@ endif; ?>
 
 </div><!-- / class="container" -->
 <!-- mula - baca jadual berulang ///////////////////////////////////////////////////////////////////////// -->
-<?php include 'papar_jadual_berulang.php'; ?>
+<?php 
+if (isset($this->cariApa) )
+	include 'papar_jadual_berulang.php'; 
+?>
 <!-- tamat - baca jadual berulang //////////////////////////////////////////////////////////////////////// -->
 
 
