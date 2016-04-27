@@ -6,7 +6,6 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 	function __construct() 
 	{
 		parent::__construct();
-		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'ruangtamu';
