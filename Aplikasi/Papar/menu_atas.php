@@ -1,38 +1,35 @@
-<?php 
-//include 'template/A0/menu_atas.php';
-/*Sesi::init(); // mulakan sesi
+<!-- Aplikasi/Papar/menu_atas.php  --><?php 
+$sesi = \Aplikasi\Kitab\Sesi::init();
 //echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
-$pengguna = Sesi::get('namaPegawai');
-$level = Sesi::get('levelPegawai');
-$pegawai = null; //$this->pegawai;
+$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
+$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 
 $senaraiPengguna = array('fe','pegawai');
 $senaraiPentadbir = array('kawal','admin');
-if (in_array(Sesi::get('levelPegawai'), $senaraiPentadbir)) 
-	$paras = '' . Sesi::get('levelPegawai');
+if (in_array($level, $senaraiPentadbir)) 
+	$paras = '' . $level;
 elseif (in_array($level, $senaraiPengguna)) 
-	$paras = '' . Sesi::get('levelPegawai');
+	$paras = '' . $level;
 else 
 	$paras = null;
-$url = './'; 
-if ($paras == null):
-else: //*/
-?>
-<div class="navbar navbar-inverse" role="navigation">
+
+if ($paras == null): else: ?>
+<!-- div class="navbar navbar-inverse" role="navigation" -->
+<div class="navbar navbar-custom" role="navigation">
 	<div class="container-fluid">
 		<!-- menu kiri mula -->
 		<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		<span class="sr-only">Toggle navigation</span>
-		<?php for ($iconbar=1; $iconbar < 3; $iconbar++):
-		?><span class="icon-bar"></span><?php endfor; ?>
-		</button>
-		<a class="navbar-brand" href="<?php echo URL ?>"><?php echo Tajuk_Muka_Surat . ':' . $paras ?></a>
-		<a class="navbar-brand" href="<?php echo URL ?>ruangtamu/logout">
-			<span class="glyphicon glyphicon-off"></span>Keluar</a>
-		<a class="navbar-brand" href="<?php echo 'http://' . $_SERVER['SERVER_NAME'] ?>/private_html">
-			<span class="glyphicon glyphicon-stats"></span>E-Survey POM</a>	
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<?php for ($iconbar=1; $iconbar < 3; $iconbar++):
+			?><span class="icon-bar"></span><?php endfor; ?>
+			</button>
+			<a class="navbar-brand" href="<?php echo URL ?>"><?php echo Tajuk_Muka_Surat . ':' . $paras ?></a>
+			<a class="navbar-brand" href="<?php echo URL ?>ruangtamu/logout">
+				<span class="glyphicon glyphicon-off"></span>Keluar</a>
+			<a class="navbar-brand" href="<?php echo 'http://' . $_SERVER['SERVER_NAME'] ?>/private_html">
+				<span class="glyphicon glyphicon-stats"></span>E-Survey POM</a>	
 		</div>
 		<!-- menu kiri tamat -->
 		<!-- menu kanan mula -->
@@ -56,5 +53,5 @@ else: //*/
 <img src="<?php echo URL ?>../gambar2/banner.png" alt="banner">
 </div>-->
 <?php
+//*/
 endif;
-*/
