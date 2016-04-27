@@ -19,9 +19,9 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 		<?=$icon['User']?>Biodata <?=$pengguna?>
 	</a></li>
 	<li class="divider"></li>
-	<li><a href="<?php echo $url ?>batch/awal/"><?=$icon['Barcode']?>Semak Barcode</a></li>
-	<li><a href="<?php echo $url ?>batch/hantar/"><?=$icon['Barcode']?>Hantar Kes</a></li>
-	<li><a href="<?php echo $url ?>batch/terima/"><?=$icon['Barcode']?>Terima Di Prosesan</a></li>
+	<li><a href="<?php echo $url ?>operasi/batch"><?=$icon['Barcode']?>Semak Barcode</a></li>
+	<li><a href="<?php echo $url ?>operasi/hantar"><?=$icon['Barcode']?>Hantar Kes</a></li>
+	<li><a href="<?php echo $url ?>prosesan/batch"><?=$icon['Barcode']?>Terima Di Prosesan</a></li>
 	<li class="divider"></li>
 	<li><a href="<?php echo $url ?>ruangtamu/logout">
 		<span class="glyphicon glyphicon-off"></span>Keluar
