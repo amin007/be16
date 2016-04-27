@@ -16,6 +16,7 @@ $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
 	. '';
 	
 if (($this->namaPegawai == null)) :
+	# set pembolehubah
 	$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' . $urlStaf;
 	$mencari = URL . 'prosesan/tambahNamaStaf';
 	$butangHantar = 'Letak Nama Staf';
@@ -35,7 +36,7 @@ elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	$notaTambahan = '<small>' . $mencari . '</small><br>' . "\r" .
 	'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
-else : ?><?php # set pembolehubah
+else : # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$paparError = (!isset($this->error)) ? null : $this->error;
