@@ -25,7 +25,7 @@ class DB_Pdo extends \PDO
 	 * @param constant $fetchMode A PDO Fetch mode
 	 * @return mixed
 	 */
-	public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
+	public function select($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
@@ -46,7 +46,7 @@ class DB_Pdo extends \PDO
 	 * @return mixed
 	 */
 	
-	public function rowcount($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
+	public function rowCount($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
@@ -88,7 +88,7 @@ class DB_Pdo extends \PDO
 	 * @return mixed
 	 */
 	 
-	public function update($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC)
+	public function update($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
