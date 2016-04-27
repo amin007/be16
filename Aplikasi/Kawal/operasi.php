@@ -153,24 +153,25 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
-			# sql 1
+			# sql 1 
+			$medan1 = 'borang,fe,count(*) as kira,concat_ws("/",fe,borang) as feborang';
+			$susun1[] = array_merge($jum2, array('kumpul'=>'borang,fe','susun'=>'nama') );
+			$this->papar->cariApa['groupBorangFe'] = $this->tanya->
+				//tatasusunanCariMFG(//	cariSql( 
+				cariSemuaData(
+				$jadual, $medan1 , $cari = null, $susun1);
+			/*# sql 2
 			$susun2[] = array_merge($jum2, array('kumpul'=>'fe','susun'=>'nama') );
 			$this->papar->cariApa['groupFe'] = $this->tanya->
 				//tatasusunanCariMFG(//	cariSql( 
 				cariSemuaData(
 				$jadual, $medan = 'fe,count(*) as kira', $cari2, $susun2);
-			# sql 2 - cari 
+			# sql 3
 			$susun3[] = array_merge($jum2, array('kumpul'=>'borang','susun'=>'nama') );
 			$this->papar->cariApa['groupBorang'] = $this->tanya->
 				//tatasusunanCariMFG(//	cariSql( 
 				cariSemuaData(
-				$jadual, $medan = 'borang,count(*) as kira', $cari3, $susun3);
-			# sql 3 - 
-			$susun1[] = array_merge($jum2, array('kumpul'=>'borang,fe','susun'=>'nama') );
-			$this->papar->cariApa['groupBorangFe'] = $this->tanya->
-				//tatasusunanCariMFG(//	cariSql( 
-				cariSemuaData(
-				$jadual, $medan = 'borang,fe,count(*) as kira,concat_ws("/",fe,borang) as feborang', $cari = null, $susun1);
+				$jadual, $medan = 'borang,count(*) as kira', $cari3, $susun3); //*/
 	}
 	
 	public function tambahNamaStaf()
