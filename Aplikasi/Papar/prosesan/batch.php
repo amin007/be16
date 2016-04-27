@@ -42,8 +42,8 @@ else : ?><?php # set pembolehubah
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
 	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r" .
 	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
-	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br> . "\r" .
-	<small>Nota: ' . $paparError . '</small>';
+	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>' . "\r" .
+	'<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Kemaskini';
 endif; ?>
 <div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
