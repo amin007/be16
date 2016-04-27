@@ -17,12 +17,14 @@ $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
 	
 if (($this->namaPegawai == null)) :
 	$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' . $urlStaf;
-	$butangHantar = '';
+	$mencari = URL . 'prosesan/tambahNamaStaf';
+	$butangHantar = 'Letak Nama Staf';
 elseif (($this->namaPegawai != null) && ($this->noBatch == null)) :
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$mencari = URL . 'prosesan/tambahBatchBaru/' . $namaPegawai;
-	$notaTambahan = '';
+	$notaTambahan = '<small>' . $mencari . '</small><br>' .
+	( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
 	$butangHantar = 'Letak No Batch';
 elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	&& ($this->error == 'Kosong') ) : 
@@ -50,6 +52,7 @@ endif; ?>
 	<h1><?=$notaTambahan?></h1>
 
 	<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
+	<?php echo $mencari . '<br>' ?>
 	<div class="form-group"><div class="input-group">
 		<input type="text" name="cari" class="form-control" autofocus
 		id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
