@@ -88,6 +88,40 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 
+	public function batch2($namaPegawai = null, $cariBatch = null, $cariID = null) 
+	{
+		# Set pemboleubah utama
+		$this->papar->namaPegawai = $namaPegawai;
+		$this->papar->noBatch = $cariBatch;
+		# mencari dalam database
+		if ($cariID == null):
+			$this->papar->error = 'Kosong';
+			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
+			# mula carian dalam jadual $myTable
+			$this->cariAwal($senaraiJadual, $cariBatch, null, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $cariBatch, $cariID, $this->medanData);			
+		else:
+			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
+			# cari $cariBatch atau cariID wujud tak
+			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
+			//$this->papar->error = 'No ID = ' . $noID;
+			# mula carian dalam jadual $myTable
+			$this->cariAwal($senaraiJadual, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $cariBatch, $cariID, $this->medanData);
+		endif;
+
+		# semak pembolehubah $this->papar->cariApa
+		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca(
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/batch',$jenis,0); # $noInclude=0		
+		//*/
+	}
+
 	private function cariAwal($senaraiJadual, $cariBatch, $cariID, $medan)
 	{
 		$item = 1000; $ms = 1; ## set pembolehubah utama
