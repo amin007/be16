@@ -1,5 +1,5 @@
 <?php 
-include 'template/A0/menu_atas.php';
+//include 'template/A0/menu_atas.php';
 /*Sesi::init(); // mulakan sesi
 //echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
@@ -15,9 +15,9 @@ elseif (in_array($level, $senaraiPengguna))
 	$paras = '' . Sesi::get('levelPegawai');
 else 
 	$paras = null;
-$url = './';
+$url = './'; 
 if ($paras == null):
-else:
+else: //*/
 ?>
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container-fluid">
