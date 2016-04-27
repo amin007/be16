@@ -8,63 +8,7 @@ class Tanya
 		$this->db = new \Aplikasi\Kitab\DB_Pdo(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 	}
-	
-	private function cariApa($fix,$atau,$medan,$cariApa,$akhir)
-	{
-		$where = null; 
-		if($fix == null)
-			$where .= null;
-		elseif($cariApa==null )
-			$where .= ($fix=='x!=') ? " $atau`$medan` !='' $akhir\r"
-				: " $atau`$medan` is null $akhir\r";
-		elseif($fix=='xnull')
-			$where .= " $atau`$medan` is not null  $akhir\r";
-		elseif($fix=='x=')
-			$where .= " $atau`$medan` = '$cariApa' $akhir\r";
-		elseif($fix=='x!=')
-			$where .= " $atau`$medan` != '$cariApa' $akhir\r";
-		elseif($fix=='like')
-			$where .= " $atau`$medan` like '$cariApa' $akhir\r";
-		elseif($fix=='xlike')
-			$where .= " $atau`$medan` not like '$cariApa' $akhir\r";	
-		elseif($fix=='%like%')
-			$where .= " $atau`$medan` like '%$cariApa%' $akhir\r";	
-		elseif($fix=='x%like%')
-			$where .= " $atau`$medan` not like '%$cariApa%' $akhir\r";	
-		elseif($fix=='like%')
-			$where .= " $atau`$medan` like '$cariApa%' $akhir\r";	
-		elseif($fix=='xlike%')
-			$where .= " $atau`$medan` not like '$cariApa%' $akhir\r";	
-		elseif($fix=='%like')
-			$where .= " $atau`$medan` like '%$cariApa' $akhir\r";	
-		elseif($fix=='x%like')
-			$where .= " $atau`$medan` not like '%$cariApa' $akhir\r";	
-		elseif($fix=='in')
-			$where .= " $atau`$medan` in $cariApa $akhir\r";						
-		elseif($fix=='xin')
-			$where .= " $atau`$medan` not in $cariApa $akhir\r";						
-		elseif($fix=='khas2')
-			$where .= " $atau`$medan` REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";	
-		elseif($fix=='xkhas2')
-			$where .= " $atau`$medan` NOT REGEXP CONCAT('(^| )','',$cariApa) $akhir\r";	
-		elseif($fix=='khas3')
-			$where .= " $atau`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";	
-		elseif($fix=='xkhas4')
-			$where .= " $atau`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";	
-		elseif($fix=='z1')
-			$where .= " $atau$medan = $cariApa $akhir\r";
-		elseif($fix=='z2')
-			$where .= " $atau$medan like $cariApa $akhir\r";
-		elseif($fix=='zin')
-			$where .= " $atau$medan in $cariApa $akhir\r";
-		elseif($fix=='zxin')
-			$where .= " $atau$medan not in $cariApa $akhir\r";	
-		# pulangkan nilai $where
-		//' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
-		//echo $where;
-		return $where;
-	}
-	
+		
 	private function dimana($carian)
 	{
 		$where = null;
