@@ -300,6 +300,20 @@ class Html
 			/*?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php*/
 			?></td><td><?php echo $data ?></td><?php
 		}
+		elseif ($key=='feborang')
+		{
+			$k1 = URL . "operasi/batch/$data";
+			//$k2 = URL . "laporan/cetakNonA1/$data/1000";
+			//$k3 = URL . "laporan/cetakA1/$data/1000";
+			if ($data == null):
+				?><td>&nbsp;</td><?php
+			else:?><td><?php
+				?><a href="<?php echo $k1 ?>" class="btn btn-primary btn-mini"><?php echo $data ?></a><?php
+				?><a target="_blank" href="<?php echo $k2 ?>" class="btn btn-danger btn-mini">Batch Non A1</a><?php
+				?><a target="_blank" href="<?php echo $k3 ?>" class="btn btn-success btn-mini">Batch A1</a><?php
+				?></td><?php
+			endif;
+		}
 		elseif ($key=='hantar_prosesan')
 		{
 			$k1 = URL . "batch/proses/$data";
