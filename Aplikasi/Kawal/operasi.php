@@ -39,9 +39,11 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$susun = null;
-				$dataKes = $this->tanya->tatasusunanCariID(//cariSql( cariSemuaData(
+				$dataKes = $this->tanya->//tatasusunanCariID(//
+				cariSql( 
+					//cariSemuaData(
 					$senaraiJadual[0], $medan, $carian, $susun);
-				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
+				echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
 				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
 					. '| ssm:' . $dataKes[0]['ssm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
@@ -72,8 +74,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
-		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
-
+		echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+/*	
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca(
@@ -169,15 +171,15 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# masuk dalam database
 			# ubahsuai $posmen
 			$jadual = 'be16_kawal'; 
-			$medanID = 'nossm';
-			$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
-			$posmen[$jadual]['nobatch'] = $asalBatch;
+			$medanID = 'newss';
+			$posmen[$jadual]['fe'] = $namaPegawai;
+			$posmen[$jadual]['borang'] = $asalBatch;
 			$posmen[$jadual][$medanID] = $dataID;
 			//$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			//$this->tanya->ubahSimpan(
-			$this->tanya->ubahSqlSimpan(
+			$this->tanya->ubahSimpan(
+			//$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
 
 		# Set pemboleubah utama
