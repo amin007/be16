@@ -30,7 +30,8 @@ elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch; 
-	$notaTambahan = '';
+	$notaTambahan = '<small>' . $mencari . '</small><br>' . "\r"
+	'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
 else : ?><?php # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
@@ -39,8 +40,8 @@ else : ?><?php # set pembolehubah
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
 	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>|
-	<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
+	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r"
+	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
 	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>
 	<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Kemaskini';
