@@ -13,8 +13,7 @@ foreach ($this->cariApa as $jadual => $baris)
 		</a></li>
 <?php
 	}
-}
-?>	</ul>
+} ?>	</ul>
 <div class="tab-content">
 <?php 
 foreach ($this->cariApa as $myTable => $row)
@@ -31,7 +30,6 @@ foreach ($this->cariApa as $myTable => $row)
 	</div>
 <?php
 	} // if ( count($row)==0 )
-}
-?>	
+} ?>	
 </div><!-- class="tab-content" -->
 </div><!-- /tabbable -->
