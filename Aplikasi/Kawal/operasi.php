@@ -62,6 +62,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# mencari dalam database
 		if ($cariID == null):
 			$this->papar->error = 'Kosong';
+			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
+			# mula carian dalam jadual $myTable
+			$this->cariAwal($senaraiJadual, $cariBatch, null, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $cariBatch, $cariID, $this->medanData);			
 		else:
 			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			# cari $cariBatch atau cariID wujud tak
@@ -92,7 +96,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1
-			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
+			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			//$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->
