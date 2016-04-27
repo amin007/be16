@@ -1,4 +1,5 @@
 <?php 
+include 'template/A0/menu_atas.php';
 /*Sesi::init(); // mulakan sesi
 //echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
@@ -12,7 +13,7 @@ if (in_array(Sesi::get('levelPegawai'), $senaraiPentadbir))
 	$paras = '' . Sesi::get('levelPegawai');
 elseif (in_array($level, $senaraiPengguna)) 
 	$paras = '' . Sesi::get('levelPegawai');
-else //*/
+else 
 	$paras = null;
 $url = './';
 if ($paras == null):
@@ -56,3 +57,4 @@ else:
 </div>-->
 <?php
 endif;
+*/
