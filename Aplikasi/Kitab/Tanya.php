@@ -9,10 +9,10 @@ class Tanya
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 	}
 
-	private function jika($atau,$medan,$fix,$cariApa,$akhir)
+	private function jika($fix,$atau,$medan,$cariApa,$akhir)
 	{
-		$dimana = null;
-		if($atau==null) $dimana .= null;
+		$dimana = null; //echo "\r($fix) +> $atau $medan -> '$cariApa' |";
+		if($fix==null) $dimana .= null;
 		elseif($cariApa==null)
 			$dimana .= ($fix=='x!=') ? " $atau`$medan` != '' $akhir\r"
 					: " $atau`$medan` is null $akhir\r";
@@ -65,7 +65,7 @@ class Tanya
 		elseif($fix=='zxin')
 			$dimana .= " $atau$medan not in $cariApa $akhir\r";	
 		
-		return $dimana;
+		return $dimana; //echo '<br>' . $dimana;
 	}
 	
 	private function dimana($carian)
@@ -112,6 +112,35 @@ class Tanya
 		endif; 
 	
 		return $susunan; //echo '<pre>'; print_r($carian).  '<pre>';
+	}
+
+	public function kiraMedan($myTable, $medan, $carian)
+	{
+		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
+			. $this->dimana($carian);
+		
+		//echo $sql . '<br>';
+		$result = $this->db->columnCount($sql);
+		
+		return $result;
+	}
+
+	public function kiraBaris($myTable, $medan, $carian)
+	{
+		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
+			. $this->dimana($carian);
+		
+		//echo $sql . '<br>';
+		$result = $this->db->rowCount($sql);
+		
+		return $result;
+	}
+
+	public function paparMedan($myTable)
+	{
+		//return $this->db->select('SHOW COLUMNS FROM ' . $myTable);
+		$sql = 'SHOW COLUMNS FROM ' . $myTable;
+		return $this->db->selectAll($sql);
 	}
 
 	public function pilihMedan($database,$myTable)
