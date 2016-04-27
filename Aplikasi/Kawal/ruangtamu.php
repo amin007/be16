@@ -61,7 +61,7 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 	function logout()
 	{
 		//echo '<pre>sebelum:'; print_r($_SESSION) . '</pre>';
-		Sesi::destroy();
+		\Aplikasi\Kitab\Sesi::destroy();
 		header('location: ' . URL);
 		//exit;
 	}
