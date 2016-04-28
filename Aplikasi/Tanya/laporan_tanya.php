@@ -214,6 +214,21 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiMedan; # pulangkan nilai
 	}
 
+	private function medanRespon2()
+	{
+		$senaraiMedan[] = 'kod'; // 'newss'; 
+		$senaraiMedan[] = 'f2';
+		$senaraiMedan[] = 'respon';
+		$senaraiMedan[] = 'nama, '
+			. 'concat_ws("-",`kp`) as kp,'
+			. '"" as utama, concat_ws("-",`newss`) as newss,'
+			//. 'concat_ws("-",`TINDAKAN`) as nota'
+			. '"" as nota'
+			. '';
+			
+		return $senaraiMedan; # pulangkan nilai
+	}
+
 	private function bentukSqlRespon($medanR, $jadualR, $item, $ms)
 	{
 		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
@@ -226,30 +241,24 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $hasilRespon; # pulangkan nilai
 	}
 	
-	public function kumpulRespon($item, $ms, $myTable, $carian, $susun)
+	public function kumpulRespon($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
-		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
+		list($medanR, $jadualR, $r, $medan) = $this->medanRespon2();
 		# panggil sql pertama
 		$hasilRespon = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
 		# loop over the object directly 
-		$kumpul = null;
 		foreach($hasilRespon as $key=>$val)
 		{	
 			foreach($val as $key2=>$p)
 			{
 				//$kumpul .= ",\r '' as '" . $p . "'";
-				$kumpul .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
+				$medan .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
 				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
 			}
-		} //echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		} //echo '<pre>$medan:'; print_r($medan) . '</pre>';
 		
-		# sql kedua, khas untuk cetak F3 : senarai kes pegawai kerja luar
-		$hasil2 = $this->//tatasusunan
-			cariSemuaData //cariSql
-			($myTable, "$medan$kumpul\r", $carian, $susun);
-
-		return $hasil2; # pulangkan nilai
+		return $medan; # pulangkan nilai
 	}
 #- tamat  untuk Sql Respon -----------------------------------------------------------------------------------------
 #==========================================================================================
