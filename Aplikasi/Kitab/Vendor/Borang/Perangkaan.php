@@ -167,8 +167,8 @@ class Perangkaan
 					echo '<tr><td>' . $i . '</td>';
 					echo '<td>&nbsp;</td>';
 					//echo "<td><font color=\"yellow\">"
-					//	. $rows . '-' .(($item-1)*30)." = ".(30 - ($rows - (($item-1)*30) )).", "
-					//	. " nombor terakhir > $rows + ".(30 - ($rows - (($item-1)*30) ))." => $akhir</td>";
+					//	. $allRows . '-' .(($item-1)*30)." = ".(30 - ($allRows - (($item-1)*30) )).", "
+					//	. " nombor terakhir > $allRows + ".(30 - ($allRows - (($item-1)*30) ))." => $akhir</td>";
 						for($j = 1; $j <= (24); $j++)
 						echo '<td>&nbsp;</td>';
 					echo '<tr>';
