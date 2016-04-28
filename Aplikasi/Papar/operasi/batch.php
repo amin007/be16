@@ -24,8 +24,7 @@ elseif (($this->namaPegawai != null) && ($this->noBatch == null)) :
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
-	$notaTambahan = '<small>' . $mencari . '</small><br>' .
-	( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
+	$notaTambahan = ( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
 	$butangHantar = 'Letak No Batch';
 elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	&& ($this->error == 'Kosong') ) : 
@@ -40,10 +39,11 @@ else : # set pembolehubah
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$paparError = (!isset($this->error)) ? null : $this->error;
 	$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
-	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
+	$cetakF03 = URL . 'laporan/cetakf3/' . $namaPegawai . '/' . $cariBatch . '/1000';
+	//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $cariBatch . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r" .
-	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
+	$cetak = '<h3><a target="_blank" href="' . $cetakF03 . '"> Cetak F3</a>| ' . "\r" .
+	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>' . "\r";
 	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>' . "\r" .
 	'<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Kemaskini';
@@ -52,7 +52,7 @@ endif; ?>
 	<h1><?=$notaTambahan?></h1>
 
 	<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
-	<?php echo $mencari . '<br>' ?>
+	<?php echo $mencari . '<br>' . "\r" ?>
 	<div class="form-group"><div class="input-group">
 		<input type="text" name="cari" class="form-control" autofocus
 		id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
