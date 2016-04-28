@@ -19,7 +19,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/index');
 	}
 #==========================================================================================
-	public function fe($jadual, $cariID, $cariApa, $item = 1000)
+	public function fe($jadual, $cariID, $cariApa, $item = 1000, $ms = 1)
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat = 'Enjin Laporan FE';
@@ -49,7 +49,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 	}
 #==========================================================================================
 // cetak f3 - senarai nama syarikat ikut fe/batchAwal
-	public function cetakf3($namaPegawai, $cariBatch, $item = 30, $ms = 1)
+	public function cetakf3($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
 		# kiraKes dulu
 		$jadual = 'be16_kawal';
@@ -67,8 +67,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
 		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
 		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;
-		$this->papar->ms = $ms;
+		$this->papar->item = $item;;
+		$this->papar->baris = $baris;
 		$this->papar->hasil = $kumpul;
 		$this->papar->fe = $namaPegawai;
 		$this->papar->kp = 'BE';
