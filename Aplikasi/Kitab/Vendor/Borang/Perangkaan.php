@@ -171,7 +171,7 @@ class Perangkaan
 				}echo "</tr>\n";
 
 				## kata2 pengarah
-					if($kira==($baris-1)) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
+				//	if($kira==($baris-1)) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
 				
 			}
 			
