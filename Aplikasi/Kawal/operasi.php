@@ -127,10 +127,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jadual = $senaraiJadual[0];
 			# sql 1
 			//$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+			$jum = pencamSqlLimit($item, $item, $ms);
+			$cantumSusun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'newss') );
 			foreach ($senaraiJadual as $key => $myTable)
 			{# mula ulang table
-				$jum = pencamSqlLimit($item, $item, $ms);
-				$cantumSusun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'nama') );
 				# sql guna limit //$this->papar->cariApa = array();
 					$this->papar->cariApa['semua'] = $this->tanya->//tatasusunanCari(//cariSql( 
 						cariSemuaData(
