@@ -74,7 +74,24 @@ class Index extends \Aplikasi\Kitab\Kawal
 		$this->papar->IP=dpt_ip(); # dapatkan senarai IP yang dibenarkan
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/keluar');
+	}	
+#==========================================================================================	
+	function kaunter()
+	{
+		# Set pemboleubah utama
+		/*if( isset($this->tanya) ):
+			echo 'awek tanya ada'; 
+		else:
+			echo 'awek tanya tiada'; 
+		endif;
+		
+		if(method_exists($this->tanya, 'dudukmana'))
+			echo '$this->tanya->dudukmana() exists!';
+		else
+			echo '$this->tanya->dudukmana() doesn\'t exists';
+		//*/
+		$this->tanya->dudukmana() or die('masalah');
+		
 	}
-	
 #==========================================================================================	
 }
