@@ -18,13 +18,14 @@ include 'diatas.php';
 	$baris = isset($this->baris) ? $this->baris : 30;
 	$ms = isset($this->ms) ? $this->ms : 1;
 	$hasil = $this->hasil;
-	$tajukRespon=array();	
+	$tajukRespon=array();
 	/*# semak data
 	echo '<pre>$hasilLaporan:'; print_r($this->hasil) . '</pre>';
 	echo '<br>$baris:' . $rows . '|' . count($this->hasil) . '<br>';
 	echo '<br>$lajur:' . $fields . '|' . count($this->hasil[0]) . '<br>';
+	echo '<br>$kp:' . $kp . '<br>';
 	//*/
-	
+
 if (count($this->hasil) == 0):
 	echo 'Tiada data';
 else:
