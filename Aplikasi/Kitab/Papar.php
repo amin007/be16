@@ -115,7 +115,12 @@ class Papar
 		$paparFail = $failPapar[0];
 		$lokasiTemplate = '/template/' . $template;
 				
-		if ($noInclude == true) 
+		if ($paparFail == false) 
+		{
+			\Aplikasi\Kitab\Route::failPaparTidakWujud();
+			//echo 'failPaparTidakWujud()';
+		}
+		elseif ($noInclude == true) 
 		{
 			require PAPAR . $nama . '.php';	
 		}
