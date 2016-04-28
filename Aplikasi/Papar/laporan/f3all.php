@@ -34,7 +34,7 @@ else:
 	<table border="1" class="excel" width="100%" height="100%">
 	<?php
 	$jadual->paparJadualF3_Data($kp,$namaOrg,$rows,$fields,$hasil,$item,$ms,$baris);
-	$jadual->paparJadualF3_TajukBawah($rows,$fields);
+	//$jadual->paparJadualF3_TajukBawah($rows,$fields);
 	?>
 	</table>
 <?php
