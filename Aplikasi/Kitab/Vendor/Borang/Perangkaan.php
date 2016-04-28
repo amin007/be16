@@ -156,6 +156,7 @@ class Perangkaan
 				{			
 					$ms = ($kira/$baris)+1;
 					$item = ceil($allRows/$baris);
+					if($kira==$baris) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
 					$this->paparJadualF3_TajukMedan($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
 					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
 						. $nilai['newss']."'>".($kira+1)."</a></td>\n";
@@ -166,9 +167,8 @@ class Perangkaan
 					. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
 				}
 				foreach ($nilai as $key => $data) 
-				{
 					echo '<td>' . $data . '</td>';
-				}echo "</tr>\n";
+				echo "</tr>\n";
 
 				## kata2 pengarah
 				//	if($kira==($baris-1)) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
