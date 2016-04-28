@@ -30,8 +30,6 @@ class Kawal
 			//if (class_exists($tanyaNama)) echo '<br>class ' . $tanyaNama . ' wujud<br>';
 			//else echo '<br>class ' . $tanyaNama . ' tak wujud<br>';
 		}//*/
-		//else \Route::classTanyaTidakWujud('fail ' . $tanyaNama . ' tak wujud<br>');
-		//else echo 'fail ' . $tanyaNama . ' tak wujud<br>';
 
 	}
 #==========================================================================================
