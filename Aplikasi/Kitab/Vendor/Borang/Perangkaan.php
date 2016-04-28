@@ -20,6 +20,7 @@ class Perangkaan
 			case 'MFG':  $SV='PENYIASATAN PEMBUATAN TAHUNAN'; break;
 			case 'SERVIS':  $SV='PENYIASATAN PERKHDIMATAN TAHUNAN'; break;
 			case 'PPPMAS':  $SV='PENYIASATAN PERBELANJAAN UNTUK PELINDUNGAN ALAM SEKITAR'; break;
+			case 'BE':  $SV='BANCI EKONOMI'; break;
 			default: $SV=null;
 		endswitch;
 
