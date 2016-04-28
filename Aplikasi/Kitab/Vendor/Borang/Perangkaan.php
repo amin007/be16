@@ -107,8 +107,23 @@ class Perangkaan
 		
 	}
 
-	function paparJadualF3_TajukBawah($rows,$fields)
+	function paparJadualF3_TajukBawah($hasil,$rows,$fields)
 	{
+			## tajuk bawah - bil, jumlah besar, utama, newss, A1-B7
+				echo "<tr>\n";// dptkan nama medan
+				echo '<th>&nbsp;</th>' . "\n";
+				echo '<th colspan=2>Jumlah Besar</th>' . "\n";
+				echo '<th>&nbsp;</th>' . "\n";
+				echo '<th>&nbsp;</th>' . "\n";
+				echo '<th>&nbsp;</th>' . "\n";
+				foreach ($hasil[0] as $key => $kunci)
+				{
+					//echo '<th>&nbsp;</th>' . "\n";	
+					echo (in_array($key,array('nama','kp','utama','newss','nota')))?  
+					'':'<th>' . $kunci . '</th>' . "\n";	
+				}
+				echo "</tr>\n";
+		
 		## pecah muka surat
 		//$cetak=($bil==$rows)?'style="page-break-after:always">':'>';
 		$cetak='style="page-break-after:always">';
@@ -150,11 +165,16 @@ class Perangkaan
 					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
 					. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
 				}
-				foreach ($nilai as $key => $data)
+				foreach ($nilai as $key => $data) 
 				{
 					echo '<td>' . $data . '</td>';
 				}echo "</tr>\n";
+
+				## kata2 pengarah
+					if($kira==($baris-1)) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
+				
 			}
+			
 			## cukupkan 30 rows
 				$mula = $allRows+1;
 				//$bilAwal = ($item-1)*30;  # dpt bil muka surat akhir
@@ -163,7 +183,7 @@ class Perangkaan
 				$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
 				//$mula = $rows+1;
 				for($i = $mula; $i <= ($akhir); $i++)
-				{
+				{					
 					echo '<tr><td>' . $i . '</td>';
 					echo '<td>&nbsp;</td>';
 					//echo "<td><font color=\"yellow\">"
@@ -172,22 +192,12 @@ class Perangkaan
 						for($j = 1; $j <= (24); $j++)
 						echo '<td>&nbsp;</td>';
 					echo '<tr>';
+
+					## kata2 pengarah
+					if($akhir==$i) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
+					
 				}
 			
-			## tajuk bawah - bil, jumlah besar, utama, newss, A1-B7
-				echo "<tr>\n";// dptkan nama medan
-				echo '<th>&nbsp;</th>' . "\n";
-				echo '<th colspan=2>Jumlah Besar</th>' . "\n";
-				echo '<th>&nbsp;</th>' . "\n";
-				echo '<th>&nbsp;</th>' . "\n";
-				echo '<th>&nbsp;</th>' . "\n";
-				foreach ($hasil[0] as $key => $kunci)
-				{
-					//echo '<th>&nbsp;</th>' . "\n";	
-					echo (in_array($key,array('nama','kp','utama','newss','nota')))?  
-					'':'<th>' . $kunci . '</th>' . "\n";	
-				}
-				echo "</tr>\n";
 			## tamat tbody
 			//echo "</tbody>\n";
 		endif;
@@ -231,7 +241,6 @@ class Perangkaan
 					:'<td align="center">' . $data . '</td>';
 				}echo "</tr>\n";
 			}
-			
 			//echo "</tbody>\n";
 		endif;
 	}
