@@ -79,18 +79,15 @@ class Index extends \Aplikasi\Kitab\Kawal
 	function kaunter()
 	{
 		# Set pemboleubah utama
-		/*if( isset($this->tanya) ):
+		if( isset($this->tanya->dudukmana) ):
 			echo 'awek tanya ada'; 
 		else:
-			echo 'awek tanya tiada'; 
+			//echo 'awek tanya tiada'; 
+			\Aplikasi\Kitab\Route::classTanyaTidakWujud('$this->tanya->dudukmana tak wujud');
 		endif;
 		
-		if(method_exists($this->tanya, 'dudukmana'))
-			echo '$this->tanya->dudukmana() exists!';
-		else
-			echo '$this->tanya->dudukmana() doesn\'t exists';
 		//*/
-		$this->tanya->dudukmana() or die('masalah');
+		
 		
 	}
 #==========================================================================================	
