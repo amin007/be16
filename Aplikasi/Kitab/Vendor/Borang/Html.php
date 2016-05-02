@@ -17,7 +17,7 @@ class Html
 				   . $tabline2 . '<pre>' . $data . '</pre>'
 				   . '';
 		}
-		elseif(in_array($key,array('nama','emailx')))
+		elseif(in_array($key,array('namax','emailx','responden')))
 		{#kod utk input text saiz besar
 			$input = '<div class="input-group input-group-lg">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
@@ -35,7 +35,7 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($key,array('tel','fax','nohp')))
+		elseif(in_array($key,array('notel','nofax','nohp')))
 		{#kod utk input text saiz kecil
 			$input = '<div class="input-group input-group-sm">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
