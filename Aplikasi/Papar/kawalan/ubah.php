@@ -24,7 +24,7 @@ function cariInput($cariMSIC,$bulan,$kira,$key,$data)
 			   . $tabline2 . '</div>'
 			   . '';
 	}
-	elseif(in_array($key,array('fe','tel','fax','responden','email')))
+	elseif(in_array($key,array('fe','notel','nofax','orang','esurat')))
 	{
 	    $input = '<div class="input-group input-group-sm">' . $tabline
 			   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
