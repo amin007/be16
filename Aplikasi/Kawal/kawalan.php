@@ -145,8 +145,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table
 				
 		# pergi papar kandungan
-		echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
-		//header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
+		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
+		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
     }
 
 	function buang($id) 
