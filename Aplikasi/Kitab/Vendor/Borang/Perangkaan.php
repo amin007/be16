@@ -128,13 +128,14 @@ class Perangkaan
 		//$cetak=($bil==$rows)?'style="page-break-after:always">':'>';
 		$cetak='style="page-break-after:always">';
 		echo '<tr style="page-break-after:always"><td colspan=' . ($fields+1) . '>' .
-			'<p align=left><font size=2>' .
+			/*'<p align=left><font size=2>' .
 			'A) Laporan kawalan harian ini merujuk kepada arahan Pengarah pada mesyuarat Pemantauan' .
 			'<br>B) Sila kemaskini laporan ini setiap hari dan failkan mengikut turutan tarikh oleh FE' .
 			'<br>C) Tarikh laporan ini bersamaan tarikh kerja luar pada F2 syarikat yang disenaraikan' .
 			'<br>D) Laporan ini tidak perlu diisi oleh FE jika tiada kerja luar / telefon dsb' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
-			'</font></p></td></tr>' . "\r";
+			'</font></p>' //*/
+			'</td></tr>' . "\r";
 	}
 
 	function paparJadualF3_Data($sv,$namaOrg,
