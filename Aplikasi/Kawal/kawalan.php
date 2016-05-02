@@ -135,8 +135,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			# buat peristiharan
 			$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
 		//echo '<br>$dataID=' . $dataID . '<br>';
-		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
-		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 		 
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
