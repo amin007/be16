@@ -222,8 +222,11 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$senaraiMedan[] = 'nama, '
 			. 'concat_ws("-",`kp`) as kp,'
 			. '"" as utama, concat_ws("-",`newss`) as newss,'
-			//. 'concat_ws("-",`TINDAKAN`) as nota'
-			. '"" as nota'
+			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A) as nota'
+			. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A,'
+			. 'ATTENTION_NAME_B,	TEL_NO_B,	FAX_NO_B,	EMAIL_B,'
+			. 'ATTENTION_NAME_C,	TEL_NO_C,	FAX_NO_C,	EMAIL_C) as nota'
+			//. '"" as nota'
 			. '';
 			
 		return $senaraiMedan; # pulangkan nilai
