@@ -147,9 +147,9 @@ else
 	<form method="POST" action="<?php echo URL ?>kawalan/ubahSimpan/<?php echo $this->cari; ?>"
 	class="form-horizontal"><!-- jadual rangka ########################################### --><?php
 	foreach ($this->kawalan as $myTable => $row)
-	{// mula ulang $row
+	{# mula ulang $row
 		for ($kira=0; $kira < count($row); $kira++)
-		{//print the data row // <button type="button" class="btn btn-info">Info</button>
+		{# print the data row // <button type="button" class="btn btn-info">Info</button>
 		#----------------------------------------------------------------------------
 		foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
 			if (in_array($key,array('no','batu','jalan','tmn_kg','dp_baru','respon2')) 
@@ -163,19 +163,10 @@ else
 		</div><?php 
 			endif;
 		endforeach;
-		}// final print the data row
+		}# final print the data row
 		#----------------------------------------------------------------------------
-	}// tamat ulang $row
+	}# tamat ulang $row
 	echo "\n\t\t";
-	/*
-	echo '<div class="form-group">
-			<label for="inputSubmit" class="col-sm-3 control-label">Cth</label>
-			<div class="col-sm-6">
-				<input type="hidden" name="jadual" value="<?=$this->_jadual?>">
-				
-			</div>
-		</div>';
-	echo "\n\t\t";*/
 	if(isset($this->kawalan['kes'][0]['newss'])):
 	?><div class="form-group">
 			<label for="inputSubmit" class="col-sm-3 control-label"><?=$this->_jadual?></label>
@@ -185,10 +176,8 @@ else
 			</div>
 		</div>	
 	</form>
-	<hr>
-
-<?php 
-endif;
+	<hr><?php 
+	endif;
 } // $this->carian=='sidap' - tamat ?><?php
 // mula untuk kod php+html
 function papar_jadual($row, $myTable, $pilih)
