@@ -212,8 +212,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'respon2,lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			//. 'hasil,belanja,gaji,aset,staf,stok,' . "\r" 
 			. '';	
-			
-		
+	
 		return substr($medanKawalan, 0, -1);
 	}
 
