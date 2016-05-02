@@ -34,8 +34,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# mula cari $cariID dalam $jadual
 		foreach ($jadualMSIC as $m6 => $msic)
 		{# mula ulang table
-			$jadualPendek = substr($msic, 16);
-			//echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
+			$jadualPendek = substr($msic, 16); //echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
 			# senarai nama medan
 			if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
 				$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
@@ -47,10 +46,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			//echo "cariMSIC($msic, $medanM6,<pre>"; print_r($cariM6) . "</pre>)<br>";
 
 			$this->papar->_cariIndustri[$jadualPendek] = $this->tanya->//cariSql
-				cariSemuaData
-				($msic, $medanM6, $cariM6, null);
+				cariSemuaData($msic, $medanM6, $cariM6, null);
 		}# tamat ulang table
-		
 		
 	}
 	#---------------------------------------------------------------------------------------------------
