@@ -211,6 +211,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $hasilRespon; # pulangkan nilai
 	}
 #- tamat  - untuk Sql Respon -----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------
 	private function medanRespon()
 	{
 		$senaraiMedan[] = 'kod'; 
@@ -225,7 +226,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
-
+#----------------------------------------------------------------------------------------------------------------------
 	private function medanRespon2()
 	{
 		$senaraiMedan[] = 'kod'; 
@@ -261,7 +262,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		
 		return $medan; # pulangkan nilai
 	}
-
+#----------------------------------------------------------------------------------------------------------------------
 	private function medanResponden()
 	{
 		$senaraiMedan[] = 'kod';
@@ -288,6 +289,6 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		
 		return $medan; # pulangkan nilai
 	}
-
+#----------------------------------------------------------------------------------------------------------------------
 #==========================================================================================
 }
