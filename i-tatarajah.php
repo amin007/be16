@@ -68,3 +68,10 @@ else
 define('PROSESAN', serialize( 
 	array ('abu','bakar','umar','osman','ali','hasan')
 	));
+## data dalam database lain
+$e = 'db_lain.';
+define('MSICBARU', serialize (
+	array($e.'msic08',$e.'msic2008',
+		$e.'msic_v1',$e.'msic_bandingan',
+		$e.'msic',$e.'msic_nota_kaki')
+	));		
