@@ -59,15 +59,16 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
-			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql(
-			$jadual, $medan2 = '*', $carian, NULL);
+			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
+			($jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
 		# tanya dalam sql 	
-		$this->papar->hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
-		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>';
+		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 		
 		# Set pemboleubah utama
 		$this->papar->pegawai = senarai_kakitangan();	
@@ -89,15 +90,16 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
-			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql(
-			$jadual, $medan2 = '*', $carian, NULL);
+			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
+			()$jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
 		# tanya dalam sql 	
-		$this->papar->hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
-		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>';
+		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 		
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
