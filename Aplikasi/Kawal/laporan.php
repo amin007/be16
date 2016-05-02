@@ -53,7 +53,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 # cetak f3 - senarai nama syarikat ikut fe/batchAwal
 	public function cetakf3($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		# kiraKes dulu
+		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
