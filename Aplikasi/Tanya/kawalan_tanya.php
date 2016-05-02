@@ -175,15 +175,15 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function medanKawalan($cariID) 
 	{ 
 		$news1 = 'http://sidapmuar/ekonomi/ckawalan/ubah/' . $cariID;
-		$news2 = 'http://sidapmuar/ekonomi/cprosesan/ubah/000/'.$cariID.'/2010/2015/'; 
-		$news3 = 'http://sidapmuar/ekonomi/semakan/ubah/",kp,"/'.$cariID.'/2010/2015/'; 
+		$news2 = 'http://sidapmuar/ekonomi/cprosesan/ubah/000/'  . $cariID . '/2010/2015/'; 
+		$news3 = 'http://sidapmuar/ekonomi/semakan/ubah/",kp,"/' . $cariID . '/2010/2015/'; 
 		$url1 = '" <a target=_blank href=' . $news1 . '>SEMAK 1</a>"';
 		$url2 = '" <a target=_blank href=' . $news2 . '>SEMAK 2</a>"';
 		$url3 = 'concat("<a target=_blank href=' . $news3 . '>SEMAK 3</a>")';
         $medanKawalan = 'newss,'
 			//. '( if (hasil is null, "", '
-			/*. 'concat_ws("|",nama,operator,'.$url1 . ',' . $url3 .') nama,'
-			. ' concat_ws("|",' . "\r"
+			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url3 .') nama,'
+			/*. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
 			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
