@@ -7,7 +7,9 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<br>class Laporan extends Kawal';
 		parent::__construct();
-		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
+        //\Aplikasi\Kitab\Kebenaran::kawalMasuk();
+		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
+
 		$this->_folder = 'laporan';
 	}
 	
