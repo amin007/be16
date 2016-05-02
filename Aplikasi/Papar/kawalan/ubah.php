@@ -132,22 +132,20 @@ if ($this->carian=='[tiada id diisi]')
     echo 'data kosong<br>';
 }
 else
-{ // $this->carian=='sidap' - mula
+{ # $this->carian=='sidap' - mula
     $cari = $this->carian;
     $s1 = '<span class="label">';
     $s2 = '</span>';
     
-    // isytihar pembolehubah untuk sistem sms
+    # isytihar pembolehubah untuk sistem sms
 	if(isset($this->kawalan['kes'][0]['newss'])):
 		$newss = $this->kawalan['kes'][0]['newss'];
 		$sykt  = urlencode($this->kawalan['kes'][0]['nama']);
 		$kawan = urlencode($this->kawalan['kes'][0]['fe']);
 		$hantar_sms = URL . 'pengguna/smskes/' . $kawan . '/' . $sykt;
-	endif;
-?>
+	endif;?>
 	<form method="POST" action="<?php echo URL ?>kawalan/ubahSimpan/<?php echo $this->cari; ?>"
-	class="form-horizontal">
-	<!-- jadual rangka ########################################### --><?php
+	class="form-horizontal"><!-- jadual rangka ########################################### --><?php
 	foreach ($this->kawalan as $myTable => $row)
 	{// mula ulang $row
 		for ($kira=0; $kira < count($row); $kira++)
@@ -155,10 +153,8 @@ else
 		#----------------------------------------------------------------------------
 		foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
 			if (in_array($key,array('no','batu','jalan','tmn_kg','dp_baru','respon2')) 
-				&& Sesi::get('namaPegawai')!='amin007'):
-				echo '';
-			else:
-		?><div class="form-group">
+				&& Sesi::get('namaPegawai')!='amin007'): echo '';
+			else:?><div class="form-group">
 			<label for="input<?php echo $key 
 			?>" class="col-sm-2 control-label"><?php echo $key ?></label>
 			<div class="col-sm-6">
