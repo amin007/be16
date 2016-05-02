@@ -208,7 +208,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("-",kp,msic2008) keterangan,' 
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
-			. 'notel_a,notel,nofax_a,nofax,orang_a,orang,email_a,esurat,'
+			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
 			//. 'respon2,lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			//. 'hasil,belanja,gaji,aset,staf,stok,' . "\r" 
 			. '';	
