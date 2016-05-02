@@ -199,9 +199,21 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	}
 #- tamat - untuk tatasusunan Respon ---------------------------------------------------------------------------------
 #- mula  - untuk Sql Respon -----------------------------------------------------------------------------------------
+	private function bentukSqlRespon($medanR, $jadualR, $item, $ms)
+	{
+		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
+		$jum2 = array(); // pencamSqlLimit(300, $item, $ms); #
+		$susun[] = array_merge($jum2, array('kumpul'=>1,'susun'=>'no') );
+		$hasilRespon = $this->//tatasusunan
+			cariSemuaData //cariSql
+			($jadualR, $medanR, $cari, $susun);
+		
+		return $hasilRespon; # pulangkan nilai
+	}
+#- tamat  - untuk Sql Respon -----------------------------------------------------------------------------------------
 	private function medanRespon()
 	{
-		$senaraiMedan[] = 'kod'; // 'newss'; 
+		$senaraiMedan[] = 'kod'; 
 		$senaraiMedan[] = 'f2';
 		$senaraiMedan[] = 'respon';
 		$senaraiMedan[] = '`NAMA PEMILIK` as nama, '
@@ -216,7 +228,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 	private function medanRespon2()
 	{
-		$senaraiMedan[] = 'kod'; // 'newss'; 
+		$senaraiMedan[] = 'kod'; 
 		$senaraiMedan[] = 'f2';
 		$senaraiMedan[] = 'respon';
 		$senaraiMedan[] = 'nama, '
@@ -228,23 +240,12 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
-
-	private function bentukSqlRespon($medanR, $jadualR, $item, $ms)
-	{
-		$cari[] = array('fix'=>'xin','atau'=>'WHERE','medan'=>$medanR,'apa'=>'("X","5P")');
-		$jum2 = array(); // pencamSqlLimit(300, $item, $ms); #
-		$susun[] = array_merge($jum2, array('kumpul'=>1,'susun'=>'no') );
-		$hasilRespon = $this->//tatasusunan
-			cariSemuaData //cariSql
-			($jadualR, $medanR, $cari, $susun);
-		
-		return $hasilRespon; # pulangkan nilai
-	}
 	
 	public function kumpulRespon($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
-		list($medanR, $jadualR, $r, $medan) = $this->medanRespon2();
+		list($medanR, $jadualR, $r, $medan) = //$this->medanRespon(); # untuk BUTAM
+			$this->medanRespon2(); # untuk BE16
 		# panggil sql pertama
 		$hasilRespon = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
 		# loop over the object directly 
