@@ -79,11 +79,43 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		
-		 # pergi papar kandungan
+		# pergi papar kandungan
 		//echo '<br>location: ' . URL . "batchawal/semak/$cariBatch/$dataID" . '';
 		//$this->papar->baca('kawalan/batchsemak_cetak', 1);
 		//$this->papar->baca('laporan/f3', 1);
 		$this->papar->baca('laporan/f3all', 1);
+	}
+#==========================================================================================
+	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
+	{
+		# kiraKes dulu
+		$jadual = 'be16_kawal';
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//
+		//cariSql( 
+		$jadual, $medan = '*', $carian, NULL);
+		# tentukan bilangan mukasurat. bilangan jumlah rekod
+		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+		$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
+		# kumpul respon jadi medan
+		$medan = $this->tanya->kumpulResponden($item, $ms);
+		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
+		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		$this->papar->kiraSemuaBaris = $bilSemua;
+		$this->papar->item = $item;;
+		$this->papar->baris = $baris;
+		$this->papar->hasil = $kumpul;
+		$this->papar->fe = $namaPegawai;
+		$this->papar->kp = 'BE';
+		
+		# Set pemboleubah utama
+        $this->papar->pegawai = senarai_kakitangan();
+		
+		# pergi papar kandungan
+		//$this->papar->baca('laporan/f3all', 1);
+		$this->papar->baca('laporan/f3responden', 1);
 	}
 
 #==========================================================================================
