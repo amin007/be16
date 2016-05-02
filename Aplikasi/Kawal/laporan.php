@@ -57,9 +57,10 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
-		# tentukan bilangan mukasurat. bilangan jumlah rekod
+		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql( 
 			$jadual, $medan = '*', $carian, NULL);
+			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
