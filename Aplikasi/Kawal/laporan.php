@@ -67,7 +67,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# kumpul respon jadi medan sql
 		$medan = $this->tanya->kumpulRespon($item, $ms);
 		$hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
-		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		//echo '<pre>$hasil:'; print_r($hasil) . '</pre>';
 		
 		# Set pemboleubah utama
 		$this->papar->pegawai = senarai_kakitangan();	
