@@ -197,16 +197,16 @@ function huruf($jenis , $papar)
 	
 	switch ($jenis) 
 	{# mula - pilih $jenis
-	case "BESAR":
+	case "BESAR": # huruf('BESAR', )
 		$papar = strtoupper($papar);
 		break;
-	case "kecil":
+	case "kecil": # huruf('kecil', )
 		$papar = strtolower($papar);
 		break;
-	case "Besar":
+	case "Besar": # huruf('Besar', )
 		$papar = ucfirst($papar);
 		break;
-	case "Besar_Depan":
+	case "Besar_Depan": # huruf('Besar_Depan', )
 		$papar = mb_convert_case($papar, MB_CASE_TITLE);
 		break;
 	}# tamat - pilih $jenis
