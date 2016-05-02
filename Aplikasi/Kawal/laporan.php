@@ -53,36 +53,31 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 // cetak f3 - senarai nama syarikat ikut fe/batchAwal
 	public function cetakf3($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		# kiraKes dulu
+		# kumpul respon jadi medan
+		$medan = $this->tanya->kumpulRespon($item, $ms);
+		# set pembolehubah untuk tanya sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
-		$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//
-		//cariSql( 
-		$jadual, $medan = '*', $carian, NULL);
+		$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql( 
+			$jadual, $medan = '*', $carian, NULL);
 		# tentukan bilangan mukasurat. bilangan jumlah rekod
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 		$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
-		# kumpul respon jadi medan
-		$medan = $this->tanya->kumpulRespon($item, $ms);
 		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
 		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		
+		# Set pemboleubah utama
+        $this->papar->pegawai = senarai_kakitangan();	
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
 		$this->papar->hasil = $kumpul;
 		$this->papar->fe = $namaPegawai;
 		$this->papar->kp = 'BE';
-		
-		//*/
-		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
-		
+	
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . "batchawal/semak/$cariBatch/$dataID" . '';
-		//$this->papar->baca('kawalan/batchsemak_cetak', 1);
-		//$this->papar->baca('laporan/f3', 1);
 		$this->papar->baca('laporan/f3all', 1);
 	}
 #==========================================================================================
