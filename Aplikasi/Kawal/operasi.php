@@ -138,7 +138,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			}# tamat ulang table
 			# sql 2
 			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
-			$cari[] = array('fix'=>'x=','atau'=>'AND','medan'=>'fe','apa'=>$namaPegawai);
+			$cari[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
 				cariSemuaData(
@@ -161,7 +161,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jadual = $senaraiJadual[0];
 			# sql 1 
 			$medan1 = 'borang,fe,count(*) as kira,concat_ws("/",fe,borang) as feborang';
-			$susun1[] = array_merge($jum2, array('kumpul'=>'borang,fe','susun'=>'nama') );
+			$susun1[] = array_merge($jum2, array('kumpul'=>'borang,pegawai','susun'=>'nama') );
 			$this->papar->cariApa['groupBorangFe'] = $this->tanya->
 				//tatasusunanCariMFG(//	cariSql( 
 				cariSemuaData(
@@ -243,7 +243,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			# ubahsuai $posmen
 			$jadual = 'be16_kawal'; 
 			$medanID = 'newss';
-			$posmen[$jadual]['fe'] = $namaPegawai;
+			$posmen[$jadual]['pegawai'] = $namaPegawai;
 			$posmen[$jadual]['borang'] = $asalBatch;
 			$posmen[$jadual][$medanID] = $dataID;
 			//$dimana[$jadual][$medanID] = $asalBatch;
