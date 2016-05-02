@@ -94,17 +94,16 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
-		# kumpul respon jadi medan sql
-		$medan = $this->tanya->kumpulResponden($item, $ms);
-		$hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
-		//echo '<pre>$hasil:'; print_r($hasil) . '</pre>';
+		$medan = $this->tanya->kumpulResponden($item, $ms);# kumpul respon jadi medan sql
+		# tanya dalam sql 	
+		$this->papar->hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>';
 		
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
-		$this->papar->hasil = $hasil;
 		$this->papar->fe = $namaPegawai;
 		$this->papar->kp = 'BE';
 				
