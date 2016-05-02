@@ -105,7 +105,6 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $hasil;
 	}
 	
-	
 	public function medanUbah($cariID) 
 	{ 
 		# Set pemboleubah
