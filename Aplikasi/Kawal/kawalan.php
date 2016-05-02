@@ -86,8 +86,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         $this->papar->lokasi = 'BE16 - Ubah';
 		$this->papar->cari = (isset($this->papar->kawalan['kes'][0]['newss'])) ? $newss : $cariID;
 		
-		/*# semak data
-		echo '<pre>';
+		/*echo '<pre>'; # semak data
 		echo '$this->papar->kawalan:<br>'; print_r($this->papar->kawalan); 
 		echo '$this->papar->cariIndustri:<br>'; var_export($this->papar->_cariIndustri); 
 		echo '<br>$this->papar->cari:'; print_r($this->papar->cari); 
@@ -132,24 +131,22 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         }
         
 		# ubahsuai $posmen
-			# buat peristiharan
-			$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
+		$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
 		//echo '<br>$dataID=' . $dataID . '<br>';
-		echo '<pre>$_POST='; print_r($_POST) . '</pre>';
-		echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
 		 
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
 		{// mula ulang table
-			$this->tanya->ubahSqlSimpan
-			//ubahSimpan
+			$this->tanya->//ubahSqlSimpan
+			ubahSimpan
 			($posmen[$jadual], $jadual, $medanID);
 		}// tamat ulang table
 				
 		# pergi papar kandungan
 		//$this->papar->baca('kawalan/ubah/' . $dataID);
-		//header('location: ' . URL . 'kawalan/ubah/' . $dataID);
- //*/       
+		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
     }
 
 	function buang($id) 
