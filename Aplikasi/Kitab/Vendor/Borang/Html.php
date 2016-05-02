@@ -17,7 +17,7 @@ class Html
 				   . $tabline2 . '<pre>' . $data . '</pre>'
 				   . '';
 		}
-		elseif(in_array($key,array('namax','emailx','responden')))
+		elseif(in_array($key,array('namax','emailx','responden','fe')))
 		{#kod utk input text saiz besar
 			$input = '<div class="input-group input-group-lg">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
