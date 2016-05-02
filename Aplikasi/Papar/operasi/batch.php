@@ -17,12 +17,15 @@ $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
 	
 if (($this->namaPegawai == null)) :
 	# set pembolehubah
+	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
+	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;	
 	$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' . $urlStaf;
 	$mencari = URL . 'operasi/tambahNamaStaf';
 	$butangHantar = 'Letak Nama Staf';
 elseif (($this->namaPegawai != null) && ($this->noBatch == null)) :
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
+	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$mencari = URL . 'operasi/tambahBatchBaru/' . $namaPegawai;
 	$notaTambahan = ( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
 	$butangHantar = 'Letak No Batch';
