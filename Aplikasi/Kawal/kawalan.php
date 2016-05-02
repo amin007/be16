@@ -51,13 +51,14 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				($msic, $medanM6, $cariM6, null);
 		}# tamat ulang table
 		
+		
 	}
 #---------------------------------------------------------------------------------------------------
     public function ubah($cariID = null) 
     {//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
                 
         # senaraikan tatasusunan jadual dan setkan pembolehubah
-        $jadualKawalan = 'be16_kawal';
+        $this->papar->_jadual = 'be16_kawal';
         $medanKawalan = $this->tanya->medanKawalan($cariID);
 	
         if (!empty($cariID)) 
@@ -68,8 +69,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
             # 1. mula semak dalam rangka 
             $this->papar->kawalan['kes'] = $this->tanya->
-				cariSemuaData($jadualKawalan, $medanKawalan, $cari, $susun = null);
-				//cariSql($jadualKawalan, $medanKawalan, $cari, $susun = null);
+				cariSemuaData($this->papar->_jadual, $medanKawalan, $cari, $susun = null);
+				//cariSql($this->papar->_jadual, $medanKawalan, $cari, $susun = null);
 
 			if(isset($this->papar->kawalan['kes'][0]['newss'])):
 				# 1.1 ambil nilai newss
@@ -91,7 +92,6 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         $this->papar->pegawai = senarai_kakitangan();
         $this->papar->lokasi = 'BE16 - Ubah';
 		$this->papar->cari = (isset($this->papar->kawalan['kes'][0]['newss'])) ? $newss : $cariID;
-		$this->papar->_jadual = $jadualKawalan;
 		
 		/*# semak data
 		echo '<pre>';
@@ -141,7 +141,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
 		# ubahsuai $posmen
 			# buat peristiharan
-			$posmen = semakPosmen($tahunan[0], $posmen);
+			$posmen = $this->tanya->semakPosmen($tahunan[0], $posmen);
         //echo '<br>$dataID=' . $dataID . '<br>';
         //echo '<pre>$_POST='; print_r($_POST) . '</pre>';
         //echo '<pre>$posmen='; print_r($posmen) . '</pre>';
