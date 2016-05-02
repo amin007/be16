@@ -44,6 +44,14 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca('login/gambar');
 	}
 #==========================================================================================	
+	function semaknama($nama)
+	{
+		# semak data $_POST
+		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		$this->tanya->dapatid($nama);
+		//$this->tanya->ujiID();
+	}
+
 	function semakid()
 	{
 		# semak data $_POST
@@ -56,7 +64,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 	function salah()
 	{
 		# debug
-		$this->tanya->dapatid($_POST['password']);
+		//$this->tanya->dapatid($_POST['password']);
 		$this->papar->mesej = 'Ada masalah pada user dan password';
 
 		# Set pemboleubah utama
@@ -64,7 +72,7 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->isi = '';
 
 		# pergi papar kandungan
-		//$this->papar->baca('index/salah');
+		$this->papar->baca('index/salah');
 	}
 #==========================================================================================	
 }
