@@ -80,7 +80,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca('laporan/f3all', 1);
 	}
-#==========================================================================================
+#===============================================================================================
 	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
 		$medan = $this->tanya->kumpulResponden($item, $ms);# kumpul respon jadi medan sql
