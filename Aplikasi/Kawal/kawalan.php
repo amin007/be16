@@ -141,55 +141,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
 		# ubahsuai $posmen
 			# buat peristiharan
-			$rangka = 'be16_kawal'; // jadual rangka kawalan
-			if (isset($posmen[$rangka]['respon']))
-				$posmen[$rangka]['respon']=strtoupper($posmen[$rangka]['respon']);
-			if (isset($posmen[$rangka]['fe']))				
-				$posmen[$rangka]['fe']=strtolower($posmen[$rangka]['fe']);
-			if (isset($posmen[$rangka]['email']))
-				$posmen[$rangka]['email']=strtolower($posmen[$rangka]['email']);
-			if (isset($posmen[$rangka]['responden']))
-				$posmen[$rangka]['responden']=mb_convert_case($posmen[$rangka]['responden'], MB_CASE_TITLE);
-			if (isset($posmen[$rangka]['hasil']))
-			{
-				eval( '$hasil = (' . $posmen[$rangka]['hasil'] . ');' );
-				$posmen[$rangka]['hasil'] = $hasil;
-			}
-			if (isset($posmen[$rangka]['belanja']))			
-			{
-				eval( '$belanja = (' . $posmen[$rangka]['belanja'] . ');' );
-				$posmen[$rangka]['belanja'] = $belanja;
-			}
-			if (isset($posmen[$rangka]['gaji']))
-			{
-				eval( '$gaji = (' . $posmen[$rangka]['gaji'] . ');' );
-				$posmen[$rangka]['gaji'] = $gaji;
-			}
-			if (isset($posmen[$rangka]['aset']))			
-			{
-				eval( '$aset = (' . $posmen[$rangka]['aset'] . ');' );
-				$posmen[$rangka]['aset'] = $aset;
-			}
-			if (isset($posmen[$rangka]['staf']))
-			{
-				eval( '$staf = (' . $posmen[$rangka]['staf'] . ');' );
-				$posmen[$rangka]['staf'] = $staf;
-			}
-			if (isset($posmen[$rangka]['stok']))			
-			{
-				eval( '$stok = (' . $posmen[$rangka]['stok'] . ');' );
-				$posmen[$rangka]['stok'] = $stok;
-			}
-			/*if (isset($posmen[$rangka]['no']))
-				$posmen[$rangka]['no']=strtoupper($posmen[$rangka]['no']);
-			if (isset($posmen[$rangka]['batu']))
-				$posmen[$rangka]['batu']=strtoupper($posmen[$rangka]['batu']);
-			if (isset($posmen[$rangka]['jalan']))
-				$posmen[$rangka]['jalan']=strtoupper($posmen[$rangka]['jalan']);
-			if (isset($posmen[$rangka]['tmn_kg']))
-				$posmen[$rangka]['tmn_kg']=strtoupper($posmen[$rangka]['tmn_kg']);
-			if (isset($posmen[$rangka]['dp_baru']))
-				$posmen[$rangka]['dp_baru']=ucwords(strtolower($posmen[$rangka]['dp_baru']));//*/
+			$posmen = semakPosmen($tahunan[0], $posmen);
         //echo '<br>$dataID=' . $dataID . '<br>';
         //echo '<pre>$_POST='; print_r($_POST) . '</pre>';
         //echo '<pre>$posmen='; print_r($posmen) . '</pre>';
@@ -197,12 +149,14 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         # mula ulang $tahunan
         foreach ($tahunan as $kunci => $jadual)
         {// mula ulang table
-            $this->tanya->ubahSimpan($posmen[$jadual], $jadual, $medanID);
+            $this->tanya->
+				//ubahSimpan
+				($posmen[$jadual], $jadual, $medanID);
         }// tamat ulang table
         
         # pergi papar kandungan
 		//$this->papar->baca('kawalan/ubah/' . $dataID);
-		header('location: ' . URL . 'kawalan/ubah/' . $dataID);
+		//header('location: ' . URL . 'kawalan/ubah/' . $dataID);
  //*/       
     }
 
