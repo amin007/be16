@@ -74,7 +74,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
-		$this->papar->hasil = $hadil;
+		$this->papar->hasil = $hasil;
 		$this->papar->fe = $namaPegawai;
 		$this->papar->kp = 'BE';
 	
