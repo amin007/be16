@@ -199,7 +199,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," notel",notel),' . "\r"
 			. ' 	concat_ws("="," nofax",nofax)' . "\r"
  			. ' ) as dataHubungi,'//*/
-			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,fe,' . "\r"
+			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,fe,borang,' . "\r"
 			//. 'mko,batchProses,respon,nota,nota_prosesan,'		
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
@@ -210,10 +210,14 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'batchAwal,dsk,mko,batchProses,'
 			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
 			//. 'respon2,lawat,terima,hantar,hantar_prosesan,' . "\r" 
-			//. 'hasil,belanja,gaji,aset,staf,stok,' . "\r" 
+			. 'hasil,belanja,gaji,aset,staf,stok,'
 			. '';	
 	
-		return substr($medanKawalan, 0, -1);
+		# buang koma di akhir string
+		$medanKawalan = substr($medanKawalan, 0, -1);
+		//$medanKawalan = rtrim($medanKawalan,',');;
+		
+		return $medanKawalan;
 	}
 
 	public function semakPosmen($rangka, $posmen)
