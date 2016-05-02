@@ -203,6 +203,99 @@ class Perangkaan
 			//echo "</tbody>\n";
 		endif;
 	}
+#- cetak no tel sahaja
+
+	function paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+	{
+		## tajuk besar
+		echo '<tr style="page-break-before:always">';
+		$this->paparJadualF3_TajukBesar($allRows,$fields,$sv,$namaOrg,$item,$ms);
+		echo '</tr>';
+		
+		## tajuk medan - keputusan 
+		echo '<tr>';
+		echo "\n<th rowspan=\"2\">Bil</th>\n";
+		echo '<th rowspan="2">Nama Syarikat (KES ' . huruf('Besar', $namaOrg['pegawai']) . ')</th>' . "\n";
+		echo '<th rowspan="2">KP</th>' . "\n"; # KP - Kod Peny.
+		echo '<th rowspan="1">BBU</th>' . "\n";
+		echo '<th rowspan="2">NO SIRI NEWSS</th>' . "\n";
+		echo '<th rowspan="2">NOTA/CATATAN'
+			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+			. '</th>' . "\n";
+		echo '<th colspan="1">Diisi oleh Anggota Kerja Luar sahaja</th>' . "\n";
+		echo '</tr>';
+		
+		# baris bawah
+		echo '<tr>';
+	/*	echo '<th>&nbsp;</th>' . "\n";*/
+		echo '<th>SBU</th>' . "\n";
+		echo '<th>Suka Hati ' . huruf('Besar', $namaOrg['pegawai']) . ' Mahu Tulis Apa</th>' . "\n";
+		/*foreach ($hasil[0] as $kunci => $dataan)
+		{
+			echo (in_array($kunci,array('nama','kp','utama','newss','nota')))?  
+			'':'<th>'.$kunci.'</th>' . "\n";	
+		}*/
+		echo '</tr>';
+
+	}
+
+	function paparJadualF3_Data2($sv,$namaOrg,
+		$allRows,$fields,$hasil,$item,$ms,$baris=30)
+	{	
+		# nak cari $allRows
+		if ($allRows=='0'): echo "\n";
+		else: # mula kalau jumpa
+			# set pembolehubah untuk highlight
+			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
+			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
+		
+			//echo "<tbody>\n"; # mula tbody
+			foreach ($hasil as $kira => $nilai)
+			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
+				$h = ($kira%'2'=='0') ? $highlight : $highlight2;
+				echo "<tr$h>";
+				if ($kira%$baris=='0')
+				{			
+					$ms = ($kira/$baris)+1;
+					$item = ceil($allRows/$baris);
+					$this->paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
+						. $nilai['newss']."'>".($kira+1)."</a></td>\n";
+				}
+				else
+				{
+					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
+					. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
+				}
+				foreach ($nilai as $key => $data) 
+					echo '<td>' . $data . '</td>';
+				echo "</tr>\n";
+				
+			}
+			
+			## cukupkan 30 rows
+				$mula = $allRows+1;
+				$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
+				//$mula = $rows+1;
+				for($i = $mula; $i <= ($akhir); $i++)
+				{					
+					echo '<tr><td>' . $i . '</td>';
+					echo '<td>&nbsp;</td>';
+					//echo "<td><font color=\"yellow\">"
+					//	. $allRows . '-' .(($item-1)*30)." = ".(30 - ($allRows - (($item-1)*30) )).", "
+					//	. " nombor terakhir > $allRows + ".(30 - ($allRows - (($item-1)*30) ))." => $akhir</td>";
+						for($j = 1; $j <= (5); $j++)
+						echo '<td>&nbsp;</td>';
+					echo '<tr>';
+				
+				}
+			
+			## tamat tbody
+			//echo "</tbody>\n";
+		endif;
+	}
+	
 	# papar data biasa
 	function paparJadual_Data($allRows,$rows,$fields,$item,$ms,$hasil)
 	{	
