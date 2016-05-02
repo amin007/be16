@@ -91,7 +91,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
-			()$jadual, $medan2 = '*', $carian, NULL);
+			($jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
