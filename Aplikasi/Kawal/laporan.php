@@ -84,18 +84,18 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 #==========================================================================================
 	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		# kiraKes dulu
+		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
-		$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//
-		//cariSql( 
-		$jadual, $medan = '*', $carian, NULL);
-		# tentukan bilangan mukasurat. bilangan jumlah rekod
-		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
-		$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		# tentukan bilangan mukasurat & jumlah rekod
+			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql(
+			$jadual, $medan = '*', $carian, NULL);
+			# semak bilangan mukasurat & jumlah rekod
+			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
-		# kumpul respon jadi medan
+		# kumpul respon jadi medan sql
 		$medan = $this->tanya->kumpulResponden($item, $ms);
 		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
 		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
