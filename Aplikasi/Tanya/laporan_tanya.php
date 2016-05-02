@@ -223,10 +223,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("-",`kp`) as kp,'
 			. '"" as utama, concat_ws("-",`newss`) as newss,'
 			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A) as nota'
-			. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A,'
-			. 'ATTENTION_NAME_B,	TEL_NO_B,	FAX_NO_B,	EMAIL_B,'
-			. 'ATTENTION_NAME_C,	TEL_NO_C,	FAX_NO_C,	EMAIL_C) as nota'
-			//. '"" as nota'
+			. '"" as nota'
 			. '';
 			
 		return $senaraiMedan; # pulangkan nilai
@@ -263,6 +260,46 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		
 		return $medan; # pulangkan nilai
 	}
-#- tamat  untuk Sql Respon -----------------------------------------------------------------------------------------
+
+	private function medanResponden()
+	{
+		$senaraiMedan[] = 'kod'; // 'newss'; 
+		$senaraiMedan[] = 'f2';
+		$senaraiMedan[] = 'respon';
+		$senaraiMedan[] = 'nama, '
+			. 'concat_ws("-",`kp`) as kp,'
+			. '"" as utama, concat_ws("-",`newss`) as newss,'
+			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A) as nota'
+			. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A,'
+			. 'ATTENTION_NAME_B,	TEL_NO_B,	FAX_NO_B,	EMAIL_B,'
+			. 'ATTENTION_NAME_C,	TEL_NO_C,	FAX_NO_C,	EMAIL_C) as nota'
+			//. '"" as nota'
+			. '';
+			
+		return $senaraiMedan; # pulangkan nilai
+	}
+	
+	public function kumpulResponden($item, $ms)
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->medanResponden();
+		# panggil sql pertama
+		$medan .= ",\r " . $r . " ";
+		//$hasilRespon = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
+		/*# loop over the object directly 
+		foreach($hasilRespon as $key=>$val)
+		{	
+			foreach($val as $key2=>$p)
+			{
+				//$kumpul .= ",\r '' as '" . $p . "'";
+				//$medan .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
+				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
+			}
+		} //echo '<pre>$medan:'; print_r($medan) . '</pre>';
+		//*/
+		
+		return $medan; # pulangkan nilai
+	}
+
 #==========================================================================================
 }
