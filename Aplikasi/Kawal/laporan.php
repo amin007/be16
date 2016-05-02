@@ -58,7 +58,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
-			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql( 
+			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql(
 			$jadual, $medan = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
@@ -98,8 +98,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# kumpul respon jadi medan
 		$medan = $this->tanya->kumpulResponden($item, $ms);
 		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
-		
 		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
