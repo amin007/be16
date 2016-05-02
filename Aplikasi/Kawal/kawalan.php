@@ -53,24 +53,22 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		
 		
 	}
-#---------------------------------------------------------------------------------------------------
+	#---------------------------------------------------------------------------------------------------
     public function ubah($cariID = null) 
     {//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
-                
-        # senaraikan tatasusunan jadual dan setkan pembolehubah
-        $this->papar->_jadual = 'be16_kawal';
-        $medanKawalan = $this->tanya->medanKawalan($cariID);
-	
-        if (!empty($cariID)) 
-        {
-            $this->papar->carian='newss';
-			$this->papar->kesID = array();
+			
+		if (!empty($cariID)) 
+		{
+			# senaraikan tatasusunan jadual dan setkan pembolehubah
+			$this->papar->_jadual = 'be16_kawal';
+			$this->papar->carian = 'newss';
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
         
             # 1. mula semak dalam rangka 
-            $this->papar->kawalan['kes'] = $this->tanya->
-				cariSemuaData($this->papar->_jadual, $medanKawalan, $cari, $susun = null);
-				//cariSql($this->papar->_jadual, $medanKawalan, $cari, $susun = null);
+            $this->papar->kawalan['kes'] = $this->tanya->//cariSql
+				cariSemuaData
+				($this->papar->_jadual, $this->tanya->medanKawalan($cariID), 
+				$cari, $susun = null);
 
 			if(isset($this->papar->kawalan['kes'][0]['newss'])):
 				# 1.1 ambil nilai newss
@@ -78,14 +76,12 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			
 				# 1.2 cari nilai msic & msic08 dalam jadual msic2008
 				$jadualMSIC = dpt_senarai('msicbaru');
-				$msic = $this->papar->kawalan['kes'][0]['msic2008'];
-				$this->cariIndustri($jadualMSIC, $msic);
+				$this->cariIndustri($jadualMSIC, $this->papar->kawalan['kes'][0]['msic2008']);
 			endif;
-		
 		}
         else
         {
-            $this->papar->carian='[tiada id diisi]';
+            $this->papar->carian = '[tiada id diisi]';
         }
         
         # isytihar pemboleubah
@@ -119,17 +115,16 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . 'kawalan/ubah/' . $dataID . '';
 		header('location: ' . URL . 'kawalan/ubah/' . $dataID);
-
 	}
 
     public function ubahSimpan($dataID)
     {
         $posmen = array();
         $medanID = 'newss';
-		$tahunan = array('be16_kawal');
+		$senaraiJadual = array('be16_kawal');
     
         foreach ($_POST as $myTable => $value)
-        {   if ( in_array($myTable,$tahunan) )
+        {   if ( in_array($myTable,$senaraiJadual) )
             {   foreach ($value as $kekunci => $papar)
 				{	$posmen[$myTable][$kekunci]= 
 						( in_array($kekunci,array('hasil','belanja','gaji','aset','staf','stok')) ) ?
@@ -141,20 +136,20 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
 		# ubahsuai $posmen
 			# buat peristiharan
-			$posmen = $this->tanya->semakPosmen($tahunan[0], $posmen);
-        //echo '<br>$dataID=' . $dataID . '<br>';
-        //echo '<pre>$_POST='; print_r($_POST) . '</pre>';
-        //echo '<pre>$posmen='; print_r($posmen) . '</pre>';
- 
-        # mula ulang $tahunan
-        foreach ($tahunan as $kunci => $jadual)
-        {// mula ulang table
-            $this->tanya->
-				//ubahSimpan
-				($posmen[$jadual], $jadual, $medanID);
-        }// tamat ulang table
-        
-        # pergi papar kandungan
+			$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
+		//echo '<br>$dataID=' . $dataID . '<br>';
+		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+		 
+		# mula ulang $senaraiJadual
+		foreach ($senaraiJadual as $kunci => $jadual)
+		{// mula ulang table
+			$this->tanya->ubahSqlSimpan
+			//ubahSimpan
+			($posmen[$jadual], $jadual, $medanID);
+		}// tamat ulang table
+				
+		# pergi papar kandungan
 		//$this->papar->baca('kawalan/ubah/' . $dataID);
 		//header('location: ' . URL . 'kawalan/ubah/' . $dataID);
  //*/       
