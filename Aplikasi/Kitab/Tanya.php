@@ -52,6 +52,8 @@ class Tanya
 			$dimana .= " $atau`$medan` REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
 		elseif($fix=='xkhas4')
 			$dimana .= " $atau`$medan` NOT REGEXP CONCAT('[[:<:]]',$cariApa,'[[:>:]]') $akhir\r";
+		elseif($fix=='z%like%')
+			$dimana .= " $atau$medan like '%$cariApa%' $akhir\r";
 		elseif($fix=='z1')
 			$dimana .= " $atau$medan = $cariApa $akhir\r";
 		elseif($fix=='z2')
