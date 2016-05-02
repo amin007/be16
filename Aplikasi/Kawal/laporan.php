@@ -64,9 +64,9 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
-		# kumpul respon jadi medan
+		# kumpul respon jadi medan sql
 		$medan = $this->tanya->kumpulRespon($item, $ms);
-		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
+		$hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
 		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
 		
 		# Set pemboleubah utama
@@ -74,7 +74,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
-		$this->papar->hasil = $kumpul;
+		$this->papar->hasil = $hadil;
 		$this->papar->fe = $namaPegawai;
 		$this->papar->kp = 'BE';
 	
