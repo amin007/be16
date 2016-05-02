@@ -2,7 +2,7 @@
 namespace Aplikasi\Kawal; //echo __NAMESPACE__; 
 class Kawalan extends \Aplikasi\Kitab\Kawal
 {
-#==========================================================================================
+#==================================================================================================================
     public function __construct() 
     {
 		parent::__construct();
@@ -23,8 +23,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
     }
 
     public function index() { echo '<br>class Kawalan::index() extend Kawal<br>'; }
-#==========================================================================================
-# ---------------------------------------------------------------------------------------------------
+#==================================================================================================================
+#---------------------------------------------------------------------------------------------------
 	private function cariIndustri($jadualMSIC, $msic)
 	{
 		#326-46312  substr("abcdef", 0, -1);  // returns "abcde"
@@ -52,7 +52,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		}# tamat ulang table
 		
 	}
-# ---------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
     public function ubah($cariID = null) 
     {//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
                 
@@ -104,7 +104,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca('kawalan/ubah', 0);
 
     }
-# ---------------------------------------------------------------------------------------------------    
+#---------------------------------------------------------------------------------------------------    
 	public function ubahCari()
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
@@ -126,7 +126,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
     {
         $posmen = array();
         $medanID = 'newss';
-		$tahunan = array('sse15_kawal');
+		$tahunan = array('be16_kawal');
     
         foreach ($_POST as $myTable => $value)
         {   if ( in_array($myTable,$tahunan) )
@@ -141,7 +141,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
 		# ubahsuai $posmen
 			# buat peristiharan
-			$rangka = 'sse15_kawal'; // jadual rangka kawalan
+			$rangka = 'be16_kawal'; // jadual rangka kawalan
 			if (isset($posmen[$rangka]['respon']))
 				$posmen[$rangka]['respon']=strtoupper($posmen[$rangka]['respon']);
 			if (isset($posmen[$rangka]['fe']))				
@@ -229,5 +229,5 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         $this->papar->baca('kawalan/buang', 1);
 
     }
-
+#==================================================================================================================
 }
