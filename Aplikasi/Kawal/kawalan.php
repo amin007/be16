@@ -138,14 +138,14 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		 
 		# mula ulang $senaraiJadual
 		foreach ($senaraiJadual as $kunci => $jadual)
-		{// mula ulang table
+		{# mula ulang table
 			$this->tanya->//ubahSqlSimpan
 			ubahSimpan
 			($posmen[$jadual], $jadual, $medanID);
-		}// tamat ulang table
+		}# tamat ulang table
 				
 		# pergi papar kandungan
-		//$this->papar->baca('kawalan/ubah/' . $dataID);
+		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
 		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
     }
 
