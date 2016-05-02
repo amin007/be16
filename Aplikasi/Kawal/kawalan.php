@@ -21,58 +21,15 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
             'bootstrap-datepicker.css',
             'bootstrap-editable.css');			
     }
-#==========================================================================================    
+
     public function index() { echo '<br>class Kawalan::index() extend Kawal<br>'; }
-    
-	public function medanKawalan($cariID) 
-	{ 
-		$news1 = 'http://sidapmuar/ekonomi/ckawalan/ubah/' . $cariID;
-		$news2 = 'http://sidapmuar/ekonomi/cprosesan/ubah/000/'.$cariID.'/2010/2015/'; 
-		$news3 = 'http://sidapmuar/ekonomi/semakan/ubah/",kp,"/'.$cariID.'/2010/2015/'; 
-		$url1 = '" <a target=_blank href=' . $news1 . '>SEMAK 1</a>"';
-		$url2 = '" <a target=_blank href=' . $news2 . '>SEMAK 2</a>"';
-		$url3 = 'concat("<a target=_blank href=' . $news3 . '>SEMAK 3</a>")';
-        $medanKawalan = 'newss,'
-			//. '( if (hasil is null, "", '
-			. 'concat_ws("|",nama,operator,'.$url1 . ',' . $url3 .') nama,'
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
-			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
-			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
-			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
-			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
-			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
- 			. ' ) as data5P,'
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," responden",responden),' . "\r"
-			. ' 	concat_ws("="," tel",tel),' . "\r"
-			. ' 	concat_ws("="," fax",fax),' . "\r"
-			. ' 	concat_ws("="," orang",orang),' . "\r"
-			. ' 	concat_ws("="," notel",notel),' . "\r"
-			. ' 	concat_ws("="," nofax",nofax)' . "\r"
- 			. ' ) as dataHubungi,'
-			. 'concat_ws(" | ",ssm,kp,sv,nama_kp) as nossm,' . "\r"
-			. 'mko,batchProses,respon,nota,nota_prosesan,fe,'		
-			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
-			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
-			//. 'concat_ws(" ",no,batu,( if (jalan is null, "", concat("JALAN ",jalan) ) ),tmn_kg,poskod,dp_baru) alamat_baru,' . "\r"
-			. 'concat_ws("-",kp,msic2008) msic2008,' 
-			. 'concat_ws("-",kp,msic2008) keterangan,' 
-			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
-			//. 'batchAwal,dsk,mko,batchProses,'
-			. 'tel,notel,fax,nofax,responden,orang,email,esurat,'
-			//. 'respon2,lawat,terima,hantar,hantar_prosesan,' . "\r" 
-			. 'hasil,belanja,gaji,aset,staf,stok' . "\r" 
-			. '';	
-		return $medanKawalan;
-	}
-    
+#==========================================================================================
     public function ubah($cariID = null) 
     {//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
                 
-        // senaraikan tatasusunan jadual dan setkan pembolehubah
+        # senaraikan tatasusunan jadual dan setkan pembolehubah
         $jadualKawalan = 'be16_kawal';
-        $medanKawalan = $this->medanKawalan($cariID);
+        $medanKawalan = $this->tanya->medanKawalan($cariID);
 	
         if (!empty($cariID)) 
         {
@@ -80,28 +37,28 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$this->papar->kesID = array();
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
         
-            // 1. mula semak dalam rangka 
+            # 1. mula semak dalam rangka 
             $this->papar->kawalan['kes'] = $this->tanya->
 				cariSemuaData($jadualKawalan, $medanKawalan, $cari, $susun = null);
-				//cariSql($jadualKawalan, $medanKawalan, $cari);
+				//cariSql($jadualKawalan, $medanKawalan, $cari, $susun = null);
 
 			if(isset($this->papar->kawalan['kes'][0]['newss'])):
-				// 1.1 ambil nilai msic & msic08
+				# 1.1 ambil nilai msic & msic08
 				//$msic00 = $this->papar->kawalan['kes'][0]['msic'];
 				$newss = $this->papar->kawalan['kes'][0]['newss'];
 				$msic = $this->papar->kawalan['kes'][0]['msic2008'];
-				//326-46312  substr("abcdef", 0, -1);  // returns "abcde"
+				#326-46312  substr("abcdef", 0, -1);  // returns "abcde"
 				$msic08 = substr($msic, 4);  // returns "46312"
 				$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);
 			
-				// 1.2 cari nilai msic & msic08 dalam jadual msic2008
+				# 1.2 cari nilai msic & msic08 dalam jadual msic2008
 				$jadualMSIC = dpt_senarai('msicbaru');
-				// mula cari $cariID dalam $jadual
+				# mula cari $cariID dalam $jadual
 				foreach ($jadualMSIC as $m6 => $msic)
-				{// mula ulang table
+				{# mula ulang table
 					$jadualPendek = substr($msic, 16);
 					//echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
-					// senarai nama medan
+					# senarai nama medan
 					if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
 						$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
 					elseif($jadualPendek=='msic2008_asas') 
@@ -111,8 +68,10 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 					else $medanM6 = '*'; 
 					//echo "cariMSIC($msic, $medanM6,<pre>"; print_r($cariM6) . "</pre>)<br>";
 					$this->papar->_cariIndustri[$jadualPendek] = $this->tanya->
-						cariSemuaData($msic, $medanM6, $cariM6);
-				}// tamat ulang table
+						cariSql
+						//cariSemuaData
+						($msic, $medanM6, $cariM6, null);
+				}# tamat ulang table
 			endif;
 		
 		}
@@ -123,20 +82,19 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         
         # isytihar pemboleubah
         $this->papar->pegawai = senarai_kakitangan();
-        $this->papar->lokasi = 'CDT 2014 - Ubah';
+        $this->papar->lokasi = 'BE16 - Ubah';
 		$this->papar->cari = (isset($this->papar->kawalan['kes'][0]['newss'])) ? $newss : $cariID;
 		$this->papar->_jadual = $jadualKawalan;
 		
-        
-		/*# semak data
+		# semak data
 		echo '<pre>';
-		//echo '$this->papar->kawalan:<br>'; print_r($this->papar->kawalan); 
-		echo '$this->papar->cariIndustri:<br>'; var_export($this->papar->_cariIndustri); 
+		echo '$this->papar->kawalan:<br>'; print_r($this->papar->kawalan); 
+		//echo '$this->papar->cariIndustri:<br>'; var_export($this->papar->_cariIndustri); 
 		echo '<br>$this->papar->cari:'; print_r($this->papar->cari); 
 		echo '</pre>'; //*/
 		
-        # pergi papar kandungan
-        $this->papar->baca('kawalan/ubah', 0);
+		# pergi papar kandungan
+		//$this->papar->baca('kawalan/ubah', 0);
 
     }
     
