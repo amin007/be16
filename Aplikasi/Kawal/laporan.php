@@ -97,15 +97,15 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
 		# kumpul respon jadi medan sql
 		$medan = $this->tanya->kumpulResponden($item, $ms);
-		$kumpul = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
-		//echo '<pre>$kumpul:'; print_r($kumpul) . '</pre>';
+		$hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($hasil) . '</pre>';
 		
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
-		$this->papar->hasil = $kumpul;
+		$this->papar->hasil = $hasil;
 		$this->papar->fe = $namaPegawai;
 		$this->papar->kp = 'BE';
 				
