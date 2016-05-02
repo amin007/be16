@@ -53,18 +53,18 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 # cetak f3 - senarai nama syarikat ikut fe/batchAwal
 	public function cetakf3($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
+		$medan = $this->tanya->kumpulRespon($item, $ms); # kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql(
-			$jadual, $medan = '*', $carian, NULL);
+			$jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
-		$medan = $this->tanya->kumpulRespon($item, $ms); # kumpul respon jadi medan sql
 		# tanya dalam sql 	
 		$this->papar->hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>';
@@ -83,18 +83,18 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 #==========================================================================================
 	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
+		$medan = $this->tanya->kumpulResponden($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris(//tatasusunanCari(//cariSql(
-			$jadual, $medan = '*', $carian, NULL);
+			$jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'kp,nama ASC') );
-		$medan = $this->tanya->kumpulResponden($item, $ms);# kumpul respon jadi medan sql
 		# tanya dalam sql 	
 		$this->papar->hasil = $this->tanya->cariSemuaData($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>';
