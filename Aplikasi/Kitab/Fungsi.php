@@ -95,6 +95,17 @@ function senarai_kakitangan($pilih = 0)
     return $pegawai;
 }
 
+function dpt_senarai($pilih = 'msicbaru')
+{
+	# define('MSICBARU', serialize (array()) );
+	if ($pilih = 'msicbaru') : 
+		$jadual = unserialize(MSICBARU);
+	//else : $jadual = null; //unserialize()
+	endif;
+	
+	return $jadual;
+}
+
 # semak data
 function semakDataPOST($semua)
 {
