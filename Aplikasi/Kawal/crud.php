@@ -34,15 +34,17 @@ class Crud extends \Aplikasi\Kitab\Kawal
 
 	function tambahSimpan()
 	{
+		# Set pemboleubah utama
+		$posmen = array();
+		$senarai = array('');
+
 		# validasi data $_POST, masuk dalam $posmen, validasi awal
 		foreach ($_POST as $myTable => $value)
 		{   if ( in_array($myTable,$senarai) )
 			{   foreach ($value as $kekunci => $papar)
-				{	$posmen[$myTable][$kekunci]= 
-					( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
-						str_replace( ',', '', bersih($papar) ) # buang koma	
-						: bersih($papar);
-				}	$posmen[$myTable][$medanID] = $dataID;
+				{	
+					$posmen[$myTable][$kekunci] = bersih($papar);
+				}	
 			}
 		}
 
@@ -190,10 +192,10 @@ class Crud extends \Aplikasi\Kitab\Kawal
 	public function ubahSimpan($dataID)
 	{
 		# Set pemboleubah utama
-    	$posmen = array();
-    	$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
-    	$medanID = '';
-    	$senarai = array('');
+		$posmen = array();
+		$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
+		$medanID = '';
+		$senarai = array('');
     
     	# masuk dalam $posmen, validasi awal
 		foreach ($_POST as $myTable => $value)
