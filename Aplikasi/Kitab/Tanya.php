@@ -210,6 +210,12 @@ class Tanya
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 		//$this->db->insert($sql);
 	}
+	
+	public function tambahSimpanBanyak($myTable, $data)
+	{
+		//echo '<pre>$myTable->', print_r($data, 1) . '</pre>';		
+		$this->db->insert($myTable, $data);
+	}
 
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
 	{
