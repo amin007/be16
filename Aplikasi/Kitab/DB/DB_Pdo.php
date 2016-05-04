@@ -91,13 +91,14 @@ class DB_Pdo extends \PDO
 		$fieldNames = implode('`, `', array_keys($data));
 		$fieldValues = ':' . implode(', :', array_keys($data));
 		
+		//echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
 		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
 		
 		foreach ($data as $key => $value) {
 			$sth->bindValue(":$key", $value);
 		}
 		
-		$sth->execute();
+		$sth->execute();//*/
 	}
 	
 	/**
