@@ -199,16 +199,46 @@ class Tanya
 		//echo '<pre>$sql->' . $sql . '</pre><br>';
 	}
 
-	public function tambahSql($myTable, $data, $medan)
+	public function cariArahanSql($myTable, $medan, $carian, $susun)
 	{
-		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
+		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
+			 . $this->dimana($carian)
+			 . $this->dibawah($susun);
+		
+		//echo htmlentities($sql) . '<br>';
+		return $sql;
+	}
+	
+	public function tambahSql($myTable, $data)
+	{
+		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		foreach ($data as $medan => $nilai)
+		{
+			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
+		}
 		
 		# set sql
-		$sql = "INSERT INTO $myTable ($medan) VALUES \r";
-		$sql .= implode(",\r", $data);
+		$sql = "INSERT INTO $myTable SET \r";
+		$sql .= implode(",\r", $senarai);
 
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
 		//$this->db->insert($sql);
+	}
+
+	public function tambahData($myTable, $data)
+	{
+		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		foreach ($data as $medan => $nilai)
+		{
+			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
+		}
+		
+		# set sql
+		$sql = "INSERT INTO $myTable SET \r";
+		$sql .= implode(",\r", $senarai);
+
+		//echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
+		$this->db->insert($myTable, $data);
 	}
 
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
@@ -255,7 +285,7 @@ class Tanya
 				$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
 			elseif ($medan != $medanID)
 				$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`='$nilai'"; 
+				" `$medan`=null" : " `$medan`=`$nilai`"; 
 		}
 		
 		$senaraiData = implode(",\r",$senarai);
@@ -265,6 +295,27 @@ class Tanya
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';//*/
 	}
 
+	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
+	{
+		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		
+		foreach ($data as $medan => $nilai)
+		{
+			if ($medan == $medanID)
+				$where = " WHERE `$medanID` = `{$data[$medanID]}` ";
+			elseif ($medan != $medanID)
+				$senarai[] = ($nilai==null) ? 
+				" `$medan` = null" : " `$medan` = `$nilai`"; 
+		}
+		
+		$senaraiData = implode(",\r",$senarai);
+		
+		# set sql
+		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
+		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';//*/
+	}
+
+	
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
 		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
