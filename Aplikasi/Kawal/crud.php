@@ -47,7 +47,25 @@ class Crud extends \Aplikasi\Kitab\Kawal
 				}	
 			}
 		}
-
+		
+		# ubahsuai $posmen, valiadi terperinci
+			$posmen = $this->tanya->semakData($posmen, $jadual);			
+			# semak data
+			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+ 
+		# mula ulang $senarai
+		foreach ($senarai as $kunci => $jadual)
+		{# tanya sql sama ada papar atau simpan
+			$this->tanya->//tambahSqlSimpan//
+			tambahSimpanBanyak
+			($posmen[$jadual], $jadual);
+		}# tamat ulang $senarai
+        
+        # pergi papar kandungan
+		//$this->papar->baca($this->_folder . '/ubah/' . $dataID);
+		//header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
+ 
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
@@ -168,8 +186,8 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
 		echo '</pre>'; //*/
 		
-	# pergi papar kandungan
-	$this->papar->baca($this->_folder . '/ubah', 0);
+		# pergi papar kandungan
+		$this->papar->baca($this->_folder . '/ubah', 0);
 		
 	}
     
