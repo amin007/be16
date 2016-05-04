@@ -34,6 +34,17 @@ class Crud extends \Aplikasi\Kitab\Kawal
 
 	function tambahSimpan()
 	{
+		# validasi data $_POST, masuk dalam $posmen, validasi awal
+		foreach ($_POST as $myTable => $value)
+		{   if ( in_array($myTable,$senarai) )
+			{   foreach ($value as $kekunci => $papar)
+				{	$posmen[$myTable][$kekunci]= 
+					( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
+						str_replace( ',', '', bersih($papar) ) # buang koma	
+						: bersih($papar);
+				}	$posmen[$myTable][$medanID] = $dataID;
+			}
+		}
 
 	}
 	
@@ -185,16 +196,16 @@ class Crud extends \Aplikasi\Kitab\Kawal
     	$senarai = array('');
     
     	# masuk dalam $posmen, validasi awal
-        foreach ($_POST as $myTable => $value)
-        {   if ( in_array($myTable,$senarai) )
-            {   foreach ($value as $kekunci => $papar)
+		foreach ($_POST as $myTable => $value)
+		{   if ( in_array($myTable,$senarai) )
+			{   foreach ($value as $kekunci => $papar)
 				{	$posmen[$myTable][$kekunci]= 
-						( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
+					( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
 						str_replace( ',', '', bersih($papar) ) # buang koma	
 						: bersih($papar);
 				}	$posmen[$myTable][$medanID] = $dataID;
-            }
-        }
+			}
+		}
         
 		# ubahsuai $posmen, valiadi terperinci
 			$posmen = $this->tanya->semakData($posmen, $jadual);			
