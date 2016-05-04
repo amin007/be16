@@ -73,7 +73,6 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		//$this->papar->bacaTemplate($this->_folder . '/index',
 		$this->papar->paparTemplate($this->_folder . '/index',
 			$jenis,0); # $noInclude=0
-
 	}
 
 	public function paparlimit($cariID = null, $cariApa = null) 
@@ -154,7 +153,6 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		
         # pergi papar kandungan
         $this->papar->baca($this->_folder . '/ubah', 0);
-
     }
     
 	public function ubahCari()
@@ -244,9 +242,8 @@ class Crud extends \Aplikasi\Kitab\Kawal
         # pergi papar kandungan
 		//$this->papar->baca($this->_folder . '/ubah/' . $dataID);
 		//header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
- //*/       
-    }
-
+	}
+	
 	function buang($id) 
 	{
 		# Set pemboleubah utama	
@@ -263,6 +260,6 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/buang', 1);
 
-    }
+	}
 #==========================================================================================	
 }
