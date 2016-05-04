@@ -287,17 +287,17 @@ class Html
 	}
 	# tamat untuk kod php+html 
 #==========================================================================================
-	function paparURL($key, $data, $cariBatch)
+	function paparURL($key, $data, $cariBatch, $namaPegawai)
 	{
 		if ($key=='newss')
 		{
 			$id = $data; 
 			$k1 = URL . "kawalan/ubah/$id";
-			$cb = URL . "batch/buangBatchJohor/$cariBatch/$id";
+			$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$id";
 
 			?><td><?php
 			?><a target="_blank" href="<?php echo $k1 ?>" class="btn btn-primary btn-mini">Ubah</a><?php
-			/*?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php*/
+			?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php
 			?></td><td><?php echo $data ?></td><?php
 		}
 		elseif ($key=='feborang')
