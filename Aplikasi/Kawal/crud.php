@@ -177,13 +177,13 @@ class Crud extends \Aplikasi\Kitab\Kawal
 
 	public function ubahSimpan($dataID)
 	{
-	# Set pemboleubah utama
+		# Set pemboleubah utama
     	$posmen = array();
-	$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
+    	$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
     	$medanID = '';
-	$senarai = array('');
+    	$senarai = array('');
     
-	# masuk dalam $posmen, validasi awal
+    	# masuk dalam $posmen, validasi awal
         foreach ($_POST as $myTable => $value)
         {   if ( in_array($myTable,$senarai) )
             {   foreach ($value as $kekunci => $papar)
@@ -216,15 +216,11 @@ class Crud extends \Aplikasi\Kitab\Kawal
 	function buang($id) 
 	{
 		# Set pemboleubah utama	
-        if (!empty($id)) 
-        {
+		if (!empty($id))
 			# $carian, $susun
 			$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
-		}
 		else
-		{
 			$this->papar->carian='[tiada id diisi]';
-		}
 
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/buang', 1);
