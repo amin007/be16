@@ -175,15 +175,15 @@ class Crud extends \Aplikasi\Kitab\Kawal
 
 	}
 
-    public function ubahSimpan($dataID)
-    {
-		# Set pemboleubah utama
+	public function ubahSimpan($dataID)
+	{
+	# Set pemboleubah utama
     	$posmen = array();
-		$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
+	$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
     	$medanID = '';
-		$senarai = array('');
+	$senarai = array('');
     
-		# masuk dalam $posmen, validasi awal
+	# masuk dalam $posmen, validasi awal
         foreach ($_POST as $myTable => $value)
         {   if ( in_array($myTable,$senarai) )
             {   foreach ($value as $kekunci => $papar)
@@ -196,42 +196,7 @@ class Crud extends \Aplikasi\Kitab\Kawal
         }
         
 		# ubahsuai $posmen, valiadi terperinci
-			$jadual = ''; # setkan nama jadual 
-			# valid guna gelung foreach
-			foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
-			{# kod php untuk formula matematik
-				if(isset($posmen[$jadual][$keyRM])):
-					eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
-					$posmen[$jadual][$keyRM] = $data;
-				endif;
-			}/*$nilaiTEKS = array('no','batu','jalan','tmn_kg');
-			foreach ($nilaiTEKS as $keyTEKS)
-			{# kod php untuk besarkan semua huruf aka uppercase
-				if(isset($posmen[$jadual][$keyTEKS])):
-					$posmen[$jadual][$keyTEKS] = strtoupper($posmen[$jadual][$keyTEKS]);
-				endif;
-			}//*/ # valid guna if
-			if (isset($posmen[$jadual]['email']))
-				$posmen[$jadual]['email']=strtolower($posmen[$jadual]['email']);
-			//if (isset($posmen[$jadual]['dp_baru']))
-			//	$posmen[$jadual]['dp_baru']=ucwords(strtolower($posmen[$jadual]['dp_baru']));
-			if (isset($posmen[$jadual]['responden']))
-				$posmen[$jadual]['responden']=mb_convert_case($posmen[$jadual]['responden'], MB_CASE_TITLE);
-			if (isset($posmen[$jadual]['password']))
-			{
-				//$pilih = null;
-				$pilih = 'md5'; # Hash::rahsia('md5', $posmen[$jadual]['password'])
-				//$pilih = 'sha256'; # Hash::create('sha256', $posmen[$jadual]['password'], HASH_PASSWORD_KEY)
-				if (empty($posmen[$jadual]['password']))
-					unset($posmen[$jadual]['password']);
-				elseif ($pilih == 'md5')
-					$posmen[$jadual]['password'] = 
-						\Aplikasi\Kitab\Hash::rahsia('md5', $posmen[$jadual]['password']);
-				elseif ($pilih == 'sha256')
-					$posmen[$jadual]['password'] = 
-						\Aplikasi\Kitab\Hash::create('sha256', $posmen[$jadual]['password'], HASH_PASSWORD_KEY);
-			}
-			
+			$posmen = $this->tanya->semakData($posmen, $jadual);			
 			# semak data
 			echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
