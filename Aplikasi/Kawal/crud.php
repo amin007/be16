@@ -22,15 +22,19 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
-		
 	}
 #==========================================================================================	
-	function tambah() 
+	function tambah()
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/tambah');
+	}
+
+	function tambahSimpan()
+	{
+
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
