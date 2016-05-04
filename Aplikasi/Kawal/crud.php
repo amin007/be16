@@ -104,12 +104,12 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/papar');
-	}
-	   
-    public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
-    {//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
+}
+
+	public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
+	{//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
                 
-        # senaraikan tatasusunan jadual dan setkan pembolehubah
+		# senaraikan tatasusunan jadual dan setkan pembolehubah
 		$this->papar->lokasi = 'Enjin - Ubah';
 		$this->papar->_jadual = $jadualUbah;
 		$medanUbah = $this->tanya->medanUbah2($cariID);
@@ -129,12 +129,12 @@ class Crud extends \Aplikasi\Kitab\Kawal
 				# cari data lain jika jumpa
 				$this->papar->_paparSahaja = $this->tanya->
 					tatasusunanUbah2A($jadualUbah, $medanUbah, $cari, $susun = null);
-					//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
-					//cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
+				//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
+				//cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
-			
+					
 			$this->papar->cariID  = $medanID;
 			$this->papar->cariApa = $cariID;
 		}
@@ -145,7 +145,7 @@ class Crud extends \Aplikasi\Kitab\Kawal
 			$this->papar->cariApa = '[tiada id diisi]';
 			$this->papar->jumpa   = '[hendak cari apa kalau id tiada]';
 		}
-
+		
 		/*# semak data
 		echo '<pre>';
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
@@ -155,9 +155,10 @@ class Crud extends \Aplikasi\Kitab\Kawal
 		echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
 		echo '</pre>'; //*/
 		
-        # pergi papar kandungan
-        $this->papar->baca($this->_folder . '/ubah', 0);
-    }
+	# pergi papar kandungan
+	$this->papar->baca($this->_folder . '/ubah', 0);
+		
+	}
     
 	public function ubahCari()
 	{
