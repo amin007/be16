@@ -160,7 +160,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1 
-			$medan1 = 'borang,fe,count(*) as kira,concat_ws("/",fe,borang) as feborang';
+			$medan1 = 'borang,pegawai,count(*) as kira,concat_ws("/",pegawai,borang) as pegawaiborang';
 			$susun1[] = array_merge($jum2, array('kumpul'=>'borang,pegawai','susun'=>'nama') );
 			$this->papar->cariApa['groupBorangFe'] = $this->tanya->
 				//tatasusunanCariMFG(//	cariSql( 
