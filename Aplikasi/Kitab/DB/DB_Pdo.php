@@ -8,7 +8,7 @@ class DB_Pdo extends \PDO
 		try
 		{
 			parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME, $DB_USER, $DB_PASS);
-			//parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
+			//parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTIONS);
 		}
 		catch (PDOException $e) 
 		{
@@ -28,13 +28,27 @@ class DB_Pdo extends \PDO
 	public function selectAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
-		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		//parent::setAttribute(\PDO::ATTR_EMULATE_PREPARES,false);
+		try 
+		{	
+			$sth = $this->prepare($sql);
+			foreach ($array as $key => $value) 
+			{
+				$sth->bindValue("$key", $value);
+			}
+	
+			$sth->execute();
+		}
+		catch(PDOException $e) 
 		{
-			$sth->bindValue("$key", $value);
+			# this will echo error code with detail
+			# example: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nasme' in 'field list'
+			//echo $e->getMessage();
+			echo "\nPDO::errorInfo():\n";
+			print_r($dbh->errorInfo()); 			
 		}
 		
-		$sth->execute();
+		# pulangkan pembolehubah
 		return $sth->fetchAll($fetchMode);
 	}
 
