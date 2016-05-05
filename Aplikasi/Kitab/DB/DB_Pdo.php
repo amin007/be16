@@ -20,6 +20,23 @@ class DB_Pdo extends \PDO
 	}
 	
 	/**
+	 * bigError
+	 * @param papar $masalah yang dialami
+	 * @exit 
+	 */
+	public function bigError($masalah)
+	{
+		$error  = 'PDO::errorInfo()';
+		$error .= '<br>' . $masalah[2];
+		/*foreach ($masalah as $key=>$apa)
+			$error .= '<br>' . $key . '=>' . $apa; //*/
+		require KAWAL . '/sesat.php';
+		$kawal = new \Aplikasi\Kawal\Sesat();
+		$kawal->masalahDB($error); 
+		exit; 		
+	}
+	
+	/**
 	 * selectAll
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
@@ -30,7 +47,6 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		
 		foreach ($array as $key => $value) 
 		{
 			$sth->bindValue("$key", $value);
@@ -38,19 +54,10 @@ class DB_Pdo extends \PDO
 	
 		$sth->execute();
 		
-		$masalah = $sth->errorInfo(); 
+		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
-		{
-			$error  = 'PDO::errorInfo()';
-			$error .= '<br>' . $masalah[2];
-			/*foreach ($masalah as $key=>$apa)
-				$error .= '<br>' . $key . '=>' . $apa; //*/
-	        require KAWAL . '/sesat.php';
-			$kawal = new \Aplikasi\Kawal\Sesat();
-			$kawal->masalahDB($error); 
-			exit; 
-		}
+			$this->bigError($masalah);
 		else # pulangkan pembolehubah
 			return $sth->fetchAll($fetchMode);
 	}
