@@ -300,7 +300,7 @@ class Html
 			?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php
 			?></td><td><?php echo $data ?></td><?php
 		}
-		elseif ($key=='feborang')
+		elseif ($key=='pegawaiborang')
 		{
 			$k1 = URL . "operasi/batch/$data";
 			//$k2 = URL . "laporan/cetakNonA1/$data/1000";
