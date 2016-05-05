@@ -56,7 +56,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->kumpulRespon($item, $ms); # kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
-		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
@@ -87,7 +87,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->kumpulResponden($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
-		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
