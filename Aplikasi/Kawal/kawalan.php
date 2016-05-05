@@ -93,7 +93,12 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		echo '</pre>'; //*/
 		
 		# pergi papar kandungan
-		$this->papar->baca('kawalan/ubah', 0);
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca(
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/ubah',$jenis,0); # $noInclude=0
+		
 
     }
 #---------------------------------------------------------------------------------------------------    
