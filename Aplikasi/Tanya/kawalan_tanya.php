@@ -250,15 +250,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			$posmen[$rangka]['email']=strtolower($posmen[$rangka]['email']);
 		if (isset($posmen[$rangka]['responden']))
 			$posmen[$rangka]['responden']=mb_convert_case($posmen[$rangka]['responden'], MB_CASE_TITLE);
-		/*if (isset($posmen[$rangka]['no']))
-			$posmen[$rangka]['no']=strtoupper($posmen[$rangka]['no']);
-		if (isset($posmen[$rangka]['batu']))
-			$posmen[$rangka]['batu']=strtoupper($posmen[$rangka]['batu']);
-		if (isset($posmen[$rangka]['jalan']))
-			$posmen[$rangka]['jalan']=strtoupper($posmen[$rangka]['jalan']);
-		if (isset($posmen[$rangka]['tmn_kg']))
-			$posmen[$rangka]['tmn_kg']=strtoupper($posmen[$rangka]['tmn_kg']);
-		if (isset($posmen[$rangka]['dp_baru']))
+		/*if (isset($posmen[$rangka]['dp_baru']))
 			$posmen[$rangka]['dp_baru']=ucwords(strtolower($posmen[$rangka]['dp_baru']));//*/
 			
 		# pulangkan pemboleubah
