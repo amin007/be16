@@ -306,7 +306,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 					foreach($paparKes as $key => $data)
 					{
 						echo '<li onClick="fill(\'' . $data['newss'] . '\');">' 
-							. $data['nama'] . '-' . $data['newss'] 
+							. ($key+1) . '-' . $data['nama'] . '-' . $data['newss'] 
 							. '-SSM ' . $data['nossm'] . '-' . $data['operator'] 
 							. '-KP' . $data['kp'] . '</li>';
 					}
