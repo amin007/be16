@@ -201,8 +201,8 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
  			. ' ) as dataHubungi,'//*/
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
-			//. 'mko,batchProses,respon,nota,nota_prosesan,'
-			. 'respon,lawat,terima,hantar,hantar_prosesan,' . "\r" 
+			. 'mko,respon,nota,nota_prosesan,batchProses,'
+			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
 			//. 'concat_ws(" ",no,batu,( if (jalan is null, "", concat("JALAN ",jalan) ) ),tmn_kg,poskod,dp_baru) alamat_baru,' . "\r"
