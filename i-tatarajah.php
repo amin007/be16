@@ -47,8 +47,8 @@ if ($server == 'laman.web.anda')
 	define('SUMBER', 'http://' . $_SERVER['SERVER_NAME'] . '/sumberonline/');
 	define('JQUERY', $jquery_cdn);
 	define('FONTAWESOME', $fontawesome_cdn);
-	define('BOOTSTRAP-JS', $bootstrapJS_cdn);
-	define('BOOTSTRAP-CSS', $bootstrapCSS_cdn);
+	define('BOOTSTRAPJS', $bootstrapJS_cdn);
+	define('BOOTSTRAPCSS', $bootstrapCSS_cdn);
 }
 else 
 {	# isytihar tatarajah mysql
@@ -61,8 +61,8 @@ else
 	define('SUMBER', 'http://' . $_SERVER['SERVER_NAME'] . '/sumberoffline/');
 	define('JQUERY', $jquery_local);
 	define('FONTAWESOME', $fontawesome_local);
-	define('BOOTSTRAP-JS', $bootstrapJS_local);
-	define('BOOTSTRAP-CSS', $bootstrapCSS_local);
+	define('BOOTSTRAPJS', $bootstrapJS_local);
+	define('BOOTSTRAPCSS', $bootstrapCSS_local);
 }
 //echo DB_HOST . "," . DB_USER . "," . DB_PASS . ",," . DB_NAME . "<br>";
 ############################################################################################
