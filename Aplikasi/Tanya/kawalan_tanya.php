@@ -225,7 +225,20 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function semakPosmen($rangka, $posmen)
 	{
 		$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
-		
+		# valid guna gelung foreach
+		foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
+		{# kod php untuk formula matematik
+			if(isset($posmen[$jadual][$keyRM])):
+				@eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
+				$posmen[$jadual][$keyRM] = $data;
+			endif;
+		}/*$nilaiTEKS = array('no','batu','jalan','tmn_kg');
+		foreach ($nilaiTEKS as $keyTEKS)
+		{# kod php untuk besarkan semua huruf aka uppercase
+			if(isset($posmen[$jadual][$keyTEKS])):
+				$posmen[$jadual][$keyTEKS] = strtoupper($posmen[$jadual][$keyTEKS]);
+			endif;
+		}//*/ # valid guna if	
 		if (isset($posmen[$rangka]['respon']))
 			$posmen[$rangka]['respon']=strtoupper($posmen[$rangka]['respon']);
 		if (isset($posmen[$rangka]['fe']))
@@ -237,36 +250,6 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			$posmen[$rangka]['email']=strtolower($posmen[$rangka]['email']);
 		if (isset($posmen[$rangka]['responden']))
 			$posmen[$rangka]['responden']=mb_convert_case($posmen[$rangka]['responden'], MB_CASE_TITLE);
-		if (isset($posmen[$rangka]['hasil']))
-		{
-			@eval( '$hasil = (' . $posmen[$rangka]['hasil'] . ');' );
-			$posmen[$rangka]['hasil'] = $hasil;
-		}
-		if (isset($posmen[$rangka]['belanja']))			
-		{
-			@eval( '$belanja = (' . $posmen[$rangka]['belanja'] . ');' );
-			$posmen[$rangka]['belanja'] = $belanja;
-		}
-		if (isset($posmen[$rangka]['gaji']))
-		{
-			@eval( '$gaji = (' . $posmen[$rangka]['gaji'] . ');' );
-			$posmen[$rangka]['gaji'] = $gaji;
-		}
-		if (isset($posmen[$rangka]['aset']))			
-		{
-			@eval( '$aset = (' . $posmen[$rangka]['aset'] . ');' );
-			$posmen[$rangka]['aset'] = $aset;
-		}
-		if (isset($posmen[$rangka]['staf']))
-		{
-			@eval( '$staf = (' . $posmen[$rangka]['staf'] . ');' );
-			$posmen[$rangka]['staf'] = $staf;
-		}
-		if (isset($posmen[$rangka]['stok']))			
-		{
-			@eval( '$stok = (' . $posmen[$rangka]['stok'] . ');' );
-			$posmen[$rangka]['stok'] = $stok;
-		}
 		/*if (isset($posmen[$rangka]['no']))
 			$posmen[$rangka]['no']=strtoupper($posmen[$rangka]['no']);
 		if (isset($posmen[$rangka]['batu']))
