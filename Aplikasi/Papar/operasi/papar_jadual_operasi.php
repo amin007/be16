@@ -16,8 +16,7 @@
 				{	?><th><?php echo $tajuk ?></th><?php 	}
 			}
 			?></tr></thead>
-	<?php
-			$printed_headers = true; 
+	<?php	$printed_headers = true; 
 		} 
 	# papar data $row ------------------------------------------------
 	?><tbody><tr><td><?php echo $kira+1 ?></td><?php
@@ -26,10 +25,8 @@
 		{	
 			$html->paparURL($key, $data, $cariBatch, $namaPegawai);
 		} 
-
 		?></tr></tbody>
 	<?php
-	}
-	#-----------------------------------------------------------------
+	}#-----------------------------------------------------------------
 	?>
 	</table>
