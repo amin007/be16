@@ -94,11 +94,10 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
-		//$this->papar->baca(
-		$this->papar->bacaTemplate(
-		//$this->papar->paparTemplate(
-			$this->_folder . '/ubah',$jenis,0); # $noInclude=0
-		
+		//$this->papar->baca
+		$this->papar->bacaTemplate
+		//$this->papar->paparTemplate
+			($this->_folder . '/ubah',$jenis,0); # $noInclude=0
 
     }
 #---------------------------------------------------------------------------------------------------    
