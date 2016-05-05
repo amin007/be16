@@ -16,7 +16,7 @@ else: # set pembolehubah
 	$carian = null;
 	$mesej = '::' . $this->cariID . ' tiada dalam ' . $this->_jadual;
 endif;?>
-<h1>Ubah Kawalan<?=$mesej?></h1>
+<h1>Ubah Kawalan<?=$mesej?></h1><?php //echo '<div align="center">' . $mencari . '</div>' ?>
 <div align="center"><form method="GET" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
 <div class="form-group"><div class="input-group">
 	<input type="text" name="cari" class="form-control" value="<?=$carian;?>" 
@@ -31,12 +31,12 @@ endif;?>
 </form></div><br>
 <?php 
 if ($this->carian=='[tiada id diisi]')
-{
     echo 'data kosong<br>';
-}
-else
-{ # $this->carian=='ada' - mula ?>
-	<form method="POST" action="<?php echo URL ?>kawalan/ubahSimpan/<?php echo $this->cari; ?>"
+elseif(!isset($this->kawalan['kes'][0]['newss']))
+	echo 'data kosong juga<br>';
+else # $this->carian=='ada' - mula 
+{ 	$mencari2 = URL . 'kawalan/ubahSimpan/' . $this->cariID; ?>
+	<form method="POST" action="<?php echo $mencari2 ?>"
 	class="form-horizontal"><?php
 	$html = new Aplikasi\Kitab\Html;
 	foreach ($this->kawalan as $myTable => $row)
@@ -66,6 +66,7 @@ else
 			<div class="col-sm-6">
 				<input type="hidden" name="jadual" value="<?=$this->_jadual?>">
 				<input type="submit" name="Simpan" value="Simpan" class="btn btn-primary btn-large">
+				<?php //echo $mencari2 ?>
 			</div>
 		</div>	
 	</form>
