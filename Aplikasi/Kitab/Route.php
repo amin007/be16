@@ -72,7 +72,6 @@ class Route
 	 *  url[4] = Param4
 	 *  url[5] = Param5
 	 */
-	 
 	private function cari_pengawal($kawal, $url)
 	{
 		$panjang = count($url); //echo '$panjang=' . $panjang . '<br>';
