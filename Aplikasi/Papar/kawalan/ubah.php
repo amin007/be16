@@ -1,19 +1,20 @@
 <?php 
 /*echo '<pre>';
 echo '$this->kawalan:<br>'; print_r($this->kawalan); 
-echo '$this->cariIndustri:<br>'; print_r($this->cariIndustri); 
-echo '$this->cari:<br>'; print_r($this->cari); 
+echo '$this->cariIndustri:<br>'; (isset($this->cariIndustri)) ? print_r($this->cariIndustri) : null; 
+echo '<br>$this->carian:'; print_r($this->carian); 
+echo '<br>$this->cariID:'; print_r($this->cariID); 
 echo '</pre>'; //*/
 
 if(isset($this->kawalan['kes'][0]['newss'])):
-	// set pembolehubah
+	# set pembolehubah
 	$mencari = URL . 'kawalan/ubahCari/';
-	$carian = $this->cari;
-	$mesej = '';//$carian .' ada dalam ' . $this->_jadual;
-else:	// set pembolehubah
+	$carian = $this->cariID;
+	$mesej = ''; //$carian .' ada dalam ' . $this->_jadual;
+else: # set pembolehubah
 	$mencari = URL . 'kawalan/ubahCari/';
 	$carian = null;
-	$mesej = '::' . $this->cari .' tiada dalam ' . $this->_jadual;
+	$mesej = '::' . $this->cariID . ' tiada dalam ' . $this->_jadual;
 endif;?>
 <h1>Ubah Kawalan<?=$mesej?></h1>
 <div align="center"><form method="GET" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
@@ -34,7 +35,7 @@ if ($this->carian=='[tiada id diisi]')
     echo 'data kosong<br>';
 }
 else
-{ # $this->carian=='sidap' - mula ?>
+{ # $this->carian=='ada' - mula ?>
 	<form method="POST" action="<?php echo URL ?>kawalan/ubahSimpan/<?php echo $this->cari; ?>"
 	class="form-horizontal"><?php
 	$html = new Aplikasi\Kitab\Html;
@@ -70,7 +71,9 @@ else
 	</form>
 	<hr><?php 
 	endif;
-} // $this->carian=='sidap' - tamat ?><?php
+} # $this->carian=='ada' - tamat 
+//*/
+?><?php
 /*
     $s1 = '<span class="label">';
     $s2 = '</span>'; 
