@@ -298,17 +298,17 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				
 				$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
-				$bilKes = count($paparKes); echo $bilKes . '=>'; //print_r($paparKes) . '<pre></pre>';
+				$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes) . '<pre></pre>';
 				
 				if($bilKes==0) {echo '<li onClick="fill(\'-\');">Takde Laa</li>';}
 				else
-				{
+				{	echo '<li>Jumpa ' . $bilKes . '</li>';
 					foreach($paparKes as $key => $data)
 					{
 						echo '<li onClick="fill(\'' . $data['newss'] . '\');">' 
 							. $data['nama'] . '-' . $data['newss'] 
 							. '-SSM ' . $data['nossm'] . '-' . $data['operator'] 
-							. '-' . $data['kp'] . '</li>';
+							. '-KP' . $data['kp'] . '</li>';
 					}
 				}# tamat - $bilKes ==0
 			}# tamat - strlen($cari) > 0
