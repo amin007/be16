@@ -11,19 +11,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		
         $this->papar->js = array(
             //'bootstrap.js',
-            'bootstrap-transition.js',
-            'bootstrap-alert.js',
-            'bootstrap-modal.js',
-            'bootstrap-dropdown.js',
-            'bootstrap-scrollspy.js',
-            'bootstrap-tab.js',
-            'bootstrap-tooltip.js',
-            'bootstrap-popover.js',
-            'bootstrap-button.js',
-            'bootstrap-collapse.js',
-            'bootstrap-carousel.js',
-            'bootstrap-typeahead.js',
-            'bootstrap-affix.js',
             'bootstrap-datepicker.js',
             'bootstrap-datepicker.ms.js',
             'bootstrap-editable.min.js');
@@ -31,7 +18,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
             'bootstrap-datepicker.css',
             'bootstrap-editable.css');
 		
-		$this->_tajukAtas = 'SSE 2015:';
+		$this->_tajukAtas = 'BE16:';
 		$this->_folder = 'cari';			
 	}
 	
@@ -297,25 +284,21 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	
 	public function syarikat($carilah = null)
 	{
-		$cari = bersih($_GET['cari']);
-		echo "URL \$cari = $cari <br> GET \$cari = $carilah";
-		//if($nama == null) echo '<li onClick="fill(\'-\');">Kosong Laa</li>';
-		/*
-		if (isset($_GET['cari']))
-		//if ($cari)
+		$cari = bersih($_GET['cari']); //echo "URL \$cari = $cari <br> GET \$cari = $carilah";
+		if($_GET['cari'] == null) echo '<li onClick="fill(\'-\');">Kosong Laa</li>';
+		elseif (isset($_GET['cari'])) //if ($cari)
 		{
-			$cari = bersih($_GET['cari']);
 			//echo '<li onClick="fill(\'-\');">'.$cari.'</li>';
 			if(strlen($cari) > 0) 
 			{
-				$myTable = 'sse15_kawal';
-				$medan = 'newss,nama,ssm,operator,kp';
-				$carian[] = array('fix'=>'likeMedan','atau'=>'WHERE','medan'=>'concat_ws(" ",newss,ssm,nama)','apa'=>$cari);
-				$susun['dari'] = 30;
+				$myTable = 'be16_kawal';
+				$medan = 'newss,nama,nossm,operator,kp';
+				$carian[] = array('fix'=>'z%like%','atau'=>'WHERE','medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
+				$susun['dari'] = 15;
 				
 				$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
-				$bilKes = count($paparKes); //echo '<pre>' . $bilKes . '=>'; print_r($paparKes) . '</pre>';
+				$bilKes = count($paparKes); echo $bilKes . '=>'; //print_r($paparKes) . '<pre></pre>';
 				
 				if($bilKes==0) {echo '<li onClick="fill(\'-\');">Takde Laa</li>';}
 				else
@@ -324,7 +307,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 					{
 						echo '<li onClick="fill(\'' . $data['newss'] . '\');">' 
 							. $data['nama'] . '-' . $data['newss'] 
-							. '-SSM ' . $data['ssm'] . '-' . $data['operator'] 
+							. '-SSM ' . $data['nossm'] . '-' . $data['operator'] 
 							. '-' . $data['kp'] . '</li>';
 					}
 				}# tamat - $bilKes ==0
