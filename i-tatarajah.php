@@ -44,6 +44,7 @@ if ($server == 'laman.web.anda')
 	define('DB_USER', '***');
 	define('DB_PASS', '***');
 	# isytihar lokasi folder js
+	define('SUMBER', 'http://' . $_SERVER['SERVER_NAME'] . '/sumberonline/');
 	define('JQUERY', $jquery_cdn);
 	define('FONTAWESOME', $fontawesome_cdn);
 	define('BOOTSTRAP-JS', $bootstrapJS_cdn);
@@ -57,6 +58,7 @@ else
 	define('DB_USER', '***');
 	define('DB_PASS', '***');
 	# isytihar lokasi folder js
+	define('SUMBER', 'http://' . $_SERVER['SERVER_NAME'] . '/sumberoffline/');
 	define('JQUERY', $jquery_local);
 	define('FONTAWESOME', $fontawesome_local);
 	define('BOOTSTRAP-JS', $bootstrapJS_local);
