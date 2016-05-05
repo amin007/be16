@@ -201,7 +201,8 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
  			. ' ) as dataHubungi,'//*/
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
-			//. 'mko,batchProses,respon,nota,nota_prosesan,'		
+			//. 'mko,batchProses,respon,nota,nota_prosesan,'
+			. 'respon,lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
 			//. 'concat_ws(" ",no,batu,( if (jalan is null, "", concat("JALAN ",jalan) ) ),tmn_kg,poskod,dp_baru) alamat_baru,' . "\r"
@@ -210,7 +211,6 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
 			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
-			//. 'respon2,lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			. 'hasil,belanja,gaji,aset,staf,stok,'
 			. '';	
 	
