@@ -44,8 +44,8 @@ else
 		{# print the data row // <button type="button" class="btn btn-info">Info</button>
 		#----------------------------------------------------------------------------
 		foreach ($row[$kira] as $key=>$data): echo "\n\t\t";
-			if (in_array($key,array('no','batu','jalan','tmn_kg','dp_baru','respon2')) 
-				&& Sesi::get('namaPegawai')!='amin007'): echo '';
+			if (in_array($key,array('no','batu','jalan','tmn_kg','dp_baru','respon3')) 
+				&& Sesi::get('namaPegawai')!='amin'): echo '';
 			else:?><div class="form-group">
 			<label for="input<?php echo $key 
 			?>" class="col-sm-2 control-label"><?php echo $key ?></label>
@@ -71,38 +71,6 @@ else
 	<hr><?php 
 	endif;
 } // $this->carian=='sidap' - tamat ?><?php
-// mula untuk kod php+html
-function papar_jadual($row, $myTable, $pilih)
-{
-	if ($pilih == 2 && count($row) != 0)
-    {	?><!-- Jadual <?php echo $myTable ?> ########################################### -->
-		<span class="label label-success">Jadual <?php echo $myTable ?></span>
-        <table class="table table-striped">
-        <?php
-        $printed_headers = false; ## mula bina jadual
-        #-----------------------------------------------------------------
-        for ($kira=0; $kira < count($row); $kira++)
-        {##print the headers once:  
-            if ( !$printed_headers )
-            {	?><thead><tr>
-        <th>#</th>
-        <?php   foreach ( array_keys($row[$kira]) AS $tajuk ):
-			?><th><?php echo $tajuk ?></th>
-        <?php	endforeach; ?></tr></thead><?php
-                $printed_headers = true;
-            }#-----------------------------------------------------------------      
-            ## print the data row ?>
-            <tbody><tr>
-            <td><?php echo $kira+1 ?></td>
-            <?php foreach ( $row[$kira] as $key=>$data ) : ?>
-            <td><?php echo $data ?></td><?php endforeach; ?>
-        </tr></tbody>
-		<?php
-        }#-----------------------------------------------------------------
-        ?></table><?php
-    } 
-}
-// tamat untuk kod php+html 
 /*
     $s1 = '<span class="label">';
     $s2 = '</span>'; 
