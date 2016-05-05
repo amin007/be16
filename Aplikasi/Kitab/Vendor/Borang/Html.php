@@ -26,6 +26,15 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
+		elseif(in_array($key,array('respon','respon2')))
+		{#kod utk input text 3 aksara sahaja
+			$input = '<div class="input-group input-group">' . $tabline
+				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
+				   . '<input type="text" ' . $inputText 
+				   . ' class="form-control">'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
 		elseif(in_array($key,array('email')))
 		{#kod utk input text saiz biasa
 			$input = '<div class="input-group input-group">' . $tabline
