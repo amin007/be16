@@ -53,7 +53,6 @@ class DB_Pdo extends \PDO
 		}
 	
 		$sth->execute();
-		
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
@@ -79,7 +78,12 @@ class DB_Pdo extends \PDO
 		}
 		
 		$sth->execute();
-		return $sth->fetchAll($fetchMode);
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
+		else # pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
 	}
 	
 	/**
@@ -100,7 +104,12 @@ class DB_Pdo extends \PDO
 		}
 		
 		$sth->execute();
-		return $sth->rowCount(); //$sth->fetchAll($fetchMode);
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
+		else # pulangkan pembolehubah
+			return $sth->rowCount(); //$sth->fetchAll($fetchMode);
 	}
 
 	/**
@@ -122,7 +131,12 @@ class DB_Pdo extends \PDO
 			$sth->bindValue(":$key", $value);
 		}
 		
-		$sth->execute();//*/
+		$sth->execute();
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
+		
 	}
 	
 	/**
@@ -143,6 +157,11 @@ class DB_Pdo extends \PDO
 		}
 		
 		$sth->execute();
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
+		
 	}
 
 	/**
@@ -171,6 +190,10 @@ class DB_Pdo extends \PDO
 		}
 		
 		$sth->execute();
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
 
 	}
 	
