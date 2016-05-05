@@ -45,7 +45,7 @@ class DB_Pdo extends \PDO
 			# example: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nasme' in 'field list'
 			//echo $e->getMessage();
 			echo "\nPDO::errorInfo():\n";
-			print_r($dbh->errorInfo()); 			
+			print_r($sth->errorInfo()); 			
 		}
 		
 		# pulangkan pembolehubah
