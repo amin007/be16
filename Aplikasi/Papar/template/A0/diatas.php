@@ -14,8 +14,8 @@ $dpt_url = dpt_url();
 echo (empty($dpt_url[2])) ? null : '[' . $_GET['url'] . ']';
 ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="<?=FONTAWESOME?>" rel="stylesheet" type="text/css">
+<link href="<?=BOOTSTRAPCSS?>" rel="stylesheet" type="text/css">
 <?php
 if (isset($this->css)) 
 {
