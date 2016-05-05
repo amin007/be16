@@ -106,7 +106,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
-        $this->papar->lokasi = 'CDT 2014 - Ubah';
+        $this->papar->lokasi = Tajuk_Muka_Surat . ' - Ubah';
 		
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . 'kawalan/ubah/' . $dataID . '';
