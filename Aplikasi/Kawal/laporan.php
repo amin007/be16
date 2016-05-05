@@ -39,8 +39,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 				//kumpulRespon
 				($item, $ms, $jadual, $cari, $susun = null);
 
-		# semak data
-		/*echo '<pre>';
+		/*echo '<pre>'; # semak data
 		//echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
 		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '$this->papar->hasil:<br>'; print_r($this->papar->hasil);
