@@ -26,12 +26,13 @@ class DB_Pdo extends \PDO
 	public function bigError($masalah)
 	{
 		$error  = 'PDO::errorInfo()';
-		$error .= '<br>' . $masalah[2];
+		$error .= '<br>' . $masalah[2]; 
+		echo $error;
 		/*foreach ($masalah as $key=>$apa)
 			$error .= '<br>' . $key . '=>' . $apa; //*/
-		require KAWAL . '/sesat.php';
+		/*require KAWAL . '/sesat.php';
 		$kawal = new \Aplikasi\Kawal\Sesat();
-		$kawal->masalahDB($error); 
+		$kawal->masalahDB($error); //*/
 		exit; 		
 	}
 	
