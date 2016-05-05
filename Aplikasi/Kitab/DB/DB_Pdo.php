@@ -8,6 +8,7 @@ class DB_Pdo extends \PDO
 		try
 		{
 			parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME, $DB_USER, $DB_PASS);
+			//parent::setAttribute(\PDO::ATTR_EMULATE_PREPARES,false);
 			//parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTIONS);
 		}
 		catch (PDOException $e) 
@@ -28,28 +29,30 @@ class DB_Pdo extends \PDO
 	public function selectAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
-		//parent::setAttribute(\PDO::ATTR_EMULATE_PREPARES,false);
-		try 
-		{	
-			$sth = $this->prepare($sql);
-			foreach ($array as $key => $value) 
-			{
-				$sth->bindValue("$key", $value);
-			}
-	
-			$sth->execute();
-		}
-		catch(PDOException $e) 
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value) 
 		{
-			# this will echo error code with detail
-			# example: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'nasme' in 'field list'
-			//echo $e->getMessage();
-			echo "\nPDO::errorInfo():\n";
-			print_r($sth->errorInfo()); 			
+			$sth->bindValue("$key", $value);
 		}
+	
+		$sth->execute();
 		
-		# pulangkan pembolehubah
-		return $sth->fetchAll($fetchMode);
+		$masalah = $sth->errorInfo();
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+		{
+			//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+			$error = null;
+			foreach ($masalah as $key=>$apa): 
+				$error .= '<br>' . $key . '->' . $apa;
+			endforeach;
+	        require KAWAL . '/sesat.php';
+			$kawal = new \Aplikasi\Kawal\Sesat();
+			$kawal->masalahDB($error); //*/
+			exit; //return false;
+			
+		}
+		else # pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
 	}
 
 	/**
