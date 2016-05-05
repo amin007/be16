@@ -84,7 +84,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# isytihar pemboleubah
 		$this->papar->pegawai = senarai_kakitangan();
 		$this->papar->lokasi = 'BE16 - Ubah';
-		$this->papar->cari = (isset($this->papar->kawalan['kes'][0]['newss'])) ? $newss : $cariID;
+		$this->papar->cariID = (isset($this->papar->kawalan['kes'][0]['newss'])) ? $newss : $cariID;
 		
 		/*echo '<pre>'; # semak data
 		echo '$this->papar->kawalan:<br>'; print_r($this->papar->kawalan); 
