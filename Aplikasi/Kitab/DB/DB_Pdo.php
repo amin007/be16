@@ -19,7 +19,7 @@ class DB_Pdo extends \PDO
 	}
 	
 	/**
-	 * select
+	 * selectAll
 	 * @param string $sql An SQL string
 	 * @param array $array Paramters to bind
 	 * @param constant $fetchMode A PDO Fetch mode
