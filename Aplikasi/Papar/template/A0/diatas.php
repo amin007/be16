@@ -21,8 +21,8 @@ if (isset($this->css))
 {
 	foreach ($this->css as $css)
 	{
-		echo "\n"; // '<link rel="stylesheet" type="text/css" href="' . . $css . '">';
-?><link rel="stylesheet" type="text/css" href="<?php echo SUMBER . $css ?>"><?php
+		echo "\n"; // '<link rel="stylesheet" type="text/css" href="' . $css . '">';
+		?><link rel="stylesheet" type="text/css" href="<?php echo SUMBER . $css ?>"><?php
 	}
 }
 echo "\n";

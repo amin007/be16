@@ -7,7 +7,7 @@ if (isset($this->js))
     foreach ($this->js as $js)
     {
         echo "\n";
-?><script type="text/javascript" src="<?php echo SUMBER . $js ?>"></script><?php
+		?><script type="text/javascript" src="<?php echo SUMBER . $js ?>"></script><?php
     }
 }
 ?><?php 
