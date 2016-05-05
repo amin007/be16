@@ -269,11 +269,12 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$senaraiMedan[] = 'respon';
 		$senaraiMedan[] = 'nama, '
 			. 'concat_ws("-",`kp`) as kp,'
-			. '"" as utama,'
-			. 'concat_ws("","<input type=\"checkbox\">",`newss`) as newss,'
-			. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A,'
-			. 'ATTENTION_NAME_B,	TEL_NO_B,	FAX_NO_B,	EMAIL_B,'
-			. 'ATTENTION_NAME_C,	TEL_NO_C,	FAX_NO_C,	EMAIL_C'
+			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
+			. 'concat_ws("",`newss`) as newss,'
+			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A,'
+			. 'concat_ws("|",orang_a,notel_a,nofax_a,esurat_a,'
+			. 'ATTENTION_NAME_B,TEL_NO_B,FAX_NO_B,EMAIL_B,'
+			. 'ATTENTION_NAME_C,TEL_NO_C,FAX_NO_C,EMAIL_C'
 			. ') as nota'
 			. '';
 			
