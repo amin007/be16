@@ -51,9 +51,9 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		
 	}
 	#---------------------------------------------------------------------------------------------------
-    public function ubah($cariID = null) 
-    {//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
-			
+	public function ubah($cariID = null) 
+	{//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
+	
 		if (!empty($cariID)) 
 		{
 			# senaraikan tatasusunan jadual dan setkan pembolehubah
@@ -61,8 +61,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			$this->papar->carian = 'newss';
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
         
-            # 1. mula semak dalam rangka 
-            $this->papar->kawalan['kes'] = $this->tanya->//cariSql
+			# 1. mula semak dalam rangka 
+			$this->papar->kawalan['kes'] = $this->tanya->//cariSql
 				cariSemuaData
 				($this->papar->_jadual, $this->tanya->medanKawalan($cariID), 
 				$cari, $susun = null);
@@ -76,14 +76,14 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 				$this->cariIndustri($jadualMSIC, $this->papar->kawalan['kes'][0]['msic2008']);
 			endif;
 		}
-        else
-        {
-            $this->papar->carian = '[tiada id diisi]';
-        }
+		else
+		{
+			$this->papar->carian = '[tiada id diisi]';
+		}
         
-        # isytihar pemboleubah
-        $this->papar->pegawai = senarai_kakitangan();
-        $this->papar->lokasi = 'BE16 - Ubah';
+		# isytihar pemboleubah
+		$this->papar->pegawai = senarai_kakitangan();
+		$this->papar->lokasi = 'BE16 - Ubah';
 		$this->papar->cari = (isset($this->papar->kawalan['kes'][0]['newss'])) ? $newss : $cariID;
 		
 		/*echo '<pre>'; # semak data
