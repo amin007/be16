@@ -30,6 +30,7 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
+		
 		foreach ($array as $key => $value) 
 		{
 			$sth->bindValue("$key", $value);
@@ -37,19 +38,18 @@ class DB_Pdo extends \PDO
 	
 		$sth->execute();
 		
-		$masalah = $sth->errorInfo();
+		$masalah = $sth->errorInfo(); 
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
 		{
-			//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
-			$error = null;
-			foreach ($masalah as $key=>$apa): 
-				$error .= '<br>' . $key . '->' . $apa;
-			endforeach;
+			$error  = 'PDO::errorInfo()';
+			$error .= '<br>' . $masalah[2];
+			/*foreach ($masalah as $key=>$apa)
+				$error .= '<br>' . $key . '=>' . $apa; //*/
 	        require KAWAL . '/sesat.php';
 			$kawal = new \Aplikasi\Kawal\Sesat();
-			$kawal->masalahDB($error); //*/
-			exit; //return false;
-			
+			$kawal->masalahDB($error); 
+			exit; 
 		}
 		else # pulangkan pembolehubah
 			return $sth->fetchAll($fetchMode);
