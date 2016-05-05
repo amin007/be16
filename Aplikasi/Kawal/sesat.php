@@ -35,6 +35,13 @@ class Sesat extends \Aplikasi\Kitab\Kawal
 		$this->papar->Tajuk_Muka_Surat = $this->_tajukAtas . $this->papar->mesej;		
 		$this->papar->baca($this->_folder . '/index');
 	}
+
+	function masalahDB($amaran) 
+	{
+		$this->papar->mesej = $amaran;
+		$this->papar->Tajuk_Muka_Surat = $this->_tajukAtas . $this->papar->mesej;		
+		$this->papar->baca($this->_folder . '/index');
+	}
 	
 ################################################################################################
 ## contoh carian papar tarikh dan nossm
