@@ -46,14 +46,17 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$myTable = 'be16_kawal';
 		$senarai = array('be16_kawal');
-		$medan = '`newss`,`nossm`,`CHECK_DIGIT`,`nama`,`operator`,`alamat1`,`alamat2`,`bandar`,`poskod`,`kp`,`msic2008`,`fe`';
+		$medan = '`newss`,`nossm`,`CHECK_DIGIT`,`nama`,`operator`,`alamat1`,`alamat2`,`bandar`,`poskod`,'
+			   . '`kp`,`msic2008`,`fe`,`orang_a`,`notel_a`,`nofax_a`,`esurat_a`'
+			   . '';
 
 		# bentuk tatasusunan
 		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
 		$senaraiData = $this->tanya->ubahPosmen($posmen);
 
 		# sql insert
-		$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); //*/
+		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
+		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
 		$this->log_sql($myTable, $medan, $senaraiData);
 		
 		# semak data
@@ -62,8 +65,8 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
 
         # pergi papar kandungan
-		echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
-		//header('location: ' . URL . $this->_folder . ');
+		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
+		header('location: ' . URL . $this->_folder . '/rangkabaru/selesai');
 		
 	}
 	
@@ -82,8 +85,8 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$log['sql'] = $this->tanya->tambahArahanSqlBanyakNilai($myTable, $medan, $senaraiData);
 			$log['arahan'] = 'tambah data baru oleh oleh ' . $pengguna;
 			$log['tarikhmasa'] = date("Y-m-d H:i:s");
-			$this->tanya->//tambahData
-				tambahSql
+			$this->tanya->tambahData
+				//tambahSql
 				($jadual2, $log);		
 
 	}
