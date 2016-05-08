@@ -148,7 +148,6 @@ class Perangkaan
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
 		
-			//echo "<tbody>\n"; # mula tbody
 			foreach ($hasil as $kira => $nilai)
 			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
 				$h = ($kira%'2'=='0') ? $highlight : $highlight2;
@@ -163,19 +162,21 @@ class Perangkaan
 						. $nilai['newss']."'>".($kira+1)."</a></td>\n";
 				}
 				else
-				{
 					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
 					. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
-				}
 				foreach ($nilai as $key => $data) 
 					echo '<td>' . $data . '</td>';
 				echo "</tr>\n";
-
-				## kata2 pengarah
-				//	if($kira==($baris-1)) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
-				
 			}
 			
+			## cukupkan 30 rows
+			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields);
+	
+		endif;
+	}
+	
+	function cukupkan30($allRows, $baris, $item, $hasil, $fields)
+	{
 			## cukupkan 30 rows
 				$mula = $allRows+1;
 				//$bilAwal = ($item-1)*30;  # dpt bil muka surat akhir
@@ -198,10 +199,7 @@ class Perangkaan
 					if($akhir==$i) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
 					
 				}
-			
-			## tamat tbody
-			//echo "</tbody>\n";
-		endif;
+		
 	}
 #- cetak no tel sahaja
 
