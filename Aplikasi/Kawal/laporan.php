@@ -74,7 +74,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai;
+		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
 	
 		# pergi papar kandungan
@@ -105,7 +105,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai;
+		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
 				
 		# pergi papar kandungan
