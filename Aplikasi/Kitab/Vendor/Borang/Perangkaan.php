@@ -167,7 +167,7 @@ class Perangkaan
 			}
 			
 			## cukupkan 30 rows
-			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields
+			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields);
 			
 		endif;
 	}
