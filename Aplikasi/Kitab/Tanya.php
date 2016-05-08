@@ -231,6 +231,18 @@ class Tanya
 		$this->db->insert($myTable, $data);
 	}
 
+	public function tambahSqlBanyakNilai($myTable, $data, $medan)
+	{
+		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
+		
+		# set sql
+		$sql = "INSERT INTO $myTable ($medan) VALUES \r";
+		$sql .= implode(",\r", $data);
+
+		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		//$this->db->insert($sql);
+	}
+
 	public function tambahData($myTable, $data)
 	{
 		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
