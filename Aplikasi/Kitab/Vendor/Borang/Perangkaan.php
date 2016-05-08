@@ -214,30 +214,18 @@ class Perangkaan
 		
 		## tajuk medan - keputusan 
 		echo '<tr>';
-		echo "\n<th rowspan=\"2\">Bil</th>\n";
-		echo '<th rowspan="2">Nama Syarikat (KES ' . huruf('Besar', $namaOrg['pegawai']) . ')</th>' . "\n";
-		echo '<th rowspan="2">KP</th>' . "\n"; # KP - Kod Peny.
-		echo '<th rowspan="1">BBU</th>' . "\n";
-		echo '<th rowspan="2">NO SIRI NEWSS</th>' . "\n";
-		echo '<th rowspan="2">NOTA/CATATAN'
+		echo "\n<th rowspan=\"1\">Bil</th>\n";
+		echo '<th rowspan="1">Nama Syarikat</th>' . "\n";
+		echo '<th rowspan="1">KP</th>' . "\n"; # KP - Kod Peny.
+		echo '<th rowspan="1">ALAMAT (KES ' . huruf('Besar', $namaOrg['pegawai']) . ')</th>' . "\n";
+		echo '<th rowspan="1">NO SIRI NEWSS</th>' . "\n";
+		echo '<th rowspan="1">NOTA/CATATAN'
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '</th>' . "\n";
 		echo '<th colspan="1">Diisi oleh Anggota Kerja Luar sahaja</th>' . "\n";
 		echo '</tr>';
 		
-		# baris bawah
-		echo '<tr>';
-	/*	echo '<th>&nbsp;</th>' . "\n";*/
-		echo '<th>SBU</th>' . "\n";
-		echo '<th>' . huruf('Besar', $namaOrg['pegawai']) . '</th>' . "\n";
-		/*foreach ($hasil[0] as $kunci => $dataan)
-		{
-			echo (in_array($kunci,array('nama','kp','utama','newss','nota')))?  
-			'':'<th>'.$kunci.'</th>' . "\n";	
-		}*/
-		echo '</tr>';
-
 	}
 
 	function paparJadualF3_Data2($sv,$namaOrg,
