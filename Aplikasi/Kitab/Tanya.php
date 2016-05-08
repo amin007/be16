@@ -208,7 +208,7 @@ class Tanya
 		//echo htmlentities($sql) . '<br>';
 		return $sql;
 	}
-	
+#--- mula - contoh tambah sql guna set ---#	
 	public function tambahSql($myTable, $data)
 	{
 		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
@@ -222,24 +222,6 @@ class Tanya
 		$sql .= implode(",\r", $senarai);
 
 		echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
-		//$this->db->insert($sql);
-	}
-	
-	public function tambahSimpanBanyak($myTable, $data)
-	{
-		//echo '<pre>$myTable->', print_r($data, 1) . '</pre>';		
-		$this->db->insert($myTable, $data);
-	}
-
-	public function tambahSqlBanyakNilai($myTable, $data, $medan)
-	{
-		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
-		
-		# set sql
-		$sql = "INSERT INTO $myTable ($medan) VALUES \r";
-		$sql .= implode(",\r", $data);
-
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 		//$this->db->insert($sql);
 	}
 
@@ -257,6 +239,24 @@ class Tanya
 
 		//echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
 		$this->db->insert($myTable, $data);
+	}
+#--- tamat - contoh tambah sql guna set ---#		
+	public function tambahSimpanBanyak($myTable, $data)
+	{
+		//echo '<pre>$myTable->', print_r($data, 1) . '</pre>';		
+		$this->db->insert($myTable, $data);
+	}
+
+	public function tambahSqlBanyakNilai($myTable, $data, $medan)
+	{
+		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
+		
+		# set sql
+		$sql = "INSERT INTO $myTable ($medan) VALUES \r";
+		$sql .= implode(",\r", $data);
+
+		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		//$this->db->insert($sql);
 	}
 
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
