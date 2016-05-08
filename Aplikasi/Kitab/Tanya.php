@@ -253,7 +253,7 @@ class Tanya
 		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
 		
 		# set sql
-		$sql = "INSERT INTO $myTable ($medan) VALUES \r";
+		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data);
 
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
