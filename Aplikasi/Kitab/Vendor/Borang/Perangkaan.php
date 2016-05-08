@@ -149,8 +149,7 @@ class Perangkaan
 		
 			foreach ($hasil as $kira => $nilai)
 			{	
-				$h = ($kira%'2'=='0') ? $highlight : $highlight2;
-				echo "<tr$h>";
+				echo "<tr" . (($kira%'2'=='0') ? $highlight : $highlight2) . ">";
 				if ($kira%$baris=='0')
 				{			
 					$ms = ($kira/$baris)+1; //$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
@@ -175,28 +174,28 @@ class Perangkaan
 	
 	function cukupkan30($allRows, $baris, $item, $hasil, $fields)
 	{
-			## cukupkan 30 rows
-				$mula = $allRows+1;
-				//$bilAwal = ($item-1)*30;  # dpt bil muka surat akhir
-				//$bilAkhir = $rows - $bilAwal; # $rows tolak bil tadi
-				//$terakhir = 30 - $bilAkhir; # 30 tolak beza tadi
-				$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
-				//$mula = $rows+1;
-				for($i = $mula; $i <= ($akhir); $i++)
-				{					
-					echo '<tr><td>' . $i . '</td>';
+		## cukupkan 30 rows
+		$mula = $allRows+1;
+		//$bilAwal = ($item-1)*30;  # dpt bil muka surat akhir
+		//$bilAkhir = $rows - $bilAwal; # $rows tolak bil tadi
+		//$terakhir = 30 - $bilAkhir; # 30 tolak beza tadi
+		$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
+		//$mula = $rows+1;
+		for($i = $mula; $i <= ($akhir); $i++)
+		{					
+			echo '<tr><td>' . $i . '</td>';
+			echo '<td>&nbsp;</td>';
+			//echo "<td><font color=\"yellow\">"
+			//	. $allRows . '-' .(($item-1)*30)." = ".(30 - ($allRows - (($item-1)*30) )).", "
+			//	. " nombor terakhir > $allRows + ".(30 - ($allRows - (($item-1)*30) ))." => $akhir</td>";
+				for($j = 1; $j <= (24); $j++)
 					echo '<td>&nbsp;</td>';
-					//echo "<td><font color=\"yellow\">"
-					//	. $allRows . '-' .(($item-1)*30)." = ".(30 - ($allRows - (($item-1)*30) )).", "
-					//	. " nombor terakhir > $allRows + ".(30 - ($allRows - (($item-1)*30) ))." => $akhir</td>";
-						for($j = 1; $j <= (24); $j++)
-						echo '<td>&nbsp;</td>';
-					echo '<tr>';
+			echo '<tr>';
 
-					## kata2 pengarah
-					if($akhir==$i) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
+			## kata2 pengarah
+			if($akhir==$i) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
 					
-				}
+		}
 		
 	}
 #- cetak no tel sahaja
