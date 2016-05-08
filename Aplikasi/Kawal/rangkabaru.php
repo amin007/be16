@@ -41,35 +41,28 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		
 	}
 	
-	public function binasql2()
+	public function tambahSimpan()
 	{
-		# mula papar semua dalam $myTable
+		# Set pemboleubah utama
 		$myTable = 'be16_kawal';
+		$senarai = array('be16_kawal');
 		$medan = '`newss`,`nossm`,`CHECK_DIGIT`,`nama`,`operator`,`alamat1`,`alamat2`,`bandar`,`poskod`,`kp`,`msic2008`,`fe`';
 
 		# bentuk tatasusunan
-		$cariApa = $this->tanya->semakPOST();
-		$senarai = array();
-		foreach ($cariApa as $key => $dataS):
-			$senarai[] = "('" 
-				. $dataS['newss'] . "', '" 
-				. $dataS['nossm'] . "', '" 
-				. $dataS['CHECK_DIGIT'] . "', '" 
-				. $dataS['nama'] . "', '" 
-				. $dataS['operator'] . "', '" 
-				. $dataS['alamat1'] . "', '" 
-				. $dataS['alamat2'] . "', '" 
-				. $dataS['bandar'] . "', '" 
-				. $dataS['poskod'] . "', '" 
-				. $dataS['kp'] . "', '" 
-				. $dataS['msic2008'] . "', '" 
-				. $dataS['fe'] . "')";
-		endforeach;
+		$posmen = $this->tanya->semakPOST($myTable, $senarai, $_POST);
+		$senaraiData = $this->tanya->ubahPosmen($posmen);
 
 		# sql insert
-		$this->tanya->tambahSqlBanyakNilai($myTable, $senarai, $medan); //*/
-		# semak pembolehubah $this->papar->cariApa
-		//echo '<pre>', print_r($cariApa, 1) . '</pre><br>';
+		$this->tanya->tambahSqlBanyakNilai($myTable, $senaraiData, $medan); //*/
+		
+		# semak data
+			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
+
+        # pergi papar kandungan
+		echo '<br>location: ' . URL . $this->_folder . '/';
+		//header('location: ' . URL . $this->_folder . ');
 		
 	}
 #==========================================================================================	
@@ -81,7 +74,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/tambah');
 	}
 
-	function tambahSimpan()
+	function tambahSimpan2()
 	{
 		# Set pemboleubah utama
 		$posmen = array();
