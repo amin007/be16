@@ -53,7 +53,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		$senaraiData = $this->tanya->ubahPosmen($posmen);
 
 		# sql insert
-		$this->tanya->tambahSqlBanyakNilai($myTable, $senaraiData, $medan); //*/
+		$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); //*/
 		
 		# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
