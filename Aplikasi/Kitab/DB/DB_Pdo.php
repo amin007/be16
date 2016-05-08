@@ -138,6 +138,33 @@ class DB_Pdo extends \PDO
 			$this->bigError($masalah);
 		
 	}
+
+	/**
+	 * insertAll
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function insertAll($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value) 
+		{
+			$sth->bindValue("$key", $value);
+			echo "<br>\$sth->bindValue(\"$key\", $value) ";
+		}
+		/*
+		$sth->execute();
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
+		else # pulangkan pembolehubah
+			return $sth->fetchAll($fetchMode);
+		//*/
+	}
 	
 	/**
 	 * update
