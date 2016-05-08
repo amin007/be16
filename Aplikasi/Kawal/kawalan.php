@@ -23,6 +23,12 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
     }
 
     public function index() { echo '<br>class Kawalan::index() extend Kawal<br>'; }
+    public function rangkabaru($selesai) 
+	{ 
+		echo '<h1>Selesai Tambah Kes</h1>'; 
+		echo '<br><a href="' . URL. 'rangkabaru/masukdata/3">Tambah Lagi</a>';
+		echo '<br><a href="' . URL. 'ruangtamu">Menu Utama</a>';
+	}
 #==================================================================================================================
 #---------------------------------------------------------------------------------------------------
 	private function cariIndustri($jadualMSIC, $msic)
