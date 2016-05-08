@@ -3,6 +3,21 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Html
 {
 #==========================================================================================
+	public function tambah1Input($paparSahaja,$jadual,$kira,$medan,$data)
+	{	# istihar pembolehubah 
+		$name = 'name="' . $jadual  . '[' . $kira . ']' . '[' . $medan . ']"';
+		$tabline = "\n\t\t";
+			$input = '' 
+				   //. '<span class="input-group-addon"></span>'
+				   . '<input type="text" ' . $name 
+				   . 'placeholder=' . $medan . '[' . $kira . ']' 
+				   . ' class="form-control">'
+				   . '';
+				   
+		# pulangkan nilai
+		return '<td>' . $input . '</td>' . $tabline;
+	}
+	
 	public function tambahInput($paparSahaja,$jadual,$kira,$key,$data)
 	{	# istihar pembolehubah 
 		$name = 'name="' . $jadual . '[' . $key . ']"';
