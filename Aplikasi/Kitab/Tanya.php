@@ -259,6 +259,29 @@ class Tanya
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 		//$this->db->insertAll($sql);
 	}
+
+	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
+	{
+		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		
+		# set sql
+		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql .= implode(",\r", $data);
+
+		return $sql;
+	}
+
+	public function tambahBanyakNilai($myTable, $medan, $data)
+	{
+		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		
+		# set sql
+		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql .= implode(",\r", $data);
+
+		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		$this->db->insertAll($sql);
+	}
 	
 #--- tamat - contoh tambah sql guna values ---#
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
