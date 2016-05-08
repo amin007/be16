@@ -9,7 +9,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
-		$this->_folder = 'crud';
+		$this->_folder = 'kawalan';
 	}
 
 	function index() 
@@ -54,6 +54,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 
 		# sql insert
 		$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); //*/
+		$this->log_sql($myTable, $medan, $senaraiData);
 		
 		# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
@@ -61,9 +62,30 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			//echo '<pre>$senaraiData='; print_r($senaraiData) . '</pre>';
 
         # pergi papar kandungan
-		echo '<br>location: ' . URL . $this->_folder . '/';
+		echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
 		//header('location: ' . URL . $this->_folder . ');
 		
+	}
+	
+	private function log_sql($myTable, $medan, $senaraiData)
+	{
+		# semak session
+		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		$sesi = \Aplikasi\Kitab\Sesi::init();
+		//echo '<pre>$_SESSION->', print_r($_SESSION, 1) . '</pre>';
+
+			# log sql
+			$jadual2 = 'log_sql'; 
+			$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
+			$log['newss'] = 'baru';
+			$log['pengguna'] = $pengguna;
+			$log['sql'] = $this->tanya->tambahArahanSqlBanyakNilai($myTable, $medan, $senaraiData);
+			$log['arahan'] = 'tambah data baru oleh oleh ' . $pengguna;
+			$log['tarikhmasa'] = date("Y-m-d H:i:s");
+			$this->tanya->//tambahData
+				tambahSql
+				($jadual2, $log);		
+
 	}
 #==========================================================================================	
 	function tambah()
