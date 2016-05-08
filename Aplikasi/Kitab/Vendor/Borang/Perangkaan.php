@@ -161,20 +161,19 @@ class Perangkaan
 				}
 				else
 					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
-					. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
-				foreach ($nilai as $key => $data) 
-					echo '<td>' . $data . '</td>';
+						. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
+				foreach ($nilai as $key => $data) echo '<td>' . $data . '</td>';
 				echo "</tr>\n";
 			}
 			
 			## cukupkan 30 rows
-			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields);
+			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields
+			
 		endif;
 	}
 	
 	function cukupkan30($allRows, $baris, $item, $hasil, $fields)
 	{
-		## cukupkan 30 rows
 		$mula = $allRows+1;
 		//$bilAwal = ($item-1)*30;  # dpt bil muka surat akhir
 		//$bilAkhir = $rows - $bilAwal; # $rows tolak bil tadi
