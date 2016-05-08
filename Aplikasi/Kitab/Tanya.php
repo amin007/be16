@@ -254,7 +254,7 @@ class Tanya
 		
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
-		$sql .= implode(",\r", $data);
+		$sql .= implode(",\r", $data) . ";";
 
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 		//$this->db->insertAll($sql);
@@ -266,7 +266,7 @@ class Tanya
 		
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
-		$sql .= implode(",\r", $data);
+		$sql .= implode(",\r", $data) . ";";
 
 		return $sql;
 	}
@@ -277,7 +277,7 @@ class Tanya
 		
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
-		$sql .= implode(",\r", $data);
+		$sql .= implode(",\r", $data) . ";";
 
 		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 		$this->db->insertAll($sql);
