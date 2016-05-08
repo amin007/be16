@@ -230,7 +230,7 @@ class Perangkaan
 		echo '<tr>';
 	/*	echo '<th>&nbsp;</th>' . "\n";*/
 		echo '<th>SBU</th>' . "\n";
-		echo '<th>Suka Hati ' . huruf('Besar', $namaOrg['pegawai']) . ' Mahu Tulis Apa</th>' . "\n";
+		echo '<th>' . huruf('Besar', $namaOrg['pegawai']) . '</th>' . "\n";
 		/*foreach ($hasil[0] as $kunci => $dataan)
 		{
 			echo (in_array($kunci,array('nama','kp','utama','newss','nota')))?  
