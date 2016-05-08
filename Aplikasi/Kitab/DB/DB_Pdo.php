@@ -150,12 +150,12 @@ class DB_Pdo extends \PDO
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
 		$sth = $this->prepare($sql);
-		foreach ($array as $key => $value) 
+		/*foreach ($array as $key => $value) 
 		{
-			$sth->bindValue("$key", $value);
+			//$sth->bindValue("$key", $value);
 			echo "<br>\$sth->bindValue(\"$key\", $value) ";
-		}
-		/*
+		}//*/
+		
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
