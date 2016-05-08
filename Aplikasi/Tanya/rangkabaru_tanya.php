@@ -125,18 +125,18 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medan;
 	}
 	
-	public function binasql2() 
+	public function binaMedan($jadual) 
 	{ 
 		# Set pemboleubah tatasusunan
-		//$medan = array('newss','nossm','nama','operator','alamat1','alamat2','bandar','poskod','kp','msic2008','fe');
-		$dataPOST = $this->binaPOST();
-		echo '<pre>'; print_r($dataPOST) . '</pre>';
-		//foreach ($medan as $key2 => $nilai2):	
-		//endforeach;
-		//$senaraiMedan[] = array('kod_medan'=>'F21','2010'=>'');
+		$medan = array('newss','nossm','nama','operator','alamat1','alamat2','bandar','poskod','kp','msic2008','fe');
+		//$dataPOST = $this->binaPOST();
+		//echo '<pre>'; print_r($dataPOST) . '</pre>';
+		foreach ($medan as $key2 => $nilai2):	
+			$senaraiMedan[$jadual][$nilai2] = null;
+		endforeach;
 		
 		# pulangkan pemboleubah
-		//return $senaraiMedan;
+		return $senaraiMedan;
 	}
 #==========================================================================================
 }
