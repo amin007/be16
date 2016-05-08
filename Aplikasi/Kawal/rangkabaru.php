@@ -57,7 +57,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		# sql insert
 		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
 		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
-		//$this->log_sql($myTable, $medan, $senaraiData);
+		$this->log_sql($myTable, $medan, $senaraiData);
 		
 		# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
@@ -66,7 +66,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 
         # pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
-		//header('location: ' . URL . $this->_folder . '/rangkabaru/selesai');
+		header('location: ' . URL . $this->_folder . '/rangkabaru/selesai');
 		
 	}
 	
