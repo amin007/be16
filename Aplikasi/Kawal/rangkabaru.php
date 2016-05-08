@@ -24,13 +24,13 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
 	}
 #==========================================================================================
-	public function masukdata()
+	public function masukdata($kira = 1)
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		$this->_folder = 'kawalan';
 		$this->papar->_jadual = 'be16_kawal';
-		$this->papar->dataBaru = $this->tanya->binaMedan($this->papar->_jadual);
+		$this->papar->cariApa = $this->tanya->binaMedan($this->papar->_jadual, $kira);
 
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
