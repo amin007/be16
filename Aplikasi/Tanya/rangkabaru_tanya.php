@@ -139,5 +139,46 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
+	
+	public function semakPost($myTable, $senarai, $post)
+	{
+		# validasi data $_POST, masuk dalam $posmen, validasi awal
+		foreach ($post as $myTable => $value)
+			if ( in_array($myTable,$senarai) )
+				foreach ($value as $key => $value2)
+					foreach ($value2 as $kekunci => $papar)
+						$posmen[$myTable][$key][$kekunci] = bersih($papar);
+
+		
+		# pulangkan pemboleubah
+		return $posmen;
+		
+	}
+	
+	public function ubahPosmen($posmen)
+	{
+		$senaraiData = array();
+		foreach ($posmen as $key => $value1):
+			foreach ($value1 as $key2 => $dataS):
+				//echo  ($dataS['newss']) . "', '" . '<br>';
+				$senaraiData[] = "('" 
+					. ($dataS['newss']) . "', '" 
+					. ($dataS['nossm']) . "', '" 
+					. ($dataS['CHECK_DIGIT']) . "', '" 
+					. ($dataS['nama']) . "', '" 
+					. ($dataS['operator']) . "', '" 
+					. ($dataS['alamat1']) . "', '" 
+					. ($dataS['alamat2']) . "', '" 
+					. ($dataS['bandar']) . "', '" 
+					. ($dataS['poskod']) . "', '" 
+					. ($dataS['kp']) . "', '" 
+					. ($dataS['msic2008']) . "', '" 
+					. ($dataS['fe']) . "')";//*/
+			endforeach;
+		endforeach;
+		
+		# pulangkan pemboleubah
+		return $senaraiData;
+	}
 #==========================================================================================
 }
