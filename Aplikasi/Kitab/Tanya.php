@@ -241,6 +241,7 @@ class Tanya
 		$this->db->insert($myTable, $data);
 	}
 #--- tamat - contoh tambah sql guna set ---#
+#--- mula - contoh tambah sql guna values ---#
 	public function tambahSimpanBanyak($myTable, $data)
 	{
 		//echo '<pre>$myTable->', print_r($data, 1) . '</pre>';		
@@ -258,7 +259,7 @@ class Tanya
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 		//$this->db->insert($sql);
 	}
-
+#--- tamat - contoh tambah sql guna values ---#
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
 	{
 		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
