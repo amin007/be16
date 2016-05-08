@@ -257,7 +257,7 @@ class Tanya
 		$sql .= implode(",\r", $data);
 
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
-		//$this->db->insert($sql);
+		//$this->db->insertAll($sql);
 	}
 #--- tamat - contoh tambah sql guna values ---#
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
