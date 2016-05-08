@@ -128,7 +128,8 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 	public function binaMedan($jadual, $kira) 
 	{ 
 		# Set pemboleubah tatasusunan
-		$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod','kp','msic2008','fe');
+		$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod',
+			'kp','msic2008','fe','orang_a','notel_a','nofax_a','esurat_a');
 		
 		for ($ulang = 0; $ulang < $kira; $ulang++):
 			foreach ($medan as $key2 => $nilai2):	
