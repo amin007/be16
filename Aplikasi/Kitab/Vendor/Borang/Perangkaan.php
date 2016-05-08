@@ -140,8 +140,7 @@ class Perangkaan
 
 	function paparJadualF3_Data($sv,$namaOrg,
 		$allRows,$fields,$hasil,$item,$ms,$baris=30)
-	{	
-		# nak cari $allRows
+	{	# nak cari $allRows
 		if ($allRows=='0'): echo "\n";
 		else: # mula kalau jumpa
 			# set pembolehubah untuk highlight
@@ -149,12 +148,12 @@ class Perangkaan
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
 		
 			foreach ($hasil as $kira => $nilai)
-			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
+			{	
 				$h = ($kira%'2'=='0') ? $highlight : $highlight2;
 				echo "<tr$h>";
 				if ($kira%$baris=='0')
 				{			
-					$ms = ($kira/$baris)+1;
+					$ms = ($kira/$baris)+1; //$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
 					$item = ceil($allRows/$baris);
 					if($kira==$baris) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
 					$this->paparJadualF3_TajukMedan($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
@@ -171,7 +170,6 @@ class Perangkaan
 			
 			## cukupkan 30 rows
 			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields);
-	
 		endif;
 	}
 	
