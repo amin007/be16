@@ -19,6 +19,7 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 		<?=$icon['User']?>Biodata <?=$pengguna?>
 	</a></li>
 	<li class="divider"></li>
+	<li><a href="<?php echo $url ?>rangkabaru/masukdata/1"><?=$icon['Barcode']?>Tambah Kes</a></li>
 	<li><a href="<?php echo $url ?>operasi/batch"><?=$icon['Barcode']?>Semak Barcode</a></li>
 	<li><a href="<?php echo $url ?>operasi/hantar"><?=$icon['Barcode']?>Hantar Kes</a></li>
 	<li><a href="<?php echo $url ?>prosesan/batch"><?=$icon['Barcode']?>Terima Di Prosesan</a></li>
