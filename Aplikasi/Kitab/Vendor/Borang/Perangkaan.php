@@ -79,7 +79,7 @@ class Perangkaan
 		echo '<th colspan="22">Diisi oleh Anggota Kerja Luar sahaja</th>' . "\n";
 		echo '</tr>';
 		
-		// bawah 	
+		## bawah
 		echo '<tr>';
 	/*	echo '<th>&nbsp;</th>' . "\n";
 		echo '<th>&nbsp;</th>' . "\n";
@@ -109,25 +109,26 @@ class Perangkaan
 
 	function paparJadualF3_TajukBawah($hasil,$rows,$fields)
 	{
-			## tajuk bawah - bil, jumlah besar, utama, newss, A1-B7
-				echo "<tr>\n";// dptkan nama medan
-				echo '<th>&nbsp;</th>' . "\n";
-				echo '<th colspan=2>Jumlah Besar</th>' . "\n";
-				echo '<th>&nbsp;</th>' . "\n";
-				echo '<th>&nbsp;</th>' . "\n";
-				echo '<th>&nbsp;</th>' . "\n";
-				foreach ($hasil[0] as $key => $kunci)
-				{
-					//echo '<th>&nbsp;</th>' . "\n";	
-					echo (in_array($key,array('nama','kp','utama','newss','nota')))?  
-					'':'<th>' . $kunci . '</th>' . "\n";	
-				}
-				echo "</tr>\n";
+		## tajuk bawah - bil, jumlah besar, utama, newss, A1-B7
+		echo "<tr>\n";// dptkan nama medan
+		echo '<th>&nbsp;</th>' . "\n";
+		echo '<th colspan=2>Jumlah Besar</th>' . "\n";
+		echo '<th>&nbsp;</th>' . "\n";
+		echo '<th>&nbsp;</th>' . "\n";
+		echo '<th>&nbsp;</th>' . "\n";
+		foreach ($hasil[0] as $key => $kunci)
+		{
+			//echo '<th>&nbsp;</th>' . "\n";	
+			echo (in_array($key,array('nama','kp','utama','newss','nota')))?  
+			'':'<th>' . $kunci . '</th>' . "\n";	
+		}
+		echo "</tr>\n";
 		
 		## pecah muka surat
 		//$cetak=($bil==$rows)?'style="page-break-after:always">':'>';
 		$cetak='style="page-break-after:always">';
 		echo '<tr style="page-break-after:always"><td colspan=' . ($fields+1) . '>' .
+			'&nbsp;&nbsp;&nbsp;' .
 			/*'<p align=left><font size=2>' .
 			'A) Laporan kawalan harian ini merujuk kepada arahan Pengarah pada mesyuarat Pemantauan' .
 			'<br>B) Sila kemaskini laporan ini setiap hari dan failkan mengikut turutan tarikh oleh FE' .
