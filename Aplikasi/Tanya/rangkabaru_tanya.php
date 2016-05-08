@@ -160,20 +160,24 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		$senaraiData = array();
 		foreach ($posmen as $key => $value1):
 			foreach ($value1 as $key2 => $dataS):
-				//echo  ($dataS['newss']) . "', '" . '<br>';
 				$senaraiData[] = "('" 
 					. ($dataS['newss']) . "', '" 
-					. ($dataS['nossm']) . "', '" 
-					. ($dataS['CHECK_DIGIT']) . "', '" 
-					. ($dataS['nama']) . "', '" 
-					. ($dataS['operator']) . "', '" 
-					. ($dataS['alamat1']) . "', '" 
-					. ($dataS['alamat2']) . "', '" 
-					. ($dataS['bandar']) . "', '" 
+					. huruf('Besar',$dataS['nossm']) . "', '" 
+					. huruf('Besar',$dataS['CHECK_DIGIT']) . "', '" 
+					. huruf('Besar',$dataS['nama']) . "', '" 
+					. huruf('Besar',$dataS['operator']) . "', '" 
+					. huruf('Besar',$dataS['alamat1']) . "', '" 
+					. huruf('Besar',$dataS['alamat2']) . "', '" 
+					. huruf('Besar',$dataS['bandar']) . "', '" 
 					. ($dataS['poskod']) . "', '" 
 					. ($dataS['kp']) . "', '" 
 					. ($dataS['msic2008']) . "', '" 
-					. ($dataS['fe']) . "')";//*/
+					. huruf('kecil',$dataS['fe']) . "', '" 
+					. huruf('Besar',$dataS['orang_a']) . "', '" 
+					. huruf('Besar',$dataS['notel_a']) . "', '" 
+					. huruf('Besar',$dataS['nofax_a']) . "', '" 
+					. huruf('Besar',$dataS['esurat_a'])// . "', '" 					
+					. "')";
 			endforeach;
 		endforeach;
 		
