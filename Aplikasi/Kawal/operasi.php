@@ -43,7 +43,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					$senaraiJadual[0], $medan, $carian, $susun = null);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
 				$paparError = (!isset($dataKes[0]['newss'])) ? 
-					'Tiada id daa' : # jika jumpa
+					'Tiada id dalam rangka. <br>Mana kau orang jumpa kes ini daa.' 
+					. '<br>Jumpa amin jika mahu masuk rangka ya'
+					: # jika jumpa
 					'Ada id:' . $dataKes[0]['newss'] 
 					. '| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
