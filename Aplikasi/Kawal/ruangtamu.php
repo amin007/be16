@@ -47,7 +47,16 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 	}
-#==========================================================================================	
+#==========================================================================================
+	function semaknama($nama)
+	{
+		# semak data $_POST
+		echo '<pre>$_POST->'; print_r($_POST) . '</pre>| ';
+		echo '<pre>$nama->'; print_r($nama) . '</pre>| ';
+		echo 'Kod:' . \Aplikasi\Kitab\RahsiaHash::rahsia('md5', $nama) . ': ';
+		//echo 'Kod:' . RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY) . ': ';
+	}
+
 	function menu() 
 	{	
 		// Set pemboleubah utama
