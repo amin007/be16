@@ -43,7 +43,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					cariSemuaData(
 					$senaraiJadual[0], $medan, $carian, $susun);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
-				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
+				$paparError = //(!isset($dataKes[0])) ? 
+					//'Tiada id daa' : # jika jumpa
+					'Ada id:' . $dataKes[0]['newss'] 
 					. '| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. '| operator:' . $dataKes[0]['operator']
