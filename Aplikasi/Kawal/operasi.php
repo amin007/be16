@@ -38,19 +38,18 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				$medan = 'newss,nossm,nama,operator,'
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
-				$susun = null;
 				$dataKes = $this->tanya->//tatasusunanCariID(//cariSql( 
 					cariSemuaData(
-					$senaraiJadual[0], $medan, $carian, $susun);
+					$senaraiJadual[0], $medan, $carian, $susun = null);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
-				$paparError = //(!isset($dataKes[0])) ? 
-					//'Tiada id daa' : # jika jumpa
+				$paparError = (!isset($dataKes[0]['newss'])) ? 
+					'Tiada id daa' : # jika jumpa
 					'Ada id:' . $dataKes[0]['newss'] 
 					. '| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. '| operator:' . $dataKes[0]['operator']
-					. '<br> alamat:' . $dataKes[0]['alamat'];  //*/
-			}			
+					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
+			}
 		endif;
 	
 		return $paparError;
