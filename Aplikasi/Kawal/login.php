@@ -74,10 +74,5 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->tanya->dapatid($nama);
 		//$this->tanya->ujiID();
 	}
-
-	function semakfail()
-	{
-
-	}
 #==========================================================================================	
 }
