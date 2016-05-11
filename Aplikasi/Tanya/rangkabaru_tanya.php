@@ -185,21 +185,25 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiData;
 	}
 	
-	public function panggilFail($url, $fail))
+	public function panggilFail($url, $fail)
 	{
 		# Set pemboleubah utama
-		//echo $url . $fail . '<hr>';
+		echo $url . $fail . '<hr>';
 		$posmen = (new \Aplikasi\Kitab\Bacafail)->semakfail($url, $fail, array());
 		$medan = $this->panggilMedan($posmen);
 		$senaraiData = $this->panggilBanyakData($posmen);
 		
+		# jika null
+		$medan2 = $senaraiData2 = null;
+		
 		# pulangkan pemboleubah
 		return array($medan,$senaraiData);
+		//return array($medan2,$senaraiData2);
 	}
 
 	private function panggilMedan($posmen)
 	{
-		$medan = '(`' . implode("`,`", $posmen[0]) . '`)'; # buat medan
+		$medan = '`' . implode("`,`", $posmen[0] ) . '`'; # buat medan
 		//echo '$medan = ' . $medan . '<hr>';
 		
 		# pulangkan pemboleubah
@@ -209,18 +213,15 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 	
 	private function panggilBanyakData($posmen)
 	{	
-		$sql = array(); 
-		foreach($posmen as $key=>$key1):
-			//foreach($key1 as $kunci=>$data):
-				if($key!=0)
-					$dataS[$key] = '(`' . implode("`,`", $posmen[$key]) . '`)';
-		endforeach;//endforeach;
-		
-		$senaraiData = implode(",\r", $dataS); # cantum dataS
-		//echo '<pre>$senaraiData = ' . $senaraiData . '</pre><hr>';
+		$dataS = array(); 
+		foreach($posmen as $key=>$data):
+			if($key!=0)
+				$dataS[$key] = "('" . implode("','", $data ) . "')";
+		endforeach; 
+		//echo '<pre>$dataS = ' . $dataS . '</pre><hr>';
 		
 		# pulangkan pemboleubah
-		return $senaraiData;
+		return $dataS;
 		
 	}
 #==========================================================================================
