@@ -290,13 +290,15 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$url = URL . 'sumber/fail/csv/';
 		$fail = 'odebe2016.csv'; //echo $url . $fail . '<hr>';
+		$myTable = 'nama_pegawai';
 		list($medan,$senaraiData) = $this->tanya->panggilFail($url, $fail);
-		# semak $bacaData
-		//echo '$medan = ' . $medan . '<hr>';
-		//echo '<pre>$senaraiData = '; print_r($senaraiData) . '</pre><hr>';
 		# sql insert
-		$this->tanya->tambahSqlBanyakNilai($myTable = 'nama_pegawai', $medan, $senaraiData); 
-		
+		$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
+		//$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
+
+		# pergi papar kandungan
+		echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
+		//header('location: ' . URL . $this->_folder . '/rangkabaru/selesai');
 		//*/
 	}
 #==========================================================================================
