@@ -44,14 +44,6 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca('login/gambar');
 	}
 #==========================================================================================	
-	function semaknama($nama)
-	{
-		# semak data $_POST
-		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
-		$this->tanya->dapatid($nama);
-		//$this->tanya->ujiID();
-	}
-
 	function semakid()
 	{
 		# semak data $_POST
@@ -73,6 +65,19 @@ class Login extends \Aplikasi\Kitab\Kawal
 
 		# pergi papar kandungan
 		$this->papar->baca('index/salah');
+	}
+#==========================================================================================	
+	function semaknama($nama)
+	{
+		# semak data $_POST
+		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
+		$this->tanya->dapatid($nama);
+		//$this->tanya->ujiID();
+	}
+
+	function semakfail()
+	{
+
 	}
 #==========================================================================================	
 }
