@@ -72,7 +72,7 @@ class Tanya
 	
 	private function dimana($carian)
 	{
-		$where = null;
+		$where = null; //echo '<pre>'; print_r($carian).  '<pre>';
 		if($carian==null || $carian=='' || empty($carian) ):
 			$where .= null;
 		else:
@@ -88,12 +88,12 @@ class Tanya
 			}
 		endif;
 	
-		return $where;
+		return $where; //echo '<pre>'; print_r($where).  '<pre>';
 	}
 
 	private function dibawah($carian)
 	{
-		$susunan = null;
+		$susunan = null; //echo '<pre>'; print_r($carian).  '<pre>';
 		if($carian==null || empty($carian) ):
 			$susunan .= null;
 		else:
@@ -113,7 +113,7 @@ class Tanya
 					" LIMIT $max\r" : " LIMIT $dari,$max\r";
 		endif; 
 	
-		return $susunan; //echo '<pre>'; print_r($carian).  '<pre>';
+		return $susunan; //echo '<pre>'; print_r($susunan).  '<pre>';
 	}
 
 	public function kiraMedan($myTable, $medan, $carian)
