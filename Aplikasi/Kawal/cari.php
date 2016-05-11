@@ -285,16 +285,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	public function syarikat($carilah = null)
 	{
 		$cari = bersih($_GET['cari']); //echo "URL \$cari = $cari <br> GET \$cari = $carilah";
-		if($_GET['cari'] == null) echo '<li onClick="fill(\'-\');">Kosong Laa</li>';
-		elseif (isset($_GET['cari'])) //if ($cari)
+		if($cari == null) echo '<li onClick="fill(\'-\');">Kosong Laa</li>';
+		elseif (isset($cari)) 
 		{
-			//echo '<li onClick="fill(\'-\');">'.$cari.'</li>';
 			if(strlen($cari) > 0) 
 			{
 				$myTable = 'be16_kawal';
 				$medan = 'newss,nama,nossm,operator,kp';
 				$carian[] = array('fix'=>'z%like%','atau'=>'WHERE','medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
-				$susun['dari'] = 15;
+				$susun['dari'] = 10;
 				
 				$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
@@ -309,10 +308,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 							. ($key+1) . '-' . $data['nama'] . '-' . $data['newss'] 
 							. '-SSM ' . $data['nossm'] . '-' . $data['operator'] 
 							. '-KP' . $data['kp'] . '</li>';
-					}
+					}# tamat - foreach($paparKes as $key => $data)
 				}# tamat - $bilKes ==0
 			}# tamat - strlen($cari) > 0
-		}# tamat - isset($_GET['cari'])//*/
+		}# tamat - isset($cari)//*/
 	}
 #==========================================================================================
 }
