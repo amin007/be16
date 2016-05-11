@@ -150,7 +150,6 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 					foreach ($value2 as $kekunci => $papar)
 						$posmen[$myTable][$key][$kekunci] = bersih($papar);
 
-		
 		# pulangkan pemboleubah
 		return $posmen;
 		
