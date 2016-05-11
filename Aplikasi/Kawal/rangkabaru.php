@@ -284,4 +284,26 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 
 	}
 #==========================================================================================	
+	public static function semakfail()
+	{	
+		echo 'class gerakhas::semakfail()<br>';
+		# Set pemboleubah utama
+		$url = URL . 'sumber/fail/csv/';
+		$fail = 'odebe2016.csv'; //echo $url . $fail . '<hr>';
+		if( isset ($this->tanya) )
+			echo '$this->tanya wujud<br>';
+		else
+			echo '$this->tanya tidak wujud<br>';
+			
+		//list($medan,$senaraiData) = $this->tanya->panggilFail($url, $fail);
+		# semak $bacaData
+		echo '$medan = ' . $medan . '<hr>';
+		echo '<pre>$senaraiData = ' . $senaraiData . '</pre><hr>';
+		# sql insert
+		//$this->tanya->tambahSqlBanyakNilai($myTable = 'nama_pegawai', $medan, $senaraiData); 
+		//echo '<pre>'; print_r($bacaData); echo '</pre>';
+		
+		//*/
+	}
+#==========================================================================================
 }
