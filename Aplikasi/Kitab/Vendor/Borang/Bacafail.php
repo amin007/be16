@@ -106,8 +106,6 @@ class Bacafail
 		}
 		fclose($handle);
 		
-		//$bacaData = $this->ubahBacaData($bacaData); # ubah $bacaData
-		
 		return $bacaData; # pulangkan pembolehubah
 	}
 #==========================================================================================
