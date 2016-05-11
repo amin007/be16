@@ -1,6 +1,6 @@
 <?php
 namespace Aplikasi\Kitab; //echo __NAMESPACE__; 
-class Sesi
+class Sesi # \Aplikasi\Kitab\Sesi::
 {
 #-----------------------------------------------------------
 	public static function init()
