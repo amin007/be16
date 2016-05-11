@@ -112,7 +112,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>'; # debug $_GET
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $noBatch = bersihGET('tambah'); # bersihkan data $_GET
+		$this->papar->noBatch = $noBatch = bersihGET('cari'); # bersihkan data $_GET
 		
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$noBatch" . '';
@@ -163,10 +163,10 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			$posmen[$jadual]['nobatch'] = $asalBatch;
 			$posmen[$jadual][$medanID] = $dataID;
 			//$dimana[$jadual][$medanID] = $asalBatch;
-			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			//$this->tanya->ubahSimpan(
-			$this->tanya->ubahSqlSimpan(
+			$this->tanya->ubahSimpan(
+			//$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
 
 		# Set pemboleubah utama
@@ -175,8 +175,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$this->papar->noID = $dataID; 
 		
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
-		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
+		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
+		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
