@@ -89,5 +89,26 @@ class Bacafail
 		fclose($bacaMenuAtas);		
 	}
 #==========================================================================================
+	public function semakfail($url, $fail, $bacaData)
+	{
+		$kira = 0;
+		# buka fail
+		if (($handle = fopen($url . $fail, "r")) !== FALSE) 
+		{		
+			while (($baris = fgetcsv($handle, 1000, ",")) !== FALSE) 
+			{
+				$bacaData[$kira] = explode(';', $baris[0]);
+				if ($kira!=0)
+					$bacaData[$kira][1] = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', 
+						$bacaData[$kira][0]);
+				$kira++;
+			}
+		}
+		fclose($handle);
+		
+		//$bacaData = $this->ubahBacaData($bacaData); # ubah $bacaData
+		
+		return $bacaData; # pulangkan pembolehubah
+	}
 #==========================================================================================
 }
