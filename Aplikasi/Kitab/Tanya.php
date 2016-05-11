@@ -295,6 +295,7 @@ class Tanya
 		echo '$sql-><pre>', print_r($sql, 1) . '</pre>';
 		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');		
 	}
+	
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
 	{
 		# set sql
