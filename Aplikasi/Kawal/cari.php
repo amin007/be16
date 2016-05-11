@@ -285,7 +285,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	public function syarikat($carilah = null)
 	{
 		$cari = bersih($_GET['cari']); //echo "URL \$cari = $cari <br> GET \$cari = $carilah";
-		if($cari == null) echo '<li onClick="fill(\'-\');">Kosong Laa</li>';
+		if($cari == null) echo '<li>Kosong Laa</li>';
 		elseif (isset($cari)) 
 		{
 			if(strlen($cari) > 0) 
@@ -299,7 +299,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
 				$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes) . '<pre></pre>';
 				
-				if($bilKes==0) {echo '<li onClick="fill(\'-\');">Takde Laa</li>';}
+				if($bilKes==0) {echo '<li>Takde Laa</li>';}
 				else
 				{	echo '<li>Jumpa ' . $bilKes . '</li>';
 					foreach($paparKes as $key => $data)
