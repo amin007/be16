@@ -284,6 +284,17 @@ class Tanya
 	}
 	
 #--- tamat - contoh tambah sql guna values ---#
+	public function salinJadual($myTableNew, $medan, $myTableOld)
+	{
+		# set sql
+		$sql = 'CREATE TABLE ' . $myTableNew . ' AS'
+			 . ' SELECT ' $medan
+			 . ' FROM ' . $myTableOld
+			 . '';
+		
+		echo '$sql-><pre>', print_r($sql, 1) . '</pre>';
+		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');		
+	}
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
 	{
 		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
