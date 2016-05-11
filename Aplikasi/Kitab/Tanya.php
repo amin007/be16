@@ -288,8 +288,7 @@ class Tanya
 	{
 		# set sql
 		$sql = 'CREATE TABLE ' . $myTableNew . ' AS'
-			 . ' SELECT ' $medan
-			 . ' FROM ' . $myTableOld
+			 . ' SELECT ' . $medan . ' FROM ' . $myTableOld
 			 . '';
 		
 		echo '$sql-><pre>', print_r($sql, 1) . '</pre>';
