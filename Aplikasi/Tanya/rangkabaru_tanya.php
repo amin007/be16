@@ -185,8 +185,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiData;
 	}
 	
-	public function panggilFail($url = URL . 'sumber/fail/csv/',
-		$fail = 'odebe2016.csv')
+	public function panggilFail($url, $fail))
 	{
 		# Set pemboleubah utama
 		//echo $url . $fail . '<hr>';
