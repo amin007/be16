@@ -6,7 +6,7 @@ $target = null;
 //$target = ' target="_blank"';
 //echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
 foreach ($senaraiStaf as $namaStaf):
-	$urlStaf .=  "<br>\r" . '<a' . $target . ' href="' . URL .'prosesan/batch/' . $namaStaf . '">'
+	$urlStaf .=  " |\r" . '<a' . $target . ' href="' . URL .'prosesan/batch/' . $namaStaf . '">'
 			 .  $namaStaf . '</a>';
 endforeach;
 $paparStaf = $this->namaPegawai . " ada dalam senarai staf";
@@ -24,8 +24,7 @@ elseif (($this->namaPegawai != null) && ($this->noBatch == null)) :
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$mencari = URL . 'prosesan/tambahBatchBaru/' . $namaPegawai;
-	$notaTambahan = '<small>' . $mencari . '</small><br>' .
-	( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
+	$notaTambahan = ( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
 	$butangHantar = 'Letak No Batch';
 elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	&& ($this->error == 'Kosong') ) : 
@@ -33,8 +32,7 @@ elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch; 
-	$notaTambahan = '<small>' . $mencari . '</small><br>' . "\r" .
-	'Daftar kes masing-masing<br>';
+	$notaTambahan = 'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
 else : # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
