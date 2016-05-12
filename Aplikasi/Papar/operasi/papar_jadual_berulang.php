@@ -25,13 +25,13 @@ foreach ($this->cariApa as $myTable => $row)
 	{
 		$mula2 = ($jadual=='rangka13') ? ' active' : ''; ?>
 	<div class="tab-pane<?php echo $mula2?>" id="<?php echo $myTable ?>">
-<!-- Jadual <?php echo $myTable ?> ########################################### -->	
+<!-- Jadual <?php echo $myTable ?> ########################################### -->
 <?php include 'papar_jadual_operasi.php'; ?>
-<!-- Jadual <?php echo $myTable ?> ########################################### -->		
+<!-- Jadual <?php echo $myTable ?> ########################################### -->
 	</div>
 <?php
 	} // if ( count($row)==0 )
 }
-?>	
+?>
 </div><!-- class="tab-content" -->
 </div><!-- /tabbable -->
