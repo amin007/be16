@@ -465,7 +465,7 @@
     border-color: #EAEAEA; }
   .flat-blue .table.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #FDFDFD; }
-  .flat-blue .login-box .login-form .login-header { color: #FFF; }
+  .flat-blue .login-box .login-form .login-header { color: #000;/*#FFF;*/ }
   .flat-blue .login-box .login-form .login-body { background-color: #FFF; }
   .flat-blue .login-box input {
     background-color: #000000; /*#F9F9F9;*/
