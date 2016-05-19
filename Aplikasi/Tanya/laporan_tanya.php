@@ -235,7 +235,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("-",`kp`) as kp,'
 			. '"" as utama, concat_ws("-",`newss`) as newss,'
 			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A) as nota'
-			. '"" as nota'
+			. 'nota'
 			. '';
 			
 		return $senaraiMedan; # pulangkan nilai
@@ -266,7 +266,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		$senaraiMedan[] = 'kod';
 		$senaraiMedan[] = 'f2';
-		$senaraiMedan[] = 'respon';
+		$senaraiMedan[] = 'concat_ws(" | ",`respon`,`nota`) as respon';
 		$senaraiMedan[] = 'nama, '
 			. 'concat_ws("-",`kp`) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
