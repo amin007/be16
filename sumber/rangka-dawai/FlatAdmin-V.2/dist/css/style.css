@@ -575,7 +575,6 @@ a:hover {
       margin-top: 15px; }
 
 body.login-page {
-  /* background: url(../../img/app-header-bg.jpg) no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -588,14 +587,12 @@ body.login-page {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 0; }
-    body.login-page .login-box > .title {
-      margin-bottom: 1em; }
+    body.login-page .login-box > .title { margin-bottom: 1em; }
     body.login-page .login-box > .row {
       margin-left: 0;
       margin-right: 0;
       margin-bottom: 0; }
-  body.login-page .login-form {
-    padding: 0em; }
+  body.login-page .login-form { padding: 0em; }
     body.login-page .login-form .login-header {
       margin-bottom: 1.2em;
       font-size: 1.5em; }
