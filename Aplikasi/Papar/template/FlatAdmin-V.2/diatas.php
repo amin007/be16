@@ -21,9 +21,12 @@ $themeFlat = $flat[rand(0, count($flat)-1)];
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
     <!-- CSS Utama -->
+<?php/*
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">	//*/
+?>
+	<link rel="stylesheet" type="text/css" href="<?=$url?>dist/lib/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=$url?>dist/lib/css/bootstrap.min.css">
-	<!-- link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" -->	
     <!-- CSS Libs -->
 	<link rel="stylesheet" type="text/css" href="<?=$url?>dist/lib/css/animate.min.css">
     <link rel="stylesheet" type="text/css" href="<?=$url?>dist/lib/css/bootstrap-switch.min.css">
