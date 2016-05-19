@@ -465,28 +465,20 @@
     border-color: #EAEAEA; }
   .flat-blue .table.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #FDFDFD; }
-  .flat-blue .login-box .login-form .login-header {
-    color: #FFF; }
-  .flat-blue .login-box .login-form .login-body {
-    background-color: #FFF; }
+  .flat-blue .login-box .login-form .login-header { color: #F9F9F9F0F0; }
+  .flat-blue .login-box .login-form .login-body   { background-color: #F9F9F9; }
   .flat-blue .login-box input {
-    background-color: #F9F9F9;
-    border: 1px solid #F9F9F9; }
-  .flat-blue .login-box .login-footer a {
-    color: #FFF; }
+    border: 1px solid #F9F9F9; 
+	z-index: 1;}
+  .flat-blue .login-box .login-footer a { color: #FFF; }
   .flat-blue .login-box .login-footer a:hover {
     color: #FFF;
     text-decoration: underline; }
-  .flat-blue .badge.primary {
-    background-color: #353d47; }
-  .flat-blue .badge.success {
-    background-color: #1ABC9C; }
-  .flat-blue .badge.info {
-    background-color: #22A7F0; }
-  .flat-blue .badge.warning {
-    background-color: #FABE28; }
-  .flat-blue .badge.danger {
-    background-color: #FA2A00; }
+  .flat-blue .badge.primary { background-color: #353d47; }
+  .flat-blue .badge.success { background-color: #1ABC9C; }
+  .flat-blue .badge.info {    background-color: #22A7F0; }
+  .flat-blue .badge.warning { background-color: #FABE28; }
+  .flat-blue .badge.danger {  background-color: #FA2A00; }
   .flat-blue .nav-tabs {
     background-color: #EAEAEA; }
     .flat-blue .nav-tabs > li > a:hover {
