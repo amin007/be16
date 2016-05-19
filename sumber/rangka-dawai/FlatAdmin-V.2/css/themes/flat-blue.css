@@ -465,11 +465,9 @@
     border-color: #EAEAEA; }
   .flat-blue .table.table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #FDFDFD; }
-  .flat-blue .login-box .login-form .login-header { color: #F9F9F9F0F0; }
+  .flat-blue .login-box .login-form .login-header { color: #F9F9F9; }
   .flat-blue .login-box .login-form .login-body   { background-color: #F9F9F9; }
-  .flat-blue .login-box input {
-    border: 1px solid #F9F9F9; 
-	z-index: 1;}
+  .flat-blue .login-box input { border: 1px solid; }
   .flat-blue .login-box .login-footer a { color: #FFF; }
   .flat-blue .login-box .login-footer a:hover {
     color: #FFF;
