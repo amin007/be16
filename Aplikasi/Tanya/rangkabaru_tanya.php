@@ -222,7 +222,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		
 		# pulangkan pemboleubah
 		return $dataS;
-		
+
 	}
 #==========================================================================================
 }
