@@ -183,22 +183,6 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
         $medanKawalan = 'newss,'
 			//. '( if (hasil is null, "", '
 			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url3 .') nama,'
-			/*. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
-			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
-			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
-			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
-			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
-			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
- 			. ' ) as data5P,'
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," responden",responden),' . "\r"
-			. ' 	concat_ws("="," tel",tel),' . "\r"
-			. ' 	concat_ws("="," fax",fax),' . "\r"
-			. ' 	concat_ws("="," orang",orang),' . "\r"
-			. ' 	concat_ws("="," notel",notel),' . "\r"
-			. ' 	concat_ws("="," nofax",nofax)' . "\r"
- 			. ' ) as dataHubungi,'//*/
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
 			. 'mko,respon,nota,nota_prosesan,batchProses,'
@@ -210,7 +194,23 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("-",kp,msic2008) keterangan,' 
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
+			. ' concat_ws("|",' . "\r"
+			. ' 	concat_ws("="," orang",orang_a),' . "\r"			
+			. ' 	concat_ws("="," tel",motel_a),' . "\r"
+			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
+			. ' 	concat_ws("="," responden",responden),' . "\r"
+			. ' 	concat_ws("="," notel",notel),' . "\r"
+			. ' 	concat_ws("="," nofax",nofax)' . "\r"
+ 			. ' ) as dataHubungi,'			
 			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
+			. ' concat_ws("|",' . "\r"
+			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
+			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
+			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
+			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
+			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
+			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
+ 			. ' ) as data5P,'
 			. 'hasil,belanja,gaji,aset,staf,stok,'
 			. '';	
 	
