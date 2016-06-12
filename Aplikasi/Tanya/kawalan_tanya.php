@@ -181,7 +181,6 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		$url2 = '" <a target=_blank href=' . $news2 . '>SEMAK 2</a>"';
 		$url3 = 'concat("<a target=_blank href=' . $news3 . '>SEMAK 3</a>")';
         $medanKawalan = 'newss,'
-			//. '( if (hasil is null, "", '
 			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url3 .') nama,'
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
@@ -196,13 +195,14 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'batchAwal,dsk,mko,batchProses,'
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," orang",orang_a),' . "\r"			
-			. ' 	concat_ws("="," tel",motel_a),' . "\r"
+			. ' 	concat_ws("="," tel",notel_a),' . "\r"
 			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
 			. ' 	concat_ws("="," responden",responden),' . "\r"
 			. ' 	concat_ws("="," notel",notel),' . "\r"
 			. ' 	concat_ws("="," nofax",nofax)' . "\r"
  			. ' ) as dataHubungi,'			
 			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
+			. 'if (hasil is null, "", '
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
@@ -210,7 +210,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
 			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
- 			. ' ) as data5P,'
+ 			. ' )) as data5P,'
 			. 'hasil,belanja,gaji,aset,staf,stok,'
 			. '';	
 	
