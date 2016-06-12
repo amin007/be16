@@ -1,19 +1,16 @@
 <?php
 # set pembolehubah
-$senaraiStaf = senarai_kakitangan();
+$senaraiStaf = senarai_kakitangan(); //echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
 $urlStaf  = null;
-$target = null; 
-//$target = ' target="_blank"';
-//echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
+$target = null; //$target = ' target="_blank"';
+
 foreach ($senaraiStaf as $namaStaf):
 	$urlStaf .=  "\r | " . '<a' . $target . ' href="' . URL .'operasi/batch/' . $namaStaf . '">'
 			 .  $namaStaf . '</a>';
 endforeach;
 $paparStaf = $this->namaPegawai . " ada dalam senarai staf";
 $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
-	. ' klik salah satu pautan staf di bawah ini '
-	. $urlStaf 
-	. '';
+	. ' klik salah satu pautan staf di bawah ini ' . $urlStaf . '';
 	
 if (($this->namaPegawai == null)) :
 	# set pembolehubah
