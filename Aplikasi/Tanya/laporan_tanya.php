@@ -291,5 +291,33 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
+	private function medanA1()
+	{
+		$senaraiMedan[] = 'kod';
+		$senaraiMedan[] = 'f2';
+		$senaraiMedan[] = ''; //;
+		$senaraiMedan[] = 'newss, concat_ws("<br>",nama,operator) nama,'
+			. ' concat_ws("|",kp) kp,'
+			. ' if(respon="A1",respon,"&nbsp;") A1,'
+			. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
+			//. 'concat_ws("|",orang_a,notel_a,nofax_a,esurat_a) as nota'
+			. 'concat_ws("|",responden,notel,nofax,email) as nota'
+			//. 'concat_ws("|",concat("hasil=",hasil),concat("belanja=",belanja),' 
+			//. 'concat("gaji=",gaji),concat("aset=",aset),concat("staf=",staf),'
+			. '';
+			
+		return $senaraiMedan; # pulangkan nilai
+	}
+	
+	public function kumpulA1($item, $ms)
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->medanA1();
+		# bentuk medan yang ingin diulang
+		//$medan .= ",\r " . $r . " ";
+		
+		return $medan; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
 #==========================================================================================
 }
