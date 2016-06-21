@@ -123,13 +123,15 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 
 	private function cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $medan)
 	{
-		$item = 300; $ms = 1; ## set pembolehubah utama
+		$item = 100; $ms = 1; ## set pembolehubah utama
 		## tentukan bilangan mukasurat. bilangan jumlah rekod
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
-		$jum2 = pencamSqlLimit(300, $item, $ms);
+		$jum2 = pencamSqlLimit(100, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1
-			//$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+			$cari1[] = ($namaPegawai==null) ? 
+				array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>'')
+				: array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 			$jum = pencamSqlLimit($item, $item, $ms);
 			$cantumSusun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'newss') );
 			foreach ($senaraiJadual as $key => $myTable)
@@ -140,12 +142,12 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 						$myTable, $medan, $carian = null, $cantumSusun);
 			}# tamat ulang table
 			# sql 2
-			$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
-			$cari[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
+			$cari2[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
+			$cari2[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
 				cariSemuaData(
-				$jadual, $medan, $cari, $susun);
+				$jadual, $medan, $cari2, $susun);
 			/*# contoh sql
 			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
