@@ -40,7 +40,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
         /*  $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
         
         # senaraikan tatasusunan jadual
-        $myJadual = array('be16_kawal');
+        $myJadual = array('be16_kawal','be16_rangkabaru','be16_proses');
 		$medan = '*';
         $this->papar->cariNama = array();
 
