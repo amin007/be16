@@ -443,17 +443,46 @@ class Html
 	}
 	# tamat untuk kod php+html 
 #==========================================================================================
-	function paparURL($key, $data, $cariBatch, $namaPegawai)
+	function paparURL($key, $data, $cariBatch = null, $namaPegawai = null)
 	{
-		if ($key=='newss')
+		# set pembolehubah Sesi
+		$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
+		$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
+		//echo "<br> \$pengguna : $pengguna | \$level = $level";
+		
+		# butang 
+		$birutua = 'btn btn-primary btn-mini';
+		$birumuda = 'btn btn-info btn-mini';
+		$merah = 'btn btn-danger btn-mini';
+
+		if($cariBatch==null)
+		{
+			echo '<br> Ada masalah teknikal pada $cariBatch <br>'; exit();
+			/*?><td><?php echo "\$cariBatch kosong"; ?></td><?php*/
+		}
+		elseif($namaPegawai==null)
+		{
+			echo '<br> Ada masalah teknikal pada $namaPegawai <br>'; exit();
+			/*?><td><?php echo "\$namaPegawai kosong"; ?></td><?php*/
+		}
+		elseif ($key=='newss')
 		{
 			$id = $data; 
-			$k1 = URL . "kawalan/ubah/$id";
+			if ($level=='feprosesan'):
+				$k1 = URL . 'prosesan/ubah/' . $id;
+				$btn =  $birumuda;
+				$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
+			else:
+				$k1 = URL . 'kawalan/ubah/' . $id;
+				$btn = $birutua;
+				$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
+			endif;
+
 			$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$id";
 
 			?><td><?php
-			?><a target="_blank" href="<?php echo $k1 ?>" class="btn btn-primary btn-mini">Ubah</a><?php
-			?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php
+			?><a target="_blank" href="<?php echo $k1 ?>" class="<?=$btn?>"><?=$a?></a><?php
+			/*?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php*/
 			?></td><td><?php echo $data ?></td><?php
 		}
 		elseif ($key=='pegawaiborang')
