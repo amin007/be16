@@ -8,24 +8,7 @@ class Papar
 		//echo '<br>1. Anda berada di class Papar<br>';
 	}
 #==========================================================================================	
-	public function bacaan($nama, $noInclude = false)
-	{
-		//echo 'Anda berada di class Papar::' . $nama . '()<br>';
-
-		if ($noInclude == true) 
-		{
-			require PAPAR . $nama . '.php';	
-		}
-		else 
-		{
-			require PAPAR . 'diatas.php';
-			require PAPAR . 'menu_atas.php';
-			require PAPAR . $nama . '.php';
-			require PAPAR . 'dibawah.php';	
-		}
-	}
-
-	public function baca($nama, $noInclude = false)
+	public function baca($nama, $template, $noInclude = false)
 	{
 		//echo '<br>1.Anda berada di class Papar::' . $nama . '()<br>';
 		
