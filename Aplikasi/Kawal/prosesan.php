@@ -255,7 +255,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
         # senaraikan tatasusunan jadual dan setkan pembolehubah
 		$this->papar->lokasi = 'Enjin - Ubah';
 		$this->papar->_jadual = $jadualUbah;
-		$medanUbah = $this->tanya->medanUbah($cariID);
+		$medanUbah = $this->tanya->medanProsesan($cariID);
 		$medanID = 'newss'; $jadualUbah = 'be16_proses'; # 
 	
 		if (!empty($cariID)) 
@@ -264,16 +264,16 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			# 1. mula semak dalam jadual
 			$this->papar->senarai['data'] = $this->tanya->
 				//tatasusunanUbah2($jadualUbah, $medanUbah, $cari, $susun = null);
-				cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
-				//cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
+				//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
+				cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
 
 			if(isset($this->papar->senarai['data'][0][$medanID])):
 				$this->papar->jumpa = $this->papar->senarai['data'][0][$medanID];
 				# cari data lain jika jumpa
 				$this->papar->_paparSahaja = $this->tanya->
-					tatasusunanUbah2A($jadualUbah, $medanUbah, $cari, $susun = null);
+					//tatasusunanUbah2A($jadualUbah, $medanUbah, $cari, $susun = null);
 					//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
-					//cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
+					cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
