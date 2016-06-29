@@ -184,17 +184,17 @@ class Prosesan_Tanya extends \Aplikasi\Kitab\Tanya
         $medanKawalan = 'newss,'
 			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url3 .') nama,'
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
-			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
-			. 'mko,respon,nota,nota_prosesan,batchProses,'
-			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
-			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
+			. 'concat_ws(" | ",nobatch,feprosesan) as pegawai,' . "\r"
+			//. 'mko,respon,nota,nota_prosesan,batchProses,'
+			//. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
+			. 'concat_ws(" ",alamat,poskod,bandar) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
 			//. 'concat_ws(" ",no,batu,( if (jalan is null, "", concat("JALAN ",jalan) ) ),tmn_kg,poskod,dp_baru) alamat_baru,' . "\r"
 			. 'concat_ws("-",kp,msic2008) msic2008,' 
 			. 'concat_ws("-",kp,msic2008) keterangan,' 
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
-			. ' concat_ws("|",' . "\r"
+			/*. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," orang",orang_a),' . "\r"			
 			. ' 	concat_ws("="," tel",notel_a),' . "\r"
 			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
@@ -202,17 +202,18 @@ class Prosesan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," notel",notel),' . "\r"
 			. ' 	concat_ws("="," nofax",nofax)' . "\r"
  			. ' ) as dataHubungi,'			
-			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
+			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'//*/
+			. 'respon,nobatch,feprosesan,'
 			. 'if (hasil is null, "", '
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
-			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
-			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
-			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
-			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
+			. ' 	concat_ws("="," gaji",format(gajiupah,0)),' . "\r"
+			. ' 	concat_ws("="," aset",format(hartatetap,0)),' . "\r"
+			. ' 	concat_ws("="," staf",format(bilpekerja,0)),' . "\r"
+			. ' 	concat_ws("="," stok akhir",format(stokakhir,0))' . "\r"
  			. ' )) as data5P,'
-			. 'hasil,belanja,gaji,aset,staf,stok,'
+			. 'hasil,belanja,gajiupah,bilpekerja,bilpekerja,stokakhir,'
 			. '';	
 	
 		# buang koma di akhir string
