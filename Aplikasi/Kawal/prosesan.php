@@ -94,20 +94,13 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1			
-			# sql 2 - cari kes MFG
-			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
-			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
-					$susunMfg[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'respon,nama') );
-			$this->papar->cariApa['mfg'] = $this->tanya->
-				tatasusunanCariMFG(//cariSql( cariSemuaData(
-				$jadual, $medan, $cariMFG, $susunMfg);
-			# sql 3 - cari kes PPT
-			$cariPPT[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
-			$cariPPT[] = array('fix'=>'x!=','atau'=>'and','medan'=>'kp','apa'=>'205');
-			$susunPpt[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'batchProses DESC,mko DESC,kp,nama') );
-			$this->papar->cariApa['ppt'] = $this->tanya->
-				tatasusunanCariPPT(//cariSql( cariSemuaData()
-				$jadual, $medan, $cariPPT, $susunPpt);
+			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
+			$cari1[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
+			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
+			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
+				cariSemuaData(
+				$jadual, $medan, $cari1, $susun1);
+
 	}
 	
 	public function tambahBatchBaru($namaPegawai = null)
