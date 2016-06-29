@@ -14,6 +14,8 @@ elseif (in_array($level, $senaraiPengguna))
 else 
 	$paras = null;
 
+//echo "\r\r<pre>MENU_ATAS - \$_SESSION:"; print_r($_SESSION) . '</pre><br>';
+
 if ($paras == null): else: ?>
 <!-- div class="navbar navbar-inverse" role="navigation" -->
 <div class="navbar navbar-custom" role="navigation">
