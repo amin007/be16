@@ -466,42 +466,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
         }
         
 		# ubahsuai $posmen, valiadi terperinci
-			$jadual = ''; # setkan nama jadual 
-			# valid guna gelung foreach
-			foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
-			{# kod php untuk formula matematik
-				if(isset($posmen[$jadual][$keyRM])):
-					eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
-					$posmen[$jadual][$keyRM] = $data;
-				endif;
-			}/*$nilaiTEKS = array('no','batu','jalan','tmn_kg');
-			foreach ($nilaiTEKS as $keyTEKS)
-			{# kod php untuk besarkan semua huruf aka uppercase
-				if(isset($posmen[$jadual][$keyTEKS])):
-					$posmen[$jadual][$keyTEKS] = strtoupper($posmen[$jadual][$keyTEKS]);
-				endif;
-			}//*/ # valid guna if
-			if (isset($posmen[$jadual]['email']))
-				$posmen[$jadual]['email']=strtolower($posmen[$jadual]['email']);
-			//if (isset($posmen[$jadual]['dp_baru']))
-			//	$posmen[$jadual]['dp_baru']=ucwords(strtolower($posmen[$jadual]['dp_baru']));
-			if (isset($posmen[$jadual]['responden']))
-				$posmen[$jadual]['responden']=mb_convert_case($posmen[$jadual]['responden'], MB_CASE_TITLE);
-			if (isset($posmen[$jadual]['password']))
-			{
-				//$pilih = null;
-				$pilih = 'md5'; # Hash::rahsia('md5', $posmen[$jadual]['password'])
-				//$pilih = 'sha256'; # Hash::create('sha256', $posmen[$jadual]['password'], HASH_PASSWORD_KEY)
-				if (empty($posmen[$jadual]['password']))
-					unset($posmen[$jadual]['password']);
-				elseif ($pilih == 'md5')
-					$posmen[$jadual]['password'] = 
-						\Aplikasi\Kitab\Hash::rahsia('md5', $posmen[$jadual]['password']);
-				elseif ($pilih == 'sha256')
-					$posmen[$jadual]['password'] = 
-						\Aplikasi\Kitab\Hash::create('sha256', $posmen[$jadual]['password'], HASH_PASSWORD_KEY);
-			}
-			
+			$this->tanya->semakPosmen($posmen, $jadual = ''); # setkan nama jadual 
 			# semak data
 			echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
@@ -516,7 +481,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
         # pergi papar kandungan
 		//$this->papar->baca($this->_folder . '/ubah/' . $dataID);
 		//header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
- //*/       
+		//*/
     }
 
 	function buang($id) 
