@@ -94,7 +94,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1			
-			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'noBatch','apa'=>$cariBatch);			
+			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'noBatch','apa'=>$cariBatch);
 			$cari1[] = array('fix'=>'x=','atau'=>'AND','medan'=>'feprosesan','apa'=>$namaPegawai);
 			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
