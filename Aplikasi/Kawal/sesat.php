@@ -13,34 +13,64 @@ class Sesat extends \Aplikasi\Kitab\Kawal
 	function index() 
 	{
 		$this->papar->mesej = 'Halaman ini tidak wujud';
-		$this->papar->baca('sesat/index');
+		
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index', $jenis, 0); # $noInclude=0
+		//$this->papar->baca('sesat/index');
 	}
 
 	function parameter() 
 	{
 		$this->papar->mesej = 'Class wujud tapi parameter/method/fungsi tidak wujud';
-		$this->papar->baca('sesat/index');
+
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index', $jenis, 0); # $noInclude=0
+
 	}
 	
 	function classTidakWujud($amaran) 
 	{
 		$this->papar->mesej = $amaran;
 		$this->papar->Tajuk_Muka_Surat = $this->_tajukAtas . $this->papar->mesej;		
-		$this->papar->baca($this->_folder . '/index');
+
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index', $jenis, 0); # $noInclude=0
+
 	}
 
 	function failTidakWujud() 
 	{
 		$this->papar->mesej = 'Fail tidak wujud dalam PAPAR';
 		$this->papar->Tajuk_Muka_Surat = $this->_tajukAtas . $this->papar->mesej;		
-		$this->papar->baca($this->_folder . '/index');
+
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index', $jenis, 0); # $noInclude=0
+
 	}
 
 	function masalahDB($amaran) 
 	{
 		$this->papar->mesej = $amaran;
 		$this->papar->Tajuk_Muka_Surat = $this->_tajukAtas . $this->papar->mesej;		
-		$this->papar->baca($this->_folder . '/index');
+
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index', $jenis, 0); # $noInclude=0
+
 	}
 	
 ################################################################################################
