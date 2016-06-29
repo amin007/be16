@@ -316,6 +316,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		# semak data
 		echo '<pre>';
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
+		echo '$this->papar->cariIndustri:<br>'; var_export($this->papar->_cariIndustri); 
 		echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
 		echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '<br>$this->papar->jumpa:'; print_r($this->papar->jumpa); 
