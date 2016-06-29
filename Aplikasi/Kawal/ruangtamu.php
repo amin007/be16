@@ -12,19 +12,6 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 
 		/*
 		$this->papar->js = array(
-			'bootstrap-transition.js',
-			'bootstrap-alert.js',
-			'bootstrap-modal.js',
-			'bootstrap-dropdown.js',
-			'bootstrap-scrollspy.js',
-			'bootstrap-tab.js',
-			'bootstrap-tooltip.js',
-			'bootstrap-popover.js',
-			'bootstrap-button.js',
-			'bootstrap-collapse.js',
-			'bootstrap-carousel.js',
-			'bootstrap-typeahead.js',
-			'bootstrap-affix.js',
 			'bootstrap-datepicker.js',
 			'bootstrap-datepicker.ms.js');
 		$this->papar->css = array(
@@ -33,7 +20,7 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		$this->papar->menuatas = 'ya';
 	}
 	
-	function index() 
+	public function index() 
 	{	
 		# Set pemboleubah utama
 		$this->papar->pegawai = senarai_kakitangan();
@@ -41,11 +28,11 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
-		//$this->papar->baca(
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
 			//'mobile/mobile',$jenis,0); # $noInclude=0
+		//*/
 	}
 #==========================================================================================
 	function semaknama($nama)
