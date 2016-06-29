@@ -172,6 +172,22 @@ class Operasi_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiMedan;
 	}
 	
+	public function semakPost($senarai, $nilaiRM, $medanID, $dataID) 
+	{
+        foreach ($_POST as $myTable => $value)
+        {   if ( in_array($myTable,$senarai) )
+            {   foreach ($value as $kekunci => $papar)
+				{	$posmen[$myTable][$kekunci]= 
+						( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
+						str_replace( ',', '', bersih($papar) ) # buang koma	
+						: bersih($papar);
+				}	$posmen[$myTable][$medanID] = $dataID;
+            }
+        }
+
+		return $posmen; # pulangkan nilai
+	}
+	
 	public function semakPosmen($posmen, $jadual) 
 	{
 		# valid guna gelung foreach

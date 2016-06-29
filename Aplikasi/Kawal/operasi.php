@@ -454,17 +454,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$senarai = array('');
     
 		# masuk dalam $posmen, validasi awal
-        foreach ($_POST as $myTable => $value)
-        {   if ( in_array($myTable,$senarai) )
-            {   foreach ($value as $kekunci => $papar)
-				{	$posmen[$myTable][$kekunci]= 
-						( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
-						str_replace( ',', '', bersih($papar) ) # buang koma	
-						: bersih($papar);
-				}	$posmen[$myTable][$medanID] = $dataID;
-            }
-        }
-        
+		$posmen = $this->tanya->semakPost($senarai, $nilaiRM, $medanID, $dataID);
 		# ubahsuai $posmen, valiadi terperinci
 			$this->tanya->semakPosmen($posmen, $jadual = ''); # setkan nama jadual 
 			# semak data
