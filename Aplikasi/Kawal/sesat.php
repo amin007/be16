@@ -19,7 +19,7 @@ class Sesat extends \Aplikasi\Kitab\Kawal
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/index', $jenis, 0); # $noInclude=0
-		//$this->papar->baca('sesat/index');
+		
 	}
 
 	function parameter() 
@@ -31,7 +31,7 @@ class Sesat extends \Aplikasi\Kitab\Kawal
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/index', $jenis, 0); # $noInclude=0
-
+		
 	}
 	
 	function classTidakWujud($amaran) 
