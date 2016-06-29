@@ -139,7 +139,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				# sql guna limit //$this->papar->cariApa = array();
 					$this->papar->cariApa['semua'] = $this->tanya->//tatasusunanCari(//cariSql( 
 						cariSemuaData(
-						$myTable, $medan, $carian = null, $cantumSusun);
+						$myTable, $medan, $cari1, $cantumSusun);
 			}# tamat ulang table
 			# sql 2
 			$cari2[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
