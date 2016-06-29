@@ -1,11 +1,11 @@
 <!-- Aplikasi/Papar/menu_atas.php  --><?php 
 $sesi = \Aplikasi\Kitab\Sesi::init();
-//echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
+//echo '<pre>MENU_ATAS - $_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
 $pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
 $level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 
-$senaraiPengguna = array('fe','pegawai');
+$senaraiPengguna = array('fe','feprosesan','pegawai');
 $senaraiPentadbir = array('kawal','admin');
 if (in_array($level, $senaraiPentadbir)) 
 	$paras = '' . $level;
@@ -53,5 +53,5 @@ if ($paras == null): else: ?>
 <img src="<?php echo URL ?>../gambar2/banner.png" alt="banner">
 </div>-->
 <?php
-//*/
 endif;
+//*/
