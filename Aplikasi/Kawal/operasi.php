@@ -23,18 +23,16 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
-		
+		//*/
 	}
 #==========================================================================================	
 	private function wujudBatchAwal($senaraiJadual, $cariBatch = null, $cariID = null) 
 	{
 		if (!isset($cariBatch) || empty($cariBatch) ):
 			$paparError = 'Tiada batch<br>';
-		else:
-			if((!isset($cariID) || empty($cariID) ))
+		elseif((!isset($cariID) || empty($cariID) )):
 				$paparError = 'Tiada id<br>';
-			else
-			{
+		else: #------------------------------------------------------------------------------
 				$medan = 'newss,nossm,nama,operator,'
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
@@ -51,7 +49,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. '| operator:' . $dataKes[0]['operator']
 					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
-			}
+			#------------------------------------------------------------------------------
 		endif;
 	
 		return $paparError;
@@ -347,7 +345,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//$this->papar->bacaTemplate($this->_folder . '/index',
 		$this->papar->paparTemplate($this->_folder . '/index',
 			$jenis,0); # $noInclude=0
-
+		//*/
 	}
 
 	public function paparlimit($cariID = null, $cariApa = null) 
@@ -428,7 +426,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		
         # pergi papar kandungan
         $this->papar->baca($this->_folder . '/ubah', 0);
-
+		//*/
     }
     
 	public function ubahCari()
