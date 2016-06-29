@@ -248,6 +248,32 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/papar');
 	}
+
+	private function cariIndustri($jadualMSIC, $msic)
+	{
+		#326-46312  substr("abcdef", 0, -1);  // returns "abcde"
+		$msic08 = substr($msic, 4);  // returns "46312"
+		$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);		
+		
+		# mula cari $cariID dalam $jadual
+		foreach ($jadualMSIC as $m6 => $msic)
+		{# mula ulang table
+			$jadualPendek = substr($msic, 16); //echo "\$msic=$msic|\$jadualPendek=$jadualPendek<br>";
+			# senarai nama medan
+			if($jadualPendek=='msic2008') /*bahagian B,kumpulan K,kelas Kls,*/
+				$medanM6 = 'seksyen S,msic2000,msic,keterangan,notakaki';
+			elseif($jadualPendek=='msic2008_asas') 
+				$medanM6 = 'msic,survey kp,keterangan,keterangan_en';
+			elseif($jadualPendek=='msic_v1') 
+				$medanM6 = 'msic,survey kp,bil_pekerja staf,keterangan,notakaki';
+			else $medanM6 = '*'; 
+			//echo "cariMSIC($msic, $medanM6,<pre>"; print_r($cariM6) . "</pre>)<br>";
+
+			$this->papar->_cariIndustri[$jadualPendek] = $this->tanya->//cariSql
+				cariSemuaData($msic, $medanM6, $cariM6, null);
+		}# tamat ulang table
+		
+	}
 	   
     public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
     {//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
@@ -264,16 +290,14 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			# 1. mula semak dalam jadual
 			$this->papar->senarai['data'] = $this->tanya->
 				//tatasusunanUbah2($jadualUbah, $medanUbah, $cari, $susun = null);
-				//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
-				cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
+				cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
+				//cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
 
 			if(isset($this->papar->senarai['data'][0][$medanID])):
 				$this->papar->jumpa = $this->papar->senarai['data'][0][$medanID];
-				# cari data lain jika jumpa
-				$this->papar->_paparSahaja = $this->tanya->
-					//tatasusunanUbah2A($jadualUbah, $medanUbah, $cari, $susun = null);
-					//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
-					cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
+				# 1.2 cari nilai msic & msic08 dalam jadual msic2008
+				$jadualMSIC = dpt_senarai('msicbaru');
+				$this->cariIndustri($jadualMSIC, $this->papar->senarai['papar'][0]['msic2008']);
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
