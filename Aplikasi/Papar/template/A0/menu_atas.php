@@ -1,11 +1,11 @@
 <!-- menu_atas.php A0 --><?php 
 $sesi = \Aplikasi\Kitab\Sesi::init();
-//echo '<pre>$_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
+//echo '<pre>MENU_ATAS - $_SESSION:', print_r($_SESSION, 1) . '</pre><br>';
 # set pembolehubah
 $pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
 $level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 
-$senaraiPengguna = array('fe','pegawai');
+$senaraiPengguna = array('fe','feprosesan','pegawai');
 $senaraiPentadbir = array('kawal','admin');
 if (in_array($level, $senaraiPentadbir)) 
 	$paras = '' . $level;
@@ -13,6 +13,8 @@ elseif (in_array($level, $senaraiPengguna))
 	$paras = '' . $level;
 else 
 	$paras = null;
+
+echo "\r\r"; 
 
 if ($paras == null): else: ?>
 <!-- div class="navbar navbar-inverse" role="navigation" -->
@@ -48,10 +50,6 @@ if ($paras == null): else: ?>
 		<!-- menu kanan tamat -->
 	</div>
 </div>
-<!-- letak banner 
-<div align="center">
-<img src="<?php echo URL ?>../gambar2/banner.png" alt="banner">
-</div>-->
 <?php
 //*/
 endif;
