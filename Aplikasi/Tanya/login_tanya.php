@@ -26,10 +26,8 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 		$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'email','apa'=>$username);
 		$cari[] = array('fix'=>'x=','atau'=>'AND','medan'=>'kataLaluan','apa'=>$password);
 		# tanya Sql
-		$hasil = $this->//tatasusunanUbah2A
-			//cariSemuaData //
-			cariSql
-			($jadual, $medan, $cari, $susun = null);
+		$hasil = $this->//tatasusunanUbah2A//cariSemuaData//
+			cariSql($jadual, $medan, $cari, $susun = null);
 	}
 	
 	function semakid($medan = 'Nama_Penuh,namaPegawai,email,kataLaluan,level', $jadual = 'nama_pegawai')
@@ -44,7 +42,7 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			//':password' => \Aplikasi\Kitab\RahsiaHash::create('sha256', $_POST['password'], HASH_PASSWORD_KEY)
 		));
 		
-		$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
+		//$semakLogin->debugDumpParams(); # semak $sth->debugDumpParams()
 		$data = $semakLogin->fetch(); # dapatkan medan terlibat
 		$kira = $semakLogin->rowCount(); # kira jumlah data
 		//echo ' | $kira=' . $kira;
@@ -57,10 +55,14 @@ class Login_Tanya extends \Aplikasi\Kitab\Tanya
 			\Aplikasi\Kitab\Sesi::set('namaPenuh', $data['Nama_Penuh']);
 			\Aplikasi\Kitab\Sesi::set('levelPegawai', $data['level']);
 			\Aplikasi\Kitab\Sesi::set('loggedIn', true);
+			//echo '<hr>Berjaya';
 			header('location:' . URL . 'ruangtamu');
 		} 
 		else # login gagal
+		{
+			//echo '<hr>Tidak Berjaya';
 			header('location:' . URL . 'login/salah');
+		}
 		//*/		
 	}
 #---------------------------------------------------------------------------------------------------#
