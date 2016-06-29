@@ -36,7 +36,7 @@ class Kebenaran
 		//echo '<br>$kunci = ' . $kunci . ' | $level = ' . $level . ' |</pre>';
 
 		# semak level
-		$senaraiLevel=array('kawal', 'fe', 'kup', 'pegawai');
+		$senaraiLevel = array('kawal', 'fe', 'kup', 'pegawai', 'feprosesan');
 		 
 		if ($kunci == true && in_array($level,$senaraiLevel))
 		{
@@ -57,7 +57,7 @@ class Kebenaran
 		//echo '<br>$kunci = ' . $kunci . ' | $level = ' . $level . ' |</pre>';
 
 		# semak level
-		$senaraiLevel=array('kawal', 'fe', 'kup', 'pegawai');
+		$senaraiLevel = array('kawal', 'fe', 'kup', 'pegawai', 'feprosesan');
 	
 		if ($kunci == false || !in_array($level,$senaraiLevel))
 		{
