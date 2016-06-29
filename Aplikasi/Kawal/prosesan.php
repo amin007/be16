@@ -64,14 +64,17 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		# mencari dalam database
 		if ($cariID == null):
 			$this->papar->error = 'Kosong';
+			$senaraiJadual = array('be16_proses'); # set senarai jadual yang terlibat
+			# mula carian dalam jadual $myTable
+			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
 		else:
 			$senaraiJadual = array('be16_proses'); # set senarai jadual yang terlibat
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
-			//$this->papar->error = 'No ID = ' . $noID;
 			# mula carian dalam jadual $myTable
-			$this->cariAwal($senaraiJadual, $cariBatch, $cariID, $this->medanData);
-			//$this->cariGroup($senaraiJadual, $cariBatch, $cariID, $this->medanData);
+			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
