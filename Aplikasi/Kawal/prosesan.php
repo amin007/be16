@@ -30,24 +30,27 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 	{
 		if (!isset($cariBatch) || empty($cariBatch) ):
 			$paparError = 'Tiada batch<br>';
-		else:
-			if((!isset($cariID) || empty($cariID) ))
+		elseif((!isset($cariID) || empty($cariID) )):
 				$paparError = 'Tiada id<br>';
-			else
-			{
-				$medan = 'newss,ssm,nama,operator,'
-					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
+		else: #------------------------------------------------------------------------------
+				$medan = 'newss,nossm,nama,operator,'
+					. 'concat_ws(" ",alamat,poskod,bandar) as alamat';
+					//. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
-				$susun = null;
-				$dataKes = $this->tanya->tatasusunanCariID(//cariSql( cariSemuaData(
-					$senaraiJadual[0], $medan, $carian, $susun);
+				$dataKes = $this->tanya->//tatasusunanCariID(//cariSql( 
+					cariSemuaData(
+					$senaraiJadual[0], $medan, $carian, $susun = null);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
-				$paparError = 'Ada id:' . $dataKes[0]['newss'] 
-					. '| ssm:' . $dataKes[0]['ssm']
+				$paparError = (!isset($dataKes[0]['newss'])) ? 
+					'Tiada id dalam rangka. <br>Mana kau orang jumpa kes ini daa.' 
+					. '<br>Jumpa amin jika mahu masuk rangka ya'
+					: # jika jumpa
+					'Ada id:' . $dataKes[0]['newss'] 
+					. '| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. '| operator:' . $dataKes[0]['operator']
-					. '<br> alamat:' . $dataKes[0]['alamat'];  //*/
-			}			
+					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
+			#------------------------------------------------------------------------------
 		endif;
 	
 		return $paparError;
@@ -166,8 +169,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			//$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			//$this->tanya->ubahSimpan(
-			$this->tanya->ubahSqlSimpan(
+			$this->tanya->ubahSimpan(
+			//$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
 
 		# Set pemboleubah utama
@@ -176,8 +179,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$this->papar->noID = $dataID; 
 		
 		# pergi papar kandungan
-		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
-		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
+		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
+		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
 	}
 	
 	public function paparxlimit($cariID = null, $cariApa = null) 
@@ -256,16 +259,16 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
         # senaraikan tatasusunan jadual dan setkan pembolehubah
 		$this->papar->lokasi = 'Enjin - Ubah';
 		$this->papar->_jadual = $jadualUbah;
-		$medanUbah = $this->tanya->medanUbah2($cariID);
-		//$medanID = ''; $jadualUbah = ''; # 
+		$medanUbah = $this->tanya->medanUbah($cariID);
+		$medanID = 'newss'; $jadualUbah = 'be16_proses'; # 
 	
 		if (!empty($cariID)) 
 		{
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
 			# 1. mula semak dalam jadual
 			$this->papar->senarai['data'] = $this->tanya->
-				tatasusunanUbah2($jadualUbah, $medanUbah, $cari, $susun = null);
-				//cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
+				//tatasusunanUbah2($jadualUbah, $medanUbah, $cari, $susun = null);
+				cariSemuaData($jadualUbah, $medanUbah, $cari, $susun = null);
 				//cariSql($jadualUbah, $medanUbah, $cari, $susun = null);
 
 			if(isset($this->papar->senarai['data'][0][$medanID])):
@@ -290,7 +293,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 			$this->papar->jumpa   = '[hendak cari apa kalau id tiada]';
 		}
 
-		/*# semak data
+		# semak data
 		echo '<pre>';
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
 		echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
@@ -300,13 +303,11 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		echo '</pre>'; //*/
 		
         # pergi papar kandungan
-		$jenis = $this->pilihTemplate($template);
-		//$this->papar->bacaTemplate(
-		$this->papar->paparTemplate(
-			$this->_folder . '/ubah',$jenis,0); # $noInclude=0
-		
-        //$this->papar->baca($this->_folder . '/ubah', 0);
-
+		/*$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/ubah_prosesan', $jenis, 0); # $noInclude=0
+		//*/
     }
     
 	public function ubahCari()
