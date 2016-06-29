@@ -8,18 +8,7 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Kebenaran
 {
 #-------------------------------------------------------------------------------------------------
-	public static function handleLogin()
-	{
-		@session_start();
-		$logged = $_SESSION['loggedIn'];
-		if ($logged == false)
-		{
-			session_destroy();
-			header('location: ../login');
-			exit;
-		}
-	}
-	 
+
 	/* Kebenaran::kawalMasuk() khas untuk
 	 * class login dan index
 	 * supaya kalau user berada dalam class tersebut
