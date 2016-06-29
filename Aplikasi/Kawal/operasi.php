@@ -491,5 +491,12 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/buang', 1);
 
     }
+	
+	public function salinjadual($myTableNew, $myTableOld)
+	{
+		# setkan nama medan
+		$medan = '*';
+		$this->tanya->salinJadual($myTableNew, $medan, $myTableOld);
+	}
 #==========================================================================================	
 }
