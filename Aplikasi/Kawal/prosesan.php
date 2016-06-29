@@ -78,10 +78,10 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
-		echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
 
 		# pergi papar kandungan
-		/*$jenis = $this->papar->pilihTemplate($template=0);
+		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca(
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
