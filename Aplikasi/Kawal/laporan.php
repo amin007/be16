@@ -18,7 +18,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin Laporan';
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/index');
+		$this->papar->baca($this->_folder . '/index', null, 1);
 	}
 #==========================================================================================
 	public function fe($jadual, $cariID, $cariApa, $item = 1000, $ms = 1)
@@ -46,7 +46,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
  		echo '</pre>'; //*/
 
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/f3all');
+		$this->papar->baca($this->_folder . '/f3all', null, 1);
 	}
 #==========================================================================================
 # cetak f3 - senarai nama syarikat ikut fe/batchAwal
@@ -78,7 +78,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kp = 'BE';
 	
 		# pergi papar kandungan
-		$this->papar->baca('laporan/f3all', 1);
+		$this->papar->baca('laporan/f3all', null, 1);
 	}
 #===============================================================================================
 	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -109,8 +109,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kp = 'BE';
 				
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', 1);
-		$this->papar->baca('laporan/f3responden', 1);
+		//$this->papar->baca('laporan/f3all', null, 1);
+		$this->papar->baca('laporan/f3responden', null, 1);
 	}
 #===============================================================================================
 	public function cetakA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -142,8 +142,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->kp = 'BE';
 				
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', 1);
-		$this->papar->baca('laporan/f10', 1);//*/
+		//$this->papar->baca('laporan/f3all', null, 1);
+		$this->papar->baca('laporan/f10', null, 1);//*/
 	}
 #==========================================================================================
 }
