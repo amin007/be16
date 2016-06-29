@@ -62,7 +62,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		if ($cariID == null):
 			$this->papar->error = 'Kosong';
 		else:
-			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
+			$senaraiJadual = array('be16_proses'); # set senarai jadual yang terlibat
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			//$this->papar->error = 'No ID = ' . $noID;
@@ -128,7 +128,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'be16_kawal'; 
+			$jadual = 'be16_proses'; 
 			$medanID = 'nobatch';
 			//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
 			$posmen[$jadual][$medanID] = $tukarBatch;
@@ -157,16 +157,17 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'be16_kawal'; 
-			$medanID = 'nossm';
-			$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
+			$jadual = 'be16_proses'; 
+			$medanID = 'newss';
+			$posmen[$jadual]['feprosesan'] = $namaPegawai;
 			$posmen[$jadual]['nobatch'] = $asalBatch;
+			$posmen[$jadual]['respon'] = '11';
 			$posmen[$jadual][$medanID] = $dataID;
 			//$dimana[$jadual][$medanID] = $asalBatch;
-			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
         
-			$this->tanya->ubahSimpan(
-			//$this->tanya->ubahSqlSimpan(
+			//$this->tanya->ubahSimpan(
+			$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
 
 		# Set pemboleubah utama
@@ -299,7 +300,12 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		echo '</pre>'; //*/
 		
         # pergi papar kandungan
-        $this->papar->baca($this->_folder . '/ubah', 0);
+		$jenis = $this->pilihTemplate($template);
+		//$this->papar->bacaTemplate(
+		$this->papar->paparTemplate(
+			$this->_folder . '/ubah',$jenis,0); # $noInclude=0
+		
+        //$this->papar->baca($this->_folder . '/ubah', 0);
 
     }
     
