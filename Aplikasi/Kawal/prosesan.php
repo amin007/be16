@@ -75,10 +75,10 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
-		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+		echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
 
 		# pergi papar kandungan
-		$jenis = $this->papar->pilihTemplate($template=0);
+		/*$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca(
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
@@ -86,7 +86,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		//*/
 	}
 
-	private function cariAwal($senaraiJadual, $cariBatch, $cariID, $medan)
+	private function cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $medan)
 	{
 		$item = 1000; $ms = 1; ## set pembolehubah utama
 		## tentukan bilangan mukasurat. bilangan jumlah rekod
@@ -94,8 +94,8 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(300, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1			
-			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
-			$cari1[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
+			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'noBatch','apa'=>$cariBatch);			
+			$cari1[] = array('fix'=>'x=','atau'=>'AND','medan'=>'feprosesan','apa'=>$namaPegawai);
 			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
 				cariSemuaData(
