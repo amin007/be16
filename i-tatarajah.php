@@ -17,6 +17,7 @@ define('Tajuk_Muka_Surat', '***');
       $jquery_cdn = 'https://code.jquery.com/jquery-2.2.3.min.js';
  $bootstrapJS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js';
 $bootstrapCSS_cdn = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
+ $ceruleanCSS_cdn = 'https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/cerulean/bootstrap.min.css';
  $fontawesome_cdn = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css';
 ## local
             $sumber = 'sumber/utama/';
