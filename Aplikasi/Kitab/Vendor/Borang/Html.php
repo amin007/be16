@@ -173,7 +173,7 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($key,array('respon','respon2')))
+		elseif(in_array($key,array('respon','nobatch','feprosesan')))
 		{#kod utk input text 3 aksara sahaja
 			$input = '<div class="input-group input-group">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
@@ -200,7 +200,8 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($key,array('hasil','belanja','staf','gaji','aset','stok')))
+		elseif(in_array($key,array('hasil','belanja','bilpekerja','gaji','hartatetap','stokakhir',
+			'staf','aset','stok')))
 		{#kod utk input paparkan nilai asal sebelum ubah
 			$input = '<div class="input-group input-group-sm">' . $tabline
 				   . '<span class="input-group-addon">Nilai</span>'		
@@ -210,6 +211,16 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
+		/*elseif(in_array($key,array('hasil','belanja','staf','aset','stok')))
+		{#kod utk input paparkan nilai asal sebelum ubah
+			$input = '<div class="input-group input-group-sm">' . $tabline
+				   . '<span class="input-group-addon">Nilai</span>'		
+				   . '<input type="text" ' . $inputText 
+				   . ' class="form-control">' . $tabline
+				   . '<span class="input-group-addon">' . kira($data) . '</span>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}//*/
 		elseif ( in_array($key,array('password')) )
 		{#kod untuk input password
 			$input = '<div class="input-group input-group-sm">' . $tabline
