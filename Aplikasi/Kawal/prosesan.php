@@ -297,7 +297,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 				$this->papar->jumpa = $this->papar->senarai['data'][0][$medanID];
 				# 1.2 cari nilai msic & msic08 dalam jadual msic2008
 				$jadualMSIC = dpt_senarai('msicbaru');
-				$this->cariIndustri($jadualMSIC, $this->papar->senarai['papar'][0]['msic2008']);
+				$this->cariIndustri($jadualMSIC, $this->papar->senarai['data'][0]['msic2008']);
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
@@ -314,7 +314,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		}
 
 		# semak data
-		echo '<pre>';
+		/*echo '<pre>';
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
 		echo '$this->papar->cariIndustri:<br>'; var_export($this->papar->_cariIndustri); 
 		echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
@@ -324,7 +324,7 @@ class Prosesan extends \Aplikasi\Kitab\Kawal
 		echo '</pre>'; //*/
 		
         # pergi papar kandungan
-		/*$jenis = $this->papar->pilihTemplate($template=0);
+		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/ubah_prosesan', $jenis, 0); # $noInclude=0
