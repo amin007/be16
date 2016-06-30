@@ -208,12 +208,12 @@ class Prosesan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
 			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
-			. ' 	concat_ws("="," gaji",format(gajiupah,0)),' . "\r"
+			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
 			. ' 	concat_ws("="," aset",format(hartatetap,0)),' . "\r"
 			. ' 	concat_ws("="," staf",format(bilpekerja,0)),' . "\r"
 			. ' 	concat_ws("="," stok akhir",format(stokakhir,0))' . "\r"
  			. ' )) as data5P,'
-			. 'hasil,belanja,gajiupah,bilpekerja,bilpekerja,stokakhir,'
+			. 'hasil,belanja,gaji,bilpekerja,bilpekerja,stokakhir,'
 			. '';	
 	
 		# buang koma di akhir string
@@ -222,6 +222,62 @@ class Prosesan_Tanya extends \Aplikasi\Kitab\Tanya
 		
 		# pulangkan pemboleubah		
 		return $medanKawalan;
+	}
+	
+	public function semakPost($senarai, $nilaiRM) 
+	{
+		foreach ($_POST as $myTable => $value)
+        {   if ( in_array($myTable,$senarai) )
+            {   foreach ($value as $kekunci => $papar)
+				{	$posmen[$myTable][$kekunci]= 
+						( in_array($kekunci,$nilaiRM) ) ? # $nilaiRM rujuk line 154
+						str_replace( ',', '', bersih($papar) ) # buang koma	
+						: bersih($papar);
+				}	$posmen[$myTable][$medanID] = $dataID;
+            }
+        }		
+		
+		return $posmen; # pulangkan nilai
+	}
+	
+	public function semakPosmen($posmen, $jadual) 
+	{
+			# valid guna gelung foreach
+			foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
+			{# kod php untuk formula matematik
+				if(isset($posmen[$jadual][$keyRM])):
+					eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
+					$posmen[$jadual][$keyRM] = $data;
+				endif;
+			}/*$nilaiTEKS = array('no','batu','jalan','tmn_kg');
+			foreach ($nilaiTEKS as $keyTEKS)
+			{# kod php untuk besarkan semua huruf aka uppercase
+				if(isset($posmen[$jadual][$keyTEKS])):
+					$posmen[$jadual][$keyTEKS] = strtoupper($posmen[$jadual][$keyTEKS]);
+				endif;
+			}//*/ # valid guna if
+			if (isset($posmen[$jadual]['email']))
+				$posmen[$jadual]['email']=strtolower($posmen[$jadual]['email']);
+			//if (isset($posmen[$jadual]['dp_baru']))
+			//	$posmen[$jadual]['dp_baru']=ucwords(strtolower($posmen[$jadual]['dp_baru']));
+			if (isset($posmen[$jadual]['responden']))
+				$posmen[$jadual]['responden']=mb_convert_case($posmen[$jadual]['responden'], MB_CASE_TITLE);
+			if (isset($posmen[$jadual]['password']))
+			{
+				//$pilih = null;
+				$pilih = 'md5'; # Hash::rahsia('md5', $posmen[$jadual]['password'])
+				//$pilih = 'sha256'; # Hash::create('sha256', $posmen[$jadual]['password'], HASH_PASSWORD_KEY)
+				if (empty($posmen[$jadual]['password']))
+					unset($posmen[$jadual]['password']);
+				elseif ($pilih == 'md5')
+					$posmen[$jadual]['password'] = 
+						\Aplikasi\Kitab\Hash::rahsia('md5', $posmen[$jadual]['password']);
+				elseif ($pilih == 'sha256')
+					$posmen[$jadual]['password'] = 
+						\Aplikasi\Kitab\Hash::create('sha256', $posmen[$jadual]['password'], HASH_PASSWORD_KEY);
+			}
+		
+		return $posmen; # pulangkan nilai
 	}
 #==========================================================================================
 }
