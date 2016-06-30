@@ -211,7 +211,7 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		/*elseif(in_array($key,array('hasil','belanja','staf','aset','stok')))
+		elseif(in_array($key,array('output','input','nilaitambah','ioratio')))
 		{#kod utk input paparkan nilai asal sebelum ubah
 			$input = '<div class="input-group input-group-sm">' . $tabline
 				   . '<span class="input-group-addon">Nilai</span>'		
