@@ -17,8 +17,8 @@ else
 echo "\r\r"; 
 
 if ($paras == null): else: ?>
-<!-- div class="navbar navbar-inverse" role="navigation" -->
-<div class="navbar navbar-custom" role="navigation">
+<div class="navbar navbar-inverse" role="navigation">
+<!-- div class="navbar navbar-custom" role="navigation" -->
 	<div class="container-fluid">
 		<!-- menu kiri mula -->
 		<div class="navbar-header">
