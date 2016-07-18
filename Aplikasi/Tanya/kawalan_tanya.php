@@ -232,15 +232,13 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 				@eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
 				$posmen[$jadual][$keyRM] = $data;
 			endif;
-		}/*$nilaiTEKS = array('no','batu','jalan','tmn_kg');
+		}$nilaiTEKS = array('no','batu','jalan','tmn_kg','respon','posdaftar');
 		foreach ($nilaiTEKS as $keyTEKS)
 		{# kod php untuk besarkan semua huruf aka uppercase
 			if(isset($posmen[$jadual][$keyTEKS])):
 				$posmen[$jadual][$keyTEKS] = strtoupper($posmen[$jadual][$keyTEKS]);
 			endif;
 		}//*/ # valid guna if	
-		if (isset($posmen[$rangka]['respon']))
-			$posmen[$rangka]['respon']=strtoupper($posmen[$rangka]['respon']);
 		if (isset($posmen[$rangka]['fe']))
 		{
 			$posmen[$rangka]['fe']=str_replace(' ', '-', $posmen[$rangka]['fe']);
