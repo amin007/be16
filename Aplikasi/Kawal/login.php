@@ -64,7 +64,12 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->isi = '';
 
 		# pergi papar kandungan
-		$this->papar->baca('index/salah');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			'index/salah',$jenis,0); # $noInclude=0
+		
 	}
 #==========================================================================================	
 	function semaknama($nama)
