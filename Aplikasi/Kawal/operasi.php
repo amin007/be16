@@ -108,8 +108,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 						$myTable, $medan, $cari1, $cantumSusun);
 			}# tamat ulang table
 			# sql 2
-			$medan2 = 'newss,nossm,nama,operator,'
-				    . 'alamat1,alamat2,poskod,bandar,'
+			$medan2 = 'newss,nossm,nama,operator,alamat1,alamat2,poskod,bandar,posdaftar,'
 					//. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
 					. ' concat_ws("|",' . "\r"
 					. ' 	concat_ws("="," orang",orang_a),' . "\r"
