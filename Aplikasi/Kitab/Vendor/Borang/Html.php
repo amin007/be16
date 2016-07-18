@@ -512,6 +512,16 @@ class Html
 		}
 		elseif(in_array($key,array('posdaftar')))
 		{
+				$k1 = URL . 'kawalan/posdaftar/' . $data;
+				$k2 = 'http://poslajutracking.herokuapp.com/track/' . $data;
+				$k3 = 'http://www.pos.com.my/postal-services/quick-access/?track-trace#trackingIds=' . $data;
+				$btn = $birutua;
+				//$a = '<i class="fa fa-pencil" aria-hidden="true"></i>' . $data;
+				$a = $data;
+				$pautan = ($data==null) ? $data :
+				'<a target="_blank" href="' . $k3 . '" class="' . $btn . '">' . $a . '</a>';
+				
+			?><td><?php echo $pautan ?></td><?php
 			
 		}
 		elseif ($key=='pegawaiborang')
