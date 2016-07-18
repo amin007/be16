@@ -184,7 +184,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url3 .') nama,'
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
-			. 'mko,respon,nota,nota_prosesan,batchProses,'
+			. 'mko,respon,posdaftar,nota,nota_prosesan,batchProses,'
 			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
