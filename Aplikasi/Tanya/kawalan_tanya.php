@@ -228,15 +228,16 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		# valid guna gelung foreach
 		foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
 		{# kod php untuk formula matematik
-			if(isset($posmen[$jadual][$keyRM])):
-				@eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
-				$posmen[$jadual][$keyRM] = $data;
+			if(isset($posmen[$rangka][$keyRM])):
+				@eval( '$data = (' . $posmen[$rangka][$keyRM] . ');' );
+				$posmen[$rangka][$keyRM] = $data;
 			endif;
-		}$nilaiTEKS = array('no','batu','jalan','tmn_kg','respon','posdaftar');
+		}//*/
+		$nilaiTEKS = array('no','batu','jalan','tmn_kg','respon','posdaftar');
 		foreach ($nilaiTEKS as $keyTEKS)
 		{# kod php untuk besarkan semua huruf aka uppercase
-			if(isset($posmen[$jadual][$keyTEKS])):
-				$posmen[$jadual][$keyTEKS] = strtoupper($posmen[$jadual][$keyTEKS]);
+			if(isset($posmen[$rangka][$keyTEKS])):
+				$posmen[$rangka][$keyTEKS] = strtoupper($posmen[$rangka][$keyTEKS]);
 			endif;
 		}//*/ # valid guna if	
 		if (isset($posmen[$rangka]['fe']))
