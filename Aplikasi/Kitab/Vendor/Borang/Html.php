@@ -519,7 +519,7 @@ class Html
 				//$a = '<i class="fa fa-pencil" aria-hidden="true"></i>' . $data;
 				$a = $data;
 				$pautan = ($data==null) ? $data :
-				'<a target="_blank" href="' . $k3 . '" class="' . $btn . '">' . $a . '</a>';
+				'<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>';
 				
 			?><td><?php echo $pautan ?></td><?php
 			
