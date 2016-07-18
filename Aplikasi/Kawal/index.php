@@ -39,15 +39,24 @@ class Index extends \Aplikasi\Kitab\Kawal
 
 		# pergi papar kandungan
 		$this->_folder = 'mobile'; # untuk apps mobile
-		$this->papar->baca($this->_folder . '/muar');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/muar',$jenis,0); # $noInclude=0
 	}
 
 	function putrajaya() 
 	{
 		# Set pemboleubah utama
 		//$this->papar->IP=dpt_ip(); # dapatkan senarai IP yang dibenarkan
+		
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/daftar');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/daftar',$jenis,0); # $noInclude=0
 	}
 	
 	function login($user) 
@@ -55,8 +64,13 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->nama = $user; # dapatkan nama pengguna
 		$this->papar->IP = dpt_ip(); # dapatkan senarai IP yang dibenarkan
+		
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/login');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/login',$jenis,0); # $noInclude=0
 	}
 
 	function login_automatik($user) 
@@ -64,16 +78,26 @@ class Index extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->nama = $user; # dapatkan nama pengguna
 		$this->papar->IP = dpt_ip(); # dapatkan senarai IP yang dibenarkan
+		
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/login_automatik');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/login_automatik',$jenis,0); # $noInclude=0
 	}
 
 	function keluar() 
 	{
 		# Set pemboleubah utama
 		$this->papar->IP=dpt_ip(); # dapatkan senarai IP yang dibenarkan
+
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/keluar');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->baca(
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/keluar',$jenis,0); # $noInclude=0
 	}	
 #==========================================================================================	
 	function kaunter()
