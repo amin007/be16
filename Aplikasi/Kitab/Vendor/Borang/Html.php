@@ -479,22 +479,27 @@ class Html
 		elseif ($key=='newss')
 		{
 			$id = $data; 
-			if ($level=='feprosesan'):
+			if ($namaPegawai=='amin'):
+				$k1 = URL . 'kawalan/ubah/' . $id;
+				$btn = $birutua;
+				//$btn = $merah;
+				$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
+				$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$id";
+				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>'
+					. '<a href="' . $cb . '" class="btn btn-danger btn-mini">Kosong</a>';
+			elseif ($level=='feprosesan'):
 				$k1 = URL . 'prosesan/ubah/' . $id;
 				$btn =  $birumuda;
 				$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
+				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>';
 			else:
 				$k1 = URL . 'kawalan/ubah/' . $id;
 				$btn = $birutua;
 				$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
+				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>';
 			endif;
 
-			$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$id";
-
-			?><td><?php
-			?><a target="_blank" href="<?php echo $k1 ?>" class="<?=$btn?>"><?=$a?></a><?php
-			/*?><a href="<?php echo $cb ?>" class="btn btn-danger btn-mini">Kosong</a><?php*/
-			?></td><td><?php echo $data ?></td><?php
+			?><td><?php echo $pautan ?></td><td><?php echo $data ?></td><?php
 		}
 		elseif ($key=='pegawaiborang')
 		{
