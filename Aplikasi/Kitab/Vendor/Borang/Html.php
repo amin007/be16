@@ -166,9 +166,15 @@ class Html
 		}
 		elseif(in_array($key,array('posdaftar')))
 		{#kod utk kesan API dan input text saiz besar
-			$data2 = '';
+			$k1 = URL . 'kawalan/posdaftar/' . $data;
+			$k2 = 'http://poslajutracking.herokuapp.com/track/' . $data;
+			$k3 = 'http://www.pos.com.my/postal-services/quick-access/?track-trace#trackingIds=' . $data;
+			$btn = $birutua;
+			//$a = '<i class="fa fa-pencil" aria-hidden="true"></i>' . $data;
+			$data2 = ($data==null) ? $data :
+				'<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $data . '</a>';
 			$input = '<div class="input-group input-group-lg">' . $tabline
-				   . '<span class="input-group-addon">URL ' . $data . '</span>' . $tabline
+				   . '<span class="input-group-addon">' . $data2 . '</span>' . $tabline
 				   . '<input type="text" ' . $inputText 
 				   . ' class="form-control">'
 				   . $tabline2 . '</div>'
