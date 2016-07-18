@@ -523,9 +523,8 @@ class Html
 				$k3 = 'http://www.pos.com.my/postal-services/quick-access/?track-trace#trackingIds=' . $data;
 				$btn = $birutua;
 				//$a = '<i class="fa fa-pencil" aria-hidden="true"></i>' . $data;
-				$a = $data;
 				$pautan = ($data==null) ? $data :
-				'<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>';
+				'<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $data . '</a>';
 				
 			?><td><?php echo $pautan ?></td><?php
 			
