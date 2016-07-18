@@ -24,6 +24,11 @@ class Html
 		$inputText = $name . ' value="' . $data . '"';
 		$tabline = "\n\t\t\t\t\t";
 		$tabline2 = "\n\t\t\t\t";
+		# butang 
+		$birutua = 'btn btn-primary btn-mini';
+		$birumuda = 'btn btn-info btn-mini';
+		$merah = 'btn btn-danger btn-mini';
+
 		//if ( in_array($key,array(...)) )
 		if(in_array($key,array('nota','catatan')))
 		{#kod utk textarea
@@ -156,6 +161,11 @@ class Html
 		$inputText = $name . ' value="' . $data . '"';
 		$tabline = "\n\t\t\t\t\t";
 		$tabline2 = "\n\t\t\t\t";
+		# butang 
+		$birutua = 'btn btn-primary btn-mini';
+		$birumuda = 'btn btn-info btn-mini';
+		$merah = 'btn btn-danger btn-mini';
+
 		//if ( in_array($key,array(...)) )
 		if(in_array($key,array('nota','catatan')))
 		{#kod utk textarea
@@ -166,13 +176,14 @@ class Html
 		}
 		elseif(in_array($key,array('posdaftar')))
 		{#kod utk kesan API dan input text saiz besar
-			$k1 = URL . 'kawalan/posdaftar/' . $data;
-			$k2 = 'http://poslajutracking.herokuapp.com/track/' . $data;
-			$k3 = 'http://www.pos.com.my/postal-services/quick-access/?track-trace#trackingIds=' . $data;
+			$k[0] = URL . 'kawalan/posdaftar/' . $data;
+			$k[1] = 'http://poslajutracking.herokuapp.com/track/' . $data;
+			$k[2] = 'http://www.pos.com.my/postal-services/quick-access/?track-trace#trackingIds=' . $data;
+			$k[3] = 'https://track.aftership.com/malaysia-post/' . $data;
 			$btn = $birutua;
 			//$a = '<i class="fa fa-pencil" aria-hidden="true"></i>' . $data;
 			$data2 = ($data==null) ? $data :
-				'<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $data . '</a>';
+				'<a target="_blank" href="' . $k[3] . '">' . $data . '</a>';
 			$input = '<div class="input-group input-group-lg">' . $tabline
 				   . '<span class="input-group-addon">' . $data2 . '</span>' . $tabline
 				   . '<input type="text" ' . $inputText 
