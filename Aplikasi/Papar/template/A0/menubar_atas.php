@@ -18,10 +18,12 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 	<li><a href="<?php echo $url ?>biodata/ubah">
 		<?=$icon['User']?>Biodata <?=$pengguna?>
 	</a></li>
-	<li class="divider"></li><?php if ($paras != 'feprosesan'): ?>
+	<li class="divider"></li><?php 
+	if ( !in_array($paras,array('feprosesan','pegawaiprosesan'))	): ?>
 	<li><a href="<?php echo $url ?>rangkabaru/masukdata/1"><?=$icon['Barcode']?>Tambah Kes</a></li>
 	<li><a href="<?php echo $url ?>operasi/batch"><?=$icon['Barcode']?>Semak Barcode</a></li>
-	<li><a href="<?php echo $url ?>operasi/hantar"><?=$icon['Barcode']?>Hantar Kes</a></li><?php elseif ($paras == 'feprosesan'): ?>
+	<li><a href="<?php echo $url ?>operasi/hantar"><?=$icon['Barcode']?>Hantar Kes</a></li><?php 
+	elseif ( in_array($paras,array('feprosesan','pegawaiprosesan'))	): ?>
 	<li><a href="<?php echo $url ?>rangkabaru/luarsample/1"><?=$icon['Barcode']?>Tambah Kes Luar Sample</a></li>
 	<li><a href="<?php echo $url ?>prosesan/batch"><?=$icon['Barcode']?>Terima Di Prosesan</a></li><?php else: endif; ?>
 	<li class="divider"></li>
