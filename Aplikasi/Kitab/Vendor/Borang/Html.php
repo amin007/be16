@@ -164,7 +164,17 @@ class Html
 				   . $tabline2 . '<pre>' . $data . '</pre>'
 				   . '';
 		}
-		elseif(in_array($key,array('namax','emailx','responden','fe','posdaftar')))
+		elseif(in_array($key,array('posdaftar')))
+		{#kod utk kesan API dan input text saiz besar
+			$data2 = '';
+			$input = '<div class="input-group input-group-lg">' . $tabline
+				   . '<span class="input-group-addon">URL ' . $data . '</span>' . $tabline
+				   . '<input type="text" ' . $inputText 
+				   . ' class="form-control">'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
+		elseif(in_array($key,array('namax','emailx','responden','fe')))
 		{#kod utk input text saiz besar
 			$input = '<div class="input-group input-group-lg">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
@@ -478,28 +488,31 @@ class Html
 		}
 		elseif ($key=='newss')
 		{
-			$id = $data; 
 			if ($namaPegawai=='amin'):
-				$k1 = URL . 'kawalan/ubah/' . $id;
+				$k1 = URL . 'kawalan/ubah/' . $data;
 				$btn = $birutua;
 				//$btn = $merah;
 				$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
-				$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$id";
+				$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$data";
 				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>'
 					. '<a href="' . $cb . '" class="btn btn-danger btn-mini">Kosong</a>';
 			elseif ($level=='feprosesan'):
-				$k1 = URL . 'prosesan/ubah/' . $id;
+				$k1 = URL . 'prosesan/ubah/' . $data;
 				$btn =  $birumuda;
 				$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
 				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>';
 			else:
-				$k1 = URL . 'kawalan/ubah/' . $id;
+				$k1 = URL . 'kawalan/ubah/' . $data;
 				$btn = $birutua;
 				$a = '<i class="fa fa-pencil" aria-hidden="true"></i>Ubah1';
 				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>';
 			endif;
 
 			?><td><?php echo $pautan ?></td><td><?php echo $data ?></td><?php
+		}
+		elseif(in_array($key,array('posdaftar')))
+		{
+			
 		}
 		elseif ($key=='pegawaiborang')
 		{
