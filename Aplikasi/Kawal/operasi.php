@@ -108,12 +108,20 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 						$myTable, $medan, $cari1, $cantumSusun);
 			}# tamat ulang table
 			# sql 2
+			$medan2 = 'newss,nossm,nama,operator,'
+				    . 'alamat1,alamat2,poskod,bandar,'
+					//. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
+					. ' concat_ws("|",' . "\r"
+					. ' 	concat_ws("="," orang",orang_a),' . "\r"
+					. ' 	concat_ws("="," notel",notel_a),' . "\r"
+					. ' 	concat_ws("="," nofax",nofax_a)' . "\r"
+					. ' ) as dataHubungi';
 			$cari2[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
 			$cari2[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
 				cariSemuaData(
-				$jadual, $medan, $cari2, $susun);
+				$jadual, $medan2, $cari2, $susun);
 			/*# contoh sql
 			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
