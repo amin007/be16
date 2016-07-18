@@ -5,7 +5,7 @@ $sesi = \Aplikasi\Kitab\Sesi::init();
 $pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
 $level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 
-$senaraiPengguna = array('fe','feprosesan','pegawai');
+$senaraiPengguna = array('fe','pegawai','pegawaiprosesan', 'feprosesan');
 $senaraiPentadbir = array('kawal','admin');
 if (in_array($level, $senaraiPentadbir)) 
 	$paras = '' . $level;
