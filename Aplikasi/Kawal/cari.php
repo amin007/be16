@@ -266,7 +266,6 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$mesej = null; $lokasi = null;
 		}
 		
-		
 		/* # semak output
 		echo '<pre>';
 		//echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
