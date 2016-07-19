@@ -47,7 +47,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] 
 					. '</a>| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
-					. '| operator:' . $dataKes[0]['operator']
+					. ( empty($dataKes[0]['operator']) ? '' : '| operator:' . $dataKes[0]['operator'] )
 					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
 			#------------------------------------------------------------------------------
 		endif;
