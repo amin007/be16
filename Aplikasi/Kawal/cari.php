@@ -24,11 +24,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	
 	public function index() 
 	{	
-		$this->papar->medan = array(1,2,3);
-		# set latarbelakang
-		$this->papar->gambar=gambar_latarbelakang('../../');
 		# Set pemboleubah utama
+		$this->papar->medan = array(1,2,3);
 		$this->papar->pegawai = senarai_kakitangan();
+		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca
