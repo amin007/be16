@@ -36,21 +36,21 @@ echo $tajuk;
 #-----------------------------------------------------------------
 for ($kira=0; $kira < count($row); $kira++)
 {
-	if ( !$printed_headers ) //print the headers once: 
+	if ( !$printed_headers ) # print the headers once: 
 	{##=============================================================
 		?><thead><tr>
 <th>Tindakan</th><th>#</th>
 <?php
 		foreach ( array_keys($row[$kira]) as $tajuk ) 
-		{// anda mempunyai kunci integer serta kunci rentetan
-		// kerana cara PHP mengendalikan tatasusunan.
+		{	# anda mempunyai kunci integer serta kunci rentetan
+			# kerana cara PHP mengendalikan tatasusunan.
 			?><th><?php echo $tajuk ?></th>
 <?php	} ?></tr></thead>
 <?php
 	##=============================================================
 		$printed_headers = true; 
 	} 
-#----//print the data row------------------------------------------------------------- 
+#----//print the data row----------------------------------------------
 	?><tbody><tr>
 <?php foreach ( $row[$kira] as $key=>$data ) :
 		pautan($kira, $key, $data);
@@ -100,7 +100,7 @@ foreach ($this->cariNama as $myTable => $row)
 	<?php //echo $this->halaman[$myTable] ?>
 <!-- Jadual <?php echo $myTable ?> ########################################### -->	
 <table border="1" class="excel" id="example">
-<?php $printed_headers = false; // mula bina jadual
+<?php $printed_headers = false; # mula bina jadual
 #-----------------------------------------------------------------
 for ($kira=0; $kira < count($row); $kira++)
 {
@@ -117,16 +117,15 @@ for ($kira=0; $kira < count($row); $kira++)
 			} 
 		}
 		?><th><?php echo $myTable ?></th></tr></thead>
-<?php
-		$printed_headers = true; 
+<?php	$printed_headers = true; 
 	} 
-#---//print the data row--------------------------------------------------------------		 
-	?><tbody><tr><td><?php echo $kira+1 ?></td><?php
+#---//print the data row------------------------------------------- 
+	?><tbody><tr><?php
 	foreach ( $row[$kira] as $key=>$data ) 
 	{
 		pautan($kira, $key, $data);
 	}
-	?></td></tr></body><?php
+	?></tr></body><?php
 }
 #-----------------------------------------------------------------
 ?>
