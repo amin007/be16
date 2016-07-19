@@ -9,14 +9,14 @@ class Cari extends \Aplikasi\Kitab\Kawal
         //\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		
-        $this->papar->js = array(
+        /*$this->papar->js = array(
             //'bootstrap.js',
             'bootstrap-datepicker.js',
             'bootstrap-datepicker.ms.js',
             'bootstrap-editable.min.js');
         $this->papar->css = array(
             'bootstrap-datepicker.css',
-            'bootstrap-editable.css');
+            'bootstrap-editable.css');//*/
 		
 		$this->_tajukAtas = 'BE16:';
 		$this->_folder = 'cari';			
@@ -30,7 +30,11 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->pegawai = senarai_kakitangan();
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/index');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca
+		$this->papar->bacaTemplate
+		//$this->papar->paparTemplate
+			($this->_folder . '/index', $jenis, 0); # $noInclude=0		
 	}
 #==========================================================================================	
 	public function idnama() 
@@ -77,8 +81,12 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		# semak data $this->papar->cariNama
 		//echo '<pre>$this->papar->cariNama::'; print_r($this->papar->cariNama) . '<pre>';
 			
-		# pergi ke class Papar
-        $this->papar->baca($this->_folder . '/syarikat', 0);
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca
+		$this->papar->bacaTemplate
+		//$this->papar->paparTemplate
+			($this->_folder . '/syarikat', $jenis, 0); # $noInclude=0
 		//*/
     }
 
@@ -103,7 +111,11 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		$this->papar->mesej = $mesej;
 
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/index', 0);
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca
+		$this->papar->bacaTemplate
+		//$this->papar->paparTemplate
+			($this->_folder . '/index', $jenis, 0); # $noInclude=0		
 	}
 	
 	function pada($bil = 400, $muka = 1) 
