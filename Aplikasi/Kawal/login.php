@@ -19,7 +19,10 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->TajukBesar = 'Sila Login';
 		
 		# pergi papar kandungan
-		$this->papar->baca('login/index');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+		$this->papar->baca('login/index',$jenis,0); # $noInclude=0
 	}
 	
 	public function papar() 
@@ -30,7 +33,10 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->TajukBesar = 'Halaman/Ruangtamu';
 
 		# pergi papar kandungan
-		$this->papar->baca('login/papar');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+		$this->papar->baca('login/papar',$jenis,0); # $noInclude=0
 	}
 
 	public function gambar() 
@@ -41,7 +47,10 @@ class Login extends \Aplikasi\Kitab\Kawal
 		$this->papar->TajukBesar = 'Halaman/Gambar';
 		
 		# pergi papar kandungan
-		$this->papar->baca('login/gambar');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+		$this->papar->baca('login/gambar',$jenis,0); # $noInclude=0
 	}
 #==========================================================================================	
 	function semakid()
