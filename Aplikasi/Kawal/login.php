@@ -55,11 +55,13 @@ class Login extends \Aplikasi\Kitab\Kawal
 #==========================================================================================	
 	function semakid()
 	{
-		# semak data $_POST
+		# debug $_POST
 		//echo '<pre>Test $_POST->'; print_r($_POST) . '</pre>';
 		//$this->tanya->dapatid($_POST['password']);
+		
+		# semak data $this->tanya->ujiID();
 		$this->tanya->semakid();
-		//$this->tanya->ujiID();
+		
 	}
 	
 	function salah()
