@@ -44,8 +44,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					'Tiada id dalam rangka. <br>Mana kau orang jumpa kes ini daa.' 
 					. '<br>Jumpa amin jika mahu masuk rangka ya'
 					: # jika jumpa
-					'Ada id:' . $dataKes[0]['newss'] 
-					. '| ssm:' . $dataKes[0]['nossm']
+					'Ada id: <a target="_blank" href="'.URL . 'kawalan/ubah/' . $dataKes[0]['newss'] .'">' 
+					. $dataKes[0]['newss'] 
+					. '</a>| ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. '| operator:' . $dataKes[0]['operator']
 					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
