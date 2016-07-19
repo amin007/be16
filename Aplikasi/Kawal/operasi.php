@@ -36,8 +36,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				$medan = 'newss,nossm,nama,operator,'
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
-				$dataKes = $this->tanya->//tatasusunanCariID(//cariSql( 
-					cariSemuaData(
+				$dataKes = $this->tanya->cariSemuaData(//tatasusunanCariID(//cariSql( 
 					$senaraiJadual[0], $medan, $carian, $susun = null);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
 				$paparError = (!isset($dataKes[0]['newss'])) ? 
@@ -45,7 +44,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. '<br>Jumpa amin jika mahu masuk rangka ya' : # jika jumpa
 					'Ada id: <a target="_blank" href="'. URL . 'kawalan/ubah/' 
 					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] 
-					. '</a>| ssm:' . $dataKes[0]['nossm']
+					. '</a> | ssm:' . $dataKes[0]['nossm']
 					. '<br> nama:' . $dataKes[0]['nama'] 
 					. ( empty($dataKes[0]['operator']) ? '' : '| operator:' . $dataKes[0]['operator'] )
 					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
