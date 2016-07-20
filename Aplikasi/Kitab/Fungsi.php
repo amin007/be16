@@ -155,6 +155,26 @@ function pencamSqlLimit($bilSemua, $item, $ms)
     
     return $jum;
 }
+
+/**
+ * Returns the type of the var passed.
+ *
+ * @param mixed $var Variable
+ * @return string Type of variable
+ */
+function myGetType($var)
+{
+		if (is_array($var)) return "array";
+		if (is_bool($var)) return "boolean";
+		if (is_float($var)) return "float";
+		if (is_int($var)) return "integer";
+		if (is_null($var)) return "NULL";
+		if (is_numeric($var)) return "numeric";
+		if (is_object($var)) return "object";
+		if (is_resource($var)) return "resource";
+		if (is_string($var)) return "string";
+		return "unknown type";
+}
 # format perpuluhan
 function kiraPerpuluhan($kiraan, $perpuluhan = 1)
 {
@@ -195,7 +215,6 @@ function pilihValueData($key,$keyData,$data)
 	//echo '$data:[' . $data[$keyData[$key]]  . ']';
 	return $data[$keyData[$key]];
 }
-
 
 function huruf($jenis , $papar) 
 {
@@ -260,7 +279,6 @@ function bersihGET_nama($papar)
     //return $papar;
     return $paparHTML;
 }
-
 
 function gambar_latarbelakang($lokasi)
 {
