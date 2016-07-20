@@ -45,14 +45,14 @@ class Profile extends \Aplikasi\Kitab\Kawal
 				($this->papar->_jadual, $this->tanya->medanProfile($pengguna), 
 				$cari, $susun = null);
 				
-			if(isset($this->papar->data['profile'][0]['namaPegawai'])):			
+			if(isset($this->papar->data['profile'][0]['namaPegawai'])):
 				# splice in at position 2
 				$this->papar->data['profile'][0] = 
 					array_slice($this->papar->data['profile'][0], 0, 2, true) 
 					+ array('kataLaluan'=>null)
 					+ array_slice($this->papar->data['profile'][0], 2, 
 						count($this->papar->data['profile'][0]) - 1, true);
-				
+				$this->papar->data['profile'][0]['tarikh'] = '1980-05-07';
 			endif;//*/
 		}
 		else
