@@ -47,6 +47,19 @@ class Sesat extends \Aplikasi\Kitab\Kawal
 
 	}
 
+	function folderPaparTidakWujud() 
+	{
+		$this->papar->mesej = 'folder tidak wujud dalam PAPAR';
+		$this->papar->Tajuk_Muka_Surat = $this->_tajukAtas . $this->papar->mesej;		
+
+		# pergi papar kandungan
+		$jenis = $this->papar->pilihTemplate($template=0);
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/index', $jenis, 0); # $noInclude=0
+
+	}
+
 	function failTidakWujud() 
 	{
 		$this->papar->mesej = 'Fail tidak wujud dalam PAPAR';
