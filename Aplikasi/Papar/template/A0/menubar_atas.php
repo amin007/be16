@@ -15,8 +15,8 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 	<a <?php echo $nav ?> href="#"><?=$icon['User']?>Staf
 	<b class="caret"></b></a>
 	<ul class="dropdown-menu">
-	<li><a href="<?php echo $url ?>biodata/ubah">
-		<?=$icon['User']?>Biodata <?=$pengguna?>
+	<li><a href="<?php echo $url ?>profile/ubah">
+		<?=$icon['User']?>Profile <?=$pengguna?>
 	</a></li>
 	<li class="divider"></li><?php 
 	if ( !in_array($paras,array('feprosesan','pegawaiprosesan'))	): ?>
