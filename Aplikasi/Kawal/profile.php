@@ -60,7 +60,7 @@ class Profile extends \Aplikasi\Kitab\Kawal
 			$this->papar->cariApa = '[tiada id diisi]';
 		}
 		# isytihar pemboleubah
-		$this->papar->cariID = (isset($this->papar->data['profile'][0]['namaPegawai'])) ? null : $pengguna;
+		$this->papar->cariID = (!isset($this->papar->data['profile'][0]['namaPegawai'])) ? null : $pengguna;
 		
 		/*echo '<pre>'; # semak data
 		echo '$this->papar->data:<br>'; print_r($this->papar->data); 
