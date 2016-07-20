@@ -154,6 +154,14 @@ class Route
 		exit;
 	}
 		
+	public static function folderPaparTidakWujud()
+	{
+		require KAWAL . '/sesat.php';
+		$kawal = new \Aplikasi\Kawal\Sesat();
+		$kawal->folderPaparTidakWujud();
+		return false;
+	}
+
 	public static function failPaparTidakWujud()
 	{
 		require KAWAL . '/sesat.php';
