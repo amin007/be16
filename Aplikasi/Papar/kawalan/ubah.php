@@ -75,14 +75,3 @@ else # $this->carian=='ada' - mula
 } # $this->carian=='ada' - tamat 
 //*/
 ?><?php
-/*
-    $s1 = '<span class="label">';
-    $s2 = '</span>'; 
-    # isytihar pembolehubah untuk sistem sms
-	if(isset($this->kawalan['kes'][0]['newss'])):
-		$newss = $this->kawalan['kes'][0]['newss'];
-		$sykt  = urlencode($this->kawalan['kes'][0]['nama']);
-		$kawan = urlencode($this->kawalan['kes'][0]['fe']);
-		$hantar_sms = URL . 'pengguna/smskes/' . $kawan . '/' . $sykt;
-	endif;
-*/
