@@ -159,6 +159,7 @@ class Html
 	{	# istihar pembolehubah 
 		$name = 'name="' . $jadual . '[' . $key . ']"';
 		$inputText = $name . ' value="' . $data . '"';
+		$dataType = myGetType($data);
 		$tabline = "\n\t\t\t\t\t";
 		$tabline2 = "\n\t\t\t\t";
 		# butang 
@@ -167,7 +168,7 @@ class Html
 		$merah = 'btn btn-danger btn-mini';
 
 		//if ( in_array($key,array(...)) )
-		if(in_array($key,array('nota','catatan')))
+		if(in_array($key,array('nota','catatan','CatatNota')))
 		{#kod utk textarea
 			$input = '<textarea ' . $name . ' rows="1" cols="20"' . $tabline2 
 				   . ' class="form-control">' . $data . '</textarea>'
@@ -227,7 +228,7 @@ class Html
 			'staf','aset','stok')))
 		{#kod utk input paparkan nilai asal sebelum ubah
 			$input = '<div class="input-group input-group-sm">' . $tabline
-				   . '<span class="input-group-addon">Nilai</span>'		
+				   . '<span class="input-group-addon">Nilai</span>'
 				   . '<input type="text" ' . $inputText 
 				   . ' class="form-control">' . $tabline
 				   . '<span class="input-group-addon">' . kira($data) . '</span>'
@@ -237,21 +238,21 @@ class Html
 		elseif(in_array($key,array('output','input','nilaitambah','ioratio')))
 		{#kod utk input paparkan nilai asal sebelum ubah
 			$input = '<div class="input-group input-group-sm">' . $tabline
-				   . '<span class="input-group-addon">Nilai</span>'		
+				   . '<span class="input-group-addon">Nilai</span>'
 				   . '<input type="text" ' . $inputText 
 				   . ' class="form-control">' . $tabline
 				   . '<span class="input-group-addon">' . kira($data) . '</span>'
 				   . $tabline2 . '</div>'
 				   . '';
 		}//*/
-		elseif ( in_array($key,array('password')) )
+		elseif ( in_array($key,array('password','kataLaluan')) )
 		{#kod untuk input password
-			$input = '<div class="input-group input-group-sm">' . $tabline
-				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
+			$input = ''//'<div class="input-group input-group-sm">' . $tabline
+				   //. '<span class="input-group-addon"></span>' . $tabline
 				   . '<input type="password" ' . $name
 				   . $tabline . ' placeholder="Tukar kata laluan"'
 				   . ' class="form-control">'
-				   . $tabline2 . '</div>'
+				   //. $tabline2 . '</div>'
 				   . '';			
 		}
 		elseif ( in_array($key,array('lawat','terima','hantar','hantar_prosesan')) )
@@ -317,6 +318,18 @@ class Html
 				   //. '<small>Alamat <cite title="Source Title">baru</cite></small>'
 				   . '</blockquote>';
 		}
+		/*elseif($dataType=='string' && !in_array($key,array('level')))
+		{
+			$input = '<div class="input-group input-group-sm">' . $tabline
+				   . '<span class="input-group-addon">' . $data . '</span>'
+				   . '<input type="text" ' . $inputText 
+				   . ' class="form-control">' . $tabline
+				   . $tabline2 . '</div>'
+				   . '';
+			
+		}*/
+		//elseif($dataType=='numeric')
+		//elseif($dataType=='NULL')
 		else
 		{#kod untuk lain2
 			$input = '<p class="form-control-static text-info">' . $data . '</p>';
