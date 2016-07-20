@@ -308,44 +308,44 @@ function gambar_latarbelakang($lokasi)
 function GetMatchingFiles($files, $search) 
 {
 	if($files==false):
-		return $matches=false;
+		return false;
 	else:
 		# Split to name and filetype
 		if(strpos($search,".")) 
 		{
-			$baseexp=substr($search,0,strpos($search,"."));
-			$typeexp=substr($search,strpos($search,".")+1,strlen($search));
+			$baseexp = substr($search,0,strpos($search,"."));
+			$typeexp = substr($search,strpos($search,".")+1,strlen($search));
 		} 
 		else 
 		{ 
-			$baseexp=$search;
-			$typeexp="";
+			$baseexp = $search;
+			$typeexp = "";
 		} 
 			
 		# Escape all regexp Characters 
-		$baseexp=preg_quote($baseexp); 
-		$typeexp=preg_quote($typeexp); 
+		$baseexp = preg_quote($baseexp); 
+		$typeexp = preg_quote($typeexp); 
 			
 		# Allow ? and *
-		$baseexp=str_replace(array("\*","\?"), array(".*","."), $baseexp);
-		$typeexp=str_replace(array("\*","\?"), array(".*","."), $typeexp);
+		$baseexp = str_replace(array("\*","\?"), array(".*","."), $baseexp);
+		$typeexp = str_replace(array("\*","\?"), array(".*","."), $typeexp);
 			   
 		# Search for Matches
-		$i=0;
-		$matches=null; # $matches adalah array()
+		$i = 0;
+		$matches = null; # $matches adalah array()
 		foreach($files as $file) 
 		{
-			$filename=basename($file);
+			$filename = basename($file);
 				  
 			if(strpos($filename,".")) 
 			{
-				$base=substr($filename,0,strpos($filename,"."));
-				$type=substr($filename,strpos($filename,".")+1,strlen($filename));
+				$base = substr($filename,0,strpos($filename,"."));
+				$type = substr($filename,strpos($filename,".")+1,strlen($filename));
 			} 
 			else 
 			{ 
-				$base=$filename;
-				$type="";
+				$base = $filename;
+				$type = "";
 			}
 
 			if(preg_match("/^".$baseexp."$/i",$base) && preg_match("/^".$typeexp."$/i",$type))  
@@ -362,9 +362,8 @@ function GetMatchingFiles($files, $search)
 # Returns all Files contained in given dir, including subdirs
 function GetContents($dir,$files=array()) 
 {
-	if(!($res=@opendir($dir))): return false;;
-	//if(!($res=opendir($dir))) exit("folder $dir tidak wujud!!!");
-	//if(!($res=@opendir($dir))) exit(\Aplikasi\Kitab\Route::failPaparTidakWujud());
+	//if(!($res=opendir($dir))): exit("folder $dir tidak wujud!!!");
+	if(!($res=@opendir($dir))): exit(\Aplikasi\Kitab\Route::folderPaparTidakWujud());
 	else:
 		while(($file=readdir($res))==TRUE) 
 		if($file!="." && $file!="..")
