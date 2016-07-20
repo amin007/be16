@@ -10,26 +10,21 @@ class Ruangtamu extends \Aplikasi\Kitab\Kawal
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'ruangtamu';
 
-		/*
-		$this->papar->js = array(
+		/*$this->papar->js = array(
 			'bootstrap-datepicker.js',
 			'bootstrap-datepicker.ms.js');
 		$this->papar->css = array(
 			'bootstrap-datepicker.css'); //*/
-
-		$this->papar->menuatas = 'ya';
 	}
 	
 	public function index() 
 	{	
 		# Set pemboleubah utama
-		$this->papar->pegawai = senarai_kakitangan();
 		$this->papar->tajuk = 'Ruangtamu';
 		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
-		$this->papar->bacaTemplate(
-		//$this->papar->paparTemplate(
+		$this->papar->bacaTemplate(//$this->papar->paparTemplate(
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
 			//'mobile/mobile',$jenis,0); # $noInclude=0
 		//*/
