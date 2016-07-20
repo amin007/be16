@@ -237,3 +237,96 @@ class DB_Pdo extends \PDO
 	}
 #================================================================================================================== 
 }
+
+/*
+
+
+	/**
+	 entah mana mamat ini jumpa, masih tidak faham
+	 https://www.sitepoint.com/community/t/pdo-getcolumnmeta-bug/3430/3
+	
+	 *
+	/**
+	 *	Automatically get column metadata
+	 *
+	protected function getColumnMeta($getTableName, $primaryKey)
+	{
+		# Clear any previous column/field info
+		$this->_fields = array();
+		$this->_fieldMeta = array();
+		$this->_primaryKey = NULL;
+
+		# Automatically retrieve column information if column info not specified
+		if(count($this->_fields) == 0 || count($this->_fieldMeta) == 0)
+		{
+			# Fetch all columns and store in $this->fields
+			$columns = $this->select('SHOW COLUMNS FROM ' . $getTableName);
+			foreach($columns as $key => $col)
+			{
+				# Insert into fields array
+				$colname = $col['Field'];
+				$this->_fields[$colname] = $col;
+				if($col['Key'] == "PRI" && empty($primaryKey)) 
+					$this->_primaryKey = $colname;
+				
+				# Set field types
+				$colType = $this->parseColumnType($col['Type']);
+				$this->_fieldMeta[$colname] = $colType;
+			}
+		}
+		return true;
+	}
+	/**
+	 *	Parse PDO-produced column type
+	 *	[internal function]
+	 *
+	protected function parseColumnType($colType)
+	{
+		$colInfo = array();
+		$colParts = explode(" ", $colType);
+		if($fparen = strpos($colParts[0], "("))
+		{
+			$colInfo['type'] = substr($colParts[0], 0, $fparen);
+			$colInfo['pdoType'] = '';
+			$colInfo['length']  = str_replace(")", "", substr($colParts[0], $fparen+1));
+			$colInfo['attributes'] = isset($colParts[1]) ? $colParts[1] : NULL;
+		}
+		else
+		{
+			$colInfo['type'] = $colParts[0];
+		}
+		
+		// PDO Bind types
+		$pdoType = '';
+		foreach($this->_pdoBindTypes as $pKey => $pType)
+		{
+			if(strpos(' '.strtolower($colInfo['type']).' ', $pKey)) {
+				$colInfo['pdoType'] = $pType;
+				break;
+			} else {
+				$colInfo['pdoType'] = PDO::PARAM_STR;
+			}
+		}
+		
+		return $colInfo;
+	}
+	
+	/**
+	 *	Will attempt to bind columns with datatypes based on parts of the column type name
+	 *	Any part of the name below will be picked up and converted unless otherwise sepcified
+	 * 	Example: 'VARCHAR' columns have 'CHAR' in them, so 'char' => PDO::PARAM_STR will convert
+	 *	all columns of that type to be bound as PDO::PARAM_STR
+	 *	If there is no specification for a column type, column will be bound as PDO::PARAM_STR
+	 *
+	protected $_pdoBindTypes = array(
+		'char' => PDO::PARAM_STR,
+		'int' => PDO::PARAM_INT,
+		'bool' => PDO::PARAM_BOOL,
+		'date' => PDO::PARAM_STR,
+		'time' => PDO::PARAM_INT,
+		'text' => PDO::PARAM_STR,
+		'blob' => PDO::PARAM_LOB,
+		'binary' => PDO::PARAM_LOB
+		);	
+
+//*/
