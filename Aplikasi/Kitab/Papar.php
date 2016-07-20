@@ -70,9 +70,8 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		$lokasiTemplate = '/template/' . $template;
-		
-		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
-		//echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
+	
+		/*echo '<hr size=2>$namafail=<pre>'; print_r($namafail) . '</pre><br>';
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>'
 			. '$template->' . $template . '<br>' 
@@ -97,7 +96,7 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		$lokasiTemplate = '/template/' . $template;
-				
+		
 		if ($paparFail == false) 
 		{
 			\Aplikasi\Kitab\Route::failPaparTidakWujud();
