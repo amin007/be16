@@ -16,6 +16,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
+		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=4);
 		//$this->papar->baca(
@@ -95,8 +96,13 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
+		
 		# pergi papar kandungan
-		$this->papar->baca($this->_folder . '/tambah');
+		$jenis = $this->papar->pilihTemplate($template=0);
+		//$this->papar->baca(
+		$this->papar->bacaTemplate(
+		//$this->papar->paparTemplate(
+			$this->_folder . '/tambah',$jenis,0); # $noInclude=0
 	}
 
 	function tambahSimpan2()
