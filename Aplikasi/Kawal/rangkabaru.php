@@ -113,16 +113,12 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 
 		# validasi data $_POST, masuk dalam $posmen, validasi awal
 		foreach ($_POST as $myTable => $value)
-		{   if ( in_array($myTable,$senarai) )
-			{   foreach ($value as $kekunci => $papar)
-				{	
+		   if ( in_array($myTable,$senarai) )
+			   foreach ($value as $kekunci => $papar)
 					$posmen[$myTable][$kekunci] = bersih($papar);
-				}	
-			}
-		}
 		
 		# ubahsuai $posmen, valiadi terperinci
-			$posmen = $this->tanya->semakData($posmen, $jadual);			
+		$posmen = $this->tanya->semakData($posmen, $jadual);			
 			# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
