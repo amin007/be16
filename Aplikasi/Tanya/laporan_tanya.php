@@ -270,8 +270,8 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		$senaraiMedan[] = 'kod';
 		$senaraiMedan[] = 'f2';
-		//$senaraiMedan[] = 'concat_ws(" | ",`respon`,`nota`) as respon';
-		$senaraiMedan[] = 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
+		$senaraiMedan[] = 'concat_ws(" | ",`respon`,`nota`) as respon';
+		//$senaraiMedan[] = 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
 		$senaraiMedan[] = 'nama, '
 			. 'concat_ws("-",`kp`,`msic2008`) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
