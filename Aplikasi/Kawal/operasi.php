@@ -34,7 +34,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				$paparError = 'Tiada id<br>';
 		else: #------------------------------------------------------------------------------
 				$medan = 'newss,nossm,nama,operator,'
-					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
+					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,'
+					. 'concat_ws(" ",posdaftar,posdaftar_terima) as posdaftar';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$dataKes = $this->tanya->cariSemuaData(//tatasusunanCariID(//cariSql( 
 					$senaraiJadual[0], $medan, $carian, $susun = null);
@@ -44,10 +45,11 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. '<br>Jumpa amin jika mahu masuk rangka ya' : # jika jumpa
 					'Ada id: <a target="_blank" href="'. URL . 'kawalan/ubah/' 
 					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] 
-					. '</a> | ssm:' . $dataKes[0]['nossm']
-					. '<br> nama:' . $dataKes[0]['nama'] 
+					. '</a> | ssm:' . $dataKes[0]['nossm'] . '<br> nama:' . $dataKes[0]['nama'] 
 					. ( empty($dataKes[0]['operator']) ? '' : '| operator:' . $dataKes[0]['operator'] )
-					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
+					. '<br> alamat:' . $dataKes[0]['alamat']
+					. ( empty($dataKes[0]['posdaftar']) ? '' : '| posdaftar:' . $dataKes[0]['posdaftar'] )
+					. '';
 			#------------------------------------------------------------------------------
 		endif;
 	
