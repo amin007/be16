@@ -51,15 +51,16 @@ else : # set pembolehubah
 	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>' . "\r";
 	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>' . "\r" .
 	'<small>Nota: ' . $paparError . '</small>';
-	$butangHantar = 'Kemaskini';
+	$butangHantar = 'Tambah Lagi No ID';
 endif; ?>
 <div class="container"><?php echo (!isset($cetak)) ? null : "\r$cetak" ?>
 	<h1><?=$notaTambahan?></h1>
 
 	<div align="center"><form method="GET" action="<?=$mencari?>" class="form-inline" autocomplete="off">
-	<?php echo $mencari . '<br>' . "\r" ?>
+	<?php //echo $mencari . '<br>' . "\r" ?>
 	<div class="form-group"><div class="input-group">
 		<input type="text" name="cari" class="form-control" autofocus
+		placeholder="Contoh : 000000123456"
 		id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
 		<span class="input-group-addon">
 		<input type="submit" value="<?=$butangHantar?>">
