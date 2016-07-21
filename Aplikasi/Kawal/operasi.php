@@ -5,10 +5,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 #==========================================================================================
 	function __construct() 
 	{
-		//echo '<br>class Crud extends Kawal';
+		//echo '<br>class Operasi extends Kawal';
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
-		//\Aplikasi\Kitab\Kebenaran::kawalKeluar();
+		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'operasi';
 		$this->medanData = '*';
 	}
@@ -16,14 +16,12 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 	function index() 
 	{
 		# Set pemboleubah utama
-		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
+		$this->papar->Tajuk_Muka_Surat='Enjin Operasi';
+		
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=4);
-		//$this->papar->baca(
-		$this->papar->bacaTemplate(
-		//$this->papar->paparTemplate(
+		$this->papar->bacaTemplate(	//$this->papar->paparTemplate(
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
-		//*/
 	}
 #==========================================================================================	
 	private function wujudBatchAwal($senaraiJadual, $cariBatch = null, $cariID = null) 
