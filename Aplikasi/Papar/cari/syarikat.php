@@ -53,7 +53,7 @@ for ($kira=0; $kira < count($row); $kira++)
 #----//print the data row----------------------------------------------
 	?><tbody><tr>
 <?php foreach ( $row[$kira] as $key=>$data ) :
-		pautan($kira, $key, $data);
+		pautan($kira, $key, $data, $myTable);
 	 endforeach; ?>
 </tr></tbody>
 <?php
@@ -123,7 +123,7 @@ for ($kira=0; $kira < count($row); $kira++)
 	?><tbody><tr><?php
 	foreach ( $row[$kira] as $key=>$data ) 
 	{
-		pautan($kira, $key, $data);
+		pautan($kira, $key, $data, $myTable);
 	}
 	?></tr></body><?php
 }
@@ -144,7 +144,7 @@ for ($kira=0; $kira < count($row); $kira++)
 <?php
 }// if ($papar!='bawah') - tamat
 ?><?php
-function pautan($kira, $key, $data)
+function pautan($kira, $key, $data, $myTable)
 {
 	# set pembolehubah Sesi
 	$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
@@ -163,6 +163,10 @@ function pautan($kira, $key, $data)
 			$k1 = URL . 'prosesan/ubah/' . $data;
 			$btn =  $birumuda;
 			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
+		elseif ($myTable=='be16_rangkabaru'):
+			$k1 = URL . 'rangkabaru/masukdata/1/' . $data;
+			$btn =  $merah;
+			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Tambah2';
 		else:
 			$k1 = URL . 'kawalan/ubah/' . $data;
 			$btn = $birutua;
