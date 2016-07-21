@@ -271,6 +271,28 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';			   
 		}
+		elseif ( in_array($key,array('posdaftar_terima')) )
+		{#kod untuk input select option
+			# set pembolehubah
+			$input2 = null;
+			$senaraiInput = array('Belum','Proses','Terima','KadKuning','Borang');
+			
+			foreach ($senaraiInput as $key => $value)
+			{
+				$input2 .= '<option value="' . $value . '"';
+				$input2 .= ($value == $data) ? ' selected>*' : '>';
+				$input2 .= ucfirst(strtolower($value));
+				$input2 .= '</option>' . $tabline;
+			}
+
+			# cantumkan dalam input
+			$input = '<div class="input-group input-group-sm">' . $tabline
+				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
+				   . '<select ' . $name . ' class="form-control">' . $tabline
+				   . $input2 . '</select>'
+				   . $tabline2 . '</div>'
+				   . '';
+		}
 		elseif ( in_array($key,array('jantina')) )
 		{#kod untuk input select option
 			# set pembolehubah
