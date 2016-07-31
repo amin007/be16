@@ -242,20 +242,22 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			//$this->tanya->ubahSimpan(
 			$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
+			$kodID = $dataID; //$semakID[0]['pegawai'] . '/' . $semakID[0]['borang']; 
 			else: //echo 'nilai borang adalah ' . $semakID[0]['borang'];
+			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 			endif;
 		else: //echo 'nilai pegawai adalah ' . $semakID[0]['pegawai'];
+			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 		endif;
 
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $asalBatch; 
 		$this->papar->noID = $dataID; 
-		$this->papar->semakID = $semakID; 
 		
 		# pergi papar kandungan
-		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
-		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
+		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
+		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID");
 	}
 
 	public function buangID($namaPegawai,$cariBatch,$dataID)
