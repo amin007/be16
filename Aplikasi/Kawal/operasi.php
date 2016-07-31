@@ -56,13 +56,20 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		return $paparError;
 	}
 
-	public function batch($namaPegawai = null, $cariBatch = null, $cariID = null) 
+	public function batch($namaPegawai = null, $cariBatch = null, $cariID = null, $semakID = null) 
 	{
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $cariBatch;
 		# mencari dalam database
-		if ($cariID == null):
+		if ($semakID != null):
+			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
+			$this->papar->error  = 'Data sudah ada, pandai ya <br>';
+			$this->papar->error .= $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
+			# mula carian dalam jadual $myTable
+			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
+		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			# mula carian dalam jadual $myTable
