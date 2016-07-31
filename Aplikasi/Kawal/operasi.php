@@ -43,8 +43,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					'Tiada id dalam rangka. <br>Mana kau orang jumpa kes ini daa.' 
 					. '<br>Jumpa amin jika mahu masuk rangka ya' : # jika jumpa
 					'Ada id: <a target="_blank" href="'. URL . 'kawalan/ubah/' 
-					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] 
-					. '</a> | ssm:' . $dataKes[0]['nossm'] . '<br> nama:' . $dataKes[0]['nama'] 
+					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] . '</a> '
+					. ( empty($dataKes[0]['nossm']) ? '' : '| nossm:' . $dataKes[0]['nossm'] )
+					. '<br> nama:' . $dataKes[0]['nama'] 
 					. ( empty($dataKes[0]['operator']) ? '' : '| operator:' . $dataKes[0]['operator'] )
 					. '<br> alamat:' . $dataKes[0]['alamat']
 					. ( empty($dataKes[0]['posdaftar']) ? '' : '| posdaftar:' . $dataKes[0]['posdaftar'] )
@@ -64,7 +65,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# mencari dalam database
 		if ($semakID != null):
 			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
-			$this->papar->error  = 'Data sudah ada, pandai ya <br>';
+			$this->papar->error  = 'Data sudah ada, pandai-pandai ambil ya <br>';
 			$this->papar->error .= $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
@@ -245,10 +246,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# masuk dalam database	
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
-			//$this->tanya->ubahSimpan(
-			$this->tanya->ubahSqlSimpan(
+			$this->tanya->ubahSimpan(
+			//$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
-			$kodID = $dataID; //$semakID[0]['pegawai'] . '/' . $semakID[0]['borang']; 
+			$kodID = $dataID; //$semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 			else: //echo 'nilai borang adalah ' . $semakID[0]['borang'];
 			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 			endif;
@@ -262,8 +263,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$this->papar->noID = $dataID; 
 		
 		# pergi papar kandungan
-		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
-		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID");
+		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
+		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID");
 	}
 
 	public function buangID($namaPegawai,$cariBatch,$dataID)
