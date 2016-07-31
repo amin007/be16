@@ -24,33 +24,35 @@ class Perangkaan
 			default: $SV=null;
 		endswitch;
 
-		echo '<td colspan=' . ($fields+1) . '><font size=2>' .
+		echo "\n" .'<td colspan="' . ($fields+1) . '"><font size=2>' .
 			//'<div align="right">Lampiran 3<br>F 3 </div>' .
-			'<div align="right">Lampiran A : F3 </div>' .
+			'<div align="right">Lampiran A : F3 </div>' . "\n" .
 			//'</td><td>' .
 			'<div align="center">' .
 			'JABATAN PERANGKAAN MALAYSIA NEGERI JOHOR' .
-			'<br>SENARAI INDUK AGIHAN KES ANGGOTA ' .
+			'<br>SENARAI INDUK AGIHAN KES ANGGOTA ' . "\n" .
 			'<br>' . $SV . ' ' . date('Y') .
 			'</div><br>' .
 			//'</td><td>' .
 			'<div align="left">' .
-			"Nama Penyelia : $nama_penyelia" .
+			"\nNama Penyelia : $nama_penyelia" .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
-			"Nama FE : $nama_pegawai ($allRows kes)" .
-			"(muka " . ($ms) . " dari ".($item).")" .
+			"\nNama FE : $nama_pegawai ($allRows kes)" .
+			"(muka " . ($ms) . " dari " . ($item) . ")" .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
-			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .	
+			//'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
+			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			//'</td><td>' .
+			"\n" .
 			'Tarikh : <u>' . (date('d')) .
 			(date('/m/Y')) . '</u> ' .
 			'</div>' .
@@ -211,12 +213,12 @@ class Perangkaan
 		echo "\n<th rowspan=\"1\">Bil</th>\n";
 		echo '<th rowspan="1">Nama Syarikat</th>' . "\n";
 		echo '<th rowspan="1">KP</th>' . "\n"; # KP - Kod Peny.
-		echo '<th rowspan="1">ALAMAT (KES ' . huruf('Besar', $namaOrg['pegawai']) . ')</th>' . "\n";
-		echo '<th rowspan="1">NEWSS</th>' . "\n";
-		echo '<th rowspan="1">NO TEL'
+		echo '<th rowspan="1">ALAMAT (KES ' . huruf('Besar', $namaOrg['pegawai']) . ')'
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '</th>' . "\n";
+		echo '<th rowspan="1">NEWSS</th>' . "\n";
+		echo '<th rowspan="1">NO TEL' . '</th>' . "\n";
 		echo '<th colspan="1">NOTA/CATATAN</th>' . "\n";
 		echo '</tr>';
 		
@@ -231,7 +233,7 @@ class Perangkaan
 			# set pembolehubah untuk highlight
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
-		
+			$br = ''; //'<br>&nbsp';
 			//echo "<tbody>\n"; # mula tbody
 			foreach ($hasil as $kira => $nilai)
 			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
@@ -242,16 +244,16 @@ class Perangkaan
 					$ms = ($kira/$baris)+1;
 					$item = ceil($allRows/$baris);
 					$this->paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
-					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
-						. $nilai['newss']."'>".($kira+1)."</a></td>\n";
+					echo "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				}
 				else
 				{
-					echo "<td><a target='_blank' href='" . URL . 'kawalan/ubah/'
-					. $nilai['newss']."'>".($kira+1)."</a></td>\n";		
+					echo "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				}
 				foreach ($nilai as $key => $data) 
-					echo '<td>' . $data . '</td>';
+					echo '<td>' . $data . $br . '</td>';
 				echo "</tr>\n";
 				
 			}
