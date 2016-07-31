@@ -33,7 +33,8 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		else: #------------------------------------------------------------------------------
 				$medan = 'newss,nossm,nama,operator,'
 					. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,'
-					. 'concat_ws(" ",posdaftar,posdaftar_terima) as posdaftar';
+					. 'concat_ws(" ",posdaftar,posdaftar_terima) as posdaftar,'
+					. 'concat_ws(" ",pegawai,borang) as siapapunya';
 				$carian[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'newss','apa'=>$cariID);
 				$dataKes = $this->tanya->cariSemuaData(//tatasusunanCariID(//cariSql( 
 					$senaraiJadual[0], $medan, $carian, $susun = null);
@@ -47,6 +48,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. ( empty($dataKes[0]['operator']) ? '' : '| operator:' . $dataKes[0]['operator'] )
 					. '<br> alamat:' . $dataKes[0]['alamat']
 					. ( empty($dataKes[0]['posdaftar']) ? '' : '| posdaftar:' . $dataKes[0]['posdaftar'] )
+					. ( empty($dataKes[0]['siapapunya']) ? '' : '|<br> siapapunya:' . $dataKes[0]['siapapunya'] )
 					. '';
 			#------------------------------------------------------------------------------
 		endif;
@@ -212,32 +214,48 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 	public function ubahBatchProses($namaPegawai,$asalBatch)
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
-		//echo "\$namaPegawai = $namaPegawai<br>";
-		//echo "\$asalBatch = $asalBatch<br>";
+		//echo "\$namaPegawai = $namaPegawai<br>\$asalBatch = $asalBatch<br>";
 		$dataID = bersihGET('cari'); # bersihkan data $_POST
 		
-		# masuk dalam database
-			# ubahsuai $posmen
-			$jadual = 'be16_kawal'; 
-			$medanID = 'newss';
-			$posmen[$jadual]['pegawai'] = $namaPegawai;
-			$posmen[$jadual]['borang'] = $asalBatch;
-			$posmen[$jadual][$medanID] = $dataID;
-			//$dimana[$jadual][$medanID] = $asalBatch;
-			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-        
-			$this->tanya->ubahSimpan(
-			//$this->tanya->ubahSqlSimpan(
+		# ubahsuai $posmen
+		$jadual = 'be16_kawal'; 
+		$medanID = 'newss';
+		$posmen[$jadual]['pegawai'] = $namaPegawai;
+		$posmen[$jadual]['borang']  = $asalBatch;
+		$posmen[$jadual][$medanID]  = $dataID;
+		//$dimana[$jadual][$medanID] = $asalBatch;
+		//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
+
+		# kod asas panggil sql
+		$medan = 'newss,nossm,nama,operator,pegawai,borang,'
+			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
+		$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>$medanID,'apa'=>$dataID);
+		# tanya Sql
+		$semakID = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $cari, $susun = null);
+		//echo '<pre>$semakID->', print_r($semakID, 1) . '</pre>';
+			//$semakID[0]['pegawai'] 	$semakID[0]['borang']
+			
+		# masuk dalam database	
+		if(is_null($semakID[0]['pegawai'])):
+			if(is_null($semakID[0]['borang'])):
+			//$this->tanya->ubahSimpan(
+			$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
+			else: //echo 'nilai borang adalah ' . $semakID[0]['borang'];
+			endif;
+		else: //echo 'nilai pegawai adalah ' . $semakID[0]['pegawai'];
+		endif;
 
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $asalBatch; 
 		$this->papar->noID = $dataID; 
+		$this->papar->semakID = $semakID; 
 		
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
-		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
+		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID" . '';
+		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$dataID");
 	}
 
 	public function buangID($namaPegawai,$cariBatch,$dataID)
