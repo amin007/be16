@@ -246,21 +246,16 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# masuk dalam database	
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
-			$this->tanya->ubahSimpan(
-			//$this->tanya->ubahSqlSimpan(
-				$posmen[$jadual], $jadual, $medanID);
-			$kodID = $dataID; //$semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
-			else: //echo 'nilai borang adalah ' . $semakID[0]['borang'];
+				$this->tanya->ubahSimpan(
+				//$this->tanya->ubahSqlSimpan(
+					$posmen[$jadual], $jadual, $medanID);
+				$kodID = $dataID; //$semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
+			else: 
 			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 			endif;
-		else: //echo 'nilai pegawai adalah ' . $semakID[0]['pegawai'];
+		else: 
 			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 		endif;
-
-		# Set pemboleubah utama
-		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->noBatch = $asalBatch; 
-		$this->papar->noID = $dataID; 
 		
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
