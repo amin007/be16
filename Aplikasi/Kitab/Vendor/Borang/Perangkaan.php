@@ -52,8 +52,7 @@ class Perangkaan
 			//'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			//'</td><td>' .
-			"\n" .
-			'Tarikh : <u>' . (date('d')) .
+			"\n" . 'Tarikh : <u>' . (date('d')) .
 			(date('/m/Y')) . '</u> ' .
 			'</div>' .
 			'</td>' . "\r";
@@ -218,9 +217,9 @@ class Perangkaan
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '</th>' . "\n";
 		echo '<th rowspan="1">NEWSS</th>' . "\n";
-		echo '<th rowspan="1">NO TEL' . '</th>' . "\n";
+		echo '<th rowspan="1">NO TEL</th>' . "\n";
 		echo '<th colspan="1">NOTA/CATATAN</th>' . "\n";
-		echo '</tr>';
+		echo '</tr>' . "\n";
 		
 	}
 
@@ -238,18 +237,18 @@ class Perangkaan
 			foreach ($hasil as $kira => $nilai)
 			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
 				$h = ($kira%'2'=='0') ? $highlight : $highlight2;
-				echo "<tr$h>";
+				$tr = "<tr$h>";
 				if ($kira%$baris=='0')
 				{			
 					$ms = ($kira/$baris)+1;
 					$item = ceil($allRows/$baris);
 					$this->paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
-					echo "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+					echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
 						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				}
 				else
 				{
-					echo "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+					echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
 						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				}
 				foreach ($nilai as $key => $data) 
