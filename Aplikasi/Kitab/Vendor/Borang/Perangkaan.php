@@ -212,12 +212,12 @@ class Perangkaan
 		echo '<th rowspan="1">Nama Syarikat</th>' . "\n";
 		echo '<th rowspan="1">KP</th>' . "\n"; # KP - Kod Peny.
 		echo '<th rowspan="1">ALAMAT (KES ' . huruf('Besar', $namaOrg['pegawai']) . ')</th>' . "\n";
-		echo '<th rowspan="1">NO SIRI NEWSS</th>' . "\n";
-		echo '<th rowspan="1">NOTA/CATATAN'
+		echo '<th rowspan="1">NEWSS</th>' . "\n";
+		echo '<th rowspan="1">NO TEL'
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
 			. '</th>' . "\n";
-		echo '<th colspan="1">Diisi oleh Anggota Kerja Luar sahaja</th>' . "\n";
+		echo '<th colspan="1">NOTA/CATATAN</th>' . "\n";
 		echo '</tr>';
 		
 	}
