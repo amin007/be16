@@ -264,8 +264,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 
 	public function buangID($namaPegawai,$cariBatch,$dataID)
 	{
-		# semak session
-		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
+		# semak session //echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		$sesi = \Aplikasi\Kitab\Sesi::init();
 		//echo '<pre>$_SESSION->', print_r($_SESSION, 1) . '</pre>';
 		
