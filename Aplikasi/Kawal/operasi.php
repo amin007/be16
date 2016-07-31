@@ -230,12 +230,11 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$medan = 'newss,nossm,nama,operator,pegawai,borang,'
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat';
 		$cari[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>$medanID,'apa'=>$dataID);
-		# tanya Sql
+		# tanya Sql //$semakID[0]['pegawai'] 	$semakID[0]['borang']
 		$semakID = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $cari, $susun = null);
 		//echo '<pre>$semakID->', print_r($semakID, 1) . '</pre>';
-			//$semakID[0]['pegawai'] 	$semakID[0]['borang']
-			
+		
 		# masuk dalam database	
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
