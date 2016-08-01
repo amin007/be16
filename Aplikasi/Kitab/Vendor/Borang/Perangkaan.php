@@ -3,8 +3,6 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Perangkaan
 {
 #-------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
-	// cetakF3
 	function paparJadualF3_TajukBesar($allRows,$fields,$kodsv,$namaOrg,$item,$ms)
 	{
 		#pecah pembolehubah $nama orang
@@ -82,9 +80,6 @@ class Perangkaan
 		
 		## bawah
 		echo '<tr>';
-	/*	echo '<th>&nbsp;</th>' . "\n";
-		echo '<th>&nbsp;</th>' . "\n";
-		echo '<th>&nbsp;</th>' . "\n";*/
 		echo '<th>SBU</th>' . "\n";
 		foreach ($hasil[0] as $kunci => $dataan)
 		{
@@ -271,7 +266,6 @@ class Perangkaan
 						for($j = 1; $j <= (5); $j++)
 						echo '<td>&nbsp;</td>';
 					echo '<tr>';
-				
 				}
 			
 			## tamat tbody
