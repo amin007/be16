@@ -315,8 +315,35 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanA1();
-		# bentuk medan yang ingin diulang
-		//$medan .= ",\r " . $r . " ";
+		//echo '<pre>$this->medanA1():'; print_r($this->medanA1()) . '</pre>';
+		//echo '<pre>$medan:'; print_r($medan) . '</pre>';
+		
+		return $medan; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
+	private function medanNonA1()
+	{
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => null,
+			3 => 'newss, concat_ws("<br>",nama,operator) nama,'
+				. ' concat_ws("|",kp) kp,'
+				. ' if(respon="A1",respon,"&nbsp;") A1,'
+				. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
+				//. 'concat_ws("|",orang_a,notel_a,nofax_a,esurat_a) as nota'
+				. 'concat_ws("|",responden,notel,nofax,email,nota) as nota'
+		);
+
+		return $senaraiMedan; # pulangkan nilai
+	}
+	
+	public function kumpulNonA1($item, $ms)
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->medanNonA1();
+		//echo '<pre>$this->medanNonA1():'; print_r($this->medanNonA1()) . '</pre>';
+		//echo '<pre>$medan:'; print_r($medan) . '</pre>';
 		
 		return $medan; # pulangkan nilai
 	}
