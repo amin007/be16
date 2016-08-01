@@ -39,12 +39,8 @@ if ($paras == null): else: ?>
 <?php require 'menubar_atas.php'; ?>
 			<!-- borang cari kp-->
 			<form class="navbar-form navbar-right" action="<?php echo URL ?>cari/idnama" method="POST">
-				<div class="input-group">
-					<div class="input-group-btn">
-						<a class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
-					</div>
-					<input type="text" name="cari" placeholder="Cari Newss / Nama" class="form-control" />
-				</div>
+				<input type="submit" class="btn btn-info fa-input" value="&#xf002;">
+				<input type="text" name="cari" placeholder="Cari Newss / Nama" class="form-control">
 			</form>
 		</div>
 		<!-- menu kanan tamat -->
