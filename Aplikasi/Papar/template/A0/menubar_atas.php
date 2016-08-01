@@ -67,7 +67,7 @@ $icon['Stats'] = '<span class="glyphicon glyphicon-stats"></span>';
 		<span class="glyphicon glyphicon-question-sign"></span>Bantuan
 	<b class="caret"></b></a>
 	<ul class="dropdown-menu">
-	<li><a href="#">Sistem</a></li>
+	<li><a href="../#">Sistem</a></li>
 	<li><a href="<?php echo $url ?>forum/perdana">Forum</a></li>
 	<li><a href="<?php echo $url ?>mesej/utama">Email</a></li>
 	</ul>
