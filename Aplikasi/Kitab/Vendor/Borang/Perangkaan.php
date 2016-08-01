@@ -194,7 +194,6 @@ class Perangkaan
 		
 	}
 #- cetak no tel sahaja
-
 	function paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
 	{
 		## tajuk besar
@@ -272,7 +271,7 @@ class Perangkaan
 			//echo "</tbody>\n";
 		endif;
 	}
-	
+	# papar jadual F10
 	# papar data biasa
 	function paparJadual_Data($allRows,$rows,$fields,$item,$ms,$hasil)
 	{	
