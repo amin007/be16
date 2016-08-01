@@ -193,15 +193,47 @@ class Perangkaan
 		}
 		
 	}
-#- cetak no tel sahaja
-	function paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+# pilih tajuk laporan		
+	function paparJadualF3_TajukMedan2($kepala,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
 	{
 		## tajuk besar
 		echo '<tr style="page-break-before:always">';
 		$this->paparJadualF3_TajukBesar($allRows,$fields,$sv,$namaOrg,$item,$ms);
 		echo '</tr>';
 		
-		## tajuk medan - keputusan 
+		## pilih tajuk kecil
+		//echo "<tr><th>\$kepala $kepala</th></tr>";
+		if($kepala == 'FAlamat'):
+			$this->paparJadual_FAlamat($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+		elseif($kepala == 'F10'):
+			$this->paparJadual_F10($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+		else:
+			$this->paparJadual_FAsas($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+		endif;
+	}
+#- cetak automatik tanpa kita setkan nama medan
+	function paparJadual_FAsas($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+	{
+		$printed_headers = false; # mula bina jadual
+		for ($kira=0; $kira < count($hasil); $kira++):
+			#--------------------------------------------------------------------
+			if ( !$printed_headers ) # papar tajuk medan sekali sahaja: 	
+			{
+				?><tr><th>#</th><?php
+				foreach ( array_keys($hasil[$kira]) as $tajuk ) 
+				{	
+					?><th><?php echo $tajuk ?></th><?php
+				}
+				?></tr>
+		<?php	$printed_headers = true; 
+			} 
+			#--------------------------------------------------------------------
+		endfor;
+	}
+#- cetak no tel sahaja	
+	function paparJadual_FAlamat($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+	{	
+		## tajuk medan - ALAMAT 
 		echo '<tr>';
 		echo "\n<th rowspan=\"1\">Bil</th>\n";
 		echo '<th rowspan="1">Nama Syarikat</th>' . "\n";
@@ -214,10 +246,27 @@ class Perangkaan
 		echo '<th rowspan="1">NO TEL</th>' . "\n";
 		echo '<th colspan="1">NOTA/CATATAN</th>' . "\n";
 		echo '</tr>' . "\n";
-		
+	}
+# papar jadual F10
+	function paparJadual_F10($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+	{
+		## tajuk medan - keputusan F10
+		echo "<tr>\n<th rowspan=2>Bil</th>\n";
+		echo '<th rowspan=2>NO SIRI NEWSS</th>' . "\n";
+		echo '<th rowspan=2>Nama Syarikat</th>' . "\n";
+		echo '<th rowspan=2>Kod Peny.</th>' . "\n";
+		echo '<th rowspan=1 colspan=2>RESPON</th>' . "\n";
+		echo '<th rowspan=2>Catatan</th>' . "\n";
+		echo "</tr>\n<tr>"; 
+		//$space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		//$space2 = '&nbsp;&nbsp;';
+		$space = $space2 = null;
+		echo "<th>$space A1 $space</th>\n";
+		echo "<th>$space2 NON&nbsp;A1 $space2</th>\n";
+		echo '</tr>';
 	}
 
-	function paparJadualF3_Data2($sv,$namaOrg,
+	function paparJadualF3_Data2($kepala=null,$sv,$namaOrg,
 		$allRows,$fields,$hasil,$item,$ms,$baris=30)
 	{	
 		# nak cari $allRows
@@ -236,7 +285,7 @@ class Perangkaan
 				{			
 					$ms = ($kira/$baris)+1;
 					$item = ceil($allRows/$baris);
-					$this->paparJadualF3_TajukMedan2($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+					$this->paparJadualF3_TajukMedan2($kepala,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
 					echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
 						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				}
@@ -248,21 +297,15 @@ class Perangkaan
 				foreach ($nilai as $key => $data) 
 					echo '<td>' . $data . $br . '</td>';
 				echo "</tr>\n";
-				
 			}
 			
 			## cukupkan 30 rows
 				$mula = $allRows+1;
 				$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
-				//$mula = $rows+1;
 				for($i = $mula; $i <= ($akhir); $i++)
 				{					
 					echo '<tr><td>' . $i . '</td>';
-					echo '<td>&nbsp;</td>';
-					//echo "<td><font color=\"yellow\">"
-					//	. $allRows . '-' .(($item-1)*30)." = ".(30 - ($allRows - (($item-1)*30) )).", "
-					//	. " nombor terakhir > $allRows + ".(30 - ($allRows - (($item-1)*30) ))." => $akhir</td>";
-						for($j = 1; $j <= (5); $j++)
+						for($j = 1; $j <= ($fields); $j++)
 						echo '<td>&nbsp;</td>';
 					echo '<tr>';
 				}
@@ -271,7 +314,6 @@ class Perangkaan
 			//echo "</tbody>\n";
 		endif;
 	}
-	# papar jadual F10
 	# papar data biasa
 	function paparJadual_Data($allRows,$rows,$fields,$item,$ms,$hasil)
 	{	
