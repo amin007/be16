@@ -50,6 +50,7 @@ table.excel tbody td
 	padding: 0 3px; border: 1px solid #aaaaaa;
 	background:#ffffff;
 }
+.fa-input {font-family: FontAwesome}
 </style>
 </head>  
 <body>
