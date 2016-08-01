@@ -524,17 +524,17 @@ class Html
 		$birumuda = 'btn btn-info btn-mini';
 		$merah = 'btn btn-danger btn-mini';
 
-		if($cariBatch==null)
+		/*if($cariBatch==null)
 		{
-			echo '<br> Ada masalah teknikal pada $cariBatch <br>'; exit();
-			/*?><td><?php echo "\$cariBatch kosong"; ?></td><?php*/
+			//echo '<br> Ada masalah teknikal pada $cariBatch <br>'; exit();
+			?><td><?php echo $data ?></td><?php
 		}
 		elseif($namaPegawai==null)
 		{
-			echo '<br> Ada masalah teknikal pada $namaPegawai <br>'; exit();
-			/*?><td><?php echo "\$namaPegawai kosong"; ?></td><?php*/
-		}
-		elseif ($key=='newss')
+			//echo '<br> Ada masalah teknikal pada $namaPegawai <br>'; exit();
+			?><td><?php echo $data ?></td><?php
+		}//*/
+		if ($key=='newss')
 		{
 			if ($namaPegawai=='amin'):
 				$k1 = URL . 'kawalan/ubah/' . $data;
@@ -570,8 +570,8 @@ class Html
 		elseif ($key=='pegawaiborang')
 		{
 			$k1 = URL . "operasi/batch/$data";
-			//$k2 = URL . "laporan/cetakNonA1/$data/1000";
-			//$k3 = URL . "laporan/cetakA1/$data/1000";
+			$k2 = URL . "laporan/cetakNonA1/$data/1000";
+			$k3 = URL . "laporan/cetakA1/$data/1000";
 			if ($data == null):
 				?><td>&nbsp;</td><?php
 			else:?><td><?php
