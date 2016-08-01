@@ -13,7 +13,6 @@ include 'diatas.php';
 		$rows = count($this->hasil); 
 		$hasil = $this->hasil;
 	endif;
-	$allRows = isset($this->kiraSemuaBaris) ? $this->kiraSemuaBaris : 1;
 	$item = isset($this->item) ? $this->item : 30;
 	$baris = isset($this->baris) ? $this->baris : 30;
 	$ms = isset($this->ms) ? $this->ms : 1;
@@ -30,15 +29,13 @@ if (count($this->hasil) == 0):
 	echo 'Tiada data';
 else:
 	$jadual = new Aplikasi\Kitab\Perangkaan;
-?>
-	<table border="1" class="excel" width="100%" height="100%">
-	<?php
+	echo "\n"; //echo "item $item | baris $baris | ms $ms | kodsv $kodsv \n";
+	?><table border="1" class="excel" width="100%" height="100%"><?php echo "\n";
 	$jadual->paparJadualF3_Data($kp,$namaOrg,$rows,$fields,$hasil,$item,$ms,$baris);
 	//$jadual->paparJadualF3_TajukBawah($rows,$fields);
-	?>
-	</table>
-<?php
-endif; //*/
+	echo "\n";
+	?></table><?php 
+endif;
 echo "\n"; ?>
 </body>
 </html>
