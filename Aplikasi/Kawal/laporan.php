@@ -162,11 +162,10 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'respon,kp,nama ASC') );
 		# tanya dalam sql 	
-		$this->papar->hasil = $this->tanya->//cariSemuaData//
-		cariSql
+		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		/*
+		
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
