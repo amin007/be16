@@ -3,6 +3,11 @@
 $senaraiStaf = senarai_kakitangan(); //echo '<pre>$senaraiStaf->'; print_r($senaraiStaf) . '</pre>';
 $urlStaf  = null;
 $target = null; //$target = ' target="_blank"';
+# butang / icon
+$birutua = 'btn btn-primary btn-mini';
+$birumuda = 'btn btn-info btn-mini';
+$merah = 'btn btn-danger btn-mini';
+$cetakIcon = '<i class="fa fa-print fa-2x pull-left"></i> ';
 
 foreach ($senaraiStaf as $namaStaf):
 	$urlStaf .=  "\r | " . '<a' . $target . ' href="' . URL .'operasi/batch/' . $namaStaf . '">'
@@ -35,9 +40,9 @@ elseif (($this->namaPegawai != null) && ($this->noBatch != null)
 	//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $cariBatch . '/1000/1';
 	//$cetakAlamat = URL . 'laporan/cetakresponden/' . $namaPegawai . '/' . $cariBatch . '/1000/1';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' . $cariBatch . '/1000/1';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF03 . '"> Cetak F3</a>| ' . "\r" .
-	//'<a target="_blank" href="' . $cetakAlamat . '">Cetak Alamat</a>| ' . "\r" .
-	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>' . "\r";
+	$cetak = '<h3><a target="_blank" class="' . $merah . '" href="' . $cetakF03 . '">' . $cetakIcon . 'F3</a>| ' . "\r" .
+	//'<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">' . $cetakIcon . 'Alamat</a>| ' . "\r" .
+	'<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">' . $cetakIcon . 'A1</a></h3>' . "\r";
 	$mencari = URL . 'operasi/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch; 
 	$notaTambahan = 'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
@@ -50,9 +55,9 @@ else : # set pembolehubah
 	//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $cariBatch . '/1000/1';
 	$cetakAlamat = URL . 'laporan/cetakresponden/' . $namaPegawai . '/' . $cariBatch . '/1000/1';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' . $cariBatch . '/1000/1';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF03 . '"> Cetak F3</a>| ' . "\r" .
-	'<a target="_blank" href="' . $cetakAlamat . '">Cetak Alamat</a>| ' . "\r" .
-	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>' . "\r";
+	$cetak = '<h3><a target="_blank" class="' . $merah . '" href="' . $cetakF03 . '">' . $cetakIcon . 'F3</a>| ' . "\r" .
+	'<a target="_blank" class="' . $merah . '" href="' . $cetakAlamat . '">' . $cetakIcon . 'Alamat</a>| ' . "\r" .
+	'<a target="_blank" class="' . $merah . '" href="' . $cetakA1 . '">' . $cetakIcon . 'A1</a></h3>' . "\r";
 	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>' . "\r" .
 	'<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Tambah Lagi No ID';
