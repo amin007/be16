@@ -165,7 +165,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		# masukkan $data dalam $senaraiMedan berasaskan $jadual
 		$senaraiMedan = (!empty($data)) ? $this->binaData($jadual, $data, $senaraiMedan) : $senaraiMedan;
 		
-		/*# papar tatasusunan $data
+		/*# debug 
 		if (!empty($senaraiMedan)) 
 		{ echo '<hr><pre>$senaraiMedan Kini:<br>'; print_r($senaraiMedan) . '</pre>'; }
 		else echo '<pre>$senaraiMedan:kosong</pre>'; //*/
