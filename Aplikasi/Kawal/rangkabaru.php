@@ -43,8 +43,8 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 				//cariSql($jadual, $medan, $cari, $susun = null);
 					
 			$this->papar->cariID = $medanID;
-			$this->papar->cariApa = $cariID;
-			$this->papar->binaMedan = $this->tanya->binaMedan2($this->papar->_jadual, $kira, 
+			//$this->papar->cariApa = $cariID;
+			$this->papar->cariApa = $this->tanya->binaMedan2($this->papar->_jadual, $kira, 
 				$this->papar->senarai);
 		}
 		else
@@ -53,15 +53,15 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->papar->cariApa = $this->tanya->binaMedan($this->papar->_jadual, $kira, $data = null);
 		}
 		
-		echo '<pre>'; # semak data
+		/*echo '<pre>'; # semak data
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
-		echo '<br>$this->papar->binaMedan:'; print_r($this->papar->binaMedan); 
+		//echo '<br>$this->papar->binaMedan:'; print_r($this->papar->binaMedan); 
 		//echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
-		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
+		echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		//echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
 		echo '</pre>'; //*/
 
-		/*# pergi papar kandungan
+		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(//$this->papar->paparTemplate(
 			$this->_folder . '/baru',$jenis,0); # $noInclude=0
@@ -73,36 +73,8 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		$this->papar->_jadual = 'be16_kawal';
-		
-		if (!empty($cariID)) 
-		{
-			$medan = $this->tanya->cariRangkaBaru();
-			$jadual = 'be16_rangkabaru';
-			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
-			# 1. mula semak dalam jadual
-			$this->papar->senarai['data'] = $this->tanya->
-				//tatasusunanUbah2($jadual, $medan, $cari, $susun = null);
-				cariSemuaData($jadual, $medan, $cari, $susun = null);
-				//cariSql($jadual, $medan, $cari, $susun = null);
-					
-			$this->papar->cariID = $medanID;
-			$this->papar->cariApa = $cariID;
-			$this->papar->binaMedan = $this->tanya->binaMedan($this->papar->_jadual, $kira, 
-				$this->papar->senarai);
-		}
-		else
-		{
-			$this->papar->senarai = $this->papar->binaMedan = null;
-			$this->papar->cariApa = $this->tanya->binaMedan($this->papar->_jadual, $kira, $data = null);
-		}
-		
-		/*echo '<pre>'; # semak data
-		//echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
-		//echo '<br>$this->papar->binaMedan:'; print_r($this->papar->binaMedan); 
-		//echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
-		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
-		//echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
-		echo '</pre>'; //*/
+		$this->papar->senarai = $this->papar->binaMedan = null;
+		$this->papar->cariApa = $this->tanya->binaMedan($this->papar->_jadual, $kira, $data = null);
 
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
