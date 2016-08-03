@@ -178,6 +178,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		foreach ($data['data'][0] as $kunci => $n):	
 			$senaraiMedan[$jadual][0][$kunci] = $data['data'][0][$kunci];
+			//echo "<hr> senaraiMedan[$jadual][0][$kunci] = data['data'][0][$kunci] ";
 		endforeach;	
 		
 		# pulangkan pemboleubah
