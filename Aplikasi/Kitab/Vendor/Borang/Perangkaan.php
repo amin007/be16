@@ -3,11 +3,8 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Perangkaan
 {
 #-------------------------------------------------------------------------------
-	function paparJadualF3_TajukBesar($allRows,$fields,$kodsv,$namaOrg,$item,$ms)
+	function tajukBanciPenyiasatan($kodsv)
 	{
-		#pecah pembolehubah $nama orang
-		$nama_penyelia = $namaOrg['penyelia'];
-		$nama_pegawai = $namaOrg['pegawai'];
 		## tajuk besar
 		switch ($kodsv):
 			case 'MDT': $SV='PENYIASATAN PERDAGANGAN EDARAN BULANAN'; break;
@@ -21,19 +18,18 @@ class Perangkaan
 			case 'BE':  $SV='BANCI EKONOMI'; break;
 			default: $SV=null;
 		endswitch;
+		
+		#pulangkan nilai
+		return $SV;
+	}
+	
+	function namaPegawaiPenyelia($namaOrg,$allRows,$item,$ms)
+	{
+		#pecah pembolehubah $nama orang
+		$nama_penyelia = $namaOrg['penyelia'];
+		$nama_pegawai = $namaOrg['pegawai'];
 
-		echo "\n" .'<td colspan="' . ($fields+1) . '"><font size=2>' .
-			//'<div align="right">Lampiran 3<br>F 3 </div>' .
-			'<div align="right">Lampiran A : F3 </div>' . "\n" .
-			//'</td><td>' .
-			'<div align="center">' .
-			'JABATAN PERANGKAAN MALAYSIA NEGERI JOHOR' .
-			'<br>SENARAI INDUK AGIHAN KES ANGGOTA ' . "\n" .
-			'<br>' . $SV . ' ' . date('Y') .
-			'</div><br>' .
-			//'</td><td>' .
-			'<div align="left">' .
-			"\nNama Penyelia : $nama_penyelia" .
+		$cetakNama = "\nNama Penyelia : $nama_penyelia" .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
@@ -49,6 +45,30 @@ class Perangkaan
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			//'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 			'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
+			'';
+
+		#pulangkan nilai
+		return $cetakNama;
+
+	}
+	
+	function paparJadualF3_TajukBesar($allRows,$fields,$kodsv,$namaOrg,$item,$ms)
+	{
+		## tajuk besar
+		$SV = $this->tajukBanciPenyiasatan($kodsv);
+		$cetakNama = $this->namaPegawaiPenyelia($namaOrg,$allRows,$item,$ms);
+
+		echo "\n" .'<td colspan="' . ($fields+1) . '"><font size=2>' .
+			//'<div align="right">Lampiran 3<br>F 3 </div>' .
+			'<div align="right">Lampiran A : F3 </div>' . "\n" .
+			//'</td><td>' .
+			'<div align="center">' .
+			'JABATAN PERANGKAAN MALAYSIA NEGERI JOHOR' .
+			'<br>SENARAI INDUK AGIHAN KES ANGGOTA ' . "\n" .
+			'<br>' . $SV . ' ' . date('Y') .
+			'</div><br>' .
+			//'</td><td>' .
+			'<div align="left">' . $cetakNama .
 			//'</td><td>' .
 			"\n" . 'Tarikh : <u>' . (date('d')) .
 			(date('/m/Y')) . '</u> ' .
@@ -189,16 +209,33 @@ class Perangkaan
 
 			## kata2 pengarah
 			if($akhir==$i) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
-					
 		}
 		
 	}
-# pilih tajuk laporan		
+# buat tajuk lain sikit untuk cetak alamat
+	function paparJadualF3_TajukBesar2($allRows,$fields,$kodsv,$namaOrg,$item,$ms)
+	{
+		## tajuk besar
+		$SV = $this->tajukBanciPenyiasatan($kodsv);
+		$cetakNama = $this->namaPegawaiPenyelia($namaOrg,$allRows,$item,$ms);
+		
+		echo "\n" .'<td colspan="' . ($fields+1) . '"><font size=2>' .
+			'<div align="center">' .
+			'SENARAI ALAMAT KES ' . $SV . ' ' . date('Y') .
+			'</div><br>' .
+			'<div align="left">' . $cetakNama .
+			"\n" . 'Tarikh : <u>' . (date('d')) .
+			(date('/m/Y')) . '</u> ' .
+			'</div>' .
+			'</td>' . "\r";
+
+	}
+# pilih tajuk laporan
 	function paparJadualF3_TajukMedan2($kepala,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
 	{
 		## tajuk besar
 		echo '<tr style="page-break-before:always">';
-		$this->paparJadualF3_TajukBesar($allRows,$fields,$sv,$namaOrg,$item,$ms);
+		$this->paparJadualF3_TajukBesar2($allRows,$fields,$sv,$namaOrg,$item,$ms);
 		echo '</tr>';
 		
 		## pilih tajuk kecil
@@ -295,7 +332,7 @@ class Perangkaan
 						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				}
 				foreach ($nilai as $key => $data) 
-					echo '<td>' . $data . $br . '</td>';
+					echo '<td>' . $data . $br . '</td>' . "\n";
 				echo "</tr>\n";
 			}
 			
