@@ -38,7 +38,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->papar->senarai['kawal'] = $this->tanya->
 				cariSemuaData($this->papar->_jadual, $medan = '*', $cari, $susun = null);
 				//cariSql($jadual, $medan, $cari, $susun = null);
-			if(isset($this->papar->senarai['kawal'][0]['newss']))
+			if(!isset($this->papar->senarai['kawal'][0]['newss']))
 			{
 				# 2. mula semak dalam jadual rangkabaru
 				$medan = $this->tanya->cariRangkaBaru();
@@ -54,8 +54,8 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			}
 			else 
 			{	
-				//echo 'tidak wujud dalam ' . $this->papar->_jadual;
-				$this->papar->cariID = $this->papar->cariApa = null;
+				$this->papar->cariID = 'newss/' . $cariID;
+				$this->papar->cariApa = 'sudah wujud dalam jadual';
 			}
 		}
 		else
