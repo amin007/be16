@@ -164,7 +164,7 @@ function pautan($kira, $key, $data, $myTable)
 			$btn =  $birumuda;
 			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
 		elseif ($myTable=='be16_rangkabaru'):
-			$k1 = URL . 'rangkabaru/masukdata/1/' . $data;
+			$k1 = URL . 'rangkabaru/masukdatadarirangka/1/' . $key . '/' . $data;
 			$btn =  $merah;
 			$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Tambah2';
 		else:
