@@ -161,7 +161,7 @@ class Html
 			$input = '<p class="form-control-static text-info">' . $data . '</p>';
 		}
 		
-		return $input;
+		return $input; # pulangkan nilai
 	}
 #==========================================================================================
 	public function cariInput($paparSahaja,$jadual,$kira,$key,$data)
@@ -366,7 +366,7 @@ class Html
 			$input = '<p class="form-control-static text-info">' . $data . '</p>';
 		}
 		
-		return $input;
+		return $input; # pulangkan nilai
 	}
 	
 	# mula untuk kod php+html 
