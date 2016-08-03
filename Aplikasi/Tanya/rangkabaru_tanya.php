@@ -148,9 +148,9 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		{ 
 			$data['data'][0]['alamat1'] = $data['data'][0]['alamat'];
 			//echo '<hr><pre>$data:<br>'; print_r($data) . '</pre>'; 
-			//unset($data['data'][0]['alamat1']);			
+			unset($data['data'][0]['alamat']);
 		}
-		else echo '<pre>$data:kosong</pre>'; echo '<hr>'; //*/
+		else echo '<pre>$data:kosong</pre>'; //*/
 
 		# Set pemboleubah tatasusunan
 		$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod',
@@ -162,27 +162,26 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 			endforeach;
 		endfor;
 		
-		$senaraiMedan = (!empty($data)) ? $this->binaData($data, $senaraiMedan) : $senaraiMedan;
-
-		# papar tatasusunan $data
+		# masukkan $data dalam $senaraiMedan berasaskan $jadual
+		$senaraiMedan = (!empty($data)) ? $this->binaData($jadual, $data, $senaraiMedan) : $senaraiMedan;
+		
+		/*# papar tatasusunan $data
 		if (!empty($senaraiMedan)) 
-		{ echo '<hr><pre>$senaraiMedan:<br>'; print_r($senaraiMedan) . '</pre>'; }
+		{ echo '<hr><pre>$senaraiMedan Kini:<br>'; print_r($senaraiMedan) . '</pre>'; }
 		else echo '<pre>$senaraiMedan:kosong</pre>'; //*/
 		
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
 
-	public function binaData($data, $senaraiMedan)
+	public function binaData($jadual, $data, $senaraiMedan)
 	{
-		/*foreach ($data['data'][0] as $k => $n):	
-			echo "\$kunci : $k <br>";
-			//$senaraiMedan[$jadual][$ulang][$nilai] = $data['data'][0][$nilai];
-		endforeach;	//endforeach; //endforeach;	//endforeach
+		foreach ($data['data'][0] as $kunci => $n):	
+			$senaraiMedan[$jadual][0][$kunci] = $data['data'][0][$kunci];
+		endforeach;	
 		
 		# pulangkan pemboleubah
-		return $senaraiMedan //*/
-	
+		return $senaraiMedan; //*/
 	}
 	
 	public function cariRangkaBaru() 
