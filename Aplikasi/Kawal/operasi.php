@@ -24,6 +24,26 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
 	}
 #==========================================================================================	
+	private function tiadaDalamRangka($key = 'newss', $data = null)
+	{
+		# butang 
+		$birutua = 'btn btn-primary btn-mini';
+		$birumuda = 'btn btn-info btn-mini';
+		$merah = 'btn btn-danger btn-mini';
+		
+		$k1 = URL . 'rangkabaru/masukdatadarirangka/1/' . $key . '/' . $data;
+		$btn =  $merah;
+		$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Tambah2';
+
+		$pautan = 'Tiada id dalam rangka. '
+			. '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>'
+			. '<br>Mana kau orang jumpa kes ini daa.' 
+			. '<br>Jumpa amin jika mahu masuk rangka ya'
+			. '';
+
+		return $pautan;
+	}
+	
 	private function wujudBatchAwal($senaraiJadual, $cariBatch = null, $cariID = null) 
 	{
 		if (!isset($cariBatch) || empty($cariBatch) ):
@@ -40,8 +60,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					$senaraiJadual[0], $medan, $carian, $susun = null);
 				//echo '<pre>', print_r($dataKes, 1) . '</pre><br>';
 				$paparError = (!isset($dataKes[0]['newss'])) ? 
-					'Tiada id dalam rangka. <br>Mana kau orang jumpa kes ini daa.' 
-					. '<br>Jumpa amin jika mahu masuk rangka ya' : # jika jumpa
+					$this->tiadaDalamRangka('newss', $cariID) : # jika jumpa
 					'Ada id: <a target="_blank" href="'. URL . 'kawalan/ubah/' 
 					. $dataKes[0]['newss'] .'">' . $dataKes[0]['newss'] . '</a> '
 					. ( empty($dataKes[0]['nossm']) ? '' : '| nossm:' . $dataKes[0]['nossm'] )
