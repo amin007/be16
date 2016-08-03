@@ -7,13 +7,22 @@ class Html
 	{	# istihar pembolehubah 
 		$name = 'name="' . $jadual  . '[' . $kira . ']' . '[' . $medan . ']"';
 		$tabline = "\n\t\t";
-			$input = '' 
-				   //. '<span class="input-group-addon"></span>'
+		$tabline2 = "\n\t\t\t\t";
+		
+		if(in_array($medan,array('nama','alamat1','alamat2','bandar'))):
+			$input = '<textarea ' . $name . ' rows="1" cols="20"' . $tabline2 
+				   . ' class="form-control">' . $data . '</textarea>'
+				   . $tabline2 //. '<pre>' . $data . '</pre>'
+				   . '';		
+		else:
+			$input = '' //. '<span class="input-group-addon"></span>'
 				   . '<input type="text" ' . $name 
-				   . 'placeholder=' . $medan . '[' . $kira . ']' 
+				   . ( (empty($data)) ? '': ' value="' . $data . '"')
+				   . ' placeholder=' . $medan . '[' . $kira . ']' 
 				   . ' class="form-control">'
 				   . '';
-				   
+		endif;
+		
 		# pulangkan nilai
 		return '<td>' . $input . '</td>' . $tabline;
 	}
