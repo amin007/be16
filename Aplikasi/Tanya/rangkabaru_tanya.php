@@ -125,22 +125,64 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medan;
 	}
 	
-	public function binaMedan($jadual, $kira) 
+	public function binaMedan($jadual, $kira, $data) 
 	{ 
+		/*# papar tatasusunan $data
+		if (!empty($data)) 
+		{ 
+			$data['data'][0]['alamat1'] = $data['data'][0]['alamat'];
+			//echo '<hr><pre>$data:<br>'; print_r($data) . '</pre>'; 
+			//unset($data['data'][0]['alamat1']);			
+		}
+		else echo '<pre>$data:kosong</pre>'; echo '<hr>'; //*/
+
 		# Set pemboleubah tatasusunan
 		$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod',
 			'kp','msic2008','fe','orang_a','notel_a','nofax_a','esurat_a');
-		
+
 		for ($ulang = 0; $ulang < $kira; $ulang++):
 			foreach ($medan as $key2 => $nilai2):	
 				$senaraiMedan[$jadual][$ulang][$nilai2] = null;
 			endforeach;
 		endfor;
 		
+		//$senaraiMedan = (!empty($data)) ? $this->binaData($data, $senaraiMedan) : $senaraiMedan;
+
+		/*# papar tatasusunan $data
+		if (!empty($senaraiMedan)) 
+		{ echo '<hr><pre>$senaraiMedan:<br>'; print_r($senaraiMedan) . '</pre>'; }
+		else echo '<pre>$senaraiMedan:kosong</pre>'; //*/
+		
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
 	
+	public function binaData($data, $senaraiMedan)
+	{
+		/*foreach ($data['data'][0] as $k => $n):	
+			echo "\$kunci : $k <br>";
+			//$senaraiMedan[$jadual][$ulang][$nilai] = $data['data'][0][$nilai];
+		endforeach;	//endforeach; //endforeach;	//endforeach
+		
+		# pulangkan pemboleubah
+		return $senaraiMedan //*/
+	
+	}
+	
+	public function cariRangkaBaru() 
+	{ 
+		# Set pemboleubah tatasusunan
+		//$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod',
+		//	'kp','msic2008','fe','orang_a','notel_a','nofax_a','esurat_a');
+		$medan = array('newss','nossm','nama','operator','alamat','bandar','poskod',
+			'kp','msic2008');
+		
+		$senaraiMedan = implode(",", $medan);
+		
+		# pulangkan pemboleubah
+		return $senaraiMedan;
+	}
+
 	public function semakPost($myTable, $senarai, $post)
 	{
 		# validasi data $_POST, masuk dalam $posmen, validasi awal
