@@ -1,25 +1,23 @@
 <?php 
-	$mencari = URL . 'kawalan/ubahCari/';
-	$carian = null;
-	$mesej = '::tiada dalam ' . $this->_jadual;
-	$html = new Aplikasi\Kitab\Html;
- 
 if (isset($this->cariApa) ):
 	if($this->cariApa == 'sudah wujud dalam jadual'):
 		$k1 = URL . 'operasi/batch/' . $this->cariID;
-		//$btn =  $merah;
 		$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Tambah2';
+		//. '<a target="_blank" href="' . $k1 . '">' . $a . '</a>'
 
-		$nota = ''
-			. $this->cariApa . ' ' . $this->_jadual
-			. '<br>' . $k1
-			//. '<a target="_blank" href="' . $k1 . '">' . $a . '</a>'
+		$nota = '<h1 align="center">' . $this->cariApa . ' ' . $this->_jadual . '</h1>'
+			. '<h2 align="center">Tutup dan kembali ke menu batch tadi</h2>'
 			. '';
 
 		echo $nota;
 	else:
-?>		
-<h1 align="center">Rangka Baru<?=$mesej?></h1>
+		$mencari = URL . 'kawalan/ubahCari/';
+		$carian = null;
+		$mesej = '::tiada dalam ' . $this->_jadual;
+		$html = new Aplikasi\Kitab\Html;
+		echo "\n";
+		
+		?><h1 align="center">Rangka Baru<?=$mesej?></h1>
 <?php $mencari2 = URL . 'rangkabaru/tambahSimpan/'; ?>
 	<form method="POST" action="<?php echo $mencari2 ?>"
 	class="form-horizontal"><?php include 'papar_jadual_berulang.php'; ?>
