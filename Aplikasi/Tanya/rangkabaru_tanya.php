@@ -127,7 +127,23 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 	
 	public function binaMedan($jadual, $kira, $data) 
 	{ 
-		/*# papar tatasusunan $data
+		# Set pemboleubah tatasusunan
+		$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod',
+			'kp','msic2008','fe','orang_a','notel_a','nofax_a','esurat_a');
+
+		for ($ulang = 0; $ulang < $kira; $ulang++):
+			foreach ($medan as $key2 => $nilai2):	
+				$senaraiMedan[$jadual][$ulang][$nilai2] = null;
+			endforeach;
+		endfor;
+		
+		# pulangkan pemboleubah
+		return $senaraiMedan;
+	}
+	
+	public function binaMedan2($jadual, $kira, $data) 
+	{ 
+		# papar tatasusunan $data
 		if (!empty($data)) 
 		{ 
 			$data['data'][0]['alamat1'] = $data['data'][0]['alamat'];
@@ -146,9 +162,9 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 			endforeach;
 		endfor;
 		
-		//$senaraiMedan = (!empty($data)) ? $this->binaData($data, $senaraiMedan) : $senaraiMedan;
+		$senaraiMedan = (!empty($data)) ? $this->binaData($data, $senaraiMedan) : $senaraiMedan;
 
-		/*# papar tatasusunan $data
+		# papar tatasusunan $data
 		if (!empty($senaraiMedan)) 
 		{ echo '<hr><pre>$senaraiMedan:<br>'; print_r($senaraiMedan) . '</pre>'; }
 		else echo '<pre>$senaraiMedan:kosong</pre>'; //*/
@@ -156,7 +172,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
-	
+
 	public function binaData($data, $senaraiMedan)
 	{
 		/*foreach ($data['data'][0] as $k => $n):	
