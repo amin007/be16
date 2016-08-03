@@ -1,4 +1,4 @@
-Data dari rangka: <pre><?php print_r($this->cariApa); ?></pre>
+Data dari rangka: <pre><?php print_r($this->senarai['data'][0]); ?></pre>
 <?php 
 	foreach ($this->cariApa as $myTable => $row)
 	{
