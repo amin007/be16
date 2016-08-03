@@ -33,31 +33,43 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		
 		if (!empty($cariID)) 
 		{
-			$medan = $this->tanya->cariRangkaBaru();
-			$jadual = 'be16_rangkabaru';
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
-			# 1. mula semak dalam jadual
-			$this->papar->senarai['data'] = $this->tanya->
-				//tatasusunanUbah2($jadual, $medan, $cari, $susun = null);
-				cariSemuaData($jadual, $medan, $cari, $susun = null);
+			# 1. mula semak dalam jadual kawal
+			$this->papar->senarai['kawal'] = $this->tanya->
+				cariSemuaData($this->papar->_jadual, $medan = '*', $cari, $susun = null);
 				//cariSql($jadual, $medan, $cari, $susun = null);
-					
-			$this->papar->cariID = $medanID;
-			$this->papar->cariApa = $this->tanya->binaMedan2($this->papar->_jadual, $kira, 
-				$this->papar->senarai);
+			if(isset($this->papar->senarai['kawal'][0]['newss']))
+			{
+				# 2. mula semak dalam jadual rangkabaru
+				$medan = $this->tanya->cariRangkaBaru();
+				$jadual = 'be16_rangkabaru';
+				$this->papar->senarai['data'] = $this->tanya->
+					//tatasusunanUbah2($jadual, $medan, $cari, $susun = null);
+					cariSemuaData($jadual, $medan, $cari, $susun = null);
+					//cariSql($jadual, $medan, $cari, $susun = null);
+						
+				$this->papar->cariID = $medanID;
+				$this->papar->cariApa = $this->tanya->binaMedan2($this->papar->_jadual, $kira, 
+					$this->papar->senarai); //*/
+			}
+			else 
+			{	
+				//echo 'tidak wujud dalam ' . $this->papar->_jadual;
+				$this->papar->cariID = $this->papar->cariApa = null;
+			}
 		}
 		else
 		{
-			$this->papar->senarai = null;
+			$this->papar->senarai = $this->papar->cariID = null;
 			$this->papar->cariApa = $this->tanya->binaMedan($this->papar->_jadual, $kira, 
 				$this->papar->senarai);
 		}
 		
 		/*echo '<pre>'; # semak data
-		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
-		//echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
-		echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
-		//echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
+		echo (!isset($this->papar->senarai)) ? '' : '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
+		echo (!isset($this->papar->cariID))  ? '' : '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
+		echo (!isset($this->papar->cariApa)) ? '' : '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
+		echo (!isset($this->papar->_jadual)) ? '' : '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
 		echo '</pre>'; //*/
 
 		# pergi papar kandungan
