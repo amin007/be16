@@ -228,15 +228,16 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanRespon2()
 	{
-		$senaraiMedan[] = 'kod'; 
-		$senaraiMedan[] = 'f2';
-		$senaraiMedan[] = 'respon';
-		$senaraiMedan[] = 'nama, '
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'respon',
+			3 => 'nama, '
 			. 'concat_ws("-",`kp`) as kp,'
 			. '"" as utama, concat_ws("-",`newss`) as newss,'
 			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A) as nota'
 			. 'nota'
-			. '';
+		);
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
@@ -264,21 +265,21 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanResponden()
 	{
-			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A,'
+			//. 'concat_ws("|",ATTENTION_NAME_A,TEL_NO_A,FAX_NO_A,EMAIL_A,'
 			//. 'ATTENTION_NAME_B,TEL_NO_B,FAX_NO_B,EMAIL_B,'
 			//. 'ATTENTION_NAME_C,TEL_NO_C,FAX_NO_C,EMAIL_C'
-
-		$senaraiMedan[] = 'kod';
-		$senaraiMedan[] = 'f2';
-		$senaraiMedan[] = 'concat_ws(" | ",`respon`,`nota`) as respon';
-		//$senaraiMedan[] = 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
-		$senaraiMedan[] = 'concat_ws("",`nama`) as nama,'
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'concat_ws(" | ",`respon`,`nota`) as respon';
+			//2 =>  'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
+			3 =>  'concat_ws("",`nama`) as nama,'
 			. 'concat_ws("-",`kp`,`msic2008`) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
 			. 'concat_ws("",`newss`) as newss,'
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
 			. ') as nota'
-			. '';
+		);
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
@@ -295,18 +296,18 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanAlamat()
 	{
-
-		$senaraiMedan[] = 'kod';
-		$senaraiMedan[] = 'f2';
-		$senaraiMedan[] = 'concat_ws(" | ",`respon`,`nota`,`pegawai`) as respon';
-		//$senaraiMedan[] = 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
-		$senaraiMedan[] = 'concat_ws("-",`nama`) as nama,'
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'concat_ws(" | ",`respon`,`nota`,`pegawai`) as respon',
+			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
+			3 => 'concat_ws("-",`nama`) as nama,'
 			. 'concat_ws("-",`kp`,`msic2008`) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
 			. 'concat_ws("",`newss`) as newss,'
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
 			. ') as nota'
-			. '';
+		);
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
@@ -323,10 +324,11 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanA1()
 	{
-		$senaraiMedan[] = 'kod';
-		$senaraiMedan[] = 'f2';
-		$senaraiMedan[] = ''; //;
-		$senaraiMedan[] = 'newss, concat_ws("<br>",nama,operator) nama,'
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => null,
+			3 => 'newss, concat_ws("<br>",nama,operator) nama,'
 			. ' concat_ws("|",kp) kp,'
 			. ' if(respon="A1",respon,"&nbsp;") A1,'
 			. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
@@ -334,7 +336,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("|",responden,notel,nofax,email) as nota'
 			//. 'concat_ws("|",concat("hasil=",hasil),concat("belanja=",belanja),' 
 			//. 'concat("gaji=",gaji),concat("aset=",aset),concat("staf=",staf),'
-			. '';
+		);
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
