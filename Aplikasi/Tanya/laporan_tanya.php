@@ -235,7 +235,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			3 => 'nama, '
 			. 'concat_ws("-",`kp`) as kp,'
 			. '"" as utama, concat_ws("-",`newss`) as newss,'
-			//. 'concat_ws("|",ATTENTION_NAME_A,	TEL_NO_A,	FAX_NO_A,	EMAIL_A) as nota'
+			//. 'concat_ws("|",ATTENTION_NAME_A,TEL_NO_A,FAX_NO_A,EMAIL_A) as nota'
 			. 'nota'
 		);
 			
@@ -271,7 +271,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$senaraiMedan = array(
 			0 => 'kod',
 			1 => 'f2',
-			2 => 'concat_ws(" | ",`respon`,`nota`) as respon';
+			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
 			//2 =>  'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
 			3 =>  'concat_ws("",`nama`) as nama,'
 			. 'concat_ws("-",`kp`,`msic2008`) as kp,'
@@ -376,6 +376,71 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		//echo '<pre>$medan:'; print_r($medan) . '</pre>';
 		
 		return $medan; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
+	public function laporanProsesan($myTable, $medan, $respon, $susun)
+	{	
+		# pembolehubah yg terlibat // berasaskan kp dan tarikh
+		/*
+		01	Batu Pahat	02	Johor Bahru		03	Kluang
+		06	Muar		04	Kota Tinggi		05	Mersing
+		10	Ledang		07	Pontian
+		08	Segamat		09	KulaiJaya
+		*/
+		## medan
+		$po = "po";
+		## Pejabat Operasi
+		$pjb = "$po='PJB'";
+		$kiraPjb = "count(if($pjb,'PJB',null))";
+		$pok = "$po='POK'";
+		$kiraPok = "count(if($pok,'POK',null))";
+		$pom = "$po='POM'";
+		$kiraPom = "count(if($pom,'POM',null))";
+		## rangka
+		$rangka = "$kiraPjb `PJB`,\r"
+			 . "$kiraPok `POK`,\r"
+			 . "$kiraPom `POM`,\r";
+		## kod 11 mko
+		$mko = "count(if($pjb AND $respon,'PJB11',null)) `PJB11`,\r"
+			 . "count(if($pok AND $respon,'POK11',null)) `POK11`,\r"
+			 . "count(if($pom AND $respon,'POM11',null)) `POM11`,\r";
+		## penerimaan borang
+		$terima = "count(if($pjb AND $respon,'PJB1',null)) `tPJB`,\r"
+			 . "(format ((count(if($pjb AND $respon,'PJB1',null)) / count(*)) * 100, 2))`t%PJB`,\r"
+			 . "count(if($pok AND $respon,'POK1',null)) `tPOK`,\r"
+			 . "(format ((count(if($pok AND $respon,'POK1',null)) / count(*)) * 100, 2))`t%POK`,\r"
+			 . "count(if($pom AND $respon,'POM1',null)) `tPOM`,\r"
+			 . "(format ((count(if($pom AND $respon,'POM1',null)) / count(*)) * 100, 2))`t%POM`,\r";
+		## baki borang 
+		$baki = "(format ( \r"
+			 . "	count(if($pjb,'PJB',null)) -\r"
+			 . "	count(if($pjb AND $respon,'xPJB',null)),0)\r"
+			 . ")`bPJB`,\r"
+			 . "(format ( \r"
+			 . "	((count(if($pjb,'PJB',null)) -\r"
+			 . "	count(if($pjb AND $respon,'xPJB',null)))\r"
+			 . "	/ count(*)) * 100,2)\r"
+			 . ")`b%PJB`,\r"
+			 . "(format ( \r"
+			 . "	count(if($pok,'POK',null)) -\r"
+			 . "	count(if($pok AND $respon,'xPOK',null)), 0)\r"
+			 . ")`bPOK`,\r"
+			 . "(format ( \r"
+			 . "	((count(if($pok,'POK',null)) -\r"
+			 . "	count(if($pok AND $respon,'xPOK',null)))\r"
+			 . "	/ count(*)) * 100,2)\r"
+			 . ")`b%POK`,\r"
+			 . "(format ( \r"
+			 . "	count(if($pom,'POM',null)) -\r"
+			 . "	count(if($pom AND $respon,'xPOM',null)), 0)\r"
+			 . ")`bPOM`,\r"
+			 . "(format ( \r"
+			 . "	((count(if($pom,'POM',null)) -\r"
+			 . "	count(if($pom AND $respon,'xPOM',null)))\r"
+			 . "	/ count(*)) * 100,2)\r"
+			 . ")`b%POM`\r";
+		
+		return $medan . $rangka . $mko . $terima . $baki;	
 	}
 #----------------------------------------------------------------------------------------------------------------------
 #==========================================================================================
