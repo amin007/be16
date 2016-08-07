@@ -201,7 +201,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
+		$this->papar->item = $item;
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
@@ -209,6 +209,44 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
 		$this->papar->baca('laporan/f10', null, 1);//*/
+	}
+#==========================================================================================
+	# cetakTerimaProses
+	public function cetakTerimaProses($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
+	{
+		# kiraKes dulu
+		$ms = 1;
+		$tarikh = null;
+		$jadual = 'be16_proses';
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'feprosesan','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'nobatch','apa'=>$cariBatch);
+		$bilSemua = $this->tanya->kiraBaris($jadual, $medan = '*', $carian, $susun = null);
+		# tentukan bilangan mukasurat. bilangan jumlah rekod
+		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+		$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		$susun[] = array_merge($jum, array('kumpul'=>'1,2 WITH ROLLUP','susun'=> NULL) );
+		//$medan='concat_ws("/",`kp terkini`,tarikh) as terimaProsesan,';
+		# kumpul respon
+		//$mencari = "respon='11' AND tarikh <= '$tarikh' "; 
+		$mencari = "respon='11' "; 
+		//$medan = $this->tanya->laporanProsesan($jadual, $medan = "kelaskes,`kp terkini`,\r", $mencari, $susun);
+		$medan = $this->tanya->laporanProsesan($jadual, $medan = "po,kp,", $mencari, $susun);
+		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
+
+		# Set pemboleubah utama
+        $this->papar->pegawai = senarai_kakitangan();
+		$this->papar->kiraSemuaBaris = $bilSemua;
+		$this->papar->item = $item;
+		$this->papar->ms = $ms;
+		$this->papar->baris = $baris;
+		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
+		$this->papar->kp = 'BE';
+		$this->papar->tarikh = ($tarikh==null) ? date("Y-m-d h:i:s") : $tarikh;
+			
+		# pergi papar kandungan
+		$this->papar->baca('laporan/terimaProsesan', null, 1);//*/
 	}
 #==========================================================================================
 }
