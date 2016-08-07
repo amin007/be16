@@ -39,10 +39,14 @@ else : # set pembolehubah
 	$cariBatch = (!isset($this->noBatch)) ? null : $this->noBatch;
 	$paparError = (!isset($this->error)) ? null : $this->error;
 	$mencari = URL . 'prosesan/ubahBatchProses/' . $namaPegawai . '/' . $cariBatch;
-	$cetakF10 = URL . 'laporan/cetakf10/' . $cariBatch . '/1000';
-	$cetakA1 = URL . 'laporan/cetakA1/' . $cariBatch . '/1000';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r" .
-	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>';
+	$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $cariBatch . '/1000';
+	$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' .  $cariBatch . '/1000';
+	$cetakLaporan = URL . 'laporan/cetakTerimaProses/' . $namaPegawai . '/' . $cariBatch . '/1000';
+	$cetak = '<h3>' .
+	'<a target="_blank" href="' . $cetakLaporan . '"> Laporan</a>| ' . "\r" .
+	//'<a target="_blank" href="' . $cetakF10 . '"> Cetak F10</a>| ' . "\r" .
+	//'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a>' .
+	'</h3>';
 	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | BatchOperasi : ' . $cariBatch . '<br>' . "\r" .
 	'<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Kemaskini';
