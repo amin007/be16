@@ -301,7 +301,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			1 => 'f2',
 			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
 			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
-			3 => 'concat_ws("-",`nama`) as nama,'
+			3 => 'concat_ws("-",`nama`,`operator`) as nama,'
 			. 'concat_ws("<br>",`kp`,`msic2008`) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
 			. 'concat_ws("",`newss`) as newss,'
