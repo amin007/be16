@@ -1,3 +1,16 @@
+<!-- CSS -->	
+<style>
+.floating-menu {
+/*font-family: sans-serif; */
+/*background: yellowgreen;*/
+padding: 5px;;
+width: 300px;
+z-index: 100;
+position: fixed;
+bottom: 0px;
+right: 0px;
+}
+</style>
 <?php 
 /*echo '<pre>';
 echo '$this->kawalan:<br>'; print_r($this->kawalan); 
@@ -11,20 +24,32 @@ if(isset($this->kawalan['kes'][0]['newss'])):
 	$mencari = URL . 'kawalan/ubahCari/';
 	$carian = $this->cariID;
 	$mesej = ''; //$carian .' ada dalam ' . $this->_jadual;
+	list($namaSyarikat, $semak1, $semak3) = explode("|", $this->kawalan['kes'][0]['nama']);
+	?><nav class="floating-menu">
+	<a class="btn btn-default btn-large">
+	<?php echo "\n" . $namaSyarikat ?>
+	</a>
+	</nav>
+	<?php
 else: # set pembolehubah
 	$mencari = URL . 'kawalan/ubahCari/';
 	$carian = null;
 	$mesej = '::' . $this->cariID . ' tiada dalam ' . $this->_jadual;
-endif;?>
-<h1>Ubah Kawalan<?=$mesej?></h1><?php //echo '<div align="center">' . $mencari . '</div>' ?>
-<div align="center"><form method="GET" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
-<div class="form-group"><div class="input-group">
-	<input type="text" name="cari" class="form-control" value="<?=$carian;?>" 
-	id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
-	<span class="input-group-addon">
-	<input type="submit" value="mencari">
-	</span>
-</div></div>
+endif;
+//echo '<div align="center">' . $mencari . '</div>'; ?>
+<div align="center">
+<form method="GET" action="<?=$mencari;?>" class="form-inline" autocomplete="off">
+<div class="form-group">
+	<h1>Ubah Kawalan<?=$mesej?>
+	<div class="input-group">
+		<input type="text" name="cari" class="form-control" value="<?=$carian;?>" 
+		id="inputString" onkeyup="lookup(this.value);" onblur="fill();">
+		<span class="input-group-addon">
+			<input type="submit" value="mencari">
+		</span>
+	</div>
+	</h1>
+</div>
 <div class="suggestionsBox" id="suggestions" style="display: none;">
 	<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
 </div>
