@@ -272,11 +272,11 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			0 => 'kod',
 			1 => 'f2',
 			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
-			//2 =>  'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
-			3 =>  'concat_ws("",`nama`) as nama,'
-			. 'concat_ws("-",`kp`,`msic2008`) as kp,'
+			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon';
+			3 => 'concat_ws("-",nama,operator) as nama,'
+			. 'concat_ws("<br>",kp,msic2008) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
-			. 'concat_ws("",`newss`) as newss,'
+			. 'concat_ws("",newss) as newss,'
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
 			. ') as nota'
 		);
@@ -301,10 +301,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			1 => 'f2',
 			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
 			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
-			3 => 'concat_ws("-",`nama`,`operator`) as nama,'
-			. 'concat_ws("<br>",`kp`,`msic2008`) as kp,'
+			3 => 'concat_ws("-",nama,operator) as nama,'
+			. 'concat_ws("<br>",kp,msic2008) as kp,'
 			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
-			. 'concat_ws("",`newss`) as newss,'
+			. 'concat_ws("",newss) as newss,'
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
 			. ') as nota'
 		);
