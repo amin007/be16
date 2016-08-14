@@ -1,8 +1,6 @@
 <!-- CSS -->	
 <style>
 .floating-menu {
-/*font-family: sans-serif; */
-/*background: yellowgreen;*/
 padding: 5px;;
 width: 300px;
 z-index: 100;
@@ -26,9 +24,9 @@ if(isset($this->kawalan['kes'][0]['newss'])):
 	$mesej = ''; //$carian .' ada dalam ' . $this->_jadual;
 	list($namaSyarikat, $semak1, $semak3) = explode("|", $this->kawalan['kes'][0]['nama']);
 	?><nav class="floating-menu">
-	<a class="btn btn-default btn-large">
+	<button type="button" class="btn btn-warning btn-lg btn-block">
 	<?php echo "\n" . $namaSyarikat ?>
-	</a>
+	</button>
 	</nav>
 	<?php
 else: # set pembolehubah
