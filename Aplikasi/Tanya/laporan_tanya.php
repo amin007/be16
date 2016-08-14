@@ -255,7 +255,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			foreach($val as $key2=>$p)
 			{
 				//$medan .= ",\r '' as '" . $p . "'";
-				$medan .= ",\r if($r='".$p."','X','&nbsp;') as '" . $p . "'";
+				$medan .= ",\r if($r='" . $p . "','X','&nbsp;') as '" . $p . "'";
 				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
 			}
 		} //echo '<pre>$medan:'; print_r($medan) . '</pre>';
