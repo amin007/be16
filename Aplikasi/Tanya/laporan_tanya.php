@@ -289,7 +289,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanResponden();
 		# bentuk medan yang ingin diulang
-		$medan .= ",\r " . $r . " ";
+		$medan .= ",\r $r ";
 		
 		return $medan; # pulangkan nilai
 	}
@@ -317,7 +317,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanAlamat();
 		# bentuk medan yang ingin diulang
-		$medan .= ",\r " . $r . " ";
+		$medan .= ",\r $r ";
 		
 		return $medan; # pulangkan nilai
 	}
