@@ -545,7 +545,7 @@ class Html
 		}//*/
 		if ($key=='newss')
 		{
-			if ($namaPegawai=='amin'):
+			if ($namaPegawai=='amin' || $namaPegawai=='azwan'):
 				$k1 = URL . 'kawalan/ubah/' . $data;
 				$btn = $birutua;
 				//$btn = $merah;
