@@ -1,4 +1,3 @@
-<!-- CSS -->	
 <style>
 .floating-menu {
 padding: 5px;;
@@ -24,10 +23,9 @@ if(isset($this->kawalan['kes'][0]['newss'])):
 	$mesej = ''; //$carian .' ada dalam ' . $this->_jadual;
 	list($namaSyarikat, $semak1, $semak3) = explode("|", $this->kawalan['kes'][0]['nama']);
 	?><nav class="floating-menu">
-	<button type="button" class="btn btn-warning btn-lg btn-block">
-	<?php echo "\n" . $namaSyarikat ?>
-	</button>
-	</nav>
+	<p class="bg-primary">
+	<?php echo "\n&nbsp;" . $namaSyarikat ?>
+	</p></nav>
 	<?php
 else: # set pembolehubah
 	$mencari = URL . 'kawalan/ubahCari/';
