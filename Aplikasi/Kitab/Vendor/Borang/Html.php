@@ -521,7 +521,7 @@ class Html
 	}
 	# tamat untuk kod php+html 
 #==========================================================================================
-	function paparURL($key, $data, $cariBatch = null, $namaPegawai = null)
+	function paparURL($key, $data, $myTable = null, $cariBatch = null, $namaPegawai = null)
 	{
 		# set pembolehubah Sesi
 		$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
@@ -545,7 +545,7 @@ class Html
 		}//*/
 		if ($key=='newss')
 		{
-			if ($namaPegawai=='amin' || $namaPegawai=='azwan'):
+			if ( in_array($pengguna,array('amin','azwan')) && $myTable == 'senarai'):
 				$k1 = URL . 'kawalan/ubah/' . $data;
 				$btn = $birutua;
 				//$btn = $merah;
@@ -553,7 +553,7 @@ class Html
 				$cb = URL . "operasi/buangID/$namaPegawai/$cariBatch/$data";
 				$pautan = '<a target="_blank" href="' . $k1 . '" class="' . $btn . '">' . $a . '</a>'
 					. '<a href="' . $cb . '" class="btn btn-danger btn-mini">Kosong</a>';
-			elseif ($level=='feprosesan'):
+			elseif ($level == 'feprosesan'):
 				$k1 = URL . 'prosesan/ubah/' . $data;
 				$btn =  $birumuda;
 				$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Ubah2';
