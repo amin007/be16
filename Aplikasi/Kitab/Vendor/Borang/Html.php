@@ -545,7 +545,7 @@ class Html
 		}//*/
 		if ($key=='newss')
 		{
-			if ( in_array($pengguna,array('amin','azwan')) && $myTable == 'senarai'):
+			if ( in_array($pengguna,array('amin007','azwan')) && $myTable == 'senarai'):
 				$k1 = URL . 'kawalan/ubah/' . $data;
 				$btn = $birutua;
 				//$btn = $merah;
