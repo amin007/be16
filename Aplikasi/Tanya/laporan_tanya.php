@@ -322,6 +322,34 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
+	private function medanDaerah()
+	{
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
+			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
+			3 => 'concat_ws("-",nama,operator) as nama,'
+			. 'concat_ws("<br>",kp,msic2008) as kp,'
+			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
+			. 'concat_ws("",newss) as newss,'
+			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
+			. ') as nota'
+		);
+			
+		return $senaraiMedan; # pulangkan nilai
+	}
+	
+	public function kumpulDaerah($item, $ms)
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->medanAlamat();
+		# bentuk medan yang ingin diulang
+		$medan .= ",\r $r ";
+		
+		return $medan; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
 	private function medanA1()
 	{
 		$senaraiMedan = array(
