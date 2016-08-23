@@ -222,6 +222,7 @@ class Perangkaan
 		echo "\n" .'<td colspan="' . ($fields+1) . '"><font size=2>' .
 			'<div align="center">' .
 			'SENARAI ALAMAT KES ' . $SV . ' ' . date('Y') .
+			' ada ' . $allRows .
 			'</div><br>' .
 			'<div align="left">' . $cetakNama .
 			"\n" . 'Tarikh : <u>' . (date('d')) .
