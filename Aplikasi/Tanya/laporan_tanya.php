@@ -343,16 +343,16 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function kumpulDaerah($namaPegawai, $cariBatch, $item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
-		list($medanU, $jadualU, $r, $medan) = $this->medanAlamat();
+		list($medanU, $jadualU, $r, $medan) = $this->medanDaerah();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
-		# set pembolehubah utama untuk sql
 		$cariBatch = 'segamat';
 		//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'%like%','atau'=>'WHERE','medan'=>'bandar','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'206');	
+		$susunkan[] = array('kumpul'=>null,'susun'=>'jalan ASC, nama ASC');	
 		
-		return array($medan, $jadualU, $carian); # pulangkan nilai
+		return array($medan, $jadualU, $carian, $susunkan); # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanA1()
