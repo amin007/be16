@@ -188,7 +188,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
 			. 'respon,posdaftar,posdaftar_terima,nota,nota_prosesan,batchProses,'
 			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
-			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar) as alamat,' . "\r"
+			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar, NGDBBP_CODE_A) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
 			//. 'concat_ws(" ",no,batu,( if (jalan is null, "", concat("JALAN ",jalan) ) ),tmn_kg,poskod,dp_baru) alamat_baru,' . "\r"
 			. 'concat_ws("-",kp,msic2008) msic2008,' 
