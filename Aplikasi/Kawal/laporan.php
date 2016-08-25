@@ -119,7 +119,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'%like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
 			($jadual, $medan2 = '*', $carian, NULL);
@@ -147,7 +147,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 #===============================================================================================
 	public function cdaerah($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		$medan = $this->tanya->kumpulDaerah($item, $ms);# kumpul respon jadi medan sql
+		list($medan) = $this->tanya->kumpulDaerah($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$cariBatch = 'segamat';
