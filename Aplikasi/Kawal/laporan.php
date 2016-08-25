@@ -147,18 +147,19 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 #===============================================================================================
 	public function cdaerah($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		list($medan, $jadual, $carian) = $this->tanya->
-			kumpulDaerah($namaPegawai, $cariBatch, $item, $ms);# kumpul respon jadi medan sql
+		# set pembolehubah utama untuk sql
+		list($medan, $jadual, $carian, $susunkan) = $this->tanya->
+			kumpulDaerah($namaPegawai, $cariBatch, $item, $ms);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
 			($jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
-		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'jalan ASC, nama ASC') );
+		$kumpulkan[] = array_merge($jum, $susunkan );
 		# tanya dalam sql 	
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
-			($jadual, $medan, $carian, $susun);
+			($jadual, $medan, $carian, $kumpulkan);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 		
 		# Set pemboleubah utama
