@@ -156,7 +156,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
-		$kumpulkan[] = array_merge($jum, $susunkan );
+		$kumpulkan[] = array_merge($jum, $susunkan);
 		# tanya dalam sql 	
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $kumpulkan);
