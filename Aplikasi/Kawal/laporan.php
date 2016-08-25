@@ -147,13 +147,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 #===============================================================================================
 	public function cdaerah($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
 	{
-		list($medan) = $this->tanya->kumpulDaerah($item, $ms);# kumpul respon jadi medan sql
-		# set pembolehubah utama untuk sql
-		$jadual = 'be16_kawal';
-		$cariBatch = 'segamat';
-		//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'%like%','atau'=>'WHERE','medan'=>'bandar','apa'=>$cariBatch);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'206');
+		list($medan, $jadual, $carian) = $this->tanya->
+			kumpulDaerah($namaPegawai, $cariBatch, $item, $ms);# kumpul respon jadi medan sql
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
 			($jadual, $medan2 = '*', $carian, NULL);
