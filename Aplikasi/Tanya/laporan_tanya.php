@@ -326,7 +326,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		$senaraiMedan = array(
 			0 => 'kod',
-			1 => 'f2',
+			1 => 'be16_kawal', //'f2',
 			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
 			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
 			3 => 'concat_ws("-",nama,operator) as nama,'
@@ -343,18 +343,16 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function kumpulDaerah($namaPegawai, $cariBatch, $item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
-		list($medanR, $jadualR, $r, $medan) = $this->medanAlamat();
+		list($medanU, $jadualU, $r, $medan) = $this->medanAlamat();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
 		# set pembolehubah utama untuk sql
-		$jadual = 'be16_kawal';
 		$cariBatch = 'segamat';
 		//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'%like%','atau'=>'WHERE','medan'=>'bandar','apa'=>$cariBatch);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'206');
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'206');	
 		
-		
-		return array($medan, $jadual, $carian); # pulangkan nilai
+		return array($medan, $jadualU, $carian); # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
 	private function medanA1()
