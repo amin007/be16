@@ -85,6 +85,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		else
 		{
 			$this->papar->carian = '[tiada id diisi]';
+			$this->papar->_jadual = 'be16_kawal';
 		}
         
 		# isytihar pemboleubah
