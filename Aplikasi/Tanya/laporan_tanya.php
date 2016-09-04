@@ -330,10 +330,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			2 => 'concat_ws(" | ",`respon`,`nota`) as respon',
 			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
 			3 => 'concat_ws("-",nama,operator) as nama,'
-			. 'concat_ws("<br>",kp,msic2008) as kp,'
-			. 'concat_ws(" ","<input type=\"checkbox\">",alamat1,alamat2) as utama,'
+			. 'concat_ws(" ",alamat1,alamat2) as alamat,'
+			. 'concat_ws("","(",jalan,")",orang_a,notel_a,nofax_a,esurat_a) as utama,'
 			. 'concat_ws("",newss) as newss,'
-			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
+			. 'concat_ws(" ",kp,msic2008'
 			. ') as nota'
 		);
 			
@@ -346,10 +346,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		list($medanU, $jadualU, $r, $medan) = $this->medanDaerah();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
-		$cariBatch = 'segamat';
-		//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'%like%','atau'=>'WHERE','medan'=>'bandar','apa'=>$cariBatch);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'206');	
+		//$cariBatch = 'segamat';
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'%like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'');	
 		$susunkan[] = array('kumpul'=>null,'susun'=>'jalan ASC, nama ASC');	
 		
 		return array($medan, $jadualU, $carian, $susunkan); # pulangkan nilai
