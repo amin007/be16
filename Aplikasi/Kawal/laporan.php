@@ -158,7 +158,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
 		$kumpulkan[] = array_merge($jum, $susunkan);
 		# tanya dalam sql 	
-		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
+		$this->papar->hasil[] = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $kumpulkan);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 		
@@ -172,7 +172,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 				
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
-		$this->papar->baca('laporan/f3responden', null, 1);
+		//$this->papar->baca('laporan/f3responden', null, 1);
+		$this->papar->baca('laporan/fetnt', null, 1);
 	}
 #===============================================================================================
 	public function cetakA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
