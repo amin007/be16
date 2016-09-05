@@ -230,6 +230,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		# valid guna gelung foreach
 		foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
 		{# kod php untuk formula matematik
+			$data = null;
 			if(isset($posmen[$rangka][$keyRM])):
 				@eval( '$data = (' . $posmen[$rangka][$keyRM] . ');' );
 				$posmen[$rangka][$keyRM] = $data;
