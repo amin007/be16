@@ -193,6 +193,7 @@ class Operasi_Tanya extends \Aplikasi\Kitab\Tanya
 		# valid guna gelung foreach
 		foreach ($nilaiRM as $keyRM) # $nilaiRM rujuk line 154
 		{# kod php untuk formula matematik
+			$data = null;
 			if(isset($posmen[$jadual][$keyRM])):
 				eval( '$data = (' . $posmen[$jadual][$keyRM] . ');' );
 				$posmen[$jadual][$keyRM] = $data;
