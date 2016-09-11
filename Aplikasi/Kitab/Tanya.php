@@ -208,6 +208,18 @@ class Tanya
 		//echo htmlentities($sql) . '<br>';
 		return $sql;
 	}
+#--- mula - contoh cari dan simpan ---#
+	public function cariArahanSimpanFailSql($backupFile, $myTable)
+	{
+		$sql = "SELECT * INTO OUTFILE '$backupFile' FROM $myTable";
+		
+		echo htmlentities($sql) . '<br>';
+		//$result = $this->db->selectAll($sql);
+		//echo json_encode($result);
+		
+		return $result;	
+}
+#--- tamat - contoh cari dan simpan ---#
 #--- mula - contoh tambah sql guna set ---#
 	public function tambahSql($myTable, $data)
 	{
@@ -412,7 +424,7 @@ class Tanya
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
 	}
-
+	
 	/*public function buangTerus($data, $myTable)
 	{
 		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
