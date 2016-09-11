@@ -81,9 +81,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $cariBatch;
+		$senaraiJadual = array('be16_kawal_lama'); # set senarai jadual yang terlibat
 		# mencari dalam database
 		if ($semakID != null):
-			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			$this->papar->error  = 'Data sudah ada, pandai-pandai ambil ya <br>';
 			$this->papar->error .= $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
@@ -91,12 +91,10 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
-			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
 		else:
-			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
@@ -105,9 +103,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
-		//echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
+		echo '<pre>', print_r($this->papar->cariApa, 1) . '</pre><br>';
 
-		# pergi papar kandungan
+		/*# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
