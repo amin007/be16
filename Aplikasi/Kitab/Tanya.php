@@ -213,12 +213,12 @@ class Tanya
 	{
 		$sql = "SELECT * INTO OUTFILE '$backupFile' FROM $myTable";
 		
-		echo htmlentities($sql) . '<br>';
-		//$result = $this->db->selectAll($sql);
+		echo 'Class Tanya.php |<br>' . htmlentities($sql) . '<br>';
+		$result = $this->db->selectAll($sql);
 		//echo json_encode($result);
 		
 		return $result;	
-}
+	}
 #--- tamat - contoh cari dan simpan ---#
 #--- mula - contoh tambah sql guna set ---#
 	public function tambahSql($myTable, $data)
