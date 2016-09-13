@@ -1,4 +1,5 @@
-<!-- khas untuk jquery dan js2 lain -->
+<!-- khas untuk jquery dan js2 lain 
+================================================== -->
 <script type="text/javascript" src="<?=JQUERY?>"></script>
 <script type="text/javascript" src="<?=BOOTSTRAPJS?>"></script>
 <?php
@@ -13,7 +14,7 @@ if (isset($this->js))
 ?><?php 
 $dataURL = dpt_url();
 //echo '<pre>'; echo '<br>$dataURL:<br>'; print_r($dataURL); echo '</pre>';
-$classKhas = array('ubah','hadirbulan','awal');
+$classKhas = array('ubah','hadirbulan','awal','senarai');
 if ( isset($dataURL[1]) && ( in_array($dataURL[1],$classKhas) )) :
 echo "\n\n"; ?>
 <script type="text/javascript">
