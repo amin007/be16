@@ -1,4 +1,4 @@
-<!-- Footer
+<?php echo "\n"; ?><!-- Footer
 ================================================== -->
 <footer class="footer">
 	<div class="container">
@@ -10,6 +10,6 @@ echo $theme = (isset($theme)) ? $theme : null;
 		</span>
 	</div>
 </footer>
-<?php require 'jquery.php'; ?>
+<?php echo "\n"; require 'jquery.php'; ?>
 </body>
 </html>
