@@ -81,7 +81,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $cariBatch;
-		$senaraiJadual = array('be16_kawal_lama'); # set senarai jadual yang terlibat
+		$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 		# mencari dalam database
 		if ($semakID != null):
 			$this->papar->error  = 'Data sudah ada, pandai-pandai ambil ya <br>';
