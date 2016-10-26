@@ -51,7 +51,7 @@ class Bacafail
 		# pecah data
 		$pecahUrl = explode('/', $url);
 		$template = $pecahUrl[0];
-		$sumber = 'http://backup/private_html/tahun/be16/sumber/rangka-dawai/';
+		$sumber = 'http://' . $_SERVER['SERVER_NAME'] . '/private_html/tahun/be16/sumber/rangka-dawai/';
 		$lokasi = $sumber . $template . '/';
 		//echo '<pre>$pecahUrl->'; print_r($pecahUrl) . '</pre>';
 		//echo "\$template = $template | \$lokasi = $lokasi ";
