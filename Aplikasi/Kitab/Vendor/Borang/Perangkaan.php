@@ -250,7 +250,7 @@ class Perangkaan
 		endif;
 	}
 #- cetak automatik tanpa kita setkan nama medan
-	function paparJadual_FAsas($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+	public function paparJadual_FAsas($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris)
 	{
 		$printed_headers = false; # mula bina jadual
 		for ($kira=0; $kira < count($hasil); $kira++):
@@ -267,6 +267,41 @@ class Perangkaan
 			} 
 			#--------------------------------------------------------------------
 		endfor;
+	}
+# papar data automatik	
+	public function paparDataBiasa($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris)
+	{
+		for ($kira=0; $kira < count($hasil); $kira++):
+		#--------------------------------------------------------------------
+			?><tr><?php
+			echo "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+				. $hasil[$kira]['newss'] . "\">" . ($kira+1) . "</a></td>\n";
+			foreach ( $hasil[$kira] as $key=>$data ) :
+				?><td><?php echo $data ?></td><?php
+			endforeach;
+			?></tr>
+		<?php
+		#--------------------------------------------------------------------
+		endfor;
+		
+		# cukupkan 30 baris
+		$this->paparBaris30($allRows,$fields,$item,$ms,$baris);
+	}
+#- cukupkan 30 sahaja
+	public function paparBaris30($allRows,$fields,$item,$ms,$baris=30)
+	{
+		# istihar
+		$mula = $allRows+1;
+		$akhir = $baris; //$allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
+
+		for($i = $mula; $i <= ($akhir); $i++)
+		{					
+			echo '<tr><td>' . $i . '</td>';
+				for($j = 1; $j <= ($fields); $j++)
+					echo '<td>&nbsp;</td>';
+			echo '<tr>';
+		}//*/
+
 	}
 #- cetak no tel sahaja	
 	function paparJadual_FAlamat($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
@@ -311,15 +346,15 @@ class Perangkaan
 		if ($allRows=='0'): echo "\n";
 		else: # mula kalau jumpa
 			# set pembolehubah untuk highlight
-			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
-			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
+			//$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
+			//$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
 			$br = ''; //'<br>&nbsp';
 			//echo "<tbody>\n"; # mula tbody
 			foreach ($hasil as $kira => $nilai)
 			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
-				$h = ($kira%'2'=='0') ? $highlight : $highlight2;
-				$tr = "<tr$h>";
-				if ($kira%$baris=='0')
+				//$h = ''; ($kira%'2'=='0') ? $highlight : $highlight2;
+				$tr = "<tr>";
+				/*if ($kira%$baris=='0')
 				{			
 					$ms = ($kira/$baris)+1;
 					$item = ceil($allRows/$baris);
@@ -331,14 +366,16 @@ class Perangkaan
 				{
 					echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
 						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
-				}
+				}//*/
+				echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
 				foreach ($nilai as $key => $data) 
 					echo '<td>' . $data . $br . '</td>' . "\n";
 				echo "</tr>\n";
 			}
 			
 			## cukupkan 30 rows
-				$mula = $allRows+1;
+				/*$mula = $allRows+1;
 				$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
 				for($i = $mula; $i <= ($akhir); $i++)
 				{					
@@ -346,7 +383,7 @@ class Perangkaan
 						for($j = 1; $j <= ($fields); $j++)
 						echo '<td>&nbsp;</td>';
 					echo '<tr>';
-				}
+				}//*/
 			
 			## tamat tbody
 			//echo "</tbody>\n";
@@ -437,6 +474,5 @@ class Perangkaan
 			//echo "</tbody>\n";
 		endif;
 	}
-
 #-------------------------------------------------------------------------------
 }
