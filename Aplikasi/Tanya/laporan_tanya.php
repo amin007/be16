@@ -311,11 +311,42 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			
 		return $senaraiMedan; # pulangkan nilai
 	}
+
+	private function medanAlamat2()
+	{
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => 'concat_ws("","<input type=\"checkbox\">",`respon`,`nota`) as respon',
+			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
+			3 => 'concat_ws("-",nama,operator) as nama,'
+			. 'concat_ws("-",kp,msic2008) as kp,'
+			. ' concat_ws("|",' . "\r"
+			. ' 	concat_ws("="," orang",orang_a),' . "\r"			
+			. ' 	concat_ws("="," tel",notel_a),' . "\r"
+			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
+			. ' 	concat_ws("="," responden",responden),' . "\r"
+			. ' 	concat_ws("="," notel",notel),' . "\r"
+			. ' 	concat_ws("="," nofax",nofax)' . "\r"
+ 			. ' ) as utama,'			
+			. 'concat_ws("",newss) as newss,'
+			. ' concat_ws("|",' . "\r"
+			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
+			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
+			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
+			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
+			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
+			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
+ 			. ' ) as nota'
+		);
+			
+		return $senaraiMedan; # pulangkan nilai
+	}
 	
 	public function kumpulAlamat($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
-		list($medanR, $jadualR, $r, $medan) = $this->medanAlamat();
+		list($medanR, $jadualR, $r, $medan) = $this->medanAlamat2();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
 		
