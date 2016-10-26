@@ -241,7 +241,14 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		//echo "\$namaPegawai = $namaPegawai<br>\$asalBatch = $asalBatch<br>";
 		$dataID = bersihGET('cari'); # bersihkan data $_POST
-		
+		if (myGetType($dataID)=='numeric'):
+			$dataID = kira3($dataID, 12); # letak 0 pada kiri
+		else:
+			echo 'jenis data : ' . myGetType($dataID) 
+				. '. Sila patah balik <hr>';
+			exit();
+		endif;
+			
 		# ubahsuai $posmen
 		$jadual = 'be16_kawal'; 
 		$medanID = 'newss';
@@ -272,13 +279,13 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			endif;
 		else: 
 			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
-		endif;
+		endif;//*/
 		
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
 		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID");
 	}
-
+	
 	public function buangID($namaPegawai,$cariBatch,$dataID)
 	{
 		# semak session //echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
@@ -674,7 +681,6 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar/$dataID" . '';
 		header('location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar/$dataID");
-	}
-	
+	}	
 #==========================================================================================	
 }
