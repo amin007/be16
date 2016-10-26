@@ -196,14 +196,16 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
 			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," orang",orang_a),' . "\r"			
+			. ' 	concat_ws("="," orang",orang_a),' . "\r"
 			. ' 	concat_ws("="," tel",notel_a),' . "\r"
 			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
 			. ' 	concat_ws("="," responden",responden),' . "\r"
 			. ' 	concat_ws("="," notel",notel),' . "\r"
 			. ' 	concat_ws("="," nofax",nofax)' . "\r"
  			. ' ) as dataHubungi,'			
-			. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
+			. 'notel_a,notel,nofax_a,nofax,'
+			. 'concat_ws(" ",orang_a,"[Pengurus]") as orang_a,' 
+			. 'responden,esurat_a,email,'
 			. 'if (hasil is null, "", '
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
