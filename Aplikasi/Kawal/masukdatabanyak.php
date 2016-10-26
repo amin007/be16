@@ -8,7 +8,7 @@ class Masukdatabanyak extends \Aplikasi\Kitab\Kawal
 		//echo '<br>class Laporan extends Kawal';
 		parent::__construct();
         //\Aplikasi\Kitab\Kebenaran::kawalMasuk();
-		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
+		//\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 
 		$this->_folder = 'laporan';
 	}
@@ -27,9 +27,9 @@ class Masukdatabanyak extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(100, $item=100, $ms=1);
 		$data = $this->tanya->tarikNombor();
 		
-		//echo '<pre>$data:<br>'; print_r($data) . '</pre>';
+		echo '<pre>$data:<br>'; print_r($data) . '</pre>';
 		
-		$medan2 = 'newss,nossm,nama,operator,alamat1,alamat2,poskod,bandar,posdaftar,'
+		$medan2 = 'newss,nossm,nama,msic2008,alamat1,alamat2,poskod,bandar,posdaftar,'
 			//. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," orang",orang_a),' . "\r"
@@ -38,7 +38,7 @@ class Masukdatabanyak extends \Aplikasi\Kitab\Kawal
 			. ' ) as dataHubungi'
 			. '';
 		$cari2[] = array('fix'=>'zin','atau'=>'WHERE','medan'=>'newss','apa'=>"($data)");			
-		$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
+		$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'msic2008,nama') );
 		$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari//cariSql
 			cariSemuaData
 			($jadual, $medan2, $cari2, $susun);
