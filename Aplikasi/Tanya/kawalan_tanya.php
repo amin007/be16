@@ -174,10 +174,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 #==========================================================================================
 	public function medanKawalan($cariID) 
 	{ 
-		$news1 = 'http://sidapmuar/ekonomi/ckawalan/ubah/' . $cariID;
+		$news1 = 'http://' . $_SERVER['SERVER_NAME'] . '/ekonomi/ckawalan/ubah/' . $cariID;
 		$namaS = $cariID . '/2010/2015/cetak/",replace(nama,\' \',\'-\'),"';
-		$news2 = 'http://sidapmuar/ekonomi/cprosesan/ubah/",kp,"/' . $namaS; 
-		$news3 = 'http://sidapmuar/ekonomi/semakan/ubah/",kp,"/' . $cariID . '/2010/2015/'; 
+		$news2 = 'http://' . $_SERVER['SERVER_NAME'] . '/ekonomi/cprosesan/ubah/",kp,"/' . $namaS;
+		$news3 = 'http://' . $_SERVER['SERVER_NAME'] . '/ekonomi/semakan/ubah/",kp,"/' . $cariID . '/2010/2015/';
 		$url1 = '" <a target=_blank href=' . $news1 . '>SEMAK 1</a>"';
 		//$url2 = '" <a target=_blank href=' . $news2 . '>SEMAK 2</a>"';
 		$url2 = 'concat("<a target=_blank href=' . $news2 . '>SEMAK 2</a>")';
