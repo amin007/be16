@@ -18,7 +18,7 @@ class Perangkaan
 			case 'BE':  $SV='BANCI EKONOMI'; break;
 			default: $SV=null;
 		endswitch;
-		
+
 		#pulangkan nilai
 		return $SV;
 	}
@@ -83,7 +83,7 @@ class Perangkaan
 		echo '<tr style="page-break-before:always">';
 		$this->paparJadualF3_TajukBesar($allRows,$fields,$sv,$namaOrg,$item,$ms);
 		echo '</tr>';
-		
+
 		## tajuk medan - keputusan 
 		echo '<tr>';
 		echo "\n<th rowspan=\"2\">Bil</th>\n";
@@ -97,7 +97,7 @@ class Perangkaan
 			. '</th>' . "\n";
 		echo '<th colspan="22">Diisi oleh Anggota Kerja Luar sahaja</th>' . "\n";
 		echo '</tr>';
-		
+
 		## bawah
 		echo '<tr>';
 		echo '<th>SBU</th>' . "\n";
@@ -120,7 +120,7 @@ class Perangkaan
 		echo '<th rowspan=2>NO SIRI NEWSS</th>' . "\n";
 		echo '<th colspan=22>Diisi oleh Anggota Kerja Luar sahaja</th>' . "\n";
 		echo "</tr>\n";
-		
+
 	}
 
 	function paparJadualF3_TajukBawah($hasil,$rows,$fields)
@@ -138,7 +138,7 @@ class Perangkaan
 			'':'<th>' . $kunci . '</th>' . "\n";	
 		}
 		echo "</tr>\n";
-		
+
 		## pecah muka surat
 		//$cetak=($bil==$rows)?'style="page-break-after:always">':'>';
 		$cetak='style="page-break-after:always">';
@@ -197,7 +197,7 @@ class Perangkaan
 		$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
 		//$mula = $rows+1;
 		for($i = $mula; $i <= ($akhir); $i++)
-		{					
+		{
 			echo '<tr><td>' . $i . '</td>';
 			echo '<td>&nbsp;</td>';
 			//echo "<td><font color=\"yellow\">"
@@ -255,7 +255,7 @@ class Perangkaan
 		$printed_headers = false; # mula bina jadual
 		for ($kira=0; $kira < count($hasil); $kira++):
 		#--------------------------------------------------------------------
-			if ( !$printed_headers ) # papar tajuk medan sekali sahaja: 	
+			if ( !$printed_headers ) # papar tajuk medan sekali sahaja:
 			{
 				?><tr><th>#</th><?php
 				foreach ( array_keys($hasil[$kira]) as $tajuk ) 
@@ -267,41 +267,6 @@ class Perangkaan
 			} 
 		#--------------------------------------------------------------------
 		endfor;
-	}
-# papar data automatik	
-	public function paparDataBiasa($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris)
-	{
-		for ($kira=0; $kira < count($hasil); $kira++):
-		#--------------------------------------------------------------------
-			?><tr><?php
-			echo "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
-				. $hasil[$kira]['newss'] . "\">" . ($kira+1) . "</a></td>\n";
-			foreach ( $hasil[$kira] as $key=>$data ) :
-				?><td><?php echo $data ?></td><?php
-			endforeach;
-			?></tr>
-		<?php
-		#--------------------------------------------------------------------
-		endfor;
-		
-		# cukupkan 30 baris
-		$this->paparBaris30($allRows,$fields,$item,$ms,$baris);
-	}
-#- cukupkan 30 sahaja
-	public function paparBaris30($allRows,$fields,$item,$ms,$baris=30)
-	{
-		# istihar
-		$mula = $allRows+1;
-		$akhir = $baris; //$allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
-
-		for($i = $mula; $i <= ($akhir); $i++)
-		{					
-			echo '<tr><td>' . $i . '</td>';
-				for($j = 1; $j <= ($fields); $j++)
-					echo '<td>&nbsp;</td>';
-			echo '<tr>';
-		}//*/
-
 	}
 #- cetak no tel sahaja	
 	function paparJadual_FAlamat($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
@@ -337,57 +302,6 @@ class Perangkaan
 		echo "<th>$space A1 $space</th>\n";
 		echo "<th>$space2 NON&nbsp;A1 $space2</th>\n";
 		echo '</tr>';
-	}
-
-	function paparJadualF3_Data2($kepala=null,$sv,$namaOrg,
-		$allRows,$fields,$hasil,$item,$ms,$baris=30)
-	{	
-		# nak cari $allRows
-		if ($allRows=='0'): echo "\n";
-		else: # mula kalau jumpa
-			# set pembolehubah untuk highlight
-			//$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
-			//$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
-			$br = ''; //'<br>&nbsp';
-			//echo "<tbody>\n"; # mula tbody
-			foreach ($hasil as $kira => $nilai)
-			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
-				//$h = ''; ($kira%'2'=='0') ? $highlight : $highlight2;
-				$tr = "<tr>";
-				/*if ($kira%$baris=='0')
-				{			
-					$ms = ($kira/$baris)+1;
-					$item = ceil($allRows/$baris);
-					$this->paparJadualF3_TajukMedan2($kepala,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
-					echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
-						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
-				}
-				else
-				{
-					echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
-						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
-				}//*/
-				echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
-						. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
-				foreach ($nilai as $key => $data) 
-					echo '<td>' . $data . $br . '</td>' . "\n";
-				echo "</tr>\n";
-			}
-			
-			## cukupkan 30 rows
-				/*$mula = $allRows+1;
-				$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
-				for($i = $mula; $i <= ($akhir); $i++)
-				{					
-					echo '<tr><td>' . $i . '</td>';
-						for($j = 1; $j <= ($fields); $j++)
-						echo '<td>&nbsp;</td>';
-					echo '<tr>';
-				}//*/
-			
-			## tamat tbody
-			//echo "</tbody>\n";
-		endif;
 	}
 	
 	# buat koding baru
@@ -486,7 +400,7 @@ class Perangkaan
 #-------------------------------------------------------------------------------
 # jadual untuk prosesan
 	function paparJadualProses($allRows,$rows,$fields,$item,$ms,$hasil)
-	{	
+	{
 		// nak cari $rows
 		if ($rows=='0'): echo "\n";
 		else: // mula kalau jumpa
@@ -510,7 +424,7 @@ class Perangkaan
 			# PEMBOLEH UBAH
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
-		
+
 			//echo "<tbody>\n"; # mula tbody
 			foreach ($hasil as $kira => $nilai)
 			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
@@ -522,7 +436,7 @@ class Perangkaan
 					:'<td align="center">' . $data . '</td>';
 				}echo "</tr>\n";
 			}
-			
+
 			//echo "</tbody>\n";
 		endif;
 	}
