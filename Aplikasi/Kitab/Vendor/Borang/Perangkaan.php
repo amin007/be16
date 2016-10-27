@@ -232,7 +232,7 @@ class Perangkaan
 
 	}
 # pilih tajuk laporan
-	function paparJadualF3_TajukMedan2($kepala,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms)
+	function paparJadualF3_TajukMedan2($kepala=0,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris)
 	{
 		## tajuk besar
 		echo '<tr style="page-break-before:always">';
@@ -242,11 +242,11 @@ class Perangkaan
 		## pilih tajuk kecil
 		//echo "<tr><th>\$kepala $kepala</th></tr>";
 		if($kepala == 'FAlamat'):
-			$this->paparJadual_FAlamat($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+			$this->paparJadual_FAlamat($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris);
 		elseif($kepala == 'F10'):
-			$this->paparJadual_F10($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+			$this->paparJadual_F10($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris);
 		else:
-			$this->paparJadual_FAsas($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms);
+			$this->paparJadual_FAsas($sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris);
 		endif;
 	}
 #- cetak automatik tanpa kita setkan nama medan
@@ -254,7 +254,7 @@ class Perangkaan
 	{
 		$printed_headers = false; # mula bina jadual
 		for ($kira=0; $kira < count($hasil); $kira++):
-			#--------------------------------------------------------------------
+		#--------------------------------------------------------------------
 			if ( !$printed_headers ) # papar tajuk medan sekali sahaja: 	
 			{
 				?><tr><th>#</th><?php
@@ -265,7 +265,7 @@ class Perangkaan
 				?></tr>
 		<?php	$printed_headers = true; 
 			} 
-			#--------------------------------------------------------------------
+		#--------------------------------------------------------------------
 		endfor;
 	}
 # papar data automatik	
@@ -389,6 +389,58 @@ class Perangkaan
 			//echo "</tbody>\n";
 		endif;
 	}
+	
+	# buat koding baru
+	public function kiraBarisDulu($kepala,$kp,$namaOrg,$rows,$fields,$hasil,$item,$ms,$baris)
+	{
+		$allRows = count($hasil);
+		$br = ''; //'<br>&nbsp';
+		foreach ($hasil as $kira => $nilai): //echo "\r<br> \$kira = $kira => ";
+			# untuk tajuk atas 
+			if ($kira%$baris=='0')
+			{
+				//$ms = ($kira/$baris)+1; 
+				$item = ceil($allRows/$baris); //echo "| kini \$ms = $ms | \$item = $item ";
+				$this->paparJadualF3_TajukMedan2($kepala,$kp,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris);
+			}
+			# untuk isi tengah
+			$this->paparKitaInsanBiasa($br, $kira, $nilai);
+			# cukupkan 30 baris
+			if ($kira == ($allRows-1) ) 
+				$this->paparCukupBaris30($kira,$allRows,$fields,$item,$ms,$baris);
+		endforeach; # end foreach ($hasil as $kira => $nilai)
+
+	}
+	
+	function paparKitaInsanBiasa($br, $kira, $nilai)
+	{
+		$tr = "<tr>";
+		echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+			. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
+		foreach ($nilai as $key => $data) 
+			echo '<td>' . $data . $br . '</td>' . "\n";
+		echo "</tr>\n";
+		
+	}
+#- cukupkan 30 sahaja
+	function paparCukupBaris30($kira,$allRows,$fields,$item,$ms,$baris=30)
+	{
+		# istihar
+		$mula = $allRows+1;
+		$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
+		//echo "\r \$mula = $mula | \$akhir = $akhir <hr>";
+		
+		# mula mengira
+		for($i = $mula; $i <= ($akhir); $i++)
+		{	//echo "\r<br> \$i = $i => ";
+			echo '<tr><td>&nbsp;<br>' . $i . '</td>';
+				for($j = 1; $j <= ($fields); $j++)
+					echo '<td>&nbsp;</td>';
+			echo '<tr>';
+		}//*/
+
+	}
+
 	# papar data biasa
 	function paparJadual_Data($allRows,$rows,$fields,$item,$ms,$hasil)
 	{	
