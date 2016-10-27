@@ -14,15 +14,16 @@ include 'diatas.php';
 		$rows = count($this->hasil); 
 		$hasil = $this->hasil;
 	endif;
-	//$allRows = isset($this->kiraSemuaBaris) ? $this->kiraSemuaBaris : 1;
+	$allRows = isset($this->kiraSemuaBaris) ? $this->kiraSemuaBaris : 1;
 	$item = isset($this->item) ? $this->item : 30;
 	$ms = isset($this->ms) ? $this->ms : 1;
 	$baris = isset($this->baris) ? $this->baris : 30;
 	/*# semak data
 	echo '<pre>$hasilLaporan:'; print_r($this->hasil) . '</pre>';
-	echo '<br>$baris:' . $rows . '|' . count($this->hasil) . '<br>';
-	echo '<br>$lajur:' . $fields . '|' . count($this->hasil[0]) . '<br>';
-	echo '<br>$kp:' . $kp . '<br>';
+	echo '<br>$allRows:' . $allRows . '';
+	echo '<br>$baris:' . $rows . '|' . count($this->hasil) . '';
+	echo '<br>$lajur:' . $fields . '|' . count($this->hasil[0]) . '';
+	echo '<br>$kp:' . $kp . '<hr>' . "\r";
 	//*/
 
 if (count($this->hasil) == 0):
@@ -32,8 +33,7 @@ else:
 ?>
 	<table border="1" class="excel" width="100%" height="100%">
 	<?php
-	$jadual->paparJadual_FAsas($kp,$namaOrg,$rows,$fields,$this->hasil,$item,$ms,$baris);
-	$jadual->paparDataBiasa($kp,$namaOrg,$rows,$fields,$this->hasil,$item,$ms,$baris);
+	$jadual->kiraBarisDulu($kepala='',$kp,$namaOrg,$rows,$fields,$this->hasil,$item,$ms,$baris);
 	?>
 	</table>
 <?php
