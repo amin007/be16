@@ -1,9 +1,9 @@
 <?php
-namespace Aplikasi\Kitab; //echo __NAMESPACE__; 
-class Tanya 
+namespace Aplikasi\Kitab; //echo __NAMESPACE__;
+class Tanya
 {
 #==========================================================================================
-	function __construct() 
+	function __construct()
 	{
 		$this->db = new \Aplikasi\Kitab\DB_Pdo(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
 		//$this->db = new \Aplikasi\Kitab\DB_Mysqli(DB_TYPE, DB_HOST, DB_NAME, DB_USER, DB_PASS);
@@ -66,13 +66,13 @@ class Tanya
 			$dimana .= " $atau$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
 			$dimana .= " $atau$medan not in $cariApa $akhir\r";
-		
+
 		return $dimana; //echo '<br>' . $dimana;
 	}
-	
+
 	private function dimana($carian)
 	{
-		$where = null; //echo '<pre>'; print_r($carian); echo '</pre>';;
+		$where = null; //echo '<pre>'; print_r($carian); echo '</pre>';
 		if($carian==null || $carian=='' || empty($carian) ):
 			$where .= null;
 		else:
@@ -87,13 +87,13 @@ class Tanya
 				$where .= $this->jika($fix,$atau,$medan,$cariApa,$akhir);
 			}
 		endif;
-	
-		return $where; //echo '<pre>'; print_r($where); echo '</pre>';;
+
+		return $where; //echo '<pre>'; print_r($where); echo '</pre>';
 	}
 
 	private function dibawah($carian)
 	{
-		$susunan = null; //echo '<pre>'; print_r($carian); echo '</pre>';;
+		$susunan = null; //echo '<pre>'; print_r($carian); echo '</pre>';
 		if($carian==null || empty($carian) ):
 			$susunan .= null;
 		else:
@@ -113,7 +113,7 @@ class Tanya
 					" LIMIT $max\r" : " LIMIT $dari,$max\r";
 		endif; 
 
-		return $susunan; //echo '<pre>'; print_r($susunan); echo '</pre>';;
+		return $susunan; //echo '<pre>'; print_r($susunan); echo '</pre>';
 	}
 
 	public function kiraMedan($myTable, $medan, $carian)
@@ -153,8 +153,8 @@ class Tanya
 		CHARACTER_SET_NAME, COLLATION_NAME	
 		COLUMN_TYPE, COLUMN_KEY	EXTRA, PRIVILEGES, COLUMN_COMMENT*/
 		$medan = 'COLUMN_NAME, DATA_TYPE, ' . "\r"
-			   . 'concat_ws(" ",CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION) DATA_NO, '. "\r"
-			   . 'COLUMN_KEY, EXTRA, PRIVILEGES,	COLUMN_COMMENT';
+			   . 'concat_ws(" ",CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION) DATA_NO, ' . "\r"
+			   . 'COLUMN_KEY, EXTRA, PRIVILEGES, COLUMN_COMMENT';
 		$medan = huruf('Besar_Depan', $medan);
 		$sql = ' SELECT ' . "\r" . $medan . "\r" 
 			 . ' FROM INFORMATION_SCHEMA.COLUMNS' . "\r"
@@ -164,7 +164,7 @@ class Tanya
 		echo htmlentities($sql) . '<br>';
 		return $this->db->selectAll($sql);
 	}
-	
+
 	public function ubahMedan($myTable, $medan)
 	{
 		$sql = 'ALTER TABLE `' . $myTable . '` '
@@ -194,7 +194,7 @@ class Tanya
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
-		
+
 		echo htmlentities($sql) . '<br>';
 		//echo '<pre>$sql->' . $sql . '</pre><br>';
 	}
@@ -204,7 +204,7 @@ class Tanya
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
-		
+
 		//echo htmlentities($sql) . '<br>';
 		return $sql;
 	}
@@ -212,11 +212,11 @@ class Tanya
 	public function cariArahanSimpanFailSql($backupFile, $myTable)
 	{
 		$sql = "SELECT * INTO OUTFILE '$backupFile' FROM $myTable";
-		
+
 		echo 'Class Tanya.php |<br>' . htmlentities($sql) . '<br>';
 		$result = $this->db->selectAll($sql);
 		//echo json_encode($result);
-		
+
 		return $result;	
 	}
 #--- tamat - contoh cari dan simpan ---#
@@ -228,7 +228,7 @@ class Tanya
 		{
 			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
 		}
-		
+
 		# set sql
 		$sql = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
@@ -244,7 +244,7 @@ class Tanya
 		{
 			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
 		}
-		
+
 		# set sql
 		$sql = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
@@ -263,7 +263,7 @@ class Tanya
 	public function tambahSqlBanyakNilai($myTable, $medan, $data)
 	{
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
-		
+
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
@@ -275,7 +275,7 @@ class Tanya
 	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
 	{
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
-		
+
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
@@ -286,7 +286,7 @@ class Tanya
 	public function tambahBanyakNilai($myTable, $medan, $data)
 	{
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
-		
+
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
@@ -294,7 +294,7 @@ class Tanya
 		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->insertAll($sql);
 	}
-	
+
 #--- tamat - contoh tambah sql guna values ---#
 	public function salinJadual($myTableNew, $medan, $myTableOld)
 	{
@@ -302,11 +302,11 @@ class Tanya
 		$sql = 'CREATE TABLE ' . $myTableNew . ' AS'
 			 . ' SELECT ' . $medan . ' FROM ' . $myTableOld
 			 . '';
-		
+
 		echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
 		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
 	}
-	
+
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
 	{
 		# set sql
@@ -314,15 +314,15 @@ class Tanya
 		$sql .= substr($cantumMedan, 0, -1);
 		$sql .= "\r);\r\rINSERT INTO `$myTable` VALUES \r";
 		$sql .= implode(",\r", $cantumData);
-		
+
 		echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
 		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
 	}
-	
+
 	public function ubahSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
-		
+
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
@@ -330,10 +330,10 @@ class Tanya
 			elseif ($medan != $medanID)
 				$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
 		}
-		
+
 		$senaraiData = implode(",\r",$senarai);
 		$where = "`$cariID` = '{$data[$cariID]}' ";
-		
+
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
 		//echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
@@ -343,7 +343,7 @@ class Tanya
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
-		
+
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
@@ -352,9 +352,9 @@ class Tanya
 				$senarai[] = ($nilai==null) ? 
 				" `$medan`=null" : " `$medan`=`$nilai`"; 
 		}
-		
+
 		$senaraiData = implode(",\r",$senarai);
-		
+
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';//*/
@@ -363,7 +363,7 @@ class Tanya
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
 		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
-		
+
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
@@ -372,9 +372,9 @@ class Tanya
 				$senarai[] = ($nilai==null) ? 
 				" `$medan` = null" : " `$medan` = `$nilai`"; 
 		}
-		
+
 		$senaraiData = implode(",\r",$senarai);
-		
+
 		# set sql
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';//*/
@@ -385,17 +385,17 @@ class Tanya
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		//echo '<pre>$dimana->', print_r($dimana, 1); echo '</pre>';
 		$senarai = null;
-		
+
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
 				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
 			$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`='$nilai'"; 
+				" `$medan`=null" : " `$medan`='$nilai'";
 		}
-		
+
 		$senaraiData = implode(",\r",$senarai);
-		
+
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
@@ -408,33 +408,33 @@ class Tanya
 		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
 		//echo '<pre>$dimana->', print_r($dimana, 1) . '</pre>';
 		$senarai = null;
-		
+
 		foreach ($data as $medan => $nilai)
 		{
 			if ($medan == $medanID)
 				$where = " WHERE `$medanID` = '{$dimana[$medanID]}' ";
 			$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`='$nilai'"; 
+				" `$medan`=null" : " `$medan`='$nilai'";
 		}
-		
+
 		$senaraiData = implode(",\r",$senarai);
-		
+
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
 	}
-	
+
 	/*public function buangTerus($data, $myTable)
 	{
 		//echo '<pre>$sql->', print_r($data, 1); echo '</pre>';
 		$cariID = 'newss';
-				
+
 		// set sql
 		//$sql = " DELETE `$myTable` WHERE `$cariID` = '{$data[$cariID]}' ";
 		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
-			
+
 	}//*/
-	
+
 #==========================================================================================
 }
