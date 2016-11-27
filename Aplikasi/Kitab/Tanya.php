@@ -27,13 +27,13 @@ class Tanya
 		elseif($fix=='like')
 			$dimana .= " $atau`$medan` like '$cariApa' $akhir\r";
 		elseif($fix=='xlike')
-			$dimana .= " $atau`$medan` not like '$cariApa' $akhir\r";	
+			$dimana .= " $atau`$medan` not like '$cariApa' $akhir\r";
 		elseif($fix=='%like%')
 			$dimana .= " $atau`$medan` like '%$cariApa%' $akhir\r";	
 		elseif($fix=='x%like%')
-			$dimana .= " $atau`$medan` not like '%$cariApa%' $akhir\r";	
+			$dimana .= " $atau`$medan` not like '%$cariApa%' $akhir\r";
 		elseif($fix=='like%')
-			$dimana .= " $atau`$medan` like '$cariApa%' $akhir\r";	
+			$dimana .= " $atau`$medan` like '$cariApa%' $akhir\r";
 		elseif($fix=='xlike%')
 			$dimana .= " $atau`$medan` not like '$cariApa%' $akhir\r";
 		elseif($fix=='%like')
@@ -41,7 +41,7 @@ class Tanya
 		elseif($fix=='x%like')
 			$dimana .= " $atau`$medan` not like '%$cariApa' $akhir\r";
 		elseif($fix=='in')
-			$dimana .= " $atau`$medan` in $cariApa $akhir\r";	
+			$dimana .= " $atau`$medan` in $cariApa $akhir\r";
 		elseif($fix=='xin')
 			$dimana .= " $atau`$medan` not in $cariApa $akhir\r";
 		elseif($fix=='khas2')
@@ -65,14 +65,14 @@ class Tanya
 		elseif($fix=='zin')
 			$dimana .= " $atau$medan in $cariApa $akhir\r";
 		elseif($fix=='zxin')
-			$dimana .= " $atau$medan not in $cariApa $akhir\r";	
+			$dimana .= " $atau$medan not in $cariApa $akhir\r";
 		
 		return $dimana; //echo '<br>' . $dimana;
 	}
 	
 	private function dimana($carian)
 	{
-		$where = null; //echo '<pre>'; print_r($carian).  '<pre>';
+		$where = null; //echo '<pre>'; print_r($carian); echo '</pre>';;
 		if($carian==null || $carian=='' || empty($carian) ):
 			$where .= null;
 		else:
@@ -80,7 +80,7 @@ class Tanya
 			{
 				   $atau = isset($carian[$key]['atau'])  ? $carian[$key]['atau'] . ' ' : null;
 				  $medan = isset($carian[$key]['medan']) ? $carian[$key]['medan']      : null;
-				    $fix = isset($carian[$key]['fix'])   ? $carian[$key]['fix']        : null;			
+				    $fix = isset($carian[$key]['fix'])   ? $carian[$key]['fix']        : null;
 				$cariApa = isset($carian[$key]['apa'])   ? $carian[$key]['apa']        : null;
 				  $akhir = isset($carian[$key]['akhir']) ? $carian[$key]['akhir']      : null;
 				//echo "\r$key => ($fix) $atau $medan -> '$cariApa' |";
@@ -88,12 +88,12 @@ class Tanya
 			}
 		endif;
 	
-		return $where; //echo '<pre>'; print_r($where).  '<pre>';
+		return $where; //echo '<pre>'; print_r($where); echo '</pre>';;
 	}
 
 	private function dibawah($carian)
 	{
-		$susunan = null; //echo '<pre>'; print_r($carian).  '<pre>';
+		$susunan = null; //echo '<pre>'; print_r($carian); echo '</pre>';;
 		if($carian==null || empty($carian) ):
 			$susunan .= null;
 		else:
@@ -102,7 +102,7 @@ class Tanya
 				$mengira = isset($carian[$key]['mengira'])? $carian[$key]['mengira'] : null;
 				 $kumpul = isset($carian[$key]['kumpul']) ? $carian[$key]['kumpul']  : null;
 				  $order = isset($carian[$key]['susun'])  ? $carian[$key]['susun']   : null;
-				   $dari = isset($carian[$key]['dari'])   ? $carian[$key]['dari']    : null;			
+				   $dari = isset($carian[$key]['dari'])   ? $carian[$key]['dari']    : null;
 				    $max = isset($carian[$key]['max'])    ? $carian[$key]['max']     : null;
 				//echo "\$cari = $cari, \$key=$key <br>";
 			}
@@ -112,18 +112,18 @@ class Tanya
 				if ($max!=null)    $susunan .= ($dari==0) ? 
 					" LIMIT $max\r" : " LIMIT $dari,$max\r";
 		endif; 
-	
-		return $susunan; //echo '<pre>'; print_r($susunan).  '<pre>';
+
+		return $susunan; //echo '<pre>'; print_r($susunan); echo '</pre>';;
 	}
 
 	public function kiraMedan($myTable, $medan, $carian)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			. $this->dimana($carian);
-		
+
 		//echo $sql . '<br>';
 		$result = $this->db->columnCount($sql);
-		
+
 		return $result;
 	}
 
@@ -131,10 +131,10 @@ class Tanya
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			. $this->dimana($carian);
-		
+
 		//echo $sql . '<br>';
 		$result = $this->db->rowCount($sql);
-		
+
 		return $result;
 	}
 
@@ -160,7 +160,7 @@ class Tanya
 			 . ' FROM INFORMATION_SCHEMA.COLUMNS' . "\r"
 			 . ' WHERE table_schema = ' . $database . "\r"
 			 . ' AND table_name = ' . $myTable;
-		
+
 		echo htmlentities($sql) . '<br>';
 		return $this->db->selectAll($sql);
 	}
@@ -171,24 +171,24 @@ class Tanya
 			 . 'CHANGE `' . $medan['asal'] . '` '
 			 . '`' . $medan['baru'] . '` ' . $medan['jenis'] . ' '
 			 . 'AFTER `' . $medan['selepas'] . '` ';
-		
+
 		echo htmlentities($sql) . '<br>';
 		//return $this->db->selectAll($sql);
 	}
-	
+
 	public function cariSemuaData($myTable, $medan, $carian, $susun)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			 . $this->dimana($carian)
 			 . $this->dibawah($susun);
-		
+
 		//echo htmlentities($sql) . '<br>';
 		$result = $this->db->selectAll($sql);
 		//echo json_encode($result);
-		
+
 		return $result;
 	}
-	
+
 	public function cariSql($myTable, $medan, $carian, $susun)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
@@ -239,7 +239,7 @@ class Tanya
 
 	public function tambahData($myTable, $data)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		foreach ($data as $medan => $nilai)
 		{
 			$senarai[] = ($nilai==null) ? " `$medan`=null" : " `$medan`='$nilai'"; 
@@ -249,20 +249,20 @@ class Tanya
 		$sql = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
 
-		//echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
+		//echo '<pre>Tambah $sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->insert($myTable, $data);
 	}
 #--- tamat - contoh tambah sql guna set ---#
 #--- mula - contoh tambah sql guna values ---#
 	public function tambahSimpanBanyak($myTable, $data)
 	{
-		//echo '<pre>$myTable->', print_r($data, 1) . '</pre>';		
+		//echo '<pre>$myTable->', print_r($data, 1); echo '</pre>';
 		$this->db->insert($myTable, $data);
 	}
 
 	public function tambahSqlBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
@@ -274,7 +274,7 @@ class Tanya
 
 	public function tambahArahanSqlBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
@@ -285,13 +285,13 @@ class Tanya
 
 	public function tambahBanyakNilai($myTable, $medan, $data)
 	{
-		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		
 		# set sql
 		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
-		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->insertAll($sql);
 	}
 	
@@ -303,8 +303,8 @@ class Tanya
 			 . ' SELECT ' . $medan . ' FROM ' . $myTableOld
 			 . '';
 		
-		echo '$sql-><pre>', print_r($sql, 1) . '</pre>';
-		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');		
+		echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
+		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
 	}
 	
 	public function tambahJadual($myTable, $kira, $cantumMedan, $cantumData)
@@ -315,7 +315,7 @@ class Tanya
 		$sql .= "\r);\r\rINSERT INTO `$myTable` VALUES \r";
 		$sql .= implode(",\r", $cantumData);
 		
-		echo '$sql-><pre>', print_r($sql, 1) . '</pre>';
+		echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
 		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
 	}
 	
@@ -336,13 +336,13 @@ class Tanya
 		
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
-		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		//echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
 		$this->db->update($sql);
 	}
 
 	public function ubahSqlSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		
 		foreach ($data as $medan => $nilai)
 		{
@@ -357,12 +357,12 @@ class Tanya
 		
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';//*/
+		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';//*/
 	}
 
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
 	{
-		$senarai = null; //echo '<pre>$data->', print_r($data, 1) . '</pre>';
+		$senarai = null; //echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 		
 		foreach ($data as $medan => $nilai)
 		{
@@ -377,14 +377,13 @@ class Tanya
 		
 		# set sql
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';//*/
+		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';//*/
 	}
 
-	
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
-		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
-		//echo '<pre>$dimana->', print_r($dimana, 1) . '</pre>';
+		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+		//echo '<pre>$dimana->', print_r($dimana, 1); echo '</pre>';
 		$senarai = null;
 		
 		foreach ($data as $medan => $nilai)
@@ -399,7 +398,7 @@ class Tanya
 		
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
 		//$this->db->update($sql);
 		//*/
 	}
@@ -422,17 +421,17 @@ class Tanya
 		
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';
 	}
 	
 	/*public function buangTerus($data, $myTable)
 	{
-		//echo '<pre>$sql->', print_r($data, 1) . '</pre>';
+		//echo '<pre>$sql->', print_r($data, 1); echo '</pre>';
 		$cariID = 'newss';
 				
 		// set sql
 		//$sql = " DELETE `$myTable` WHERE `$cariID` = '{$data[$cariID]}' ";
-		//echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
 			
 	}//*/
