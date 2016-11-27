@@ -6,28 +6,28 @@
  * 3. dapatkan fail dalam folder KAWAL yang serupa dengan $url[0]
  * 4. semak sama ada dalam folder KAWAL $fail benar2 wujud
  */
-namespace Aplikasi\Kitab; //echo __NAMESPACE__; 
+namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Route
 {
-#================================================================================================================== 
+#==================================================================================================================
 	function __construct()
 	{
 		# 1. dapatkan fungsi dpt_url() dari fail fungsi.php
 		# dan masukkan dalam $url
 		$url = dpt_url(); //echo '<br>$url->'; print_r($url) . '';
-         
+
 		/* 2. semak sama ada $url[0] kosong
 		 * jika ya : $url[0] == 'index';
 		 * jika tak : $url[0] == $url[0];
 		 */
-         
+
 		$url[0] = (empty($url[0])) ? 'index' : $url[0];
 		$Url[0] = '\\Aplikasi\Kawal\\' . huruf('Besar', $url[0]);
- 
+
 		/* 3. dapatkan fail dalam folder KAWAL yang serupa dengan $url[0]
 		 * dan masukkan dalam $fail
 		 */
- 
+
 		$failKawal = GetMatchingFiles(GetContents(KAWAL),$url[0] . '.php');
 		$fail = $failKawal[0];
 
@@ -35,7 +35,7 @@ class Route
 		//echo '<pre>$failKawal='; print_r($failKawal) . '</pre>';
 		//echo '<hr>$fail->' . $fail . '<br>';
 		//echo '<hr>$url[0]->' . $Url[0] . '<br>';
-		
+
 		/*
 		 * 4. semak sama ada dalam folder KAWAL $fail benar2 wujud
 		 * jika ya : masukkan $fail dan isytihar class tersebut
@@ -50,7 +50,7 @@ class Route
 			$method = (isset($url[1])) ? $url[1] : 'index';
 			# semak sama ada method ada dalam $kawal
 			if ( !method_exists($kawal, $method))
-				$this->parameter();			
+				$this->parameter();
 			else $this->cari_pengawal($kawal, $url);
 			//*/
 		}
@@ -81,46 +81,46 @@ class Route
 		{
 			if (!method_exists($kawal, $url[1])) {$this->parameter();}
 		}
-			
-			# Tentukan apa yang dimuatkan		
+
+			# Tentukan apa yang dimuatkan
 			switch ($panjang)
 			{
-				case 8: # Kawal->Kaedah(Param2, Param3, Param4, Param5)
+				case 8: # Kawal->Kaedah(Param2, Param3, Param4, Param5, Param6, Param7)
 				$kawal->{$url[1]}($url[2], $url[3], $url[4], $url[5], $url[6], $url[7]);
 				break;
 
-				case 7: # Kawal->Kaedah(Param2, Param3, Param4, Param5)
+				case 7: # Kawal->Kaedah(Param2, Param3, Param4, Param5,, Param6)
 				$kawal->{$url[1]}($url[2], $url[3], $url[4], $url[5], $url[6]);
 				break;
 
 				case 6: # Kawal->Kaedah(Param2, Param3, Param4, Param5)
 				$kawal->{$url[1]}($url[2], $url[3], $url[4], $url[5]);
 				break;
-	 
+
 				case 5: # Kawal->Kaedah(Param2, Param3, Param4)
 				$kawal->{$url[1]}($url[2], $url[3], $url[4]);
 				break;
-	 
+
 				case 4: # Kawal->Kaedah(Param2, Param3)
 				$kawal->{$url[1]}($url[2], $url[3]);
 				break;
-	 
+
 				case 3: # Kawal->Kaedah(Param2)
 				$kawal->{$url[1]}($url[2]);
 				break;
-	 
+
 				case 2: # Kawal->Kaedah()
 				$kawal->{$url[1]}();
 				break;
-	 
+
 				default:
 				$kawal->index();
 				break;
 			}
-		
+
     }
 
-#--- masuk fungsi campak ke pangkal jalan jika sesat    
+#--- masuk fungsi campak ke pangkal jalan jika sesat
 	function sesat()
 	{
 		require KAWAL . '/sesat.php';
@@ -128,7 +128,7 @@ class Route
 		$kawal->index();
 		return false;
 	}
-		
+
 	function parameter()
 	{
 		require KAWAL . '/sesat.php';
@@ -136,7 +136,7 @@ class Route
 		$kawal->parameter();
 		return false;
 	}
-		
+
 	function classKawalTidakWujud($amaran)
 	{
 		require KAWAL . '/sesat.php';
@@ -144,7 +144,7 @@ class Route
 		$kawal->classTidakWujud($amaran);
 		return false;
 	}
-			
+
 	public static function classTanyaTidakWujud($amaran)
 	{
 		require KAWAL . '/sesat.php';
@@ -153,7 +153,7 @@ class Route
 		//return false;
 		exit;
 	}
-		
+
 	public static function folderPaparTidakWujud()
 	{
 		require KAWAL . '/sesat.php';
