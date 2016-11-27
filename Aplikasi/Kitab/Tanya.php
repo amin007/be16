@@ -119,7 +119,7 @@ class Tanya
 	public function kiraMedan($myTable, $medan, $carian)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
-			. $this->dimana($carian);
+			 . $this->dimana($carian);
 
 		//echo $sql . '<br>';
 		$result = $this->db->columnCount($sql);
@@ -130,7 +130,7 @@ class Tanya
 	public function kiraBaris($myTable, $medan, $carian)
 	{
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
-			. $this->dimana($carian);
+			 . $this->dimana($carian);
 
 		//echo $sql . '<br>';
 		$result = $this->db->rowCount($sql);
@@ -230,7 +230,7 @@ class Tanya
 		}
 
 		# set sql
-		$sql = "INSERT INTO $myTable SET \r";
+		$sql  = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
 
 		echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
@@ -246,7 +246,7 @@ class Tanya
 		}
 
 		# set sql
-		$sql = "INSERT INTO $myTable SET \r";
+		$sql  = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
 
 		//echo '<pre>Tambah $sql->', print_r($sql, 1); echo '</pre>';
@@ -265,7 +265,7 @@ class Tanya
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 
 		# set sql
-		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
 		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
@@ -277,7 +277,7 @@ class Tanya
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 
 		# set sql
-		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
 		return $sql;
@@ -288,7 +288,7 @@ class Tanya
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 
 		# set sql
-		$sql = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
 		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
