@@ -7,15 +7,15 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
-	
+
 	public function medanUbah2($cariID)
 	{
 		$senaraiMedan = 'no,Nama_Penuh nama,email,nohp';
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
-	
+
 	public function tatasusunanUbah2($jadual, $medan, $cari, $susun) 
 	{
 		# ada nilai
@@ -24,7 +24,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				      'nama' => 'Fulan Bin Fulan',
 				     'email' => 'fulan@mail.com',
 				      'nohp' => '0123456789',
-				'keterangan' => '',					  
+				'keterangan' => '',
 				   'jantina' => 'lelaki',
 				  'password' => '123abd456',
 				    'terima' => '2016-03-30',
@@ -35,10 +35,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				      'staf' => '523654',
 				      'stok' => '623654',
 				));
-		
+
 		# tiada nilai
 		$hasil2 = array();
-		
+
 		# pulangkan pemboleubah
 		return $hasil;
 	}
@@ -97,14 +97,14 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			'1' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
 			'2' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1')
 			);
-		
+
 		# tiada nilai
 		$hasil2 = array();
-		
+
 		# pulangkan pemboleubah
 		return $hasil;
 	}
-	
+
 	public function medanUbah($cariID) 
 	{ 
 		# Set pemboleubah
@@ -135,7 +135,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'tel,notel,fax,nofax,responden,orang,email,esurat,'
 			. 'hasil,belanja,gaji,aset,staf,stok' . "\r" 
 			. '';
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}	
@@ -147,7 +147,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$senaraiMedan[] = 'utama';
 		$senaraiMedan[] = 'newss';
 		$senaraiMedan[] = 'nota';
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
 
@@ -160,21 +160,21 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		# tiada nilai
 		$hasil2 = array();
-		
+
 		return $hasil; # pulangkan nilai 
 	}
-	
+
 	public function tatasusunanRespon($item, $ms, $myTable, $carian, $susun)
 	{
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanRespon();
 		# panggil sql pertama
 		$hasilRespon = $this->bentukSqlResponT($medanR, $jadualR, $item, $ms);
-				
+
 		# loop over the object directly 
 		$hasil2 = array();
 		foreach($this->tatasusunanResponData() as $kunci=>$nilai)
-		{	
+		{
 			$hasil2[$kunci] = $nilai; 
 			foreach($hasilRespon as $key=>$p)
 			{
@@ -185,7 +185,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return $hasil2; # pulangkan nilai
 		//*/
 	}
-	
+
 	private function tatasusunanResponData()
 	{
 		$hasil[] = array('nama'=>'A', 'kp'=>'101', 'utama'=>'KERJA LUAR', 'newss'=>'1', 'nota'=>'');
@@ -193,7 +193,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$hasil[] = array('nama'=>'C', 'kp'=>'101', 'utama'=>'KERJA LUAR', 'newss'=>'3', 'nota'=>'');
 		$hasil[] = array('nama'=>'D', 'kp'=>'102', 'utama'=>'POS', 'newss'=>'4', 'nota'=>'');
 		$hasil[] = array('nama'=>'E', 'kp'=>'103', 'utama'=>'POS', 'newss'=>'5', 'nota'=>'');
-		
+
 		return $hasil; # pulangkan nilai
 	}
 #- tamat - untuk tatasusunan Respon ---------------------------------------------------------------------------------
@@ -206,7 +206,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$hasilRespon = $this->//tatasusunan
 			cariSemuaData //cariSql
 			($jadualR, $medanR, $cari, $susun);
-		
+
 		return $hasilRespon; # pulangkan nilai
 	}
 #- tamat  - untuk Sql Respon -----------------------------------------------------------------------------------------
@@ -222,7 +222,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("-",`TINDAKAN`) as nota'
 			. '"" as nota'
 			. '';
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
@@ -238,10 +238,10 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			//. 'concat_ws("|",ATTENTION_NAME_A,TEL_NO_A,FAX_NO_A,EMAIL_A) as nota'
 			. 'nota'
 		);
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
-	
+
 	public function kumpulRespon($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
@@ -251,7 +251,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$hasilRespon = $this->bentukSqlRespon($medanR, $jadualR, $item, $ms);
 		# loop over the object directly 
 		foreach($hasilRespon as $key=>$val)
-		{	
+		{
 			foreach($val as $key2=>$p)
 			{
 				//$medan .= ",\r '' as '" . $p . "'";
@@ -259,7 +259,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				//$jumlah_kumpul.="+count(if($r='".$papar[0]."' and b.terima is not null,$r,null))\r";
 			}
 		} //echo '<pre>$medan:'; print_r($medan) . '</pre>';
-		
+
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
@@ -280,17 +280,17 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
 			. ') as nota'
 		);
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
-	
+
 	public function kumpulResponden($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanResponden();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
-		
+
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
@@ -308,7 +308,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws(" ","(",jalan,")<br>",orang_a,notel_a,nofax_a,esurat_a'
 			. ') as nota'
 		);
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
 
@@ -322,13 +322,13 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			3 => 'concat_ws("-",nama,operator) as nama,'
 			. 'concat_ws("-",kp,msic2008) as kp,'
 			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," orang",orang_a),' . "\r"			
+			. ' 	concat_ws("="," orang",orang_a),' . "\r"
 			. ' 	concat_ws("="," tel",notel_a),' . "\r"
 			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
 			. ' 	concat_ws("="," responden",responden),' . "\r"
 			. ' 	concat_ws("="," notel",notel),' . "\r"
 			. ' 	concat_ws("="," nofax",nofax)' . "\r"
- 			. ' ) as utama,'			
+ 			. ' ) as utama,'
 			. 'concat_ws("",newss) as newss,'
 			. ' concat_ws("|",' . "\r"
 			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
@@ -339,17 +339,17 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
  			. ' ) as nota'
 		);
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
-	
+
 	public function kumpulAlamat($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanAlamat2();
 		# bentuk medan yang ingin diulang
 		$medan .= ",\r $r ";
-		
+
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
@@ -367,7 +367,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws(" ",kp,msic2008'
 			. ') as nota'
 		);
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
 	
@@ -382,7 +382,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		$carian[] = array('fix'=>'%like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>'');	
 		$susunkan[] = array('kumpul'=>null,'susun'=>'jalan ASC, nama ASC');	
-		
+
 		return array($medan, $jadualU, $carian, $susunkan); # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
@@ -396,12 +396,15 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' concat_ws("|",kp) kp,'
 			. ' if(respon="A1",respon,"&nbsp;") A1,'
 			. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
-			//. 'concat_ws("|",orang_a,notel_a,nofax_a,esurat_a) as nota'
-			. 'concat_ws("|",responden,notel,nofax,email) as nota'
+			. 'concat_ws("|",'
+			//. ' CONCAT(UPPER(SUBSTRING(orang_a,1,1)),LOWER(SUBSTRING(orang_a,1,100)))'
+			. ' LOWER(orang_a)'
+			. ',notel_a,nofax_a,esurat_a) as nota'
+			//. 'concat_ws("|",responden,notel,nofax,email) as nota'
 			//. 'concat_ws("|",concat("hasil=",hasil),concat("belanja=",belanja),' 
 			//. 'concat("gaji=",gaji),concat("aset=",aset),concat("staf=",staf),'
 		);
-			
+
 		return $senaraiMedan; # pulangkan nilai
 	}
 	
@@ -411,7 +414,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		list($medanR, $jadualR, $r, $medan) = $this->medanA1();
 		//echo '<pre>$this->medanA1():'; print_r($this->medanA1()) . '</pre>';
 		//echo '<pre>$medan:'; print_r($medan) . '</pre>';
-		
+
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
@@ -425,25 +428,25 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 				. ' concat_ws("|",kp) kp,'
 				. ' if(respon="A1",respon,"&nbsp;") A1,'
 				. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
-				//. 'concat_ws("|",orang_a,notel_a,nofax_a,esurat_a) as nota'
-				. 'concat_ws("|",responden,notel,nofax,email,nota) as nota'
+				. 'concat_ws("|",nota,"<br>",orang_a,notel_a,nofax_a,esurat_a) as nota'
+				//. 'concat_ws("|",nota,"<br>",responden,notel,nofax,email,nota) as nota'
 		);
 
 		return $senaraiMedan; # pulangkan nilai
 	}
-	
+
 	public function kumpulNonA1($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
 		list($medanR, $jadualR, $r, $medan) = $this->medanNonA1();
 		//echo '<pre>$this->medanNonA1():'; print_r($this->medanNonA1()) . '</pre>';
 		//echo '<pre>$medan:'; print_r($medan) . '</pre>';
-		
+
 		return $medan; # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
 	public function laporanProsesan($myTable, $medan, $respon, $susun)
-	{	
+	{
 		# pembolehubah yg terlibat // berasaskan kp dan tarikh
 		/*
 		01	Batu Pahat	02	Johor Bahru		03	Kluang
@@ -503,7 +506,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			 . "	count(if($pom AND $respon,'xPOM',null)))\r"
 			 . "	/ count(*)) * 100,2)\r"
 			 . ")`b%POM`\r";
-		
+
 		return $medan . $rangka . $mko . $terima . $baki;	
 	}
 #----------------------------------------------------------------------------------------------------------------------
