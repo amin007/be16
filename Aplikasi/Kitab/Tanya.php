@@ -148,7 +148,7 @@ class Tanya
 	public function pilihMedan($database,$myTable)
 	{
 		/*TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME	
-		COLUMN_NAME, ORDINAL_POSITION, COLUMN_DEFAULT, IS_NULLABLE, DATA_TYPE	
+		COLUMN_NAME, ORDINAL_POSITION, COLUMN_DEFAULT, IS_NULLABLE, DATA_TYPE
 		CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE	
 		CHARACTER_SET_NAME, COLLATION_NAME	
 		COLUMN_TYPE, COLUMN_KEY	EXTRA, PRIVILEGES, COLUMN_COMMENT*/
@@ -357,7 +357,7 @@ class Tanya
 
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		echo '<pre>$sql->'; print_r($sql, 1); echo '</pre>';//*/
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
 
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
