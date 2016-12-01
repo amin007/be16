@@ -3,7 +3,7 @@ namespace Aplikasi\Kawal; //echo __NAMESPACE__;
 class Laporan extends \Aplikasi\Kitab\Kawal
 {
 #==========================================================================================
-	function __construct() 
+	function __construct()
 	{
 		//echo '<br>class Laporan extends Kawal';
 		parent::__construct();
@@ -12,8 +12,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		$this->_folder = 'laporan';
 	}
-	
-	public function index() 
+
+	public function index()
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin Laporan';
@@ -68,7 +68,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		
+
 		# Set pemboleubah utama
 		$this->papar->pegawai = senarai_kakitangan();	
 		$this->papar->kiraSemuaBaris = $bilSemua;
@@ -76,7 +76,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
-	
+
 		# pergi papar kandungan
 		$this->papar->baca('laporan/f3all', null, 1);
 	}
@@ -99,7 +99,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		
+
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
@@ -107,7 +107,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
-				
+
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
 		$this->papar->baca('laporan/f3responden', null, 1);
@@ -133,7 +133,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		
+
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
@@ -141,7 +141,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
-				
+
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
 		$this->papar->baca('laporan/f3responden', null, 1);
@@ -163,7 +163,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->hasil[] = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $kumpulkan);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		
+
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
@@ -171,7 +171,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
-				
+
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
 		//$this->papar->baca('laporan/f3responden', null, 1);
@@ -183,8 +183,9 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->kumpulA1($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
-		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar_prosesan','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'respon','apa'=>'A1');
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
@@ -197,7 +198,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		
+
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
@@ -205,7 +206,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
-				
+
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
 		$this->papar->baca('laporan/f10', null, 1);//*/
@@ -216,8 +217,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->kumpulNonA1($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
-		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'xlike','atau'=>'AND','medan'=>'respon','apa'=>'A1');
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
@@ -230,7 +231,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
-		
+
 		# Set pemboleubah utama
         $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
@@ -238,7 +239,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
-				
+
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
 		$this->papar->baca('laporan/f10', null, 1);//*/
