@@ -11,11 +11,12 @@ endforeach;
 $paparStaf = $this->namaPegawai . " ada dalam senarai staf";
 $paparXStaf = $this->namaPegawai . " tiada dalam senarai staf.<br>"
 	. ' klik salah satu pautan staf di bawah ini ' . $urlStaf . '';
-	
+
 if (($this->namaPegawai == null)) :
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
-	$cariHantar = (!isset($this->tarikhHantar)) ? null : $this->tarikhHantar;	
+	$cariHantar = (!isset($this->tarikhHantar)) ? null : $this->tarikhHantar;
+	$cariRespon = (!isset($this->responHantar)) ? null : $this->responHantar;
 	$notaTambahan = 'nama pegawai tidak wujud. klik salah satu pautan staf di bawah ini ' . $urlStaf;
 	$mencari = URL . 'operasi/hantarNamaStaf';
 	$butangHantar = 'Letak Nama Staf';
@@ -23,6 +24,7 @@ elseif (($this->namaPegawai != null) && ($this->tarikhHantar == null)) :
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariHantar = (!isset($this->tarikhHantar)) ? null : $this->tarikhHantar;
+	$cariRespon = (!isset($this->responHantar)) ? null : $this->responHantar;
 	$mencari = URL . 'operasi/hantarBatchBaru/' . $namaPegawai;
 	$notaTambahan = ( (in_array($this->namaPegawai,$senaraiStaf)) ? $paparStaf : $paparXStaf );
 	$butangHantar = 'Letak Tarikh Hantar';
@@ -31,24 +33,28 @@ elseif (($this->namaPegawai != null) && ($this->tarikhHantar != null)
 	# set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariHantar = (!isset($this->tarikhHantar)) ? null : $this->tarikhHantar;
+	$cariRespon = (!isset($this->responHantar)) ? null : $this->responHantar;
 	$cetakF03 = URL . 'laporan/cetakf3/' . $namaPegawai . '/' . $cariHantar . '/1000';
 	//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $cariHantar . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' . $cariHantar . '/1000';
 	$cetak = '<h3><a target="_blank" href="' . $cetakF03 . '"> Cetak F3</a>| ' . "\r" .
 	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>' . "\r";
-	$mencari = URL . 'operasi/ubahHantarProses/' . $namaPegawai . '/' . $cariHantar; 
+	$mencari = URL . 'operasi/ubahHantarProses/' . $namaPegawai . '/' . $cariHantar . '/' . $cariRespon; 
 	$notaTambahan = 'Daftar kes masing-masing<br>';
 	$butangHantar = 'Letak No ID';
 else : # set pembolehubah
 	$namaPegawai = (!isset($this->namaPegawai)) ? null : $this->namaPegawai;
 	$cariHantar = (!isset($this->tarikhHantar)) ? null : $this->tarikhHantar;
+	$cariRespon = (!isset($this->responHantar)) ? null : $this->responHantar;	
 	$paparError = (!isset($this->error)) ? null : $this->error;
-	$mencari = URL . 'operasi/ubahHantarProses/' . $namaPegawai . '/' . $cariHantar;
+	$mencari = URL . 'operasi/ubahHantarProses/' . $namaPegawai . '/' . $cariHantar . '/' . $cariRespon;
 	$cetakF03 = URL . 'laporan/cetakf3/' . $namaPegawai . '/' . $cariHantar . '/1000';
 	//$cetakF10 = URL . 'laporan/cetakf10/' . $namaPegawai . '/' . $cariHantar . '/1000';
 	$cetakA1 = URL . 'laporan/cetakA1/' . $namaPegawai . '/' . $cariHantar . '/1000';
-	$cetak = '<h3><a target="_blank" href="' . $cetakF03 . '"> Cetak F3</a>| ' . "\r" .
-	'<a target="_blank" href="' . $cetakA1 . '">Cetak A1</a></h3>' . "\r";
+	$cetakNo = URL . 'laporan/cetakNonA1/' . $namaPegawai . '/' . $cariHantar . '/1000';
+	$cetak = '<h3>Cetak <a target="_blank" href="' . $cetakF03 . '">F3</a>| ' . "\r" .
+	'<a target="_blank" href="' . $cetakA1 . '">A1</a>|' . "\r" . 
+	'<a target="_blank" href="' . $cetakNo . '">Negatif</a></h3>' . "\r";
 	$notaTambahan = 'Ubah | Nama Pegawai : ' . $namaPegawai . ' | Hantar : ' . $cariHantar . '<br>' . "\r" .
 	'<small>Nota: ' . $paparError . '</small>';
 	$butangHantar = 'Kemaskini';
@@ -73,6 +79,7 @@ endif; ?>
 </div><!-- / class="container" -->
 <!-- mula - baca jadual berulang ///////////////////////////////////////////////////////////////////////// -->
 <?php 
+$cariBatch = ''; # wujudkan pembolehubah
 if (isset($this->cariApa) )
 	include 'papar_jadual_berulang.php'; 
 ?>
