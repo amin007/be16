@@ -10,7 +10,14 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'operasi';
-		$this->medanData = '*';
+		$this->medanData = 'newss, concat_ws("<br>",nama,operator) nama,'
+			. ' concat_ws("|",kp) kp,'
+			. ' if(respon="A1",respon,"&nbsp;") A1,'
+			. ' if(respon!="A1",respon,"&nbsp;") NONA1,'
+			. ' concat_ws("|",responden,notel,nofax,email) as dataOrang,'
+			. ' concat_ws("|",orang_a,notel_a,nofax_a,esurat_a) as dataOrang2,'
+			. ' nota,hantar,/*hantar_prosesan,*/borang,pegawai,fe'
+			. '';
 	}
 
 	function index() 
@@ -30,7 +37,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$birutua = 'btn btn-primary btn-mini';
 		$birumuda = 'btn btn-info btn-mini';
 		$merah = 'btn btn-danger btn-mini';
-		
+
 		$k1 = URL . 'rangkabaru/masukdatadarirangka/1/' . $key . '/' . $data;
 		$btn =  $merah;
 		$a = '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>Tambah2';
@@ -43,7 +50,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 
 		return $pautan;
 	}
-	
+
 	private function wujudBatchAwal($senaraiJadual, $cariBatch = null, $cariID = null) 
 	{
 		if (!isset($cariBatch) || empty($cariBatch) ):
@@ -72,7 +79,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. '';
 			#------------------------------------------------------------------------------
 		endif;
-	
+
 		return $paparError;
 	}
 
@@ -88,18 +95,18 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->papar->error .= $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
+			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
+			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 		else:
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);			
+			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
@@ -109,7 +116,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
-			$this->_folder . '/batch',$jenis,0); # $noInclude=0		
+			$this->_folder . '/batch',$jenis,0); # $noInclude=0	
 		//*/
 	}
 
@@ -141,7 +148,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. ' 	concat_ws("="," notel",notel_a),' . "\r"
 					. ' 	concat_ws("="," nofax",nofax_a)' . "\r"
 					. ' ) as dataHubungi';
-			$cari2[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);			
+			$cari2[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);
 			$cari2[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
@@ -183,13 +190,13 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				cariSemuaData(
 				$jadual, $medan = 'borang,count(*) as kira', $cari3, $susun3); //*/
 	}
-	
+
 	public function tambahNamaStaf()
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>'; # debug $_GET
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai = bersihGET_nama('cari'); # bersihkan data $_GET
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai" . '';
 		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai");
@@ -201,7 +208,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $noBatch = bersihGET('cari'); # bersihkan data $_GET
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$noBatch" . '';
 		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$noBatch");
@@ -213,16 +220,16 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo "\$namaPegawai = $namaPegawai<br>";
 		//echo "\$asalBatch = $asalBatch<br>";
 		$tukarBatch = bersihGET('cari'); # bersihkan data $_POST
-		
+
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'be16_kawal'; 
+			$jadual = 'be16_kawal';
 			$medanID = 'nobatch';
 			//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
 			$posmen[$jadual][$medanID] = $tukarBatch;
 			$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-        
+
 			//$this->tanya->ubahSimpanSemua(
 			$this->tanya->ubahSqlSimpanSemua(
 				$posmen[$jadual], $jadual, $medanID, $dimana[$jadual]);
@@ -230,7 +237,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->noBatch = $tukarBatch; 
-		
+
 		# pergi papar kandungan
 		echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$tukarBatch" . '';
 		//header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$tukarBatch");
@@ -248,9 +255,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 				. '. Sila patah balik <hr>';
 			exit();
 		endif;
-			
+
 		# ubahsuai $posmen
-		$jadual = 'be16_kawal'; 
+		$jadual = 'be16_kawal';
 		$medanID = 'newss';
 		$posmen[$jadual]['pegawai'] = $namaPegawai;
 		$posmen[$jadual]['borang']  = $asalBatch;
@@ -266,7 +273,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$semakID = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $cari, $susun = null);
 		//echo '<pre>$semakID->', print_r($semakID, 1) . '</pre>';
-		
+
 		# masuk dalam database	
 		if(is_null($semakID[0]['pegawai'])):
 			if(is_null($semakID[0]['borang'])):
@@ -280,18 +287,18 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		else: 
 			$kodID = $dataID . '/' . $semakID[0]['pegawai'] . '-' . $semakID[0]['borang']; 
 		endif;//*/
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID" . '';
 		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$asalBatch/$kodID");
 	}
-	
+
 	public function buangID($namaPegawai,$cariBatch,$dataID)
 	{
 		# semak session //echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		$sesi = \Aplikasi\Kitab\Sesi::init();
 		//echo '<pre>$_SESSION->', print_r($_SESSION, 1) . '</pre>';
-		
+
 		# masuk dalam database
 			# ubahsuai $posmen
 			$jadual = 'be16_kawal'; 
@@ -301,7 +308,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$posmen[$jadual][$medanID] = $dataID;
 			//$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-        
+
 			$this->tanya->ubahSimpan
 			//$this->tanya->ubahSqlSimpan
 				($posmen[$jadual], $jadual, $medanID);
@@ -315,10 +322,9 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$log['arahan'] = 'buang medan pegawai(' . $namaPegawai 
 				. ') dan borang(' . $cariBatch . ') oleh ' . $pengguna;
 			$log['tarikhmasa'] = date("Y-m-d H:i:s");
-			$this->tanya->tambahData
-				//tambahSql
-				($jadual2, $log);		
-		
+			$this->tanya->tambahData//tambahSql
+				($jadual2, $log);
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/batch/$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan" . '';
 		header('location: ' . URL . $this->_folder . "/batch/$namaPegawai/$cariBatch/?id=$dataID&mesej=data sudah dikosongkan" . '');
@@ -357,7 +363,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '$this->papar->senaraiApa:<br>'; print_r($this->papar->senaraiApa);
  		echo '</pre>'; //*/
-		
+
 		# pergi papar kandungan
 		$jenis = $this->pilihTemplate($template);
 		//$this->papar->baca($this->_folder . '/papar');
@@ -389,20 +395,20 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '$this->papar->senaraiApa:<br>'; print_r($this->papar->senaraiApa);
  		echo '</pre>'; //*/
-		
+
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/papar');
 	}
 	   
     public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
     {//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
-                
+
         # senaraikan tatasusunan jadual dan setkan pembolehubah
 		$this->papar->lokasi = 'Enjin - Ubah';
 		$this->papar->_jadual = $jadualUbah;
 		$medanUbah = $this->tanya->medanUbah2($cariID);
 		//$medanID = ''; $jadualUbah = ''; # 
-	
+
 		if (!empty($cariID)) 
 		{
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
@@ -422,7 +428,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
-			
+
 			$this->papar->cariID  = $medanID;
 			$this->papar->cariApa = $cariID;
 		}
@@ -442,26 +448,25 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		echo '<br>$this->papar->jumpa:'; print_r($this->papar->jumpa); 
 		echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
 		echo '</pre>'; //*/
-		
+
         # pergi papar kandungan
         $this->papar->baca($this->_folder . '/ubah', 0);
 		//*/
     }
-    
+
 	public function ubahCari()
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		# bersihkan data $_POST
 		$input = bersih($_GET['cari']);
 		$dataID = str_pad($input, 12, "0", STR_PAD_LEFT);
-		
+
 		# Set pemboleubah utama
         $this->papar->lokasi = 'Enjin - Ubah';
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/ubah/' . $dataID . '';
 		header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
-
 	}
 
     public function ubahSimpan($dataID)
@@ -471,7 +476,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
     	$medanID = '';
 		$senarai = array('');
-    
+
 		# masuk dalam $posmen, validasi awal
 		$posmen = $this->tanya->semakPost($senarai, $nilaiRM, $medanID, $dataID);
 		# ubahsuai $posmen, valiadi terperinci
@@ -479,14 +484,14 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			# semak data
 			echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
- 
+
 		# mula ulang $senarai
 		foreach ($senarai as $kunci => $jadual)
 		{# tanya sql sama ada papar atau simpan
 			$this->tanya->ubahSqlSimpan//ubahSimpan
 			($posmen[$jadual], $jadual, $medanID);
 		}# tamat ulang $senarai
-        
+
         # pergi papar kandungan
 		//$this->papar->baca($this->_folder . '/ubah/' . $dataID);
 		//header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
@@ -510,14 +515,14 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/buang', 1);
 
     }
-	
+
 	public function salinjadual($myTableNew, $myTableOld)
 	{
 		# setkan nama medan
 		$medan = '*';
 		$this->tanya->salinJadual($myTableNew, $medan, $myTableOld);
 	}
-#==========================================================================================		
+#==========================================================================================
 	private function wujudHantar($senaraiJadual, $cariTarikh = null, $cariID = null) 
 	{
 		if (!isset($cariTarikh) || empty($cariTarikh) ):
@@ -543,27 +548,32 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. '<br> alamat:' . $dataKes[0]['alamat']; //*/
 			#------------------------------------------------------------------------------
 		endif;
-	
+
 		return $paparError;
 	}
-	
-	public function hantar($namaPegawai = null, $cariTarikh = null, $cariID = null) 
+
+	public function hantar($namaPegawai = null, $cariTarikh = null, $cariRespon = 'A1', $cariID = null) 
 	{
 		# Set pemboleubah utama
 		$this->papar->namaPegawai  = $namaPegawai;
 		$this->papar->tarikhHantar = $cariTarikh;
+		$this->papar->responHantar = $cariRespon;
 		# mencari dalam database
-		if ($cariID == null):
+		if ($cariID == null): 
+			//echo "\$namaPegawai = $namaPegawai, \$cariTarikh = $cariTarikh, "
+			//	. "\$cariRespon = $cariRespon, \$cariID = $cariID <br>";
 			$this->papar->error = 'Kosong';
 			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			# mula carian dalam jadual $myTable
-			$this->cariHantar($senaraiJadual, $namaPegawai, $cariTarikh, $cariID, $this->medanData);
+			$this->cariHantar($senaraiJadual, $namaPegawai, $cariTarikh, $cariID, $cariRespon, $this->medanData);//*/
 		else:
+			//echo "\$namaPegawai = $namaPegawai, \$cariTarikh = $cariTarikh, "
+			//	. "\$cariRespon = $cariRespon, \$cariID = $cariID <br>";
 			$senaraiJadual = array('be16_kawal'); # set senarai jadual yang terlibat
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudHantar($senaraiJadual, $cariTarikh, $cariID);
 			# mula carian dalam jadual $myTable
-			$this->cariHantar($senaraiJadual, $namaPegawai, $cariTarikh, $cariID, $this->medanData);
+			$this->cariHantar($senaraiJadual, $namaPegawai, $cariTarikh, $cariID, $cariRespon, $this->medanData);//*/
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
@@ -573,11 +583,11 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
-			$this->_folder . '/hantar',$jenis,0); # $noInclude=0		
+			$this->_folder . '/hantar',$jenis,0); # $noInclude=0
 		//*/
 	}
 
-	private function cariHantar($senaraiJadual, $namaPegawai, $cariTarikh, $cariID, $medan)
+	private function cariHantar($senaraiJadual, $namaPegawai, $cariTarikh, $cariID, $cariRespon, $medan)
 	{
 		$item = 50; $ms = 1; ## set pembolehubah utama
 		## tentukan bilangan mukasurat. bilangan jumlah rekod
@@ -585,12 +595,15 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jum2 = pencamSqlLimit(50, $item, $ms);
 		$jadual = $senaraiJadual[0];
 			# sql 1
-			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'hantar','apa'=>$cariTarikh);			
+			$cari1[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'hantar','apa'=>$cariTarikh);
+			if($cariRespon=='A1')
+				$cari1[] = array('fix'=>'like%','atau'=>'AND','medan'=>'respon','apa'=>$cariRespon);
 			$cari1[] = array('fix'=>'x=','atau'=>'AND','medan'=>'fe','apa'=>$namaPegawai);
-			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
+			$susun1[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'respon ASC,nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
 				cariSemuaData(
 				$jadual, $medan, $cari1, $susun1);
+
 			/*# contoh sql
 			$cariMFG[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'fe','apa'=>$cariBatch);
 			$cariMFG[] = array('fix'=>'zin','atau'=>'AND','medan'=>'kp','apa'=>'("205","800")');
@@ -605,7 +618,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>'; # debug $_GET
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai = bersihGET_nama('cari'); # bersihkan data $_GET
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/hantar/$namaPegawai" . '';
 		header('location: ' . URL . $this->_folder . "/hantar/$namaPegawai");
@@ -617,7 +630,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->tarikhHantar = $tarikhHantar = bersihGET('cari'); # bersihkan data $_GET
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar" . '';
 		header('location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar");
@@ -629,16 +642,16 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo "\$namaPegawai = $namaPegawai<br>";
 		//echo "\$asalBatch = $asalBatch<br>";
 		$tarikhHantar = bersihGET('cari'); # bersihkan data $_POST
-		
+
 		# masuk dalam database
 			# ubahsuai $posmen
-			$jadual = 'be16_kawal'; 
+			$jadual = 'be16_kawal';
 			$medanID = 'hantar';
 			//$posmen[$jadual]['nama_pegawai'] = $namaPegawai;
 			$posmen[$jadual][$medanID] = $tarikhHantar;
 			$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-        
+
 			//$this->tanya->ubahSimpanSemua(
 			$this->tanya->ubahSqlSimpanSemua(
 				$posmen[$jadual], $jadual, $medanID, $dimana[$jadual]);
@@ -646,41 +659,38 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->namaPegawai = $namaPegawai;
 		$this->papar->tarikhHantar = $tarikhHantar; 
-		
+
 		# pergi papar kandungan
 		echo '<br>location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar" . '';
 		//header('location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar");
 	}
 
-	public function ubahHantarProses($namaPegawai,$tarikhHantar)
+	public function ubahHantarProses($namaPegawai,$tarikhHantar,$responHantar)
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		//echo "\$namaPegawai = $namaPegawai<br>";
 		//echo "\$tarikhHantar = $tarikhHantar<br>";
 		$dataID = bersihGET('cari'); # bersihkan data $_POST
-		
+
 		# masuk dalam database
 			# ubahsuai $posmen
 			$jadual = 'be16_kawal'; 
 			$medanID = 'newss';
 			//$posmen[$jadual]['pegawai'] = $namaPegawai;
 			$posmen[$jadual]['hantar'] = $tarikhHantar;
+			if($responHantar=='A1')
+				$posmen[$jadual]['respon'] = $responHantar;
 			$posmen[$jadual][$medanID] = $dataID;
 			//$dimana[$jadual][$medanID] = $asalBatch;
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
-        
+
 			$this->tanya->ubahSimpan(
 			//$this->tanya->ubahSqlSimpan(
 				$posmen[$jadual], $jadual, $medanID);
 
-		# Set pemboleubah utama
-		$this->papar->namaPegawai = $namaPegawai;
-		$this->papar->tarikhHantar = $tarikhHantar; 
-		$this->papar->noID = $dataID; 
-		
 		# pergi papar kandungan
-		//echo '<br>location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar/$dataID" . '';
-		header('location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar/$dataID");
-	}	
+		//echo '<br>location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar/$responHantar/$dataID" . '';
+		header('location: ' . URL . $this->_folder . "/hantar/$namaPegawai/$tarikhHantar/$responHantar/$dataID");
+	}
 #==========================================================================================	
 }
