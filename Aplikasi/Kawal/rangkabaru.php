@@ -16,7 +16,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
-		
+
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=4);
 		//$this->papar->baca(
@@ -30,7 +30,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		$this->papar->_jadual = 'be16_kawal';
-		
+
 		if (!empty($cariID)) 
 		{
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
@@ -42,7 +42,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			{
 				# 2. mula semak dalam jadual rangkabaru
 				$medan = $this->tanya->cariRangkaBaru();
-				$jadual = 'be16_rangkabaru';
+				$jadual = 'be16_hq';
 				$this->papar->senarai['data'] = $this->tanya->
 					//tatasusunanUbah2($jadual, $medan, $cari, $susun = null);
 					cariSemuaData($jadual, $medan, $cari, $susun = null);
@@ -53,7 +53,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 					$this->papar->senarai); //*/
 			}
 			else 
-			{	
+			{
 				$this->papar->cariID = 'newss/' . $cariID;
 				$this->papar->cariApa = 'sudah wujud dalam jadual';
 			}
@@ -64,7 +64,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->papar->cariApa = $this->tanya->binaMedan($this->papar->_jadual, $kira, 
 				$this->papar->senarai);
 		}
-		
+
 		/*echo '<pre>'; # semak data
 		echo (!isset($this->papar->senarai)) ? '' : '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
 		echo (!isset($this->papar->cariID))  ? '' : '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
@@ -93,7 +93,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->_folder . '/baru',$jenis,0); # $noInclude=0
 		//*/
 	}
-	
+
 	public function tambahSimpan()
 	{
 		# Set pemboleubah utama
@@ -111,7 +111,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		//$this->tanya->tambahSqlBanyakNilai($myTable, $medan, $senaraiData); 
 		$this->tanya->tambahBanyakNilai($myTable, $medan, $senaraiData); 
 		$this->log_sql($myTable, $medan, $senaraiData);
-		
+
 		# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
@@ -120,9 +120,8 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
         # pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/rangkabaru/selesai';
 		header('location: ' . URL . $this->_folder . '/rangkabaru/selesai');
-		
 	}
-	
+
 	private function log_sql($myTable, $medan, $senaraiData)
 	{
 		# semak session
@@ -140,7 +139,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$log['tarikhmasa'] = date("Y-m-d H:i:s");
 			$this->tanya->tambahData
 				//tambahSql
-				($jadual2, $log);		
+				($jadual2, $log);
 
 	}
 #==========================================================================================	
@@ -148,7 +147,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
-		
+
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca(
@@ -168,9 +167,9 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		   if ( in_array($myTable,$senarai) )
 			   foreach ($value as $kekunci => $papar)
 					$posmen[$myTable][$kekunci] = bersih($papar);
-		
+
 		# ubahsuai $posmen, valiadi terperinci
-		$posmen = $this->tanya->semakData($posmen, $jadual);			
+		$posmen = $this->tanya->semakData($posmen, $jadual);
 			# semak data
 			//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			//echo '<pre>$posmen='; print_r($posmen) . '</pre>';
@@ -182,13 +181,12 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			tambahSimpanBanyak
 			($posmen[$jadual], $jadual);
 		}# tamat ulang $senarai
-        
+
         # pergi papar kandungan
 		//$this->papar->baca($this->_folder . '/ubah/' . $dataID);
 		//header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
- 
 	}
-	
+
 	public function paparlimit($cariID = null, $cariApa = null) 
 	{
 		# Set pemboleubah utama
@@ -211,20 +209,20 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '$this->papar->senaraiApa:<br>'; print_r($this->papar->senaraiApa);
  		echo '</pre>'; //*/
-		
+
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/papar');
 }
 
 	public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
 	{//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
-                
+
 		# senaraikan tatasusunan jadual dan setkan pembolehubah
 		$this->papar->lokasi = 'Enjin - Ubah';
 		$this->papar->_jadual = $jadualUbah;
 		$medanUbah = $this->tanya->medanUbah2($cariID);
 		//$medanID = ''; $jadualUbah = ''; # 
-	
+
 		if (!empty($cariID)) 
 		{
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
@@ -244,7 +242,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
-					
+
 			$this->papar->cariID  = $medanID;
 			$this->papar->cariApa = $cariID;
 		}
@@ -255,35 +253,32 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->papar->cariApa = '[tiada id diisi]';
 			$this->papar->jumpa   = '[hendak cari apa kalau id tiada]';
 		}
-		
-		/*# semak data
-		echo '<pre>';
+
+		/*echo '<pre>'; # semak data
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
 		echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
 		echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '<br>$this->papar->jumpa:'; print_r($this->papar->jumpa); 
 		echo '<br>$this->papar->_jadual:'; print_r($this->papar->_jadual); 
 		echo '</pre>'; //*/
-		
+
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/ubah', 0);
-		
 	}
-    
+
 	public function ubahCari()
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
 		# bersihkan data $_POST
 		$input = bersih($_GET['cari']);
 		$dataID = str_pad($input, 12, "0", STR_PAD_LEFT);
-		
+
 		# Set pemboleubah utama
         $this->papar->lokasi = 'Enjin - Ubah';
-		
+
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . $this->_folder . '/ubah/' . $dataID . '';
 		header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
-
 	}
 
 	public function ubahSimpan($dataID)
@@ -293,7 +288,7 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		$nilaiRM = array('hasil','belanja','gaji','aset','staf','stok');
 		$medanID = '';
 		$senarai = array('');
-    
+
     	# masuk dalam $posmen, validasi awal
 		foreach ($_POST as $myTable => $value)
 		{   if ( in_array($myTable,$senarai) )
@@ -305,9 +300,9 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 				}	$posmen[$myTable][$medanID] = $dataID;
 			}
 		}
-        
+
 		# ubahsuai $posmen, valiadi terperinci
-			$posmen = $this->tanya->semakData($posmen, $jadual);			
+			$posmen = $this->tanya->semakData($posmen, $jadual);
 			# semak data
 			echo '<pre>$_POST='; print_r($_POST) . '</pre>';
 			echo '<pre>$posmen='; print_r($posmen) . '</pre>';
@@ -318,12 +313,12 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 			$this->tanya->ubahSqlSimpan//ubahSimpan
 			($posmen[$jadual], $jadual, $medanID);
 		}# tamat ulang $senarai
-        
+
         # pergi papar kandungan
 		//$this->papar->baca($this->_folder . '/ubah/' . $dataID);
 		//header('location: ' . URL . $this->_folder . '/ubah/' . $dataID);
 	}
-	
+
 	function buang($id) 
 	{
 		# Set pemboleubah utama	
@@ -337,9 +332,9 @@ class Rangkabaru extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/buang', 1);
 
 	}
-#==========================================================================================	
+#==========================================================================================
 	public function semakfail()
-	{	
+	{
 		//echo 'class gerakhas::semakfail()<br>';
 		# Set pemboleubah utama
 		$url = URL . 'sumber/fail/csv/';
