@@ -75,7 +75,7 @@ class Route
 	private function cari_pengawal($kawal, $url)
 	{
 		$panjang = count($url); //echo '$panjang=' . $panjang . '<br>';
- 
+
 		# Pastikan kaedah yang kita panggil wujud
 		if ($panjang > 1)
 		{
