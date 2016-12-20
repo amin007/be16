@@ -11,7 +11,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 	public function medanUbah2($cariID)
 	{
 		$senaraiMedan = 'no,Nama_Penuh nama,email,nohp';
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
@@ -186,7 +186,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url2 . ',' . $url3 . ') nama,'
 			. 'concat_ws(" | ",nossm,kp,subsektor) as nossm,' . "\r"
 			. 'concat_ws(" | ",borang,fe,pegawai) as pegawai,fe,' . "\r"
-			. 'respon,posdaftar,posdaftar_terima,nota,nota_prosesan,batchProses,'
+			. 'respon,/*posdaftar,posdaftar_terima,*/nota,/*nota_prosesan,batchProses,*/'
 			. 'lawat,terima,hantar,hantar_prosesan,' . "\r" 
 			. 'concat_ws(" ",alamat1,alamat2,poskod,bandar, NGDBBP_CODE_A) as alamat,' . "\r"
 			//. 'no,batu,jalan,tmn_kg,dp_baru,' . "\r"
@@ -195,26 +195,26 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'concat_ws("-",kp,msic2008) keterangan,' 
 			//. 'concat_ws("=>ngdbbp baru=",ngdbbp,ngdbbp_baru) ngdbbp,ngdbbp_baru,' . "\r"
 			//. 'batchAwal,dsk,mko,batchProses,'
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," orang",orang_a),' . "\r"
-			. ' 	concat_ws("="," tel",notel_a),' . "\r"
-			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
-			. ' 	concat_ws("="," responden",responden),' . "\r"
-			. ' 	concat_ws("="," notel",notel),' . "\r"
-			. ' 	concat_ws("="," nofax",nofax)' . "\r"
+			. ' concat_ws(" ",' . "\r"
+			. '		if (orang_a is null, "", concat_ws("="," orang", concat(orang_a," |") ) ),' . "\r"
+			. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
+			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
+			. '		if (responden is null, "", concat_ws("="," responden", concat(responden," |") ) ),' . "\r"			
+			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
+			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
  			. ' ) as dataHubungi,'			
+			//. 'if (hasil is null, "", '
+			. 'concat_ws(" ",' . "\r"
+			. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |") ) ),' . "\r"
+			. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |") ) ),' . "\r"
+			. '		if (gaji is null, "", concat_ws("="," gaji", concat(format(gaji,0)," |") ) ),' . "\r"
+			. '		if (aset is null, "", concat_ws("="," aset", concat(format(aset,0)," |") ) ),' . "\r"
+			. '		if (staf is null, "", concat_ws("="," staf", concat(format(staf,0)," |") ) ),' . "\r"
+			. '		if (stok is null, "", concat_ws("="," stok akhir", concat(format(stok,0)," |") ) )' . "\r"
+ 			. ' ) as data5P,'
 			. 'notel_a,notel,nofax_a,nofax,'
-			. 'concat_ws(" ",orang_a,"[Pengurus]") as orang_a,' 
+			. 'concat_ws(" ",orang_a,"[Pengurus] [Pemilik]") as orang_a,' 
 			. 'responden,esurat_a,email,'
-			. 'if (hasil is null, "", '
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
-			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
-			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
-			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
-			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
-			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
- 			. ' )) as data5P,'
 			. 'hasil,belanja,gaji,aset,staf,stok,'
 			. '';	
 	
