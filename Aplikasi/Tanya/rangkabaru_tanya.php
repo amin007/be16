@@ -7,15 +7,15 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
-	
+
 	public function medanUbah2($cariID)
 	{
 		$senaraiMedan = 'no,Nama_Penuh nama,email,nohp';
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
-	
+
 	public function tatasusunanUbah2($jadual, $medan, $cari, $susun) 
 	{
 		# ada nilai
@@ -24,7 +24,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 				      'nama' => 'Fulan Bin Fulan',
 				     'email' => 'fulan@mail.com',
 				      'nohp' => '0123456789',
-				'keterangan' => '',					  
+				'keterangan' => '',	
 				   'jantina' => 'lelaki',
 				  'password' => '123abd456',
 				    'terima' => '2016-03-30',
@@ -35,10 +35,10 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 				      'staf' => '523654',
 				      'stok' => '623654',
 				));
-		
+
 		# tiada nilai
 		$hasil2 = array();
-		
+
 		# pulangkan pemboleubah
 		return $hasil;
 	}
@@ -80,7 +80,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 			'msic2000' => array (),
 			'msic2000_notakaki' => array (),
 		);
-		
+
 		# ada nilai - pecah tatasusunan kepada beberapa bahagian
 		$hasil1['satu'] = array ( 
 			'0' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
@@ -97,10 +97,10 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 			'1' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
 			'2' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1')
 			);
-		
+
 		# tiada nilai
 		$hasil2 = array();
-		
+
 		# pulangkan pemboleubah
 		return $hasil;
 	}
@@ -120,11 +120,11 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 			'kp'=>'328',
 			'msic2008'=>'56107',
 			'fe'=>'x');
-		
+
 		# pulangkan pemboleubah
 		return $medan;
 	}
-	
+
 	public function binaMedan($jadual, $kira, $data) 
 	{ 
 		# Set pemboleubah tatasusunan
@@ -136,13 +136,16 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 				$senaraiMedan[$jadual][$ulang][$nilai2] = null;
 			endforeach;
 		endfor;
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
-	
+
 	public function binaMedan2($jadual, $kira, $data) 
 	{ 
+		# semak tatasusunan $data
+		//echo '<pre>'; print_r($data); echo '</pre>';
+		
 		# papar tatasusunan $data
 		if (!empty($data)) 
 		{ 
@@ -161,15 +164,15 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 				$senaraiMedan[$jadual][$ulang][$nilai2] = null;
 			endforeach;
 		endfor;
-		
+
 		# masukkan $data dalam $senaraiMedan berasaskan $jadual
 		$senaraiMedan = (!empty($data)) ? $this->binaData($jadual, $data, $senaraiMedan) : $senaraiMedan;
-		
+
 		/*# debug 
 		if (!empty($senaraiMedan)) 
 		{ echo '<hr><pre>$senaraiMedan Kini:<br>'; print_r($senaraiMedan) . '</pre>'; }
 		else echo '<pre>$senaraiMedan:kosong</pre>'; //*/
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
@@ -180,11 +183,11 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 			$senaraiMedan[$jadual][0][$kunci] = $data['data'][0][$kunci];
 			//echo "<hr> senaraiMedan[$jadual][0][$kunci] = data['data'][0][$kunci] ";
 		endforeach;	
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan; //*/
 	}
-	
+
 	public function cariRangkaBaru() 
 	{ 
 		# Set pemboleubah tatasusunan
@@ -192,9 +195,9 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		//	'kp','msic2008','fe','orang_a','notel_a','nofax_a','esurat_a');
 		$medan = array('newss','nossm','nama','operator','alamat','bandar','poskod',
 			'kp','msic2008');
-		
+
 		$senaraiMedan = implode(",", $medan);
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
@@ -212,7 +215,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		return $posmen;
 		
 	}
-	
+
 	public function ubahPosmen($posmen)
 	{
 		$senaraiData = array();
@@ -234,11 +237,11 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 					. huruf('Besar',$dataS['orang_a']) . "', '" 
 					. huruf('Besar',$dataS['notel_a']) . "', '" 
 					. huruf('Besar',$dataS['nofax_a']) . "', '" 
-					. huruf('Besar',$dataS['esurat_a'])// . "', '" 					
+					. huruf('Besar',$dataS['esurat_a'])// . "', '"
 					. "')";
 			endforeach;
 		endforeach;
-		
+
 		# pulangkan pemboleubah
 		return $senaraiData;
 	}
@@ -250,10 +253,10 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 		$posmen = (new \Aplikasi\Kitab\Bacafail)->semakfail($url, $fail, array());
 		$medan = $this->panggilMedan($posmen);
 		$senaraiData = $this->panggilBanyakData($posmen);
-		
+
 		# jika null
 		$medan2 = $senaraiData2 = null;
-		
+
 		# pulangkan pemboleubah
 		return array($medan,$senaraiData);
 		//return array($medan2,$senaraiData2);
@@ -263,7 +266,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		$medan = '`' . implode("`,`", $posmen[0] ) . '`'; # buat medan
 		//echo '$medan = ' . $medan . '<hr>';
-		
+
 		# pulangkan pemboleubah
 		return $medan;
 
@@ -277,7 +280,7 @@ class Rangkabaru_Tanya extends \Aplikasi\Kitab\Tanya
 				$dataS[$key] = "('" . implode("','", $data ) . "')";
 		endforeach; 
 		//echo '<pre>$dataS = ' . $dataS . '</pre><hr>';
-		
+
 		# pulangkan pemboleubah
 		return $dataS;
 
