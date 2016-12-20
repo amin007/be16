@@ -3,27 +3,26 @@ namespace Aplikasi\Kitab; //echo __NAMESPACE__;
 class Papar
 {
 #==========================================================================================
-	function __construct() 
+	function __construct()
 	{
 		//echo '<br>1. Anda berada di class Papar<br>';
 	}
-#==========================================================================================	
+#==========================================================================================
 	public function baca($nama, $template, $noInclude = false)
 	{
 		//echo '<br>1.Anda berada di class Papar::' . $nama . '()<br>';
-		
+
 		$namafail = explode('/', $nama);
         $failPapar = GetMatchingFiles(
 			GetContents(PAPAR . '/' . $namafail[0]),
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
-		/*
-        echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
+		/*echo '<hr size=2>PAPAR=' . PAPAR . '<br>';
         echo '$namafail=<pre>'; print_r($namafail) . '</pre><br>';
         echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>';
 		//*/
-		
+
 		$cariNama = array ('index/index', 'index/login',
 		'index/login_automatik','index/daftar','index/muar');
 		$cariJQM = array('mobile/mobile','mobile/iconjqm');
@@ -44,21 +43,21 @@ class Papar
 		{
 			require $paparFail;
 		}
-		else 
+		else
 		{
 			if( in_array($nama,$cariNama) )
 				require $paparFail;	
 			elseif ( $nama == 'semak')
 				require $paparFail;	
 			else
-			{				
+			{
 				require PAPAR . '/diatas.php';
 				require PAPAR . '/menu_atas.php';
 				require $paparFail;
 				require PAPAR . '/dibawah.php';	
 			}
 		}
-//*/		
+//*/
 	}
 #==========================================================================================
 #------------------------------------------------------------------------------------------
@@ -70,19 +69,19 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		$lokasiTemplate = '/template/' . $template;
-	
+
 		/*echo '<hr size=2>$namafail=<pre>'; print_r($namafail) . '</pre><br>';
 		//echo '$failPapar=<pre>'; print_r($failPapar) . '</pre><br>';
 		echo '$paparFail->' . $paparFail . '<br>'
-			. '$template->' . $template . '<br>' 
+			. '$template->' . $template . '<br>'
 			. '$lokasiTemplate->' . $lokasiTemplate . '<br>'
 			. '$noInclude->' . $noInclude . '<br>'
 			. '';//*/
-		
+
 		echo '<hr>require ' . PAPAR . $lokasiTemplate . '/diatas.php'
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu_atas.php'
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu-tengah-atas.php'
-			. '<br>require ' . $paparFail			
+			. '<br>require ' . $paparFail
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/menu-tengah-bawah.php'
 			. '<br>require ' . PAPAR . $lokasiTemplate . '/dibawah.php'
 			. '';//*/
@@ -96,30 +95,32 @@ class Papar
 			$namafail[1] . '.php');
 		$paparFail = $failPapar[0];
 		$lokasiTemplate = '/template/' . $template;
-		
-		if ($paparFail == false) 
+		//echo '$paparFail=' . $paparFail . '|<br>';
+		//echo '$noInclude=' . $noInclude . '|<br>';
+
+		if ($paparFail == false)
 		{
 			\Aplikasi\Kitab\Route::failPaparTidakWujud();
 			//echo 'failPaparTidakWujud()';
 		}
-		elseif ($noInclude == true) 
+		elseif ($noInclude == true)
 		{
-			require PAPAR . $nama . '.php';	
+			require $paparFail;
 		}
-		else 
+		else
 		{
 			require PAPAR . $lokasiTemplate . '/diatas.php';
 			require PAPAR . $lokasiTemplate . '/menu_atas.php';
 			require PAPAR . $lokasiTemplate . '/menu-tengah-atas.php';
 			require $paparFail;
 			require PAPAR . $lokasiTemplate . '/menu-tengah-bawah.php';
-			require PAPAR . $lokasiTemplate . '/dibawah.php';			
+			require PAPAR . $lokasiTemplate . '/dibawah.php';
 		}//*/
 	}
 #-----------------------------------------------------------------------------------------
 	function pilihTemplate($template = 0)
 	{
-	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#		
+	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
 		switch ($template)
 		{
 			case 5: $jenis = 'miminium';
@@ -136,11 +137,11 @@ class Papar
 
 			case 1: $jenis = 'AdminLTE-2.3.0';
 			break;
-			
+
 			default: $jenis = 'A0';
 			break;
 		}
-	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#	
+	#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^#
 		return $jenis;
 	}
 #-----------------------------------------------------------------------------------------
