@@ -95,18 +95,18 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->papar->error .= $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 		elseif ($cariID == null):
 			$this->papar->error = 'Kosong';
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 		else:
 			# cari $cariBatch atau cariID wujud tak
 			$this->papar->error = $this->wujudBatchAwal($senaraiJadual, $cariBatch, $cariID);
 			# mula carian dalam jadual $myTable
 			$this->cariAwal($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
-			$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
+			//$this->cariGroup($senaraiJadual, $namaPegawai, $cariBatch, $cariID, $this->medanData);
 		endif;
 
 		# semak pembolehubah $this->papar->cariApa
@@ -116,7 +116,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
-			$this->_folder . '/batch',$jenis,0); # $noInclude=0	
+			$this->_folder . '/batch',$jenis,1); # $noInclude=0	
 		//*/
 	}
 
@@ -127,7 +127,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 		$jum2 = pencamSqlLimit(100, $item, $ms);
 		$jadual = $senaraiJadual[0];
-			# sql 1
+			/*# sql 1
 			$cari1[] = ($namaPegawai==null) ? 
 				array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>'')
 				: array('fix'=>'x=','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
@@ -139,9 +139,12 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					$this->papar->cariApa['semua'] = $this->tanya->//tatasusunanCari(//cariSql( 
 						cariSemuaData(
 						$myTable, $medan, $cari1, $cantumSusun);
-			}# tamat ulang table
+			}# tamat ulang table //*/
 			# sql 2
-			$medan2 = 'newss,nossm,nama,operator,alamat1,alamat2,poskod,bandar,posdaftar,'
+			$medan2 = 'newss,nossm,'
+					. 'concat_ws(" ",nama,operator) as nama,'
+					. 'alamat1,alamat2,'
+					. 'concat_ws(" ",poskod,bandar) as bandar,'
 					//. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
 					. ' concat_ws("|",' . "\r"
 					. ' 	concat_ws("="," orang",orang_a),' . "\r"
