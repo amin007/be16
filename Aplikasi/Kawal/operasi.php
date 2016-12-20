@@ -116,7 +116,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		$jenis = $this->papar->pilihTemplate($template=0);
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
-			$this->_folder . '/batch',$jenis,1); # $noInclude=0	
+			$this->_folder . '/batch',$jenis,0); # $noInclude=0	
 		//*/
 	}
 
