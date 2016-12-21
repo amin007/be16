@@ -116,8 +116,8 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		$dataID = str_pad($input, 12, "0", STR_PAD_LEFT);
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
-        $this->papar->lokasi = Tajuk_Muka_Surat . ' - Ubah';
+		$this->papar->pegawai = senarai_kakitangan();
+		$this->papar->lokasi = Tajuk_Muka_Surat . ' - Ubah';
 
 		# pergi papar kandungan
 		//echo '<br>location: ' . URL . 'kawalan/ubah/' . $dataID . '';
@@ -130,18 +130,16 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
         $medanID = 'newss';
 		$senaraiJadual = array('be16_kawal');
 
-        foreach ($_POST as $myTable => $value)
-        {   if ( in_array($myTable,$senaraiJadual) )
-            {   foreach ($value as $kekunci => $papar)
-				{	$posmen[$myTable][$kekunci]= 
-						( in_array($kekunci,array('hasil','belanja','gaji','aset','staf','stok')) ) ?
-						str_replace( ',', '', bersih($papar) )// buang koma	
-						: bersih($papar);
-				}	$posmen[$myTable][$medanID] = $dataID;
-            }
-        }
+		foreach ($_POST as $myTable => $value)
+			if ( in_array($myTable,$senaraiJadual) )
+				foreach ($value as $kekunci => $papar)
+				{
+					$posmen[$myTable][$kekunci] = bersih($papar);
+					$posmen[$myTable][$medanID] = $dataID;
+				}
 
 		# ubahsuai $posmen
+		$posmen = $this->pecah5P($senaraiJadual[0], $posmen);
 		$posmen = $this->tanya->semakPosmen($senaraiJadual[0], $posmen);
 		//echo '<br>$dataID=' . $dataID . '<br>';
 		//echo '<pre>$_POST='; print_r($_POST) . '</pre>';
@@ -160,17 +158,50 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
     }
 
-	function buang($id) 
-    {//echo '<br>Anda berada di class Imej extends Kawal:buang($cari)<br>';
+	function pecah5P($myTable, $posmen) 
+	{
+		$pecah5P = $posmen[$myTable]['pecah5P']; 
 
+		if (!empty($pecah5P))
+		{
+			$pos = explode(" ", $pecah5P);
+			  $posmen[$myTable]['hasil'] = str_replace( ',', '', bersih($pos[0]) );
+			$posmen[$myTable]['belanja'] = str_replace( ',', '', bersih($pos[1]) );
+			   $posmen[$myTable]['gaji'] = str_replace( ',', '', bersih($pos[2]) );
+			   $posmen[$myTable]['aset'] = str_replace( ',', '', bersih($pos[3]) );
+			   $posmen[$myTable]['staf'] = str_replace( ',', '', bersih($pos[4]) );
+			   $posmen[$myTable]['stok'] = str_replace( ',', '', bersih($pos[5]) );
+		}
+		else
+		{
+			foreach ($posmen as $jadual => $value)
+			foreach ($value as $kekunci => $papar)
+				$posmen[$myTable][$kekunci]= 
+					( in_array($kekunci,array('hasil','belanja','gaji','aset','staf','stok')) ) ?
+					str_replace( ',', '', bersih($papar) )# buang koma	
+					: bersih($papar);			
+		}
+		
+		unset($posmen[$myTable]['pecah5P']);
+		
+		/*# debug
+		echo '<pre>$hasil='; print_r($hasil); echo '</pre>';
+		echo '<pre>$pos='; print_r($pos); echo '</pre>';
+		echo '<pre>$posmen2='; print_r($posmen); echo '</pre>';//*/
+
+		return $posmen; # pulangkan nilai
+	}
+
+	function buang($id) 
+    {
 		if (!empty($id)) 
 		{
 			#mula cari $cariID dalam $bulanan
 			foreach ($bulanan as $key => $myTable)
 			{# mula ulang table
-			$this->papar->kesID[$myTable] = 
-			$this->tanya->cariSemuaMedan($sv . $myTable, 
-			$medanData, $cari);
+				$this->papar->kesID[$myTable] = 
+				$this->tanya->cariSemuaMedan($sv . $myTable, 
+				$medanData, $cari);
 			}# tamat ulang table
 		}
 		else
@@ -180,6 +211,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 
 		# pergi papar kandungan
 		$this->papar->baca('kawalan/buang', 1);
+
     }
 #==================================================================================================================
 }
