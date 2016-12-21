@@ -3,27 +3,27 @@ namespace Aplikasi\Kawal; //echo __NAMESPACE__;
 class Kawalan extends \Aplikasi\Kitab\Kawal
 {
 #==================================================================================================================
-    public function __construct() 
-    {
+	public function __construct() 
+	{
 		parent::__construct();
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'kawalan';
        
-	$this->papar->js = array(
-	/*'bootstrap-transition.js','bootstrap-alert.js','bootstrap-modal.js','bootstrap-dropdown.js',
+		$this->papar->js = array(
+		/*'bootstrap-transition.js','bootstrap-alert.js','bootstrap-modal.js','bootstrap-dropdown.js',
 			'bootstrap-scrollspy.js','bootstrap-tab.js','bootstrap-tooltip.js','bootstrap-popover.js',
 			'bootstrap-button.js','bootstrap-collapse.js','bootstrap-carousel.js','bootstrap-typeahead.js',
 			'bootstrap-affix.js',*/
 			'bootstrap-datepicker.js','bootstrap-datepicker.min.js',
 			'bootstrap-datepicker.ms.js','bootstrap-editable.min.js');
-	$this->papar->css = array(
-		'bootstrap-datepicker.css',
-		'bootstrap-editable.css');
-    }
+		$this->papar->css = array(
+			'bootstrap-datepicker.css',
+			'bootstrap-editable.css');
+	}
 
-    public function index() { echo '<br>class Kawalan::index() extend Kawal<br>'; }
-    public function rangkabaru($selesai) 
+	public function index() { echo '<br>class Kawalan::index() extend Kawal<br>'; }
+	public function rangkabaru($selesai) 
 	{ 
 		echo '<h1>Selesai Tambah Kes</h1>'; 
 		echo '<br><a href="' . URL. 'rangkabaru/masukdata/3">Tambah Lagi</a>';
@@ -106,7 +106,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//$this->papar->paparTemplate
 			($this->_folder . '/ubah',$jenis,0); # $noInclude=0
 
-    }
+	}
 #---------------------------------------------------------------------------------------------------
 	public function ubahCari()
 	{
@@ -124,10 +124,10 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		header('location: ' . URL . 'kawalan/ubah/' . $dataID);
 	}
 
-    public function ubahSimpan($dataID)
-    {
-        $posmen = array();
-        $medanID = 'newss';
+	public function ubahSimpan($dataID)
+	{
+		$posmen = array();
+		$medanID = 'newss';
 		$senaraiJadual = array('be16_kawal');
 
 		foreach ($_POST as $myTable => $value)
@@ -156,7 +156,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		//echo 'location: ' . URL . 'kawalan/ubah/' . $dataID;
 		header('location: ' . URL . 'kawalan/ubah/' . $dataID); //*/
-    }
+	}
 
 	function pecah5P($myTable, $posmen) 
 	{
@@ -193,7 +193,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	}
 
 	function buang($id) 
-    {
+	{
 		if (!empty($id)) 
 		{
 			#mula cari $cariID dalam $bulanan
@@ -212,6 +212,6 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca('kawalan/buang', 1);
 
-    }
+	}
 #==================================================================================================================
 }
