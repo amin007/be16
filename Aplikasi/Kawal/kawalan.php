@@ -9,17 +9,17 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'kawalan';
-        
-        $this->papar->js = array(
-            /*'bootstrap-transition.js','bootstrap-alert.js','bootstrap-modal.js','bootstrap-dropdown.js',
+       
+	$this->papar->js = array(
+	/*'bootstrap-transition.js','bootstrap-alert.js','bootstrap-modal.js','bootstrap-dropdown.js',
 			'bootstrap-scrollspy.js','bootstrap-tab.js','bootstrap-tooltip.js','bootstrap-popover.js',
 			'bootstrap-button.js','bootstrap-collapse.js','bootstrap-carousel.js','bootstrap-typeahead.js',
 			'bootstrap-affix.js',*/
 			'bootstrap-datepicker.js','bootstrap-datepicker.min.js',
 			'bootstrap-datepicker.ms.js','bootstrap-editable.min.js');
-        $this->papar->css = array(
-            'bootstrap-datepicker.css',
-            'bootstrap-editable.css');
+	$this->papar->css = array(
+		'bootstrap-datepicker.css',
+		'bootstrap-editable.css');
     }
 
     public function index() { echo '<br>class Kawalan::index() extend Kawal<br>'; }
@@ -35,7 +35,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	{
 		#326-46312  substr("abcdef", 0, -1);  // returns "abcde"
 		$msic08 = substr($msic, 4);  // returns "46312"
-		$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);		
+		$cariM6[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'msic','apa'=>$msic08);
 
 		# mula cari $cariID dalam $jadual
 		foreach ($jadualMSIC as $m6 => $msic)
@@ -107,7 +107,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 			($this->_folder . '/ubah',$jenis,0); # $noInclude=0
 
     }
-#---------------------------------------------------------------------------------------------------    
+#---------------------------------------------------------------------------------------------------
 	public function ubahCari()
 	{
 		//echo '<pre>$_GET->', print_r($_GET, 1) . '</pre>';
@@ -163,25 +163,23 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	function buang($id) 
     {//echo '<br>Anda berada di class Imej extends Kawal:buang($cari)<br>';
 
-        if (!empty($id)) 
-        {       
-            // mula cari $cariID dalam $bulanan
-            foreach ($bulanan as $key => $myTable)
-            {// mula ulang table
-                $this->papar->kesID[$myTable] = 
-                    $this->tanya->cariSemuaMedan($sv . $myTable, 
-                    $medanData, $cari);
-            }// tamat ulang table
+		if (!empty($id)) 
+		{
+			#mula cari $cariID dalam $bulanan
+			foreach ($bulanan as $key => $myTable)
+			{# mula ulang table
+			$this->papar->kesID[$myTable] = 
+			$this->tanya->cariSemuaMedan($sv . $myTable, 
+			$medanData, $cari);
+			}# tamat ulang table
+		}
+		else
+		{
+			$this->papar->carian='[tiada id diisi]';
+		}
 
-        }
-        else
-        {
-            $this->papar->carian='[tiada id diisi]';
-        }
-
-        # pergi papar kandungan
-        $this->papar->baca('kawalan/buang', 1);
-
+		# pergi papar kandungan
+		$this->papar->baca('kawalan/buang', 1);
     }
 #==================================================================================================================
 }
