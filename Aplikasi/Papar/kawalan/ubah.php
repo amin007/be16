@@ -87,7 +87,6 @@ else # $this->carian=='ada' - mula
 			<div class="col-sm-6">
 				<input type="hidden" name="jadual" value="<?=$this->_jadual?>">
 				<input type="submit" name="Simpan" value="Simpan" class="btn btn-primary btn-large">
-				<input type="reset" name="Reset" value="Reset" class="btn btn-default btn-large">
 				<?php //echo $mencari2 ?>
 			</div>
 		</div>	
