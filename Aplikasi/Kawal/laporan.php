@@ -70,7 +70,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->pegawai = senarai_kakitangan();	
+		$this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
@@ -278,7 +278,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
 		$this->papar->kp = 'BE';
 		$this->papar->tarikh = ($tarikh==null) ? date("Y-m-d h:i:s") : $tarikh;
-			
+
 		# pergi papar kandungan
 		$this->papar->baca('laporan/terimaProsesan', null, 1);//*/
 	}
