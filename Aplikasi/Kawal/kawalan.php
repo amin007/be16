@@ -9,7 +9,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 		$this->_folder = 'kawalan';
-       
+
 		$this->papar->js = array(
 		/*'bootstrap-transition.js','bootstrap-alert.js','bootstrap-modal.js','bootstrap-dropdown.js',
 			'bootstrap-scrollspy.js','bootstrap-tab.js','bootstrap-tooltip.js','bootstrap-popover.js',
@@ -181,9 +181,9 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 					str_replace( ',', '', bersih($papar) )# buang koma	
 					: bersih($papar);			
 		}
-		
+
 		unset($posmen[$myTable]['pecah5P']);
-		
+
 		/*# debug
 		echo '<pre>$hasil='; print_r($hasil); echo '</pre>';
 		echo '<pre>$pos='; print_r($pos); echo '</pre>';
