@@ -29,12 +29,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 					. 'taman 3000 ' . "\r" 
 					. 'poskod 40000',
 				));
-		
-		# tiada nilai
-		$hasil2 = array();
-		
-		# pulangkan pemboleubah
-		return $hasil;
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan pemboleubah
 	}
 
 	public function tatasusunanCariMFG($jadual, $medan, $cari, $susun) 
@@ -48,12 +46,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 				'kumpulanIndustri' => 'MFG',
 				'terimaProsesan' => 'J001',
 				));
-		
-		# tiada nilai
-		$hasil2 = array();
-		
-		# pulangkan pemboleubah
-		return $hasil;
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan pemboleubah
 	}
 
 	public function tatasusunanCariPPT($jadual, $medan, $cari, $susun) 
@@ -67,12 +63,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 				'kumpulanIndustri' => 'PPT',
 				'hantar_prosesan' => 'J001',
 				));
-		
-		# tiada nilai
-		$hasil2 = array();
-		
-		# pulangkan pemboleubah
-		return $hasil;
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan pemboleubah
 	}
 	
 	public function tatasusunanUbah2A($jadual, $medan, $cari, $susun) 
@@ -112,7 +106,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			'msic2000' => array (),
 			'msic2000_notakaki' => array (),
 		);
-		
+
 		# ada nilai - pecah tatasusunan kepada beberapa bahagian
 		$hasil1['satu'] = array ( 
 			'0' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
@@ -129,12 +123,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			'1' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
 			'2' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1')
 			);
-		
-		# tiada nilai
-		$hasil2 = array();
-		
-		# pulangkan pemboleubah
-		return $hasil;
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan pemboleubah
 	}
 	
 	public function medanUbah($cariID) 
@@ -199,11 +191,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. '		if (orang_a is null, "", concat_ws("="," orang", concat(orang_a," |") ) ),' . "\r"
 			. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
 			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
-			. '		if (responden is null, "", concat_ws("="," responden", concat(responden," |") ) ),' . "\r"			
+			. '		if (responden is null, "", concat_ws("="," responden", concat(responden," |") ) ),' . "\r"
 			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
 			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
- 			. ' ) as dataHubungi,'			
-			//. 'if (hasil is null, "", '
+ 			. ' ) as dataHubungi,'
 			. 'concat_ws(" ",' . "\r"
 			. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |") ) ),' . "\r"
 			. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |") ) ),' . "\r"
@@ -244,7 +235,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			if(isset($posmen[$rangka][$keyTEKS])):
 				$posmen[$rangka][$keyTEKS] = strtoupper($posmen[$rangka][$keyTEKS]);
 			endif;
-		}//*/ # valid guna if	
+		}//*/ # valid guna if
 		if (isset($posmen[$rangka]['fe']))
 		{
 			$posmen[$rangka]['fe']=str_replace(' ', '-', $posmen[$rangka]['fe']);
