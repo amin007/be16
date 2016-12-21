@@ -80,7 +80,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			'msic2000' => array (),
 			'msic2000_notakaki' => array (),
 		);
-		
+
 		# ada nilai - pecah tatasusunan kepada beberapa bahagian
 		$hasil1['satu'] = array ( 
 			'0' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
@@ -158,8 +158,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			'A7','A8','A9','A10','A11','A12','A13',
 			'B1','B2','B3','B4','B5','B6','B7');
 
-		# tiada nilai
-		$hasil2 = array();
+		$hasil2 = array(); # tiada nilai
 
 		return $hasil; # pulangkan nilai 
 	}
@@ -321,13 +320,13 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			//2 => 'concat_ws(" | ",`posdaftar`,`posdaftar_terima`) as respon',
 			3 => 'concat_ws("-",nama,operator) as nama,'
 			. 'concat_ws("-",kp,msic2008) as kp,'
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," orang",orang_a),' . "\r"
-			. ' 	concat_ws("="," tel",notel_a),' . "\r"
-			. ' 	concat_ws("="," fax",nofax_a),' . "\r"
-			. ' 	concat_ws("="," responden",responden),' . "\r"
-			. ' 	concat_ws("="," notel",notel),' . "\r"
-			. ' 	concat_ws("="," nofax",nofax)' . "\r"
+			. ' concat_ws("",' . "\r"
+			. '		if (orang_a is null, "", concat_ws("="," orang", concat(lower(orang_a)," |") ) ),' . "\r"
+			. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
+			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
+			. '		if (responden is null, "", concat_ws("="," responden", concat(lower(responden)," |") ) ),' . "\r"
+			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
+			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
  			. ' ) as utama,'
 			. 'concat_ws("",newss) as newss,'
 			. ' concat_ws("|",' . "\r"
@@ -370,7 +369,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $senaraiMedan; # pulangkan nilai
 	}
-	
+
 	public function kumpulDaerah($namaPegawai, $cariBatch, $item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
@@ -396,18 +395,23 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' concat_ws("|",kp) kp,'
 			. ' if(respon="A1",respon,"&nbsp;") A1,'
 			. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
-			. 'concat_ws("|",'
 			//. ' CONCAT(UPPER(SUBSTRING(orang_a,1,1)),LOWER(SUBSTRING(orang_a,1,100)))'
-			. ' LOWER(orang_a)'
-			. ',notel_a,nofax_a,esurat_a) as nota'
-			//. 'concat_ws("|",responden,notel,nofax,email) as nota'
+			//. ' LOWER(orang_a)'
+			. ' concat_ws("",' . "\r"
+			. '		if (orang_a is null, "", concat_ws("="," orang", concat(lower(orang_a)," |") ) ),' . "\r"
+			. '		if (notel_a is null or notel_a = 0, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
+			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
+			. '		if (responden is null, "", concat_ws("="," responden", concat(lower(responden)," |") ) ),' . "\r"
+			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
+			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
+ 			. ' ) as nota'
 			//. 'concat_ws("|",concat("hasil=",hasil),concat("belanja=",belanja),' 
 			//. 'concat("gaji=",gaji),concat("aset=",aset),concat("staf=",staf),'
 		);
 
 		return $senaraiMedan; # pulangkan nilai
 	}
-	
+
 	public function kumpulA1($item, $ms)
 	{
 		# set pembolehubah untuk sql pertama
@@ -507,7 +511,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			 . "	/ count(*)) * 100,2)\r"
 			 . ")`b%POM`\r";
 
-		return $medan . $rangka . $mko . $terima . $baki;	
+		return $medan . $rangka . $mko . $terima . $baki;
 	}
 #----------------------------------------------------------------------------------------------------------------------
 #==========================================================================================
