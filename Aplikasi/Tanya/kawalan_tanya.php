@@ -7,7 +7,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
-	
+
 	public function medanUbah2($cariID)
 	{
 		$senaraiMedan = 'no,Nama_Penuh nama,email,nohp';
@@ -15,7 +15,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
-	
+
 	public function tatasusunanCariID($jadual, $medan, $cari, $susun) 
 	{
 		# ada nilai
@@ -68,7 +68,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $hasil; # pulangkan pemboleubah
 	}
-	
+
 	public function tatasusunanUbah2A($jadual, $medan, $cari, $susun) 
 	{
 		# ada nilai - cantum semua tatasusunan dalam satu
@@ -128,7 +128,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $hasil; # pulangkan pemboleubah
 	}
-	
+
 	public function medanUbah($cariID) 
 	{ 
 		# Set pemboleubah
@@ -159,10 +159,10 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'tel,notel,fax,nofax,responden,orang,email,esurat,'
 			. 'hasil,belanja,gaji,aset,staf,stok' . "\r" 
 			. '';
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
-	}	
+	}
 #==========================================================================================
 	public function medanKawalan($cariID) 
 	{ 
@@ -206,14 +206,14 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			. 'notel_a,notel,nofax_a,nofax,'
 			. 'concat_ws(" ",orang_a,"[Pengurus] [Pemilik]") as orang_a,' 
 			. 'responden,esurat_a,email,'
-			. 'hasil,belanja,gaji,aset,staf,stok,'
-			. '';	
-	
+			. '"" as pecah5P,hasil,belanja,gaji,aset,staf,stok,'
+			. '';
+
 		# buang koma di akhir string
 		$medanKawalan = substr($medanKawalan, 0, -1);
 		//$medanKawalan = rtrim($medanKawalan,',');;
-		
-		# pulangkan pemboleubah		
+
+		# pulangkan pemboleubah
 		return $medanKawalan;
 	}
 
@@ -247,7 +247,7 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 			$posmen[$rangka]['responden']=mb_convert_case($posmen[$rangka]['responden'], MB_CASE_TITLE);
 		/*if (isset($posmen[$rangka]['dp_baru']))
 			$posmen[$rangka]['dp_baru']=ucwords(strtolower($posmen[$rangka]['dp_baru']));//*/
-			
+
 		# pulangkan pemboleubah
 		return $posmen;
 	}
