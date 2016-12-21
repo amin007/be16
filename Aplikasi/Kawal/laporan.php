@@ -7,7 +7,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 	{
 		//echo '<br>class Laporan extends Kawal';
 		parent::__construct();
-        //\Aplikasi\Kitab\Kebenaran::kawalMasuk();
+		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
 
 		$this->_folder = 'laporan';
@@ -70,7 +70,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
@@ -101,7 +100,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
@@ -135,7 +133,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
@@ -165,7 +162,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
@@ -200,7 +196,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;;
 		$this->papar->baris = $baris;
@@ -233,7 +228,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;
 		$this->papar->baris = $baris;
@@ -270,7 +264,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-        $this->papar->pegawai = senarai_kakitangan();
 		$this->papar->kiraSemuaBaris = $bilSemua;
 		$this->papar->item = $item;
 		$this->papar->ms = $ms;
