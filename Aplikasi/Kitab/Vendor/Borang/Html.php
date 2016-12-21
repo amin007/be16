@@ -8,7 +8,7 @@ class Html
 		$name = 'name="' . $jadual  . '[' . $kira . ']' . '[' . $medan . ']"';
 		$tabline = "\n\t\t";
 		$tabline2 = "\n\t\t\t\t";
-		
+
 		if(in_array($medan,array('nama','alamat1','alamat2','bandar'))):
 			$input = '<textarea ' . $name . ' rows="1" cols="20"' . $tabline2 
 				   . ' class="form-control">' . $data . '</textarea>'
@@ -22,11 +22,11 @@ class Html
 				   . ' class="form-control">'
 				   . '';
 		endif;
-		
+
 		# pulangkan nilai
 		return '<td>' . $input . '</td>' . $tabline;
 	}
-	
+
 	public function tambahInput($paparSahaja,$jadual,$kira,$key,$data)
 	{	# istihar pembolehubah 
 		$name = 'name="' . $jadual . '[' . $key . ']"';
@@ -114,7 +114,7 @@ class Html
 			# set pembolehubah
 			$input2 = null;
 			$senaraiJantina = array('lelaki','perempuan');
-			
+
 			foreach ($senaraiJantina as $key => $value)
 			{
 				$input2 .= '<option value="' . $value . '"';
@@ -131,7 +131,7 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		# kod html untuk bukan input type		
+		# kod html untuk bukan input type
 		elseif ( in_array($key,array('keterangan')) )
 		{#kod untuk papar jadual
 			//echo '$paparSahaja-><pre>'; print_r($paparSahaja) . '<pre>';
@@ -146,7 +146,7 @@ class Html
 			{# mula ulang $bilang
 				$this->papar_jadual($bilang, $myTable, $pilih=4, $classJadual);
 			}# tamat ulang $bilang //*/
-			
+
 			$input = '';
 		}
 		elseif ( in_array($key,array('alamat_baru')) )
@@ -160,7 +160,7 @@ class Html
 		{#kod untuk lain2
 			$input = '<p class="form-control-static text-info">' . $data . '</p>';
 		}
-		
+
 		return $input; # pulangkan nilai
 	}
 #==========================================================================================
@@ -215,7 +215,7 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		elseif(in_array($key,array('email')))
+		elseif(in_array($key,array('email','pecah5P')))
 		{#kod utk input text saiz biasa
 			$input = '<div class="input-group input-group">' . $tabline
 				   . '<span class="input-group-addon">' . $data . '</span>' . $tabline
@@ -262,7 +262,7 @@ class Html
 				   . $tabline . ' placeholder="Tukar kata laluan"'
 				   . ' class="form-control">'
 				   //. $tabline2 . '</div>'
-				   . '';			
+				   . '';
 		}
 		elseif ( in_array($key,array('lawat','terima','hantar','hantar_prosesan')) )
 		{#kod utk input tarikh
@@ -278,14 +278,14 @@ class Html
 				   . $tabline . ' placeholder="Cth: 2014-05-01"'
 				   . $tabline . ' id="date' . $key . '" data-date-format="yyyy/mm/dd"/>'
 				   . $tabline2 . '</div>'
-				   . '';			   
+				   . '';
 		}
 		elseif ( in_array($key,array('posdaftar_terima')) )
 		{#kod untuk input select option
 			# set pembolehubah
 			$input2 = null;
 			$senaraiInput = array('Belum','Proses','Terima','KadKuning','Borang');
-			
+
 			foreach ($senaraiInput as $key => $value)
 			{
 				$input2 .= '<option value="' . $value . '"';
@@ -324,7 +324,7 @@ class Html
 				   . $tabline2 . '</div>'
 				   . '';
 		}
-		# kod html untuk bukan input type		
+		# kod html untuk bukan input type
 		elseif ( in_array($key,array('keterangan')) )
 		{#kod untuk papar jadual
 			//echo '$paparSahaja-><pre>'; print_r($paparSahaja) . '<pre>';
@@ -339,7 +339,7 @@ class Html
 			{# mula ulang $bilang
 				$this->papar_jadual($bilang, $myTable, $pilih=4, $classJadual);
 			}# tamat ulang $bilang //*/
-			
+
 			$input = '';
 		}
 		elseif ( in_array($key,array('alamat_baru')) )
@@ -357,7 +357,6 @@ class Html
 				   . ' class="form-control">' . $tabline
 				   . $tabline2 . '</div>'
 				   . '';
-			
 		}*/
 		//elseif($dataType=='numeric')
 		//elseif($dataType=='NULL')
@@ -365,17 +364,17 @@ class Html
 		{#kod untuk lain2
 			$input = '<p class="form-control-static text-info">' . $data . '</p>';
 		}
-		
+
 		return $input; # pulangkan nilai
 	}
-	
+
 	# mula untuk kod php+html 
 	function papar_jadual($row, $myTable, $pilih, $classTable = null)
 	{
 		if ($pilih == 1) 
 		{
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-			?><!-- Jadual <?php echo $myTable ?> -->	
+			?><!-- Jadual <?php echo $myTable ?> -->
 			<table border="1" class="excel" id="example">
 			<?php $printed_headers = false; # mula bina jadual
 			#-----------------------------------------------------------------
@@ -399,7 +398,7 @@ class Html
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 		} elseif ($pilih == 2) {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-			?><!-- Jadual <?php echo $myTable ?> -->	
+			?><!-- Jadual <?php echo $myTable ?> -->
 			<table border="1" class="excel" id="example"><?php
 			$printed_headers = false; # mula bina jadual
 			#-----------------------------------------------------------------
@@ -452,7 +451,7 @@ class Html
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 		} elseif ($pilih == 4) { 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-			?><!-- Jadual <?php echo $myTable ?> -->	
+			?><!-- Jadual <?php echo $myTable ?> -->
 			<table class="<?php echo $classTable ?>">
 			<?php $printed_headers = false; # mula bina jadual
 			#-----------------------------------------------------------------
@@ -494,7 +493,7 @@ class Html
 			$printed_headers = false; # mula bina jadual
 			#-----------------------------------------------------------------
 			for ($kira=0; $kira < $bil_baris; $kira++)
-			{	# print the headers once: 	
+			{	# print the headers once:
 				if ( !$printed_headers ) 
 				{##=================================================
 				$output .= "\r\t<thead><tr>\r\t<th>#</th>";
@@ -527,7 +526,7 @@ class Html
 		$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
 		$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 		//echo "<br> \$pengguna : $pengguna | \$level = $level";
-		
+
 		# butang 
 		$birutua = 'btn btn-primary btn-mini';
 		$birumuda = 'btn btn-info btn-mini';
@@ -572,9 +571,9 @@ class Html
 				list($k,$btn) = $this->posdaftar($data);
 				$pautan = ($data==null) ? $data :
 				'<a target="_blank" href="' . $k[3] . '" class="' . $btn . '">' . $data . '</a>';
-				
+
 			?><td><?php echo $pautan ?></td><?php
-			
+
 		}
 		elseif ($key=='pegawaiborang')
 		{
@@ -619,8 +618,8 @@ class Html
 		else
 		{
 			?><td><?php echo $data ?></td><?php
-		}	
-		
+		}
+
 	}
 #==========================================================================================
 	public function posdaftar($data)
@@ -629,16 +628,15 @@ class Html
 		$k[1] = 'http://poslajutracking.herokuapp.com/track/' . $data;
 		$k[2] = 'http://www.pos.com.my/postal-services/quick-access/?track-trace#trackingIds=' . $data;
 		$k[3] = 'https://track.aftership.com/malaysia-post/' . $data;
-		
+
 		# butang 
 		$birutua = 'btn btn-primary btn-mini';
 		$birumuda = 'btn btn-info btn-mini';
 		$merah = 'btn btn-danger btn-mini';
 		$btn = $birutua;
 		//$a = '<i class="fa fa-pencil" aria-hidden="true"></i>' . $data;
-		
-		return array($k,$btn);
 
+		return array($k,$btn);
 	}
 #==========================================================================================
 }
