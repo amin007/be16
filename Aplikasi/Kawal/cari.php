@@ -6,28 +6,19 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	public function __construct() 
 	{
 		parent::__construct();
-        //\Aplikasi\Kitab\Kebenaran::kawalMasuk();
+		//\Aplikasi\Kitab\Kebenaran::kawalMasuk();
 		\Aplikasi\Kitab\Kebenaran::kawalKeluar();
-		
-        /*$this->papar->js = array(
-            //'bootstrap.js',
-            'bootstrap-datepicker.js',
-            'bootstrap-datepicker.ms.js',
-            'bootstrap-editable.min.js');
-        $this->papar->css = array(
-            'bootstrap-datepicker.css',
-            'bootstrap-editable.css');//*/
-		
+
 		$this->_tajukAtas = 'BE16:';
-		$this->_folder = 'cari';			
+		$this->_folder = 'cari';
 	}
-	
+
 	public function index() 
 	{	
 		# Set pemboleubah utama
 		$this->papar->medan = array(1,2,3);
 		$this->papar->pegawai = senarai_kakitangan();
-		
+
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca
@@ -35,51 +26,51 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//$this->papar->paparTemplate
 			($this->_folder . '/index', $jenis, 0); # $noInclude=0		
 	}
-#==========================================================================================	
+#==========================================================================================
 	public function idnama() 
 	{	
 		//echo '<br>Anda berada di class Cari extends Kawal:idnama()<br>';
-        //echo '<pre>$_POST=>'; print_r($_POST) . '</pre>';
-        /*  $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
-        
-        # senaraikan tatasusunan jadual
-        $myJadual = array('be16_kawal','be16_rangkabaru','be16_proses');
-		$medan = '*';
-        $this->papar->cariNama = array();
+		//echo '<pre>$_POST=>'; print_r($_POST) . '</pre>';
+		/*  $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
 
-        # cari id berasaskan newss/ssm/sidap/nama
-        $id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
-        //$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
+		# senaraikan tatasusunan jadual
+		$myJadual = array('be16_kawal','be16_rangkabaru','be16_proses');
+		$medan = $this->tanya->idNama();
+		$this->papar->cariNama = array();
 
-        if (!empty($id['nama'])) 
-        {
+		# cari id berasaskan newss/ssm/sidap/nama
+		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
+		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
+
+		if (!empty($id['nama'])) 
+		{
 			//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 			$carian[] = array('fix'=>'z%like%', # cari x= atau %like%
 				'atau'=>'WHERE', # WHERE / OR / AND
 				'medan' => 'concat_ws("",newss,nossm,nama)', # cari dalam medan apa
 				'apa' => $id['nama']); # benda yang dicari
-			
+
 			# mula cari $cariID dalam $myJadual
-            foreach ($myJadual as $key => $myTable)
-            {# mula ulang table
-                $this->papar->cariNama[$myTable] = 
+			foreach ($myJadual as $key => $myTable)
+			{# mula ulang table
+				$this->papar->cariNama[$myTable] = 
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, null);
 					//$this->tanya->cariSql($myTable, $medan, $carian, null);
-            }# tamat ulang table
+			}# tamat ulang table
 
 			# isytihar pembolehubah untuk dalam class Papar
 			$this->papar->primaryKey = 'newss';	
 			$this->papar->carian[] = $id['nama'];
-			
+
         }
-        //elseif (!empty($id['nama'])) {}
-        else
+		//elseif (!empty($id['nama'])) {}
+		else
         {
             $this->papar->carian[]='[id:0]';
         }
 		# semak data $this->papar->cariNama
 		//echo '<pre>$this->papar->cariNama::'; print_r($this->papar->cariNama) . '<pre>';
-			
+
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
 		//$this->papar->baca
@@ -114,15 +105,15 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		//$this->papar->baca
 		$this->papar->bacaTemplate
 		//$this->papar->paparTemplate
-			($this->_folder . '/index', $jenis, 0); # $noInclude=0		
+			($this->_folder . '/index', $jenis, 0); # $noInclude=0
 	}
-	
+
 	function pada($bil = 400, $muka = 1) 
 	{
 		/* fungsi ini memaparkan hasil carian
 		 * untuk jadual msic2000 dan msic2008
 		 */
-		 
+
 		$had = '0, ' . $bil; // setkan $had untuk sql
 		$kira = pecah_post($_POST); # echo '<pre>$kira->'; print_r($kira); echo '</pre>';
 		# setkan pembolehubah dulu
@@ -158,7 +149,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			# mula cari $cariID dalam $jadual
 			foreach ($jadual as $key => $namaPanjang)
 			{# mula ulang table
-				$myTable = substr($namaPanjang, 16);  
+				$myTable = substr($namaPanjang, 16);
 				# senarai nama medan
 				$medan = ($myTable=='msic2008') ? 
 					'seksyen S,bahagian B,kumpulan Kpl,kelas Kls,' .
@@ -168,7 +159,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 					->cariPOST($namaPanjang, $medan, $kira, $had);
 
 			}# tamat ulang table
-			
+
 			$this->papar->carian=$carian;
 			$mesej = null; $lokasi = null;
 		}
@@ -187,13 +178,13 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				$this->papar->cariNama[$myTable] = $this->tanya
 				->cariPOST($namaPanjang, $medan, $kira, $had);
 			}# tamat ulang table
-			
+
 			# papar jadual kod unit
 			$unitPanjang = 'pom_dataekonomi.kodproduk_unitkuantiti';
 			$unit = 'unitkuantiti';
 				$this->papar->cariNama[$unit] = $this->tanya->
 					cariSemuaData($unitPanjang, '*', null, null);
-			
+
 			$this->papar->carian=$carian;
 			$mesej = null; $lokasi = null;
 		}
@@ -207,7 +198,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				$this->papar->cariNama[$myTable] = $this->tanya
 					->cariPOST($myTable, $medan = '*', $kira, $had);
 			}# tamat ulang table
-			
+
 			$this->papar->carian=$carian;
 			$mesej = null; $lokasi = null;
 		}
@@ -265,21 +256,20 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			$this->papar->carian = $carian;
 			$mesej = null; $lokasi = null;
 		}
-		
-		/* # semak output
-		echo '<pre>';
+
+		/* echo '<pre>'; # semak output
 		//echo 'Patah balik ke ' . $lokasi . $mesej . $namajadual . '<hr>';
 		echo '$this->papar->cariNama:'; print_r($this->papar->cariNama);
 		//echo '$this->papar->carian : ' . $this->papar->carian . '<br>'
 		//	. '$this->papar->apa : ' . $this->papar->apa . '<br>';
 		echo '</pre>';
 		//*/
-		
+
 		# paparkan ke fail cari/$namajadual.php
 		if ($mesej != null ) 
 		{
 			$_SESSION['mesej'] = $mesej;
-			
+
 			//echo 'Patah balik ke ' . $lokasi . $mesej . '<hr>' . $data;
 			header('location:' . URL . 'cari/' . $lokasi . $namajadual . '/2');
 		}
@@ -291,7 +281,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		}
 		//*/
 	}
-	
+
 	public function syarikat($carilah = null)
 	{
 		$cari = bersih($_GET['cari']); //echo "URL \$cari = $cari <br> GET \$cari = $carilah";
@@ -304,11 +294,11 @@ class Cari extends \Aplikasi\Kitab\Kawal
 				$medan = 'newss,nama,nossm,operator,kp';
 				$carian[] = array('fix'=>'z%like%','atau'=>'WHERE','medan'=>'concat_ws(" ",newss,nossm,nama)','apa'=>$cari);
 				$susun['dari'] = 10;
-				
+
 				$paparKes = //$this->tanya->cariSql($myTable, $medan, $carian, $susun);
 					$this->tanya->cariSemuaData($myTable, $medan, $carian, $susun);
 				$bilKes = count($paparKes); //echo $bilKes . '=>'; //print_r($paparKes) . '<pre></pre>';
-				
+
 				if($bilKes==0) {echo '<li>Takde Laa</li>';}
 				else
 				{	echo '<li>Jumpa ' . $bilKes . '</li>';
