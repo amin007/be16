@@ -27,20 +27,19 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			($this->_folder . '/index', $jenis, 0); # $noInclude=0		
 	}
 #==========================================================================================
-	public function idnama() 
-	{	
+	public function idnama()
+	{
 		//echo '<br>Anda berada di class Cari extends Kawal:idnama()<br>';
 		//echo '<pre>$_POST=>'; print_r($_POST) . '</pre>';
 		/*  $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
 
 		# senaraikan tatasusunan jadual
 		$myJadual = array('be16_kawal','be16_rangkabaru','be16_proses');
-		$medan = $this->tanya->idNama();
+		$medan = $this->tanya->idNama(); # panggil medan2 tertentu
 		$this->papar->cariNama = array();
 
 		# cari id berasaskan newss/ssm/sidap/nama
 		$id['nama'] = bersih(isset($_POST['cari']) ? $_POST['cari'] : null);
-		//$id['nama'] = isset($_POST['id']['nama']) ? $_POST['id']['nama'] : null;
 
 		if (!empty($id['nama'])) 
 		{
@@ -83,8 +82,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 	public function tentang($apa, $bil=1, $mesej=null) 
 	{	
 		/* fungsi ini memaparkan borang
-		 * 
-		   echo 'mana ko pergi daa lokaliti($negeri)<br>';
+		 * echo 'mana ko pergi daa lokaliti($negeri)<br>';
 		 */
 		if ($apa=='msic') $jadual = 'pom_dataekonomi.msic2000';
 		elseif ($apa=='produk') $jadual = 'pom_dataekonomi.kodproduk_mei2011';
@@ -114,7 +112,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		 * untuk jadual msic2000 dan msic2008
 		 */
 
-		$had = '0, ' . $bil; // setkan $had untuk sql
+		$had = '0, ' . $bil; # setkan $had untuk sql
 		$kira = pecah_post($_POST); # echo '<pre>$kira->'; print_r($kira); echo '</pre>';
 		# setkan pembolehubah dulu
 		$namajadual = isset($_POST['namajadual']) ? $_POST['namajadual'] : null;
