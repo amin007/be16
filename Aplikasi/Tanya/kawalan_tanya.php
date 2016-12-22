@@ -238,13 +238,13 @@ class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 		}//*/ # valid guna if
 		if (isset($posmen[$rangka]['fe']))
 		{
-			$posmen[$rangka]['fe']=str_replace(' ', '-', $posmen[$rangka]['fe']);
-			$posmen[$rangka]['fe']=strtolower($posmen[$rangka]['fe']);
+			$posmen[$rangka]['fe'] = str_replace(' ', '-', $posmen[$rangka]['fe']);
+			$posmen[$rangka]['fe'] = strtolower($posmen[$rangka]['fe']);
 		}
 		if (isset($posmen[$rangka]['email']))
-			$posmen[$rangka]['email']=strtolower($posmen[$rangka]['email']);
+			$posmen[$rangka]['email'] = strtolower($posmen[$rangka]['email']);
 		if (isset($posmen[$rangka]['responden']))
-			$posmen[$rangka]['responden']=mb_convert_case($posmen[$rangka]['responden'], MB_CASE_TITLE);
+			$posmen[$rangka]['responden'] = mb_convert_case($posmen[$rangka]['responden'], MB_CASE_TITLE);
 		/*if (isset($posmen[$rangka]['dp_baru']))
 			$posmen[$rangka]['dp_baru']=ucwords(strtolower($posmen[$rangka]['dp_baru']));//*/
 
