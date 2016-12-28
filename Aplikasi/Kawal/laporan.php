@@ -86,7 +86,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like%','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
 			($jadual, $medan2 = '*', $carian, NULL);
@@ -172,6 +172,39 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//$this->papar->baca('laporan/f3all', null, 1);
 		//$this->papar->baca('laporan/f3responden', null, 1);
 		$this->papar->baca('laporan/fetnt', null, 1);
+	}
+#===============================================================================================
+	public function paparA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
+	{
+		$medan = $this->tanya->paparA1($item, $ms);# kumpul respon jadi medan sql
+		# set pembolehubah utama untuk sql
+		$jadual = 'be16_kawal';
+		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
+		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar_prosesan','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'respon','apa'=>'A1');
+		# tentukan bilangan mukasurat & jumlah rekod
+			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
+			($jadual, $medan2 = '*', $carian, NULL);
+			# semak bilangan mukasurat & jumlah rekod
+			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
+			$jum = pencamSqlLimit($bilSemua, $item, $ms);
+		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'respon,kp,nama ASC') );
+		# tanya dalam sql 	
+		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
+			($jadual, $medan, $carian, $susun);
+		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
+
+		# Set pemboleubah utama
+		$this->papar->kiraSemuaBaris = $bilSemua;
+		$this->papar->item = $item;;
+		$this->papar->baris = $baris;
+		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
+		$this->papar->kp = 'BE';
+
+		# pergi papar kandungan
+		//$this->papar->baca('laporan/f3all', null, 1);
+		$this->papar->baca('laporan/f3responden', null, 1);
 	}
 #===============================================================================================
 	public function cetakA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
