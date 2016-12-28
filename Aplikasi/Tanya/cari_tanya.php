@@ -8,10 +8,30 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		parent::__construct();
 	}
 ########################################################################################################
+	private function cariApaPOST($myTable, $where = null;, $atau, $cari, $f, $apa)
+	{
+		//' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
+			if ($apa==null) 
+				$where .= " $atau `$cari` is null\r";
+			elseif ($myTable=='msic2008') 
+			{
+				if ($cari=='msic') $where .= ($f=='x') ?
+				" $atau (`$cari`='$apa' or msic2000='$apa')\r" :
+				" $atau (`$cari` like '%$apa%' or msic2000 like '%$apa%')\r";
+				else $where .= ($f=='x') ?
+				" $atau (`$cari`='$apa' or notakaki='$apa')\r" :
+				" $atau (`$cari` like '%$apa%' or notakaki like '%$apa%')\r";
+			}
+			else 
+				$where .= ($f=='x') ? " $atau `$cari`='$apa'\r" : 
+				" $atau `$cari` like '%$apa%'\r";
+
+		return $where;
+	}
+	
 	private function dimanaPOST($myTable)
 	{
-		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>'; 
-		//' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
+		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>';
 		$where = null;
 		if($_POST==null || empty($_POST) ):
 			$where .= null;
@@ -21,23 +41,9 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 				$apa = $_POST['cari'][$key];
 				$f = isset($_POST['fix'][$key]) ? $_POST['fix'][$key] : null;
 				$atau = isset($_POST['atau'][$key]) ? $_POST['atau'][$key] : 'WHERE';
-
 				//$sql.="\r$key => $f  | ";
 
-				if ($apa==null) 
-					$where .= " $atau `$cari` is null\r";
-				elseif ($myTable=='msic2008') 
-				{
-					if ($cari=='msic') $where .= ($f=='x') ?
-					" $atau (`$cari`='$apa' or msic2000='$apa')\r" :
-					" $atau (`$cari` like '%$apa%' or msic2000 like '%$apa%')\r";
-					else $where .= ($f=='x') ?
-					" $atau (`$cari`='$apa' or notakaki='$apa')\r" :
-					" $atau (`$cari` like '%$apa%' or notakaki like '%$apa%')\r";
-				}
-				else 
-					$where .= ($f=='x') ? " $atau `$cari`='$apa'\r" : 
-					" $atau `$cari` like '%$apa%'\r";
+				$where = cariApaPOST($myTable, $where = null;, $atau, $cari, $f, $apa);
 			}
 		endif;
 
