@@ -8,7 +8,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		parent::__construct();
 	}
 ########################################################################################################
-	private function cariApaPOST($myTable, $where = null;, $atau, $cari, $f, $apa)
+	private function cariApaPOST($myTable, $where = null, $atau, $cari, $f, $apa)
 	{
 		//' WHERE ' . $medan . ' like %:cariID% ', array(':cariID' => $cariID));
 			if ($apa==null) 
@@ -41,9 +41,9 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 				$apa = $_POST['cari'][$key];
 				$f = isset($_POST['fix'][$key]) ? $_POST['fix'][$key] : null;
 				$atau = isset($_POST['atau'][$key]) ? $_POST['atau'][$key] : 'WHERE';
-				//$sql.="\r$key => $f  | ";
+				//echo "\r$key => $f  | ";
 
-				$where = cariApaPOST($myTable, $where = null;, $atau, $cari, $f, $apa);
+				$where .= $this->cariApaPOST($myTable, $where, $atau, $cari, $f, $apa);
 			}
 		endif;
 
