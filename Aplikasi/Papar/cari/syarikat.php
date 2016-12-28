@@ -98,7 +98,7 @@ foreach ($this->cariNama as $myTable => $row)
 	?>
 	<div class="tab-pane<?php echo $mula2?>" id="<?php echo $myTable ?>">
 	<?php //echo $this->halaman[$myTable] ?>
-<!-- Jadual <?php echo $myTable ?> ########################################### -->	
+<!-- Jadual <?php echo $myTable ?> ########################################### -->
 <table border="1" class="excel" id="example">
 <?php $printed_headers = false; # mula bina jadual
 #-----------------------------------------------------------------
@@ -131,7 +131,7 @@ for ($kira=0; $kira < count($row); $kira++)
 ?>
 </table>
 
-<!-- Jadual <?php echo $myTable ?> ########################################### -->		
+<!-- Jadual <?php echo $myTable ?> ########################################### -->
 	</div>
 <?php
 	} // if ( count($row)==0 )
@@ -150,12 +150,12 @@ function pautan($kira, $key, $data, $myTable)
 	$pengguna = \Aplikasi\Kitab\Sesi::get('namaPegawai');
 	$level = \Aplikasi\Kitab\Sesi::get('levelPegawai');
 	//echo "<br> \$pengguna : $pengguna | \$level = $level";
-	
+
 	# butang 
 	$birutua = 'btn btn-primary btn-mini';
 	$birumuda = 'btn btn-info btn-mini';
 	$merah = 'btn btn-danger btn-mini';
-	
+
 	if ($key=='newss')
 	{
 		//$b1 = URL . 'borang/tambah/' . $data;
@@ -183,7 +183,7 @@ function pautan($kira, $key, $data, $myTable)
 	else
 	{
 		?><td><?php echo $data ?></td><?php
-	}	
+	}
 }
 
 	/*
