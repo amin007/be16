@@ -74,7 +74,7 @@ function pecah_url($ulang)
 			. '/' . $pecah[3] 
 			. '/' . $pecah[4]
 		    . '/' . $buang . '">Kurang</a>';
-	
+
 	return $papar;
 }
 
@@ -82,7 +82,7 @@ function dpt_ip()
 {
 	# define('ALAMAT_IP', serialize (array()) );
 	$IP = unserialize(ALAMAT_IP);
-	
+
 	return $IP;
 }
 
@@ -95,14 +95,18 @@ function senarai_kakitangan($pilih = 0)
     return $pegawai;
 }
 
-function dpt_senarai($pilih = 'msicbaru')
+function dpt_senarai($pilih)
 {
 	# define('MSICBARU', serialize (array()) );
-	if ($pilih = 'msicbaru') : 
+	if ($pilih == 'msicbaru') : 
 		$jadual = unserialize(MSICBARU);
-	//else : $jadual = null; //unserialize()
+	elseif ($pilih == 'produk') : 
+		$jadual = unserialize(PRODUK);
+	else : $jadual = array(); //unserialize()
 	endif;
-	
+
+	//echo 'dpt_senarai($pilih = ' . $pilih . ')<hr>';
+
 	return $jadual;
 }
 

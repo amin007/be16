@@ -77,4 +77,15 @@ define('MSICBARU', serialize (
 	array($e.'msic08',$e.'msic2008',
 		$e.'msic_v1',$e.'msic_bandingan',
 		$e.'msic',$e.'msic_nota_kaki')
-	));		
+	));	
+define('PRODUK', serialize (
+	array($e.'kodproduk_aup',
+		$e.'kodproduk_mei2011',
+		$e.'kod2010_input',
+		$e.'kod2010_output',
+		$e.'mcpa2008_tr2010',
+		$e.'mcpa2009_tr2013',
+		$e.'mcpa2009_tr2014',
+		$e.'mcpa2009_tr2015',
+		$e.'mcpa2009_input')
+	));	
