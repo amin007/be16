@@ -408,7 +408,7 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			1 => 'f2',
 			2 => null,
 			3 => 'newss, ' //concat_ws("<br>",nama,operator) nama
-			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url2 . ',' . $url3 . ') nama,'			
+			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url2 . ',' . $url3 . ') nama,'
 			. ' concat_ws(" ",' . "\r"
 			. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |<br>") ) ),' . "\r"
 			. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |<br>") ) ),' . "\r"
