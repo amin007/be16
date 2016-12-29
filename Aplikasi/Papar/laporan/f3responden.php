@@ -30,13 +30,12 @@ if (count($this->hasil) == 0):
 	echo 'Tiada data';
 else:
 	$jadual = new Aplikasi\Kitab\Perangkaan;
-?>
-	<table border="1" class="excel" width="100%" height="100%">
-	<?php
+	echo "\n";
+	?><table border="1" class="excel" width="100%" height="100%"><?php
+	echo "\n";
 	$jadual->kiraBarisDulu($kepala='',$kp,$namaOrg,$rows,$fields,$this->hasil,$item,$ms,$baris);
-	?>
-	</table>
-<?php
+	echo "\n"; 
+	?></table><?php
 endif; //*/
 echo "\n"; ?>
 </body>
