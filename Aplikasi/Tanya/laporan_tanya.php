@@ -385,6 +385,63 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 		return array($medan, $jadualU, $carian, $susunkan); # pulangkan nilai
 	}
 #----------------------------------------------------------------------------------------------------------------------
+	private function paparLinkA1()
+	{
+		$cariID = '",newss,"';
+		$news1 = 'http://' . $_SERVER['SERVER_NAME'] . '/ekonomi/ckawalan/ubah/' . $cariID;
+		$namaS = $cariID . '/2010/2015/cetak/",replace(nama,\' \',\'-\'),"';
+		$news2 = 'http://' . $_SERVER['SERVER_NAME'] . '/ekonomi/cprosesan101/ubah/",kp,"/' . $namaS;
+		$news3 = 'http://' . $_SERVER['SERVER_NAME'] . '/ekonomi/semakan/ubah/",kp,"/' . $cariID . '/2010/2015/';
+		//$url1 = '" <a target=_blank href=' . $news1 . '>SEMAK 1</a>"';
+		$url1 = 'concat("<a target=_blank href=' . $news1 . '>SEMAK 1</a>")';
+		$url2 = 'concat("<a target=_blank href=' . $news2 . '>SEMAK 2</a>")';
+		$url3 = 'concat("<a target=_blank href=' . $news3 . '>SEMAK 3</a>")';
+
+		return array($url1, $url2, $url3);
+	}
+
+	private function paparMedanA1()
+	{
+		list($url1, $url2, $url3) = $this->paparLinkA1();
+		$senaraiMedan = array(
+			0 => 'kod',
+			1 => 'f2',
+			2 => null,
+			3 => 'newss, ' //concat_ws("<br>",nama,operator) nama
+			. 'concat_ws("|",nama,operator,' . $url1 . ',' . $url2 . ',' . $url3 . ') nama,'
+			. ' concat_ws(" ",' . "\r"
+			. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |<br>") ) ),' . "\r"
+			. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |<br>") ) ),' . "\r"
+			. '		if (gaji is null, "", concat_ws("="," gaji", concat(format(gaji,0)," |<br>") ) ),' . "\r"
+			. '		if (aset is null, "", concat_ws("="," aset", concat(format(aset,0)," |<br>") ) ),' . "\r"
+			. '		if (staf is null, "", concat_ws("="," staf", concat(format(staf,0)," |<br>") ) ),' . "\r"
+			. '		if (stok is null, "", concat_ws("="," stok akhir", concat(format(stok,0)," |<br>") ) )' . "\r"
+ 			. ' ) as nota,'
+			. ' concat_ws("",' . "\r"
+			. '		if (orang_a is null, "", concat_ws("="," orang", concat(lower(orang_a)," |<br>") ) ),' . "\r"
+			. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |<br>") ) ),' . "\r"
+			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |<br>") ) ),' . "\r"
+			. '		if (responden is null, "", concat_ws("="," responden", concat(lower(responden)," |<br>") ) ),' . "\r"
+			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |<br>") ) ),' . "\r"
+			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |<br>") ) )' . "\r"
+ 			. ' ) as utama,'
+			. ' concat_ws("|",kp) kp,'
+			. ' if(respon="A1",respon,"&nbsp;") A1'
+		);
+
+		return $senaraiMedan; # pulangkan nilai
+	}
+
+	public function paparA1($item, $ms)
+	{
+		# set pembolehubah untuk sql pertama
+		list($medanR, $jadualR, $r, $medan) = $this->paparMedanA1();
+		//echo '<pre>$this->medanA1():'; print_r($this->medanA1()) . '</pre>';
+		//echo '<pre>$medan:'; print_r($medan) . '</pre>';
+
+		return $medan; # pulangkan nilai
+	}
+#----------------------------------------------------------------------------------------------------------------------
 	private function medanA1()
 	{
 		$senaraiMedan = array(
