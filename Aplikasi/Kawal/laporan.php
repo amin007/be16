@@ -27,7 +27,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->item = $item;
 		$this->papar->baris = $baris;
 		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->papar->kp = $kp;
 	}
 #==========================================================================================
 	public function fe($jadual, $cariID, $cariApa, $item = 1000, $ms = 1)
@@ -73,7 +73,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		$this->papar->baca('laporan/f3all', null, 1);
@@ -100,7 +100,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -130,7 +130,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -156,7 +156,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -187,7 +187,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -217,7 +217,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -246,7 +246,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
