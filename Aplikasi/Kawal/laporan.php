@@ -21,14 +21,17 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$this->papar->baca($this->_folder . '/index', null, 1);
 	}
 #==========================================================================================
+	public function setPembolehubahUtama($bilSemua,$item,$baris,$namaPegawai,$cariBatch,$kp = 'BE')
+	{
+		$this->papar->kiraSemuaBaris = $bilSemua;
+		$this->papar->item = $item;
+		$this->papar->baris = $baris;
+		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
+		$this->papar->kp = 'BE';
+	}
+#==========================================================================================
 	public function fe($jadual, $cariID, $cariApa, $item = 1000, $ms = 1)
 	{
-		# Set pemboleubah utama
-		$this->papar->Tajuk_Muka_Surat = 'Enjin Laporan FE';
-		$this->papar->kp = 'BUTAM';
-		$this->papar->fe = $cariApa;
-		$this->papar->item = $item; 
-		$this->papar->ms = $ms = 1;
 		# kod asas panggil sql
 			//$medan = '*'; # papar semua medan
 			$cari[] = array('fix'=>'like%','atau'=>'WHERE','medan'=>$cariID,'apa'=>$cariApa);
@@ -39,11 +42,10 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 				//kumpulRespon
 				($item, $ms, $jadual, $cari, $susun = null);
 
-		/*echo '<pre>'; # semak data
-		//echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
-		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
-		echo '$this->papar->hasil:<br>'; print_r($this->papar->hasil);
- 		echo '</pre>'; //*/
+		# Set pemboleubah utama
+		$this->papar->Tajuk_Muka_Surat = 'Enjin Laporan FE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$cariID,$cariApa,$kp = 'BUTAM')
 
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/f3all', null, 1);
@@ -70,11 +72,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		$this->papar->baca('laporan/f3all', null, 1);
@@ -100,11 +99,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -133,11 +129,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -162,11 +155,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -196,11 +186,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -229,11 +216,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -261,11 +245,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 
 		# pergi papar kandungan
 		//$this->papar->baca('laporan/f3all', null, 1);
@@ -297,12 +278,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$hasil:'; print_r($this->papar->hasil) . '</pre>'; # semak data
 
 		# Set pemboleubah utama
-		$this->papar->kiraSemuaBaris = $bilSemua;
-		$this->papar->item = $item;
-		$this->papar->ms = $ms;
-		$this->papar->baris = $baris;
-		$this->papar->fe = $namaPegawai . '-' . $cariBatch;
-		$this->papar->kp = 'BE';
+		$this->setPembolehubahUtama($bilSemua,$item,$baris,
+			$namaPegawai,$cariBatch,$kp = 'BE');
 		$this->papar->tarikh = ($tarikh==null) ? date("Y-m-d h:i:s") : $tarikh;
 
 		# pergi papar kandungan
