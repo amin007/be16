@@ -7,22 +7,22 @@ class Perangkaan
 	{
 		## tajuk besar
 		switch ($kodsv):
-			case 'MDT': $SV='PENYIASATAN PERDAGANGAN EDARAN BULANAN'; break;
-			case 'CDT': $SV='BANCI PERDAGANGAN EDARAN'; break;
-			case 'MM':  $SV='PENYIASATAN PEMBUATAN BULANAN'; break;
-			case 'QSS': $SV='PENYIASATAN PERKHIDMATAN SUKU TAHUNAN'; break;
-			case 'SSE':  $SV='PENYIASATAN TAHUNAN'; break;
-			case 'MFG':  $SV='PENYIASATAN PEMBUATAN TAHUNAN'; break;
-			case 'SERVIS':  $SV='PENYIASATAN PERKHDIMATAN TAHUNAN'; break;
-			case 'PPPMAS':  $SV='PENYIASATAN PERBELANJAAN UNTUK PELINDUNGAN ALAM SEKITAR'; break;
-			case 'BE':  $SV='BANCI EKONOMI'; break;
-			default: $SV=null;
+			case 'MDT':		$SV = 'PENYIASATAN PERDAGANGAN EDARAN BULANAN'; break;
+			case 'CDT':		$SV = 'BANCI PERDAGANGAN EDARAN'; break;
+			case 'MM':		$SV = 'PENYIASATAN PEMBUATAN BULANAN'; break;
+			case 'QSS':		$SV = 'PENYIASATAN PERKHIDMATAN SUKU TAHUNAN'; break;
+			case 'SSE':		$SV = 'PENYIASATAN TAHUNAN'; break;
+			case 'MFG':		$SV = 'PENYIASATAN PEMBUATAN TAHUNAN'; break;
+			case 'SERVIS':	$SV = 'PENYIASATAN PERKHDIMATAN TAHUNAN'; break;
+			case 'PPPMAS':	$SV = 'PENYIASATAN PERBELANJAAN UNTUK PELINDUNGAN ALAM SEKITAR'; break;
+			case 'BE':		$SV = 'BANCI EKONOMI'; break;
+			default:		$SV = null;
 		endswitch;
 
 		#pulangkan nilai
 		return $SV;
 	}
-	
+
 	function namaPegawaiPenyelia($namaOrg,$allRows,$item,$ms)
 	{
 		#pecah pembolehubah $nama orang
@@ -49,9 +49,8 @@ class Perangkaan
 
 		#pulangkan nilai
 		return $cetakNama;
-
 	}
-	
+
 	function paparJadualF3_TajukBesar($allRows,$fields,$kodsv,$namaOrg,$item,$ms)
 	{
 		## tajuk besar
@@ -73,7 +72,7 @@ class Perangkaan
 			"\n" . 'Tarikh : <u>' . (date('d')) .
 			(date('/m/Y')) . '</u> ' .
 			'</div>' .
-			'</td>' . "\r";
+			'</font></td>' . "\r";
 
 	}
 
@@ -162,7 +161,7 @@ class Perangkaan
 			# set pembolehubah untuk highlight
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
-		
+
 			foreach ($hasil as $kira => $nilai)
 			{	
 				echo "<tr" . (($kira%'2'=='0') ? $highlight : $highlight2) . ">";
@@ -181,13 +180,13 @@ class Perangkaan
 				foreach ($nilai as $key => $data) echo '<td>' . $data . '</td>';
 				echo "</tr>\n";
 			}
-			
+
 			## cukupkan 30 rows
 			$this->cukupkan30($allRows, $baris, $item, $hasil, $fields);
-			
+
 		endif;
 	}
-	
+
 	function cukupkan30($allRows, $baris, $item, $hasil, $fields)
 	{
 		$mula = $allRows+1;
@@ -210,7 +209,7 @@ class Perangkaan
 			## kata2 pengarah
 			if($akhir==$i) $this->paparJadualF3_TajukBawah($hasil,$allRows,$fields);
 		}
-		
+
 	}
 # buat tajuk lain sikit untuk cetak alamat
 	function paparJadualF3_TajukBesar2($allRows,$fields,$kodsv,$namaOrg,$item,$ms)
@@ -218,26 +217,26 @@ class Perangkaan
 		## tajuk besar
 		$SV = $this->tajukBanciPenyiasatan($kodsv);
 		$cetakNama = $this->namaPegawaiPenyelia($namaOrg,$allRows,$item,$ms);
-		
-		echo "\n" .'<td colspan="' . ($fields+1) . '"><font size=2>' .
-			'<div align="center">' .
-			'SENARAI ALAMAT KES ' . $SV . ' ' . date('Y') .
-			' ada ' . $allRows .
-			'</div><br>' .
-			'<div align="left">' . $cetakNama .
-			"\n" . 'Tarikh : <u>' . (date('d')) .
-			(date('/m/Y')) . '</u> ' .
-			'</div>' .
-			'</td>' . "\r";
+
+		echo "\n" . '<td colspan="' . ($fields+1) . '">' . '<font size=2>'
+			. '<div align="center">'
+			. 'SENARAI ALAMAT KES ' . $SV . ' ' . date('Y') 
+			. ' ada ' . $allRows 
+			. '</div><br>' 
+			. '<div align="left">' . $cetakNama 
+			. "\n" . 'Tarikh : <u>' . (date('d')) 
+			. (date('/m/Y')) . '</u> ' 
+			. '</div>' 
+		. '</font>' . '</td>' . "\r";
 
 	}
 # pilih tajuk laporan
 	function paparJadualF3_TajukMedan2($kepala=0,$sv,$namaOrg,$allRows,$fields,$hasil,$item,$ms,$baris)
 	{
 		## tajuk besar
-		echo '<tr style="page-break-before:always">';
+		echo "\n" . '<tr style="page-break-before:always">';
 		$this->paparJadualF3_TajukBesar2($allRows,$fields,$sv,$namaOrg,$item,$ms);
-		echo '</tr>';
+		echo '</tr>' . "\n";
 		
 		## pilih tajuk kecil
 		//echo "<tr><th>\$kepala $kepala</th></tr>";
@@ -262,8 +261,9 @@ class Perangkaan
 				{	
 					?><th><?php echo $tajuk ?></th><?php
 				}
-				?></tr>
-		<?php	$printed_headers = true; 
+				?></tr><?php
+				echo "\n";
+				$printed_headers = true; 
 			} 
 		#--------------------------------------------------------------------
 		endfor;
@@ -303,7 +303,7 @@ class Perangkaan
 		echo "<th>$space2 NON&nbsp;A1 $space2</th>\n";
 		echo '</tr>';
 	}
-	
+
 	# buat koding baru
 	public function kiraBarisDulu($kepala,$kp,$namaOrg,$rows,$fields,$hasil,$item,$ms,$baris)
 	{
@@ -325,16 +325,15 @@ class Perangkaan
 		endforeach; # end foreach ($hasil as $kira => $nilai)
 
 	}
-	
+
 	function paparKitaInsanBiasa($br, $kira, $nilai)
 	{
-		$tr = "<tr>";
-		echo $tr . "<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
-			. $nilai['newss']."\">".($kira+1)."</a>$br</td>\n";
+		echo "<tr>\n<td><a target=\"_blank\" href=\"" . URL . 'kawalan/ubah/'
+			. $nilai['newss'] . "\">" . ($kira+1) . "</a>$br</td>\n";
 		foreach ($nilai as $key => $data) 
 			echo '<td>' . $data . $br . '</td>' . "\n";
 		echo "</tr>\n";
-		
+
 	}
 #- cukupkan 30 sahaja
 	function paparCukupBaris30($kira,$allRows,$fields,$item,$ms,$baris=30)
@@ -343,7 +342,7 @@ class Perangkaan
 		$mula = $allRows+1;
 		$akhir = $allRows + ( $baris - ($allRows - (($item-1)*$baris) ) );
 		//echo "\r \$mula = $mula | \$akhir = $akhir <hr>";
-		
+
 		# mula mengira
 		for($i = $mula; $i <= ($akhir); $i++)
 		{	//echo "\r<br> \$i = $i => ";
@@ -378,11 +377,11 @@ class Perangkaan
 				{
 					echo '<th align="center">' . $key . '</th>';
 				}echo "</tr>\n";
-		
+
 			# set pembolehubah untuk highlight
 			$highlight=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
 			$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
-		
+
 			//echo "<tbody>\n"; # mula tbody
 			foreach ($hasil as $kira => $nilai)
 			{	//$mula = ($ms==1) ? $ms : ($ms*$item)-$ms;
