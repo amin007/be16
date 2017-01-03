@@ -350,7 +350,7 @@ class Tanya
 				$where = " WHERE `$medanID` = '{$data[$medanID]}' ";
 			elseif ($medan != $medanID)
 				$senarai[] = ($nilai==null) ? 
-				" `$medan`=null" : " `$medan`=`$nilai`"; 
+				" `$medan`=null" : " `$medan`='$nilai'"; 
 		}
 
 		$senaraiData = implode(",\r",$senarai);
@@ -358,6 +358,25 @@ class Tanya
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
 		echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
+	}
+
+	public function ubahPDOSqlSimpan($data, $myTable, $medanID)
+	{
+		$senarai = null; //echo '<pre>$data->'; print_r($data); echo '</pre>';
+
+		foreach ($data as $medan => $nilai)
+		{
+			$senarai[] = " `$medan`=:$medan"; 
+			$data2[$medan] = ($nilai==null) ? 'null' : $nilai; 
+		}
+
+		$senaraiData = implode(",\r",$senarai);
+		$where = "`$medanID`=:$medanID ";
+
+		# set sql
+		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
+		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
+		$this->db->updateNew($sql, $data);
 	}
 
 	public function ubahArahanSqlSimpan($data, $myTable, $medanID)
