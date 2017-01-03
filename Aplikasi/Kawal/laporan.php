@@ -33,7 +33,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 	public function fe($jadual, $cariID, $cariApa, $item = 1000, $ms = 1)
 	{
 		# kod asas panggil sql
-			//$medan = '*'; # papar semua medan
 			$cari[] = array('fix'=>'like%','atau'=>'WHERE','medan'=>$cariID,'apa'=>$cariApa);
 			$jum2 = pencamSqlLimit(300, $item, $ms); #
 			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>null) );
@@ -45,7 +44,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat = 'Enjin Laporan FE';
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$cariID,$cariApa,$kp = 'BUTAM')
+			$cariID,$cariApa,$kp = 'BUTAM');
 
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/f3all', null, 1);
@@ -76,7 +75,7 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		$this->papar->baca('laporan/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/f3all', null, 1);
 	}
 #===============================================================================================
 	public function cetakresponden($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -103,8 +102,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', null, 1);
-		$this->papar->baca('laporan/f3responden', null, 1);
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '//f3responden', null, 1);
 	}
 #===============================================================================================
 	public function calamat($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -112,8 +111,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->kumpulAlamat($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
-		//$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
-		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'borang','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
@@ -133,8 +130,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', null, 1);
-		$this->papar->baca('laporan/f3responden', null, 1);
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/f3responden', null, 1);
 	}
 #===============================================================================================
 	public function cdaerah($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -159,9 +156,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', null, 1);
-		//$this->papar->baca('laporan/f3responden', null, 1);
-		$this->papar->baca('laporan/fetnt', null, 1);
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/fetnt', null, 1);
 	}
 #===============================================================================================
 	public function paparA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -190,8 +186,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', null, 1);
-		$this->papar->baca('laporan/f3responden', null, 1);
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/f3responden', null, 1);
 	}
 #===============================================================================================
 	public function cetakA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -200,7 +196,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
-		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar_prosesan','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'respon','apa'=>'A1');
 		# tentukan bilangan mukasurat & jumlah rekod
@@ -220,8 +215,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', null, 1);
-		$this->papar->baca('laporan/f10', null, 1);//*/
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/f10', null, 1);//*/
 	}
 #===============================================================================================
 	public function cetakNonA1($namaPegawai, $cariBatch, $item = 30, $ms = 1, $baris = 30)
@@ -249,8 +244,8 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 			$namaPegawai,$cariBatch);
 
 		# pergi papar kandungan
-		//$this->papar->baca('laporan/f3all', null, 1);
-		$this->papar->baca('laporan/f10', null, 1);//*/
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/f10', null, 1);//*/
 	}
 #==========================================================================================
 	# cetakTerimaProses
@@ -279,11 +274,12 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 
 		# Set pemboleubah utama
 		$this->setPembolehubahUtama($bilSemua,$item,$baris,
-			$namaPegawai,$cariBatch,$kp = 'BE');
+			$namaPegawai,$cariBatch);
 		$this->papar->tarikh = ($tarikh==null) ? date("Y-m-d h:i:s") : $tarikh;
 
 		# pergi papar kandungan
-		$this->papar->baca('laporan/terimaProsesan', null, 1);//*/
+		//$this->papar->baca($this->_folder . '/f3all', null, 1);
+		$this->papar->baca($this->_folder . '/terimaProsesan', null, 1);//*/
 	}
 #==========================================================================================
 }
