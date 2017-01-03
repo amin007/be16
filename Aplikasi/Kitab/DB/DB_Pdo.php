@@ -7,7 +7,7 @@ class DB_Pdo extends \PDO
 	{
 		try
 		{
-			parent::__construct($DB_TYPE.':host='.$DB_HOST.';dbname='.$DB_NAME, $DB_USER, $DB_PASS);
+			parent::__construct($DB_TYPE . ':host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
 			//parent::setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTIONS);
 		}
 		catch (PDOException $e) 
@@ -17,7 +17,7 @@ class DB_Pdo extends \PDO
 			exit;
 		}
 	}
-	
+
 	/**
 	 * bigError
 	 * @param papar $masalah yang dialami
@@ -33,9 +33,9 @@ class DB_Pdo extends \PDO
 		/*require KAWAL . '/sesat.php';
 		$kawal = new \Aplikasi\Kawal\Sesat();
 		$kawal->masalahDB($error); //*/
-		exit; 		
+		exit;
 	}
-	
+
 	/**
 	 * selectAll
 	 * @param string $sql An SQL string
@@ -76,7 +76,7 @@ class DB_Pdo extends \PDO
 		{
 			$sth->bindValue("$key", $value);
 		}
-		
+
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
@@ -85,7 +85,7 @@ class DB_Pdo extends \PDO
 		else # pulangkan pembolehubah
 			return $sth->fetchAll($fetchMode);
 	}
-	
+
 	/**
 	 * rowCount()
 	 * @param string $sql An SQL string
@@ -93,7 +93,6 @@ class DB_Pdo extends \PDO
 	 * @param constant $fetchMode A PDO Fetch mode
 	 * @return mixed
 	 */
-	
 	public function rowCount($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
@@ -102,7 +101,7 @@ class DB_Pdo extends \PDO
 		{
 			$sth->bindValue("$key", $value);
 		}
-		
+
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
@@ -120,23 +119,23 @@ class DB_Pdo extends \PDO
 	public function insert($table, $data)
 	{
 		ksort($data);
-		
+
 		$fieldNames = implode('`, `', array_keys($data));
 		$fieldValues = ':' . implode(', :', array_keys($data));
-		
+
 		//echo $sql = "INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)";
 		$sth = $this->prepare("INSERT INTO $table (`$fieldNames`) VALUES ($fieldValues)");
-		
+
 		foreach ($data as $key => $value) {
 			$sth->bindValue(":$key", $value);
 		}
-		
+
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
 			$this->bigError($masalah);
-		
+		//*/
 	}
 
 	/**
@@ -155,7 +154,7 @@ class DB_Pdo extends \PDO
 			//$sth->bindValue("$key", $value);
 			echo "<br>\$sth->bindValue(\"$key\", $value) ";
 		}//*/
-		
+
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
@@ -165,7 +164,7 @@ class DB_Pdo extends \PDO
 			return $sth->fetchAll($fetchMode);
 		//*/
 	}
-	
+
 	/**
 	 * update
 	 * @param string $sql An SQL string
@@ -173,7 +172,6 @@ class DB_Pdo extends \PDO
 	 * @param constant $fetchMode A PDO Fetch mode
 	 * @return mixed
 	 */
-	 
 	public function update($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
 	{
 		//echo '<hr><pre>'; print_r($sql) . '</pre><hr>';
@@ -181,14 +179,41 @@ class DB_Pdo extends \PDO
 		foreach ($array as $key => $value) 
 		{
 			$sth->bindValue("$key", $value);
+			//echo '$sth->bindValue("'.$key.'", '.$value.')';
 		}
-		
+
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
 			$this->bigError($masalah);
-		
+		//*/
+	}
+
+	/**
+	 * updateNew
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function updateNew($sql, $array = array(), $fetchMode = \PDO::FETCH_ASSOC)
+	{
+		//echo '<hr><pre>'; print_r($sql); echo '</pre><hr>';
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value) 
+		{
+			$sth->bindValue(":$key", (!empty($value) ? $value : NULL) );
+			//echo '<hr>$sth->bindValue(":' . $key . '", ' . $value . ')';
+		}	//echo '<hr>';
+
+		$sth->execute();
+		$masalah = $sth->errorInfo(); # semak jika ada error
+		//$sth->debugDumpParams(); # papar sql balik
+		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah); echo '</pre>';
+		if (strpos($masalah[2], 'Unknown column') !== false) 
+			$this->bigError($masalah);
+		//*/
 	}
 
 	/**
@@ -200,29 +225,27 @@ class DB_Pdo extends \PDO
 	public function updateOld($table, $data, $where)
 	{
 		ksort($data);
-		
+
 		$fieldDetails = NULL;
-		foreach($data as $key=> $value) {
+		foreach($data as $key=> $value) 
 			$fieldDetails .= "`$key`=:$key,";
-		}
 		$fieldDetails = rtrim($fieldDetails, ',');
-		
+
 		echo $update = "UPDATE $table SET $fieldDetails WHERE $where";
-	
+
 		$sth = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
-		
-		foreach ($data as $key => $value) {
+
+		foreach ($data as $key => $value)
 			$sth->bindValue(":$key", $value);
-		}
-		
+
 		$sth->execute();
 		$masalah = $sth->errorInfo(); # semak jika ada error
 		//echo "\nPDO::errorInfo()<hr><pre>"; print_r($masalah) . '</pre>';
 		if (strpos($masalah[2], 'Unknown column') !== false) 
 			$this->bigError($masalah);
-
+		//*/
 	}
-	
+
 	/**
 	 * delete
 	 * 
@@ -239,13 +262,10 @@ class DB_Pdo extends \PDO
 }
 
 /*
-
-
 	/**
-	 entah mana mamat ini jumpa, masih tidak faham
-	 https://www.sitepoint.com/community/t/pdo-getcolumnmeta-bug/3430/3
-	
-	 *
+	 * entah mana mamat ini jumpa, masih tidak faham
+	 * https://www.sitepoint.com/community/t/pdo-getcolumnmeta-bug/3430/3
+
 	/**
 	 *	Automatically get column metadata
 	 *
@@ -268,7 +288,7 @@ class DB_Pdo extends \PDO
 				$this->_fields[$colname] = $col;
 				if($col['Key'] == "PRI" && empty($primaryKey)) 
 					$this->_primaryKey = $colname;
-				
+
 				# Set field types
 				$colType = $this->parseColumnType($col['Type']);
 				$this->_fieldMeta[$colname] = $colType;
@@ -276,6 +296,7 @@ class DB_Pdo extends \PDO
 		}
 		return true;
 	}
+
 	/**
 	 *	Parse PDO-produced column type
 	 *	[internal function]
@@ -295,8 +316,8 @@ class DB_Pdo extends \PDO
 		{
 			$colInfo['type'] = $colParts[0];
 		}
-		
-		// PDO Bind types
+
+		# PDO Bind types
 		$pdoType = '';
 		foreach($this->_pdoBindTypes as $pKey => $pType)
 		{
@@ -307,10 +328,10 @@ class DB_Pdo extends \PDO
 				$colInfo['pdoType'] = PDO::PARAM_STR;
 			}
 		}
-		
+
 		return $colInfo;
 	}
-	
+
 	/**
 	 *	Will attempt to bind columns with datatypes based on parts of the column type name
 	 *	Any part of the name below will be picked up and converted unless otherwise sepcified
@@ -327,6 +348,6 @@ class DB_Pdo extends \PDO
 		'text' => PDO::PARAM_STR,
 		'blob' => PDO::PARAM_LOB,
 		'binary' => PDO::PARAM_LOB
-		);	
+		);
 
 //*/
