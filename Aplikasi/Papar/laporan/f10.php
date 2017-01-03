@@ -25,15 +25,17 @@ function paparJadualF10_TajukMedan($kodsv,$KP,$nama_penyelia,$nama_pegawai,$rows
 		. "</td></tr>\r";
 
 	$SV = tajukBesar($kodsv);
+	$hari = date('d-m-Y');
+	$thn = date('Y')-1;
 	$tr = '<tr>';
 	$tr2 = '</td></tr>' . "\r";
 	echo '<tr><td colspan=3 valign="middle">'
-		. '<h2 align="left">TARIKH:<small>' . date('d-m-Y') . '</small></h2>'
+		. '<h2 align="left">TARIKH:<small>' . $hari . '</small></h2>'
 		. '</td><td colspan=3 valign="middle">'
 		. '<h2 align="right">KOD PENY:</h2></div></td>' 
 		. '<td align="center" valign="middle"><h2><i>' . $KP . '</i></h2>' . $tr2
 		. $tr . '<td colspan=' . ($fields+1) . ' align="CENTER"><h2>' 
-		. $SV . ' ' . date('Y') . '</h2></div>' . $tr2
+		. $SV . ' ' . $thn . '</h2></div>' . $tr2
 		. "\r";
 	
 	tajukMedan();
@@ -86,10 +88,6 @@ function paparJadualF10_TajukBawah($rows,$fields,$nama_penyelia,$nama_pegawai)
 }
 function paparJadualF10_Data($rows,$fields,$hasil,$kodsv,$KP,$nama_penyelia,$nama_pegawai,$baris=30)
 {	
-	# PEMBOLEH UBAH
-	$highlight="onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas1';\"";
-	$highlight2=" onmouseover=\"this.className='tikusatas';\" onmouseout=\"this.className='tikuslepas2';\"";
-	
 	# nilai dari isi
 	//echo "<tbody>\n"; # mula tbody
 	foreach ($hasil as $kira => $nilai)
@@ -163,6 +161,9 @@ table.excel tbody td
 	padding: 0 3px; border: 1px solid #aaaaaa;
 	background:#ffffff;
 }
+table.excel tr { background: #ffffff; }
+table.excel tr:hover { color: #00008B; background-color: #ffff99; }
+table.excel tr:hover td { background-color: transparent; }
 </style>
 <?php
 	$kodsv = 'BE';
