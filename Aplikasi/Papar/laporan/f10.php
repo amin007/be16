@@ -53,9 +53,9 @@ function tajukMedan()
 	//$space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	//$space2 = '&nbsp;&nbsp;';
 	$space = $space2 = null;
-	echo "<th>$space A1 $space</th>\n";
-	echo "<th>$space2 NON&nbsp;A1 $space2</th>\n";
-	echo '</tr>';	
+	echo "<th>$space A1 $space</th>";
+	echo "<th>$space2 NON&nbsp;A1 $space2</th>";
+	echo "</tr>\n"; 
 }
 function paparJadualF10_TajukBawah($rows,$fields,$nama_penyelia,$nama_pegawai)
 {
@@ -194,12 +194,8 @@ table.excel tr:hover td { background-color: transparent; }
 if (count($this->hasil) == 0):
 	echo 'Tiada data';
 else:
-?>
-	<table border="1" class="excel" width="100%" height="100%">
-	<?php
+	?><table border="1" class="excel" width="100%" height="100%"><?php
 	paparJadualF10_Data($rows,$fields,$hasil,$kodsv,$KP,$nama_penyelia,$nama_pegawai,$this->baris);
 	paparJadualF10_TajukBawah($rows,$fields,$nama_penyelia,$nama_pegawai);
-	?>
-	</table>
-<?php
+	?></table><?php
 endif;
