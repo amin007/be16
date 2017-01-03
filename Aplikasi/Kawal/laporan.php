@@ -166,7 +166,6 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
 		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
-		//$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar_prosesan','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'hantar','apa'=>$cariBatch);
 		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'respon','apa'=>'A1');
 		# tentukan bilangan mukasurat & jumlah rekod
