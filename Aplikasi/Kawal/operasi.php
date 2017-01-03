@@ -145,15 +145,28 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 					. 'concat_ws(" ",nama,operator) as nama,'
 					. 'alamat1,alamat2,'
 					. 'concat_ws(" ",poskod,bandar) as bandar,'
-					//. 'notel_a,notel,nofax_a,nofax,orang_a,responden,esurat_a,email,'
-					. ' concat_ws("|",' . "\r"
-					. ' 	concat_ws("="," orang",orang_a),' . "\r"
-					. ' 	concat_ws("="," notel",notel_a),' . "\r"
-					. ' 	concat_ws("="," nofax",nofax_a)' . "\r"
-					. ' ) as dataHubungi';
+					. ' concat_ws(" ",' . "\r"
+					. '		if (respon is null, "", concat_ws("="," respon", concat(respon," |") ) ),' . "\r"
+					. '		if (hantar is null, "", concat_ws("="," hantar", concat(hantar," |") ) ),' . "\r"
+					. '		if (orang_a is null, "", concat_ws("="," orang", concat(orang_a," |") ) ),' . "\r"
+					. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
+					. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
+					. '		if (responden is null, "", concat_ws("="," responden", concat(responden," |") ) ),' . "\r"
+					. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
+					. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
+					. ' ) as dataHubungi,'
+					. 'concat_ws(" ",' . "\r"
+					. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |") ) ),' . "\r"
+					. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |") ) ),' . "\r"
+					. '		if (gaji is null, "", concat_ws("="," gaji", concat(format(gaji,0)," |") ) ),' . "\r"
+					. '		if (aset is null, "", concat_ws("="," aset", concat(format(aset,0)," |") ) ),' . "\r"
+					. '		if (staf is null, "", concat_ws("="," staf", concat(format(staf,0)," |") ) ),' . "\r"
+					. '		if (stok is null, "", concat_ws("="," stok akhir", concat(format(stok,0)," |") ) )' . "\r"
+					. ' ) as data5P'
+					. '';
 			$cari2[] = array('fix'=>'x=','atau'=>'WHERE','medan'=>'borang','apa'=>$cariBatch);
 			$cari2[] = array('fix'=>'x=','atau'=>'AND','medan'=>'pegawai','apa'=>$namaPegawai);
-			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'nama') );
+			$susun[] = array_merge($jum2, array('kumpul'=>null,'susun'=>'respon,nama') );
 			$this->papar->cariApa['senarai'] = $this->tanya->//tatasusunanCari(//cariSql( 
 				cariSemuaData(
 				$jadual, $medan2, $cari2, $susun);
@@ -402,7 +415,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/papar');
 	}
-	   
+
     public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
     {//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
 
@@ -443,8 +456,7 @@ class Operasi extends \Aplikasi\Kitab\Kawal
 			$this->papar->jumpa   = '[hendak cari apa kalau id tiada]';
 		}
 
-		/*# semak data
-		echo '<pre>';
+		/*echo '<pre>'; # semak data
 		echo '$this->papar->senarai:<br>'; print_r($this->papar->senarai); 
 		echo '<br>$this->papar->cariID:'; print_r($this->papar->cariID); 
 		echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
