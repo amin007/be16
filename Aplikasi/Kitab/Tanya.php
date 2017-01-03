@@ -121,7 +121,7 @@ class Tanya
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			 . $this->dimana($carian);
 
-		//echo $sql . '<br>';
+		//echo htmlentities($sql) . '<br>';
 		$result = $this->db->columnCount($sql);
 
 		return $result;
@@ -132,7 +132,7 @@ class Tanya
 		$sql = 'SELECT ' . $medan . ' FROM ' . $myTable 
 			 . $this->dimana($carian);
 
-		//echo $sql . '<br>';
+		//echo htmlentities($sql) . '<br>';
 		$result = $this->db->rowCount($sql);
 
 		return $result;
@@ -233,7 +233,7 @@ class Tanya
 		$sql  = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
 
-		echo '<pre>Tambah $sql->', print_r($sql, 1) . '</pre>';
+		echo '<pre>Tambah $sql->'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql);
 	}
 
@@ -249,7 +249,7 @@ class Tanya
 		$sql  = "INSERT INTO $myTable SET \r";
 		$sql .= implode(",\r", $senarai);
 
-		//echo '<pre>Tambah $sql->', print_r($sql, 1); echo '</pre>';
+		//echo '<pre>Tambah $sql->'; print_r($sql); echo '</pre>';
 		$this->db->insert($myTable, $data);
 	}
 #--- tamat - contoh tambah sql guna set ---#
@@ -268,7 +268,7 @@ class Tanya
 		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
-		echo '<pre>$sql->', print_r($sql, 1) . '</pre>';
+		echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		//$this->db->insertAll($sql);
 	}
 
@@ -291,7 +291,7 @@ class Tanya
 		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
 		$sql .= implode(",\r", $data) . ";";
 
-		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
 		$this->db->insertAll($sql);
 	}
 
@@ -303,7 +303,7 @@ class Tanya
 			 . ' SELECT ' . $medan . ' FROM ' . $myTableOld
 			 . '';
 
-		echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
+		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
 	}
 
@@ -315,7 +315,7 @@ class Tanya
 		$sql .= "\r);\r\rINSERT INTO `$myTable` VALUES \r";
 		$sql .= implode(",\r", $cantumData);
 
-		echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
+		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
 	}
 
@@ -336,7 +336,7 @@ class Tanya
 
 		# set sql
 		$sql = " UPDATE `$myTable` SET \r$senaraiData\r WHERE $where";
-		//echo '$sql-><pre>'; print_r($sql, 1); echo '</pre>';
+		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
 		$this->db->update($sql);
 	}
 
@@ -377,7 +377,7 @@ class Tanya
 
 		# set sql
 		return $sql = " UPDATE `$myTable` SET \r$senaraiData\r $where";
-		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';//*/
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';//*/
 	}
 
 	public function ubahSimpanSemua($data, $myTable, $medanID, $dimana)
@@ -402,7 +402,7 @@ class Tanya
 		//$this->db->update($sql);
 		//*/
 	}
-	
+
 	public function ubahSqlSimpanSemua($data, $myTable, $medanID, $dimana)
 	{
 		//echo '<pre>$data->', print_r($data, 1) . '</pre>';
@@ -433,7 +433,6 @@ class Tanya
 		//$sql = " DELETE `$myTable` WHERE `$cariID` = '{$data[$cariID]}' ";
 		//echo '<pre>$sql->', print_r($sql, 1); echo '</pre>';
 		$this->db->delete($myTable, "`$cariID` = '{$data[$cariID]}' ");
-
 	}//*/
 
 #==========================================================================================
