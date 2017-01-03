@@ -111,15 +111,16 @@ class Laporan extends \Aplikasi\Kitab\Kawal
 		$medan = $this->tanya->kumpulAlamat($item, $ms);# kumpul respon jadi medan sql
 		# set pembolehubah utama untuk sql
 		$jadual = 'be16_kawal';
-		$carian[] = array('fix'=>'like','atau'=>'WHERE','medan'=>'fe','apa'=>$namaPegawai);
-		$carian[] = array('fix'=>'like','atau'=>'AND','medan'=>'kp','apa'=>$cariBatch);
+		$carian[] = array('fix'=>'like%','atau'=>'WHERE','medan'=>'pegawai','apa'=>$namaPegawai);
+		$carian[] = array('fix'=>'like%','atau'=>'AND','medan'=>'kp','apa'=>$cariBatch);
 		# tentukan bilangan mukasurat & jumlah rekod
 			$bilSemua = $this->tanya->kiraBaris//tatasusunanCari//cariSql
 			($jadual, $medan2 = '*', $carian, NULL);
 			# semak bilangan mukasurat & jumlah rekod
 			//echo '$bilSemua:' . $bilSemua . ', $item:' . $item . ', $ms:' . $ms . '<br>';
 			$jum = pencamSqlLimit($bilSemua, $item, $ms);
-		$susun[] = array_merge($jum, array('kumpul'=>null,'susun'=>'respon DESC, nama ASC') );
+		$susun[] = array_merge($jum, array('kumpul'=>null,
+			'susun'=>'respon DESC, nota DESC, nama ASC') );
 		# tanya dalam sql 	
 		$this->papar->hasil = $this->tanya->cariSemuaData//cariSql
 			($jadual, $medan, $carian, $susun);
