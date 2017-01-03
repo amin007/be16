@@ -321,6 +321,8 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			3 => 'concat_ws("-",nama,operator) as nama,'
 			. 'concat_ws("-",kp,msic2008) as kp,'
 			. ' concat_ws("",' . "\r"
+			. '		if (respon is null, "", concat_ws("="," respon", concat(respon," |") ) ),' . "\r"
+			. '		if (hantar is null, "", concat_ws("="," hantar", concat(hantar," |") ) ),' . "\r"
 			. '		if (orang_a is null, "", concat_ws("="," orang", concat(lower(orang_a)," |") ) ),' . "\r"
 			. '		if (notel_a is null, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
 			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
@@ -329,13 +331,13 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
  			. ' ) as utama,'
 			. 'concat_ws("",newss) as newss,'
-			. ' concat_ws("|",' . "\r"
-			. ' 	concat_ws("="," hasil",format(hasil,0)),' . "\r"
-			. ' 	concat_ws("="," belanja",format(belanja,0)),' . "\r"
-			. ' 	concat_ws("="," gaji",format(gaji,0)),' . "\r"
-			. ' 	concat_ws("="," aset",format(aset,0)),' . "\r"
-			. ' 	concat_ws("="," staf",format(staf,0)),' . "\r"
-			. ' 	concat_ws("="," stok akhir",format(stok,0))' . "\r"
+			. 'concat_ws(" ",' . "\r"
+			. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |") ) ),' . "\r"
+			. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |") ) ),' . "\r"
+			. '		if (gaji is null, "", concat_ws("="," gaji", concat(format(gaji,0)," |") ) ),' . "\r"
+			. '		if (aset is null, "", concat_ws("="," aset", concat(format(aset,0)," |") ) ),' . "\r"
+			. '		if (staf is null, "", concat_ws("="," staf", concat(format(staf,0)," |") ) ),' . "\r"
+			. '		if (stok is null, "", concat_ws("="," stok akhir", concat(format(stok,0)," |") ) )' . "\r"
  			. ' ) as nota'
 		);
 
