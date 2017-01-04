@@ -3,7 +3,7 @@ namespace Aplikasi\Tanya; //echo __NAMESPACE__;
 class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 {
 #==========================================================================================
-	public function __construct() 
+	public function __construct()
 	{
 		parent::__construct();
 	}
@@ -14,7 +14,7 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $hasil; # pulangkan pembolehubah
 	}
-	
+
 	public function tatasusunanUbah2($jadual, $medan, $cari, $susun)
 	{
 		# ada nilai
@@ -267,45 +267,70 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiData;
 	}
 
-	public function panggilFail2($url, $fail)
+	public function panggilFail($url, $fail)
 	{
 		# Set pemboleubah utama
-		echo $url . $fail . '<hr>';
+		//echo $url . $fail . '<hr>';
 		$posmen = (new \Aplikasi\Kitab\Bacafail)->semakfail($url, $fail, array());
 		$medan = $this->panggilMedan($posmen);
-		$senaraiData = $this->panggilBanyakData($posmen);
+		list($dataProksi,$dataAsal) = $this->panggilPDOData($posmen);
+
+		//echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
+		//echo '<pre>$dataAsal = '; print_r($dataAsal); echo '</pre><hr>';
+		//echo '<pre>$dataProksi = '; print_r($dataProksi); echo '</pre><hr>';
 
 		# jika null
-		$medan2 = $senaraiData2 = null;
+		$medan2 = $senaraiData1 = $senaraiData2 = null;
 
 		# pulangkan pemboleubah
-		return array($medan,$senaraiData);
-		//return array($medan2,$senaraiData2);
+		return array($medan,$dataProksi,$dataAsal);
+		//return array($medan2,$senaraiData1,$senaraiData2);
 	}
 
 	private function panggilMedan($posmen)
 	{
-		$medan = '(`' . implode("`,`", $posmen[0]) . '`)'; # buat medan
+		$medan = '`' . implode("`,`", $posmen[0]) . '`'; # buat medan
 		//echo '$medan = ' . $medan . '<hr>';
 
-		# pulangkan pemboleubah
-		return $medan;
+		return $medan; # pulangkan pembolehubah
 	}
 
-	private function panggilBanyakData($posmen)
-	{	
-		$dataS = array(); 
+	private function panggilBanyakData($posmen, $dataS = array())
+	{
 		foreach($posmen as $key=>$key1):
-			//foreach($key1 as $kunci=>$data):
 				if($key!=0)
 					$dataS[$key] = '(`' . implode("`,`", $posmen[$key]) . '`)';
 		endforeach;//endforeach;
 
-		$senaraiData = implode(",\r", $dataS); # cantum dataS
-		//echo '<pre>$senaraiData = ' . $senaraiData . '</pre><hr>';
+		$dataAsal = implode(",\r", $dataS); # cantum dataS
+		//echo '<pre>$posmen = '; print_r($posmen); echo '</pre><hr>';
+		//echo '<pre>$dataS = '; print_r($dataS); echo '</pre><hr>';
 
-		# pulangkan pemboleubah
-		return $senaraiData;
+		return $dataAsal; # pulangkan pembolehubah
+	}
+
+	private function panggilPDOData($posmen)
+	{
+		$dataK = $dataS = array();
+
+		foreach($posmen as $key=>$key1):
+			foreach($key1 as $kunci=>$data):
+				$namaMedanDaa = $posmen[0][$kunci] . '' . $key;
+				if($key!=0)
+				{
+					$dataK1[] = ':' . $namaMedanDaa;
+					$dataS[$namaMedanDaa] = '' . $posmen[$key][$kunci];
+				}
+			endforeach;
+				if($key!=0)
+					$dataK2[] = '(' . implode(',', $dataK1) . ')'; # cantum dataK
+				$dataK1 = array();
+		endforeach;
+
+		//echo '<pre>$dataK2 = '; print_r($dataK2); echo '</pre><hr>';
+		//echo '<pre>$dataS = '; print_r($dataS); echo '</pre><hr>';
+
+		return array($dataK2,$dataS); # pulangkan pembolehubah
 	}
 #==========================================================================================
 }
