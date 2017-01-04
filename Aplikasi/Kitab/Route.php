@@ -55,10 +55,8 @@ class Route
 			//*/
 		}
 		else
-		{
 			$this->sesat();
-		} //*/
-         
+
 	}
 
 	/**
@@ -75,7 +73,7 @@ class Route
 	private function cari_pengawal($kawal, $url)
 	{
 		$panjang = count($url); //echo '$panjang=' . $panjang . '<br>';
-
+ 
 		# Pastikan kaedah yang kita panggil wujud
 		if ($panjang > 1)
 		{
@@ -154,6 +152,15 @@ class Route
 		exit;
 	}
 
+	public static function methodTanyaTidakWujud($amaran,$class,$method)
+	{
+		require KAWAL . '/sesat.php';
+		$kawal = new \Aplikasi\Kawal\Sesat();
+		$kawal->methodTanyaTidakWujud($amaran,$class,$method);
+		//return false;
+		exit;
+	}
+	
 	public static function folderPaparTidakWujud()
 	{
 		require KAWAL . '/sesat.php';
