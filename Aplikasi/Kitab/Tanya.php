@@ -295,6 +295,18 @@ class Tanya
 		$this->db->insertAll($sql);
 	}
 
+	public function tambahPDOBanyakNilai($myTable, $medan, $dataProksi, $data)
+	{
+		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
+
+		# set sql
+		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql .= implode(",\r", $dataProksi) . ";";
+
+		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
+		$this->db->insertAllNew($sql,$data);
+	}
+
 #--- tamat - contoh tambah sql guna values ---#
 	public function salinJadual($myTableNew, $medan, $myTableOld)
 	{
