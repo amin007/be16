@@ -19,14 +19,12 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
-		//$this->papar->baca(
 		$this->papar->bacaTemplate(
 		//$this->papar->paparTemplate(
 			$this->_folder . '/index',$jenis,0); # $noInclude=0
-		
 	}
 #==========================================================================================	
-	public function paparlimit($cariID = null, $cariApa = null) 
+	public function paparlimit($cariID = null, $cariApa = null)
 	{
 		# Set pemboleubah utama
 		$this->papar->Tajuk_Muka_Surat='Enjin CRUD';
@@ -48,20 +46,20 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		//echo '<br>$this->papar->cariApa:'; print_r($this->papar->cariApa); 
 		echo '$this->papar->senaraiApa:<br>'; print_r($this->papar->senaraiApa);
  		echo '</pre>'; //*/
-		
+
 		# pergi papar kandungan
 		$this->papar->baca($this->_folder . '/papar');
 	}
-	   
+
     public function ubah($cariID = null, $medanID = null, $jadualUbah = null) 
     {//echo '<br>Anda berada di class Crud:ubah($cariID) extends \Aplikasi\Kitab\Kawal<br>';
-                
+
         # senaraikan tatasusunan jadual dan setkan pembolehubah
 		$this->papar->lokasi = 'Enjin - Ubah';
 		$this->papar->_jadual = $jadualUbah;
 		$medanUbah = $this->tanya->medanUbah($cariID);
 		//$medanID = ''; $jadualUbah = ''; # 
-	
+
 		if (!empty($cariID)) 
 		{
 			$cari[] = array('fix'=>'like','atau'=>'WHERE','medan'=>$medanID,'apa'=>$cariID);
@@ -81,7 +79,7 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 			else:
 				$this->papar->jumpa = '[tiada jumpa apa2]';
 			endif;
-			
+
 			$this->papar->cariID  = $medanID;
 			$this->papar->cariApa = $cariID;
 		}
@@ -188,21 +186,22 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		return $posmen; # pulangkan nilai
 	}
 #==========================================================================================
-	public static function semakfail()
+	public function semakfail()
 	{
-		echo 'class gerakhas::semakfail()<br>';
+		//echo 'class gerakhas::semakfail()<br>';
 		# Set pemboleubah utama
 		$url = URL . 'sumber/fail/csv/';
 		$fail = 'odebe2016.csv'; //echo $url . $fail . '<hr>';
-		if( isset ($this->tanya) )
+		//echo '<pre>'; print_r(get_class_methods($this->tanya)); echo '</pre>';
+		/*if( isset ($this->tanya) )
 			echo '$this->tanya wujud<br>';
 		else
-			echo '$this->tanya tidak wujud<br>';
+			echo '$this->tanya tidak wujud<br>';*/
 
-		//list($medan,$senaraiData) = $this->tanya->panggilFail($url, $fail);
+		list($medan,$senaraiData) = $this->tanya->panggilFail($url, $fail);
 		# semak $bacaData
-		echo '$medan = ' . $medan . '<hr>';
-		echo '<pre>$senaraiData = ' . $senaraiData . '</pre><hr>';
+		echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
+		echo '<pre>$senaraiData = '; print_r($senaraiData); echo '</pre><hr>';
 
 		# sql insert
 		//$this->tanya->tambahSqlBanyakNilai($myTable = 'nama_pegawai', $medan, $senaraiData); 

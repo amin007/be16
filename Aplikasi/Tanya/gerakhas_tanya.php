@@ -7,16 +7,15 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 	{
 		parent::__construct();
 	}
-	
+
 	public function medanUbah2($cariID)
 	{
 		$senaraiMedan = 'newss,nama,email,nohp';
-		
-		# pulangkan pemboleubah
-		return $senaraiMedan;
+
+		return $hasil; # pulangkan pembolehubah
 	}
 	
-	public function tatasusunanUbah2($jadual, $medan, $cari, $susun) 
+	public function tatasusunanUbah2($jadual, $medan, $cari, $susun)
 	{
 		# ada nilai
 		$hasil = array ( '0' => array (
@@ -35,12 +34,10 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 				      'staf' => '523654',
 				      'stok' => '623654',
 				));
-		
-		# tiada nilai
-		$hasil2 = array();
-		
-		# pulangkan pemboleubah
-		return $hasil;
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan pembolehubah
 	}
 
 	public function tatasusunanUbah2A($jadual, $medan, $cari, $susun) 
@@ -80,7 +77,7 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 			'msic2000' => array (),
 			'msic2000_notakaki' => array (),
 		);
-		
+
 		# ada nilai - pecah tatasusunan kepada beberapa bahagian
 		$hasil1['satu'] = array ( 
 			'0' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
@@ -97,12 +94,10 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 			'1' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1'),
 			'2' => array ('kira' => '1', 'A' => 'A1', 'B' => 'B1')
 			);
-		
-		# tiada nilai
-		$hasil2 = array();
-		
-		# pulangkan pemboleubah
-		return $hasil;
+
+		$hasil2 = array(); # tiada nilai
+
+		return $hasil; # pulangkan pembolehubah
 	}
 #==========================================================================================
 	public function medanUbah($cariID) 
@@ -192,7 +187,6 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 		# pulangkan pemboleubah
 		return $posmen;
 	}
-	
 #==========================================================================================
 	public function binaPOST() 
 	{ 
@@ -213,19 +207,19 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 		# pulangkan pemboleubah
 		return $medan;
 	}
-	
+
 	public function binaMedan($jadual, $kira) 
 	{ 
 		# Set pemboleubah tatasusunan
 		$medan = array('newss','nossm','CHECK_DIGIT','nama','operator','alamat1','alamat2','bandar','poskod',
 			'kp','msic2008','fe','orang_a','notel_a','nofax_a','esurat_a');
-		
+
 		for ($ulang = 0; $ulang < $kira; $ulang++):
-			foreach ($medan as $key2 => $nilai2):	
+			foreach ($medan as $key2 => $nilai2):
 				$senaraiMedan[$jadual][$ulang][$nilai2] = null;
 			endforeach;
 		endfor;
-		
+
 		# pulangkan pemboleubah
 		return $senaraiMedan;
 	}
@@ -264,41 +258,40 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 					. huruf('Besar',$dataS['orang_a']) . "', '" 
 					. huruf('Besar',$dataS['notel_a']) . "', '" 
 					. huruf('Besar',$dataS['nofax_a']) . "', '" 
-					. huruf('Besar',$dataS['esurat_a'])// . "', '" 					
+					. huruf('Besar',$dataS['esurat_a'])// . "', '"
 					. "')";
 			endforeach;
 		endforeach;
-		
+
 		# pulangkan pemboleubah
 		return $senaraiData;
 	}
-	
-	public function panggilFail($url, $fail)
+
+	public function panggilFail2($url, $fail)
 	{
 		# Set pemboleubah utama
 		echo $url . $fail . '<hr>';
 		$posmen = (new \Aplikasi\Kitab\Bacafail)->semakfail($url, $fail, array());
 		$medan = $this->panggilMedan($posmen);
 		$senaraiData = $this->panggilBanyakData($posmen);
-		
+
 		# jika null
 		$medan2 = $senaraiData2 = null;
 
 		# pulangkan pemboleubah
-		//return array($medan,$senaraiData);
-		return array($medan2,$senaraiData2);
+		return array($medan,$senaraiData);
+		//return array($medan2,$senaraiData2);
 	}
 
 	private function panggilMedan($posmen)
 	{
 		$medan = '(`' . implode("`,`", $posmen[0]) . '`)'; # buat medan
 		//echo '$medan = ' . $medan . '<hr>';
-		
+
 		# pulangkan pemboleubah
 		return $medan;
+	}
 
-	}	
-	
 	private function panggilBanyakData($posmen)
 	{	
 		$dataS = array(); 
@@ -307,13 +300,12 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 				if($key!=0)
 					$dataS[$key] = '(`' . implode("`,`", $posmen[$key]) . '`)';
 		endforeach;//endforeach;
-		
+
 		$senaraiData = implode(",\r", $dataS); # cantum dataS
 		//echo '<pre>$senaraiData = ' . $senaraiData . '</pre><hr>';
-		
+
 		# pulangkan pemboleubah
 		return $senaraiData;
-		
 	}
 #==========================================================================================
 }
