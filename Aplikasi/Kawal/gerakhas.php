@@ -192,21 +192,21 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$url = URL . 'sumber/fail/csv/';
 		$fail = 'odebe2016.csv'; //echo $url . $fail . '<hr>';
-		//echo '<pre>'; print_r(get_class_methods($this->tanya)); echo '</pre>';
-		/*if( isset ($this->tanya) )
-			echo '$this->tanya wujud<br>';
-		else
-			echo '$this->tanya tidak wujud<br>';*/
+		list($medan,$dataProksi,$dataAsal) = $this->tanya->panggilFail($url, $fail);
 
-		list($medan,$senaraiData) = $this->tanya->panggilFail($url, $fail);
 		# semak $bacaData
-		echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
-		echo '<pre>$senaraiData = '; print_r($senaraiData); echo '</pre><hr>';
+		/*echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
+		echo '<pre>$dataAsal = '; print_r($dataAsal); echo '</pre><hr>';
+		echo '<pre>$dataProksi = '; print_r($dataProksi); echo '</pre><hr>';//*/
 
+		# sql create
+		//$this->tanya->salinJadual('biodata', $medan, 'nama_pegawai');
 		# sql insert
-		//$this->tanya->tambahSqlBanyakNilai($myTable = 'nama_pegawai', $medan, $senaraiData); 
-		//echo '<pre>'; print_r($bacaData); echo '</pre>';
-		//*/
+		$this->tanya->tambahPDOBanyakNilai($myTable = 'biodata', $medan, $dataProksi, $dataAsal); 
+
+		# pergi papar kandungan
+		//echo 'location: ' . URL . '';
+		header('location: ' . URL . ''); //*/
 	}
 #==========================================================================================
 }
