@@ -455,17 +455,14 @@ class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
 			. ' if(respon="A1",respon,"&nbsp;") A1,'
 			. ' if(respon!="A1",respon,"&nbsp;") NONA1, '
 			//. ' CONCAT(UPPER(SUBSTRING(orang_a,1,1)),LOWER(SUBSTRING(orang_a,1,100)))'
-			//. ' LOWER(orang_a)'
 			. ' concat_ws("",' . "\r"
-			. '		if (orang_a is null, "", concat_ws("="," orang", concat(lower(orang_a)," |") ) ),' . "\r"
+			. '		if (orang_a is null, "", concat_ws("="," org", concat(lower(orang_a)," |") ) ),' . "\r"
 			. '		if (notel_a is null or notel_a = 0, "", concat_ws("="," tel", concat(notel_a," |") ) ),' . "\r"
-			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |") ) ),' . "\r"
-			. '		if (responden is null, "", concat_ws("="," responden", concat(lower(responden)," |") ) ),' . "\r"
+			. '		if (nofax_a is null, "", concat_ws("="," fax", concat(nofax_a," |<br>") ) ),' . "\r"
+			. '		if (responden is null, "", concat_ws("=","org", concat(lower(responden)," |") ) ),' . "\r"
 			. '		if (notel is null, "", concat_ws("="," notel", concat(notel," |") ) ),' . "\r"
 			. '		if (nofax is null, "", concat_ws("="," nofax", concat(nofax," |") ) )' . "\r"
  			. ' ) as nota'
-			//. 'concat_ws("|",concat("hasil=",hasil),concat("belanja=",belanja),' 
-			//. 'concat("gaji=",gaji),concat("aset=",aset),concat("staf=",staf),'
 		);
 
 		return $senaraiMedan; # pulangkan nilai
