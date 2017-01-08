@@ -267,14 +267,24 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 		return $senaraiData;
 	}
 
+	private function buatJenisMedan($posmen)
+	{
+		$medan = "\t" . implode(" varchar(100),\r\t", $posmen[0]) . " varchar(100)"; # buat medan
+		//echo '$medan = ' . $medan . '<hr>';
+
+		return $medan; # pulangkan pembolehubah
+	}
+
 	public function panggilFail($url, $fail)
 	{
 		# Set pemboleubah utama
 		//echo $url . $fail . '<hr>';
 		$posmen = (new \Aplikasi\Kitab\Bacafail)->semakfail($url, $fail, array());
-		$medan = $this->panggilMedan($posmen);
+		//$medan = $this->panggilMedan($posmen);
+		$medan = $this->buatJenisMedan($posmen);
 		list($dataProksi,$dataAsal) = $this->panggilPDOData($posmen);
 
+		//echo '<pre>$posmen = '; print_r($posmen); echo '</pre><hr>';
 		//echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
 		//echo '<pre>$dataAsal = '; print_r($dataAsal); echo '</pre><hr>';
 		//echo '<pre>$dataProksi = '; print_r($dataProksi); echo '</pre><hr>';
