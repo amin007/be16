@@ -149,7 +149,7 @@ class Tanya
 	{
 		/*TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME	
 		COLUMN_NAME, ORDINAL_POSITION, COLUMN_DEFAULT, IS_NULLABLE, DATA_TYPE
-		CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE	
+		CHARACTER_MAXIMUM_LENGTH, CHARACTER_OCTET_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE
 		CHARACTER_SET_NAME, COLLATION_NAME	
 		COLUMN_TYPE, COLUMN_KEY	EXTRA, PRIVILEGES, COLUMN_COMMENT*/
 		$medan = 'COLUMN_NAME, DATA_TYPE, ' . "\r"
@@ -308,6 +308,17 @@ class Tanya
 	}
 
 #--- tamat - contoh tambah sql guna values ---#
+	public function buatJadual($myTable, $medan)
+	{
+		# set sql
+		$sql = 'CREATE TABLE `' . $myTable . '` '
+			 . "\r{\r" . $medan . "\r}"
+			 . '';
+
+		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
+		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
+	}
+
 	public function salinJadual($myTableNew, $medan, $myTableOld)
 	{
 		# set sql
