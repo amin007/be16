@@ -300,7 +300,7 @@ class Tanya
 		//echo '<pre>$data->', print_r($data, 1); echo '</pre>';
 
 		# set sql
-		$sql  = "INSERT INTO $myTable\r($medan) VALUES \r";
+		$sql  = "INSERT INTO `$myTable`\r($medan) VALUES \r";
 		$sql .= implode(",\r", $dataProksi) . ";";
 
 		//echo '<pre>$sql->'; print_r($sql); echo '</pre>';
@@ -312,11 +312,12 @@ class Tanya
 	{
 		# set sql
 		$sql = 'CREATE TABLE `' . $myTable . '` '
-			 . "\r{\r" . $medan . "\r}"
-			 . '';
+			 . "\r(\r" . $medan . "\r)"
+			 . ';';
 
 		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
-		//$this->db->insert($sql);	header('location:' . URL . 'test/paparfail');
+		//$this->db->selectAll($sql);
+		//header('location:' . URL . 'test/paparfail');
 	}
 
 	public function salinJadual($myTableNew, $medan, $myTableOld)

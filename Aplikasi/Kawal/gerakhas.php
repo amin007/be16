@@ -192,7 +192,7 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		# Set pemboleubah utama
 		$url = URL . 'sumber/fail/csv/';
 		$fail = 'fnb-tak-siap.csv'; //echo $url . $fail . '<hr>';
-		list($medan,$dataProksi,$dataAsal) = $this->tanya->panggilFail($url, $fail);
+		list($jenisMedan,$medan,$dataProksi,$dataAsal) = $this->tanya->panggilFail($url, $fail);
 
 		# semak $bacaData
 		//echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
@@ -200,10 +200,10 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		//echo '<pre>$dataProksi = '; print_r($dataProksi); echo '</pre><hr>';//*/
 
 		# sql create
-		$this->tanya->buatJadual('kes-fnb', $medan);
+		//$this->tanya->buatJadual('kes-fnb', $jenisMedan);
 		//$this->tanya->salinJadual('biodata', $medan, 'nama_pegawai');
 		# sql insert
-		//$this->tanya->tambahPDOBanyakNilai($myTable = 'biodata', $medan, $dataProksi, $dataAsal); 
+		$this->tanya->tambahPDOBanyakNilai($myTable = 'kes-fnb', $medan, $dataProksi, $dataAsal); 
 
 		# pergi papar kandungan
 		//echo 'location: ' . URL . '';

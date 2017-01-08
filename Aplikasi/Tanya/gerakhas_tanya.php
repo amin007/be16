@@ -269,7 +269,7 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 
 	private function buatJenisMedan($posmen)
 	{
-		$medan = "\t" . implode(" varchar(100),\r\t", $posmen[0]) . " varchar(100)"; # buat medan
+		$medan = "\t`" . implode("` varchar(100),\r\t`", $posmen[0]) . "` varchar(100)"; # buat medan
 		//echo '$medan = ' . $medan . '<hr>';
 
 		return $medan; # pulangkan pembolehubah
@@ -280,8 +280,8 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 		# Set pemboleubah utama
 		//echo $url . $fail . '<hr>';
 		$posmen = (new \Aplikasi\Kitab\Bacafail)->semakfail($url, $fail, array());
-		//$medan = $this->panggilMedan($posmen);
-		$medan = $this->buatJenisMedan($posmen);
+		$medan = $this->panggilMedan($posmen);
+		$jenisMedan = $this->buatJenisMedan($posmen);
 		list($dataProksi,$dataAsal) = $this->panggilPDOData($posmen);
 
 		//echo '<pre>$posmen = '; print_r($posmen); echo '</pre><hr>';
@@ -290,11 +290,11 @@ class Gerakhas_Tanya extends \Aplikasi\Kitab\Tanya
 		//echo '<pre>$dataProksi = '; print_r($dataProksi); echo '</pre><hr>';
 
 		# jika null
-		$medan2 = $senaraiData1 = $senaraiData2 = null;
+		$medan1 = $medan2 = $senaraiData1 = $senaraiData2 = null;
 
 		# pulangkan pemboleubah
-		return array($medan,$dataProksi,$dataAsal);
-		//return array($medan2,$senaraiData1,$senaraiData2);
+		return array($jenisMedan,$medan,$dataProksi,$dataAsal);
+		//return array($medan1,$medan2,$senaraiData1,$senaraiData2);
 	}
 
 	private function panggilMedan($posmen)
