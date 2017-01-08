@@ -10,10 +10,10 @@ class Bacafail
 		if (FALSE === $membukaFail) { exit("Gagal membuka aliran ke $url"); }
 		$dataFail = '';
 		while (!feof($membukaFail)) { $dataFail .= fread($membukaFail, $saizFail); }
-		
+
 		return array($membukaFail,$dataFail);
 	}
-	
+
 	public function bukafailmenu($url)
 	{
 		$bacaMenuAtas = fopen($url, "rb");
@@ -21,7 +21,7 @@ class Bacafail
 		if (FALSE === $bacaMenuAtas) { exit("Gagal membuka aliran ke $url"); }
 		$menuAtas = '';
 		while (!feof($bacaMenuAtas)) { $menuAtas .= fread($bacaMenuAtas, $fsize); }
-		
+
 		return array($bacaMenuAtas,$menuAtas);
 	}
 #==========================================================================================	
@@ -29,7 +29,7 @@ class Bacafail
 	{
 		// miminium/asset/css/plugins/simple-line-icons.css
 	}
-	
+
 	public function loginTemplate()
 	{
 		$url[] = 'AdminLTE-2.3.0/pages/examples/login2.html';
@@ -38,13 +38,13 @@ class Bacafail
 		$url[] = 'modern_admin_panel/login2.html';
 		$url[] = 'startbootstrap-sb-admin-2-1.0.8/pages/login2.html';
 		//*/
-		
+
 		$theme = array(0,1,2,3,4);
 		$pilih = $theme[rand(0, count($theme)-1)];
 
 		return $url[$pilih];
 	}
-	
+
 	public function login()
 	{
 		$url = $this->loginTemplate(); //echo "\$template = $template <br>";
@@ -55,22 +55,22 @@ class Bacafail
 		$lokasi = $sumber . $template . '/';
 		//echo '<pre>$pecahUrl->'; print_r($pecahUrl) . '</pre>';
 		//echo "\$template = $template | \$lokasi = $lokasi ";
-		
+
 		list($membukaFail,$dataFail) = $this->bukafailutama($sumber . $url);
 		$kandungan = str_replace('{{url}}', $lokasi, $dataFail);
-					
+
 		# pergi papar kandungan
 		echo $kandungan; //echo $dataFail;
 
 		fclose($membukaFail); # tutup fail //*/
 	}
-	
+
 	public function namafail()
 	{
 		# baca fail kandungan utama
 		$url = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/s1.html';
 		list($membukaFail,$dataFail) = $this->bukafailutama($url);
-		
+
 		# baca fail menu atas
 		$url2 = URL . 'sumber/rangka-dawai/startbootstrap-sb-admin-2-1.0.8/pages/s1-menu_atas.html';
 		list($bacaMenuAtas,$menuAtas) = $this->bukafailmenu($url2);
@@ -86,7 +86,7 @@ class Bacafail
 
 		# tutup fail
 		fclose($dataFail);
-		fclose($bacaMenuAtas);		
+		fclose($bacaMenuAtas);
 	}
 #==========================================================================================
 	public function semakfail($url, $fail, $bacaData)
@@ -98,14 +98,14 @@ class Bacafail
 			while (($baris = fgetcsv($handle, 1000, ",")) !== FALSE) 
 			{
 				$bacaData[$kira] = explode(';', $baris[0]);
-				if ($kira!=0)
+				/*if ($kira!=0)
 					$bacaData[$kira][1] = \Aplikasi\Kitab\RahsiaHash::rahsia('md5', 
-						$bacaData[$kira][0]);
+						$bacaData[$kira][0]); //*/
 				$kira++;
 			}
 		}
 		fclose($handle);
-		
+
 		return $bacaData; # pulangkan pembolehubah
 	}
 #==========================================================================================
