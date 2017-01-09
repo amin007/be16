@@ -191,19 +191,21 @@ class Gerakhas extends \Aplikasi\Kitab\Kawal
 		//echo 'class gerakhas::semakfail()<br>';
 		# Set pemboleubah utama
 		$url = URL . 'sumber/fail/csv/';
-		$fail = 'fnb-tak-siap.csv'; //echo $url . $fail . '<hr>';
+		$fail = 'anak-syarikat.csv'; //echo $url . $fail . '<hr>';
 		list($jenisMedan,$medan,$dataProksi,$dataAsal) = $this->tanya->panggilFail($url, $fail);
 
 		# semak $bacaData
 		//echo '<pre>$medan = '; print_r($medan); echo '</pre><hr>';
+		//echo '<pre>$jenisMedan = '; print_r($jenisMedan); echo '</pre><hr>';
 		//echo '<pre>$dataAsal = '; print_r($dataAsal); echo '</pre><hr>';
 		//echo '<pre>$dataProksi = '; print_r($dataProksi); echo '</pre><hr>';//*/
 
 		# sql create
-		//$this->tanya->buatJadual('kes-fnb', $jenisMedan);
+		$myTable = 'test2';
+		$this->tanya->buatJadual($myTable, $jenisMedan);
 		//$this->tanya->salinJadual('biodata', $medan, 'nama_pegawai');
 		# sql insert
-		$this->tanya->tambahPDOBanyakNilai($myTable = 'kes-fnb', $medan, $dataProksi, $dataAsal); 
+		$this->tanya->tambahPDOBanyakNilai($myTable, $medan, $dataProksi, $dataAsal); 
 
 		# pergi papar kandungan
 		//echo 'location: ' . URL . '';
