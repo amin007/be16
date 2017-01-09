@@ -315,9 +315,8 @@ class Tanya
 			 . "\r(\r" . $medan . "\r)"
 			 . ';';
 
-		echo '$sql-><pre>'; print_r($sql); echo '</pre>';
-		//$this->db->selectAll($sql);
-		//header('location:' . URL . 'test/paparfail');
+		//echo '$sql-><pre>'; print_r($sql); echo '</pre>';
+		$this->db->selectAll($sql);
 	}
 
 	public function salinJadual($myTableNew, $medan, $myTableOld)
