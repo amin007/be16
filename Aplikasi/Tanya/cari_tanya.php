@@ -28,7 +28,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 
 		return $where;
 	}
-	
+
 	private function dimanaPOST($myTable)
 	{
 		//echo '<pre>$_POST->'; print_r($_POST) . '</pre>';
@@ -121,7 +121,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 		if( in_array($namajadual,array('msic','produk') ) )
 				$myTable = substr($namaPanjang, 16);
 		else	$myTable = $namaPanjang;
-		
+
 		return $myTable;
 	}
 ##============================================================================================
@@ -169,7 +169,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 	}
 ##============================================================================================
 ########################################################################################################
-	public function idNama()
+	public function idNama($jadual)
 	{
         $medanKawalan = 'newss,'
 			. 'concat_ws("|",nama,operator) nama,'
@@ -203,10 +203,28 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 
 		# buang koma di akhir string
 		$medanKawalan = substr($medanKawalan, 0, -1);
-		
-		$medanKawalan2 = '*'; # pilihan lain untuk papar semua medan
 
-		return $medanKawalan; # pulangkan pemboleubah
+		# untuk jadual FNB
+        $medanFNB = 'newss,nama,nossm,' . "\r"
+			. 'concat_ws(" ",' . "\r"
+			. '		if (hasil is null, "", concat_ws("="," hasil", concat(format(hasil,0)," |") ) ),' . "\r"
+			. '		if (belanja is null, "", concat_ws("="," belanja", concat(format(belanja,0)," |") ) ),' . "\r"
+			. '		if (gaji is null, "", concat_ws("="," gaji", concat(format(gaji,0)," |") ) ),' . "\r"
+			. '		if (aset is null, "", concat_ws("="," aset", concat(format(aset,0)," |") ) ),' . "\r"
+			. '		if (staf is null, "", concat_ws("="," staf", concat(format(staf,0)," |") ) ),' . "\r"
+			. '		if (stok is null, "", concat_ws("="," stok akhir", concat(format(stok,0)," |") ) )' . "\r"
+ 			. ' ) as data5P,'
+			. '';
+
+		$medanFNB = substr($medanFNB, 0, -1);
+		
+		$medanAm = '*'; # pilihan lain untuk papar semua medan
+
+		if ($jadual == 'be16_kawal') $senaraiMedan = $medanKawalan;
+		elseif ($jadual == 'kes-fnb') $senaraiMedan = $medanFNB;
+		else $senaraiMedan = $medanAm;
+
+		return $senaraiMedan; # pulangkan pemboleubah
 	}
 ########################################################################################################
 	/*public function tambahSimpanBanyak($myTable, $namaMedan, $posmen)
