@@ -34,8 +34,7 @@ class Cari extends \Aplikasi\Kitab\Kawal
 		/*  $_POST[] => Array ( [cari] => 0000000123456 or [nama] => ABC ) */
 
 		# senaraikan tatasusunan jadual
-		$myJadual = array('be16_kawal','be16_rangkabaru','be16_proses');
-		$medan = $this->tanya->idNama(); # panggil medan2 tertentu
+		$myJadual = array('be16_kawal','be16_rangkabaru','be16_proses','kes-fnb');
 		$this->papar->cariNama = array();
 
 		# cari id berasaskan newss/ssm/sidap/nama
@@ -52,9 +51,10 @@ class Cari extends \Aplikasi\Kitab\Kawal
 			# mula cari $cariID dalam $myJadual
 			foreach ($myJadual as $key => $myTable)
 			{# mula ulang table
+				$medan = $this->tanya->idNama($myTable); # panggil medan2 tertentu
 				$this->papar->cariNama[$myTable] = 
-					$this->tanya->cariSemuaData($myTable, $medan, $carian, null);
-					//$this->tanya->cariSql($myTable, $medan, $carian, null);
+					$this->tanya->cariSemuaData("`$myTable`", $medan, $carian, null);
+					//$this->tanya->cariSql("`$myTable`", $medan, $carian, null);
 			}# tamat ulang table
 
 			# isytihar pembolehubah untuk dalam class Papar
