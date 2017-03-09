@@ -26,6 +26,8 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 				$where .= ($f=='x') ? " $atau `$cari`='$apa'\r" : 
 				" $atau `$cari` like '%$apa%'\r";
 
+		//echo " $where <br>";
+
 		return $where;
 	}
 
@@ -43,7 +45,7 @@ class Cari_Tanya extends \Aplikasi\Kitab\Tanya
 				$atau = isset($_POST['atau'][$key]) ? $_POST['atau'][$key] : 'WHERE';
 				//echo "\r$key => $f  | ";
 
-				$where .= $this->cariApaPOST($myTable, $where, $atau, $cari, $f, $apa);
+				$where = $this->cariApaPOST($myTable, $where, $atau, $cari, $f, $apa);
 			}
 		endif;
 
