@@ -1,6 +1,6 @@
 <?php
 namespace Aplikasi\Tanya; //echo __NAMESPACE__; 
-class Laporan_Tanya extends \Aplikasi\Kitab\Tanya
+class Kawalan_Tanya extends \Aplikasi\Kitab\Tanya
 {
 #==========================================================================================
 	public function __construct() 
