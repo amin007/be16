@@ -61,7 +61,7 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 	{//echo '<br>Anda berada di class Imej extends Kawal:ubah($cari)<br>';
 
 		if (!empty($cariID)) 
-		{
+		{	//echo '<pre>';
 			# senaraikan tatasusunan jadual dan setkan pembolehubah
 			$this->papar->_jadual = 'be16_kawal';
 			$this->papar->carian = 'newss';
@@ -101,11 +101,10 @@ class Kawalan extends \Aplikasi\Kitab\Kawal
 
 		# pergi papar kandungan
 		$jenis = $this->papar->pilihTemplate($template=0);
-		//$this->papar->baca
 		$this->papar->bacaTemplate
 		//$this->papar->paparTemplate
 			($this->_folder . '/ubah',$jenis,0); # $noInclude=0
-
+		//*/
 	}
 #---------------------------------------------------------------------------------------------------
 	public function ubahCari()
